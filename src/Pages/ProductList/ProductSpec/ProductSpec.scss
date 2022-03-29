@@ -28,8 +28,10 @@
       .main-img {
         text-align: center;
         margin: auto;
+
         img {
           width: 620px;
+          transition: all 0.2s ease-in-out;
         }
       }
     }
@@ -147,6 +149,24 @@
       right: 10px;
       width: 70%;
       font-size: $font-regular;
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .ProductSpec {
+    padding: 50px 0;
+    .spec {
+      .imgContainer {
+        .main-img {
+          img {
+            width: 580px;
+          }
+        }
+        .thumnail {
+          display: none;
+        }
+      }
     }
   }
 }

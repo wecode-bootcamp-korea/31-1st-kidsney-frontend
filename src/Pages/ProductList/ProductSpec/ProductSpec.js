@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import 'Pages/ProductList/ProductSpec/ProductSpec.scss';
 
 const ProductSpec = () => {
   const [count, setCount] = useState(1);
+
   const product = {
     id: 1,
     name: 'Mick Mouse Bodysuit',
@@ -14,6 +15,24 @@ const ProductSpec = () => {
   };
 
   const { id, name, price, image_url, character, detail } = product;
+
+  const [listId, setListId] = useState('1');
+
+  const plusCount = () => {
+    setCount(cur => (cur = cur + 1));
+  };
+
+  const minusCount = () => {
+    setCount(cur => (cur = cur <= 0 ? 0 : cur - 1));
+  };
+
+  const updateListId = e => {
+    const { id } = e.target;
+
+    setListId(cur => (cur = id));
+  };
+
+  const checkId = id => listId === id;
 
   return (
     <div className="ProductSpec">
@@ -50,11 +69,11 @@ const ProductSpec = () => {
             <div className="quantity">
               <h3>Quantity</h3>
               <div className="countBtns">
-                <button>
+                <button onClick={minusCount}>
                   <i className="fas fa-minus" />
                 </button>
                 {count}
-                <button>
+                <button onClick={plusCount}>
                   <i className="fas fa-plus" />
                 </button>
               </div>
@@ -72,25 +91,30 @@ const ProductSpec = () => {
       </div>
       <div className="descriptions row">
         <ul>
-          <li>
-            <i className="fas fa-plus" /> &nbsp; Product Details
+          <li id={1} onClick={updateListId}>
+            <i className={checkId('1') ? 'fas fa-minus' : 'fas fa-plus'} />{' '}
+            &nbsp; Product Details
           </li>
-          <li>
-            <i className="fas fa-plus" /> &nbsp; Shipping & Delivery
+          <li id={2} onClick={updateListId}>
+            <i className={checkId('2') ? 'fas fa-minus' : 'fas fa-plus'} />{' '}
+            &nbsp; Shipping & Delivery
           </li>
-          <li>
-            <i className="fas fa-plus" /> &nbsp; Reviews{' '}
+          <li id={3} onClick={updateListId}>
+            <i className={checkId('3') ? 'fas fa-minus' : 'fas fa-plus'} />{' '}
+            &nbsp; Reviews{' '}
           </li>
         </ul>
-        <div className="description">{detail}</div>
-        <div className="description hidden">
+        <div className={checkId('1') ? 'description' : 'description hidden'}>
+          {detail}
+        </div>
+        <div className={checkId('2') ? 'description' : 'description hidden'}>
           Most items ordered via Standard Delivery will arrive within 5-7
           business days, personalized items within 1-2 weeks. Exceptions include
           items shipped from locations other than our main warehouse. Express
           Delivery is available for an extra charge. Have questions? Visit our
           Help Page
         </div>
-        <div className="description hidden">
+        <div className={checkId('3') ? 'description' : 'description hidden'}>
           <h2>Reviews</h2>
         </div>
       </div>
