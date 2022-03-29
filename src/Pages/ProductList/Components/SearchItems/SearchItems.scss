@@ -1,0 +1,14 @@
+@import 'Styles/variables.scss';
+
+.searchItems {
+  .divider {
+    margin: 0 20px;
+    padding-top: 20px;
+    border-top: $border-bottom;
+  }
+  .productGrid {
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
