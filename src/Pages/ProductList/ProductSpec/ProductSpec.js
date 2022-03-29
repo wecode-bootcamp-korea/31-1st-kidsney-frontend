@@ -70,21 +70,29 @@ const ProductSpec = () => {
           </div>
         </div>
       </div>
-      <div className="description row">
+      <div className="descriptions row">
         <ul>
           <li>
-            <i className="fas fa-plus" />
-            Product Details
+            <i className="fas fa-plus" /> &nbsp; Product Details
           </li>
           <li>
-            <i className="fas fa-plus" />
-            Shipping & Delivery
+            <i className="fas fa-plus" /> &nbsp; Shipping & Delivery
           </li>
           <li>
-            <i className="fas fa-plus" />
-            Reviews
+            <i className="fas fa-plus" /> &nbsp; Reviews{' '}
           </li>
         </ul>
+        <div className="description">{detail}</div>
+        <div className="description hidden">
+          Most items ordered via Standard Delivery will arrive within 5-7
+          business days, personalized items within 1-2 weeks. Exceptions include
+          items shipped from locations other than our main warehouse. Express
+          Delivery is available for an extra charge. Have questions? Visit our
+          Help Page
+        </div>
+        <div className="description hidden">
+          <h2>Reviews</h2>
+        </div>
       </div>
     </div>
   );
