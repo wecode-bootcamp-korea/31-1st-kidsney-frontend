@@ -1,1 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Hurricane&family=Ubuntu&display=swap');
 @import 'Styles/variables.scss';
+
+.ProductSpec {
+  font-family: 'Didact Gothic', sans-serif;
+  padding: 50px 100px;
+  .row {
+    display: flex;
+  }
+  .spec {
+    .imgContainer {
+      display: flex;
+      flex: 2;
+
+      .thumnail {
+        @include flexColumn;
+        width: 100px;
+        height: 100px;
+
+        img {
+          margin-bottom: 10px;
+        }
+      }
+      .main-img {
+        text-align: center;
+        margin: auto;
+        img {
+          width: 620px;
+        }
+      }
+    }
+    .orderContainer {
+      flex: 1;
+
+      h2:nth-child(2) {
+        border-bottom: $border-bottom;
+        padding-bottom: 30px;
+      }
+
+      p {
+        margin: 30px 0;
+        height: 60px;
+        width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        white-space: nowrap;
+        border-bottom: $border-bottom;
+        padding-bottom: 25px;
+      }
+
+      .sizeOptions {
+        border-bottom: $border-bottom;
+        padding-bottom: 50px;
+        label {
+          margin-right: 10px;
+          input {
+            display: none;
+          }
+          span {
+            display: inline-block;
+            padding: 10px 30px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            border: 1px solid $color-black;
+            border-radius: $border-radius;
+          }
+          cursor: pointer;
+
+          &:hover input + span {
+            background-color: $color-dark-blue;
+            color: $color-white;
+          }
+        }
+      }
+
+      .quantity {
+        display: flex;
+        justify-content: space-between;
+        padding: 25px 0;
+
+        .countBtns {
+          font-size: 20px;
+          button {
+            margin: 0 15px;
+            padding: 5px 10px;
+            border: $border-bottom;
+            border-radius: 50%;
+
+            i {
+              color: $color-gray;
+            }
+          }
+
+          button.active {
+            border: 1px solid $color-blue;
+
+            i {
+              color: $color-blue;
+            }
+          }
+        }
+      }
+
+      .btns {
+        @include flexColumn;
+        button {
+          padding: 13px 10px;
+          margin: 10px;
+          background-color: $color-blue;
+          color: $color-white;
+          border-radius: $border-radius;
+          font-size: 18px;
+
+          &:hover {
+            background-color: $color-dark-blue;
+          }
+        }
+      }
+    }
+  }
+}

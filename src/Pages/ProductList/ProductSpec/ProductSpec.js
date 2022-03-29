@@ -21,6 +21,7 @@ const ProductSpec = () => {
         <div className="imgContainer">
           <div className="thumnail">
             <img alt="thumnail" src={image_url} />
+            <img alt="thumnail" src={image_url} />
           </div>
           <div className="main-img">
             <img alt="main-img" src={image_url} />
@@ -29,10 +30,10 @@ const ProductSpec = () => {
         <div className="orderContainer">
           <div className="orderList">
             <h2>{name}</h2>
-            <h3>${price}</h3>
+            <h2>${price}</h2>
             <p>{detail}</p>
             <div className="sizeOptions">
-              <h4> Size </h4>
+              <h3> Size </h3>
               <label>
                 <input type="checkbox" name="sizeOption" value="small" />
                 <span>S</span>
@@ -47,18 +48,25 @@ const ProductSpec = () => {
               </label>
             </div>
             <div className="quantity">
-              <h4>Quantity</h4>
-              <button>
-                <i className="fas fa-minus" />
-              </button>
-              {count}
-              <button>
-                <i className="fas fa-plus" />
-              </button>
+              <h3>Quantity</h3>
+              <div className="countBtns">
+                <button>
+                  <i className="fas fa-minus" />
+                </button>
+                {count}
+                <button>
+                  <i className="fas fa-plus" />
+                </button>
+              </div>
             </div>
 
-            <button>Add to Bag</button>
-            <button>Add to Wish List</button>
+            <div className="btns">
+              <button>Add to Bag</button>
+              <button>
+                <i className="far fa-heart" />
+                &nbsp; Add to Wish List
+              </button>
+            </div>
           </div>
         </div>
       </div>
