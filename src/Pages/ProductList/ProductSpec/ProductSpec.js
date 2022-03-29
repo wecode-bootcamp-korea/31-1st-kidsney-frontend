@@ -1,7 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
+import 'Pages/ProductList/ProductSpec/ProductSpec.scss';
 
 const ProductSpec = () => {
-  return <div />;
+  const [count, setCount] = useState(1);
+  const product = {
+    id: 1,
+    name: 'Mick Mouse Bodysuit',
+    price: '29.90',
+    image_url: '/images/Boys/happiness_classic_hat.png',
+    character: 'happiness',
+    detail:
+      'Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No.',
+  };
+
+  const { id, name, price, image_url, character, detail } = product;
+
+  return (
+    <div className="ProductSpec">
+      <div className="spec row">
+        <div className="imgContainer">
+          <div className="thumnail">
+            <img alt="thumnail" src={image_url} />
+          </div>
+          <div className="main-img">
+            <img alt="main-img" src={image_url} />
+          </div>
+        </div>
+        <div className="orderContainer">
+          <div className="orderList">
+            <h2>{name}</h2>
+            <h3>${price}</h3>
+            <p>{detail}</p>
+            <div className="sizeOptions">
+              <h4> Size </h4>
+              <label>
+                <input type="checkbox" name="sizeOption" value="small" />
+                <span>S</span>
+              </label>
+              <label>
+                <input type="checkbox" name="sizeOption" value="medium" />
+                <span>M</span>
+              </label>
+              <label>
+                <input type="checkbox" name="sizeOption" value="large" />
+                <span>L</span>
+              </label>
+            </div>
+            <div className="quantity">
+              <h4>Quantity</h4>
+              <button>
+                <i className="fas fa-minus" />
+              </button>
+              {count}
+              <button>
+                <i className="fas fa-plus" />
+              </button>
+            </div>
+
+            <button>Add to Bag</button>
+            <button>Add to Wish List</button>
+          </div>
+        </div>
+      </div>
+      <div className="description row">
+        <ul>
+          <li>
+            <i className="fas fa-plus" />
+            Product Details
+          </li>
+          <li>
+            <i className="fas fa-plus" />
+            Shipping & Delivery
+          </li>
+          <li>
+            <i className="fas fa-plus" />
+            Reviews
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default ProductSpec;
