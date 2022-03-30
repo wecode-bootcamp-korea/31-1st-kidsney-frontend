@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 import Button from 'Components/Button/Button';
+import Size from 'Components/Size/Size';
+
 import 'Pages/ProductList/ProductSpec/ProductSpec.scss';
 
 const ProductSpec = () => {
@@ -54,18 +56,9 @@ const ProductSpec = () => {
             <p>{detail}</p>
             <div className="sizeOptions">
               <h3> Size </h3>
-              <label>
-                <input type="checkbox" name="sizeOption" value="small" />
-                <span>S</span>
-              </label>
-              <label>
-                <input type="checkbox" name="sizeOption" value="medium" />
-                <span>M</span>
-              </label>
-              <label>
-                <input type="checkbox" name="sizeOption" value="large" />
-                <span>L</span>
-              </label>
+              <Size text="S" value="small" />
+              <Size text="M" value="medium" />
+              <Size text="L" value="large" />
             </div>
             <div className="quantity">
               <h3>Quantity</h3>

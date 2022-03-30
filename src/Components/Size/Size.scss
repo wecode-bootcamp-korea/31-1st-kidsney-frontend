@@ -1,0 +1,22 @@
+@import 'Styles/variables.scss';
+
+.Size {
+  margin-right: 10px;
+  input {
+    display: none;
+  }
+  span {
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    border: 1px solid $color-black;
+    border-radius: $border-radius;
+  }
+  cursor: pointer;
+
+  &:hover input + span {
+    background-color: $color-dark-blue;
+    color: $color-white;
+  }
+}
