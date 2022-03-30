@@ -8,8 +8,18 @@
 
   .list {
     display: flex;
+
+    .products {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      width: 1050px;
+      white-space: nowrap;
+      overflow-x: hidden;
+    }
+
     button {
-      font-size: 30px;
+      font-size: 40px;
     }
   }
 }

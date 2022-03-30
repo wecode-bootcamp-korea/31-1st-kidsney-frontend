@@ -1,60 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import RecoProduct from 'Components/RecoProductList/RecoProduct/RecoProduct';
 import 'Components/RecoProductList/RecoProductList.scss';
+import 'Components/RecoProductList/RecoProduct/RecoProduct.scss';
 
 const RecoProductList = () => {
-  const products = [
-    {
-      id: 1,
-      name: 'Mick Mouse Bodysuit',
-      price: '29.90',
-      image_url: '/images/Boys/happiness_classic_hat.png',
-      character: 'happiness',
-      detail:
-        'Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No.',
-    },
-    {
-      id: 2,
-      name: 'Mick Mouse Bodysuit',
-      price: '100.90',
-      image_url: '/images/Boys/surprised_ballcap.png',
-      character: 'surprised',
-      detail:
-        'Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No.',
-    },
-    {
-      id: 3,
-      name: 'Mick Mouse Bodysuit',
-      price: '40.90',
-      image_url: '/images/Boys/wannaplay_ballcab.png',
-      character: 'wannaplay',
-      detail:
-        'Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No.',
-    },
-    {
-      id: 4,
-      name: 'Mick Mouse Bodysuit',
-      price: '59.90',
-      image_url: '/images/Boys/wannaplay_ballcab.png',
-      character: 'wannaplay',
-      detail:
-        'Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No.',
-    },
-  ];
+  const [products, setProducts] = useState();
+  const [direction, setDirection] = useState();
+
+  const getData = async () => {
+    const data = await (await fetch('/data/productData.json')).json();
+    setProducts(data);
+  };
+
+  useEffect(() => getData(), []);
+
+  const handleDirection = e => {
+    const { id } = e.target;
+    setDirection(cur => (cur = id));
+  };
 
   return (
     <div className="RecoProductList">
       <h2>You May Also Like</h2>
       <div className="list">
-        <button>
-          <i className="fas fa-angle-left" />
+        <button onClick={handleDirection}>
+          <i id="left" className="fas fa-angle-left" />
         </button>
-        {products.map(product => {
-          return <RecoProduct key={product.id} product={product} />;
-        })}
-        <button>
-          <i className="fas fa-angle-right" />
+        <div className="products">
+          {products &&
+            products.map(product => {
+              return (
+                <RecoProduct
+                  key={product.id}
+                  product={product}
+                  direction={direction}
+                />
+              );
+            })}
+        </div>
+        <button onClick={handleDirection}>
+          <i id="right" className="fas fa-angle-right" />
         </button>
       </div>
     </div>

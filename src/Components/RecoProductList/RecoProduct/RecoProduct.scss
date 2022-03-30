@@ -4,6 +4,7 @@
   position: relative;
   margin: 10px;
   text-align: center;
+  transition: all 0.3s ease;
   cursor: pointer;
 
   img {
@@ -27,5 +28,13 @@
 
   &:hover button {
     opacity: 1;
+  }
+
+  &.right {
+    transform: translateX(-220%);
+  }
+
+  &.left {
+    transform: translateX(220%);
   }
 }
