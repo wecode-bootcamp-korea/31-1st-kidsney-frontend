@@ -4,6 +4,7 @@
   position: relative;
   margin: 10px;
   text-align: center;
+  cursor: pointer;
 
   img {
     width: 250px;
@@ -15,10 +16,16 @@
     top: 10px;
     right: 10px;
     color: $color-blue;
+    opacity: 0;
+    transition: 0.4s ease opacity;
   }
 
   .price {
     font-size: 18px;
     color: $color-gray;
+  }
+
+  &:hover button {
+    opacity: 1;
   }
 }
