@@ -1,8 +1,11 @@
 import React, { useState, useRef } from 'react';
+
+import Button from 'Components/Button/Button';
 import 'Pages/ProductList/ProductSpec/ProductSpec.scss';
 
 const ProductSpec = () => {
   const [count, setCount] = useState(1);
+  const [listId, setListId] = useState('1');
 
   const product = {
     id: 1,
@@ -15,8 +18,6 @@ const ProductSpec = () => {
   };
 
   const { id, name, price, image_url, character, detail } = product;
-
-  const [listId, setListId] = useState('1');
 
   const plusCount = () => {
     setCount(cur => (cur = cur + 1));
@@ -80,11 +81,8 @@ const ProductSpec = () => {
             </div>
 
             <div className="btns">
-              <button>Add to Bag</button>
-              <button>
-                <i className="far fa-heart" />
-                &nbsp; Add to Wish List
-              </button>
+              <Button type="bag" text="Add to Bag" />
+              <Button type="wishList" text="♡ &nbsp; Add to Wish List" />
             </div>
           </div>
         </div>
