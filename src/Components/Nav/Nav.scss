@@ -1,1 +1,114 @@
 @import 'Styles/variables.scss';
+
+@mixin navBox {
+  margin: 0 20px;
+  height: 70px;
+}
+
+.Nav {
+  background-color: $color-white;
+  border-bottom: $border-bottom;
+
+  .headerNav {
+    position: relative;
+    @include flexCenter;
+    @include navBox;
+    background-color: $color-white;
+    cursor: pointer;
+
+    .logo {
+      width: 200px;
+      height: 60px;
+      a {
+        color: $color-logo;
+      }
+    }
+
+    .navLinks {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      width: 400px;
+      height: 60px;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+
+      li {
+        @include flexCenter;
+        margin-top: 15px;
+        width: 130px;
+        height: 30px;
+        background-color: #fff;
+        cursor: pointer;
+
+        i {
+          padding-right: 5px;
+          color: $color-blue;
+        }
+      }
+
+      li:hover {
+        color: $color-blue;
+      }
+
+      li:nth-child(3) {
+        padding-right: 30px;
+      }
+    }
+  }
+  .navBar {
+    @include flexCenter;
+    @include navBox;
+
+    .navBarUl {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+
+      .boys,
+      .girls,
+      .toys {
+        @include flexCenter;
+        width: 100px;
+        height: 70px;
+
+        .navMenuUl {
+          .navMenu {
+          }
+        }
+      }
+
+      li:hover {
+        border-bottom: 2px solid $color-blue;
+      }
+    }
+
+    .search {
+      @include flexCenter;
+      position: absolute;
+      width: 150px;
+      height: 40px;
+      right: 30px;
+      border-radius: 15px;
+      background-color: $color-light-blue;
+
+      input {
+        position: relative;
+        width: 120px;
+        height: 30px;
+        padding-left: 15px;
+        background-color: $color-light-blue;
+        border: none;
+        text-align: left;
+      }
+
+      i {
+        position: absolute;
+        right: 30px;
+        color: $color-blue;
+        font-size: 20px;
+      }
+    }
+  }
+}

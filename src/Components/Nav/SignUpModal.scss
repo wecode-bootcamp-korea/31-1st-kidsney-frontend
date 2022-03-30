@@ -1,0 +1,56 @@
+@import 'Styles/variables.scss';
+@import 'Styles/common.scss';
+@import './LoginModal.scss';
+
+.SignUpModal {
+  @include Modal;
+
+  .signUp {
+    @include modalForm;
+    height: 750px;
+
+    .logo {
+      margin-top: 40px;
+      text-align: center;
+      color: $color-logo;
+    }
+
+    .closeBtn {
+      @include closeBtn;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .signUpContainer {
+      @include modalContainer;
+
+      input {
+        @include inputStyle;
+      }
+      input::placeholder {
+        color: $color-gray;
+      }
+
+      button {
+        @include buttonStyle;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: $color-dark-blue;
+      }
+
+      .goToSignIn {
+        margin-top: 70px;
+        p {
+        }
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
