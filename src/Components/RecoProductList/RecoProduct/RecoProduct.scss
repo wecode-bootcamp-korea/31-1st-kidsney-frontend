@@ -1,0 +1,24 @@
+@import 'Styles/variables.scss';
+
+.RecoProduct {
+  position: relative;
+  margin: 10px;
+  text-align: center;
+
+  img {
+    width: 250px;
+    height: 250px;
+  }
+
+  button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: $color-blue;
+  }
+
+  .price {
+    font-size: 18px;
+    color: $color-gray;
+  }
+}
