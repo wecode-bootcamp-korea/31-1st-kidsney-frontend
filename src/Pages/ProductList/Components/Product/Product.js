@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import 'Pages/ProductList/Components/Product/Product.scss';
 
 const Product = product => {
