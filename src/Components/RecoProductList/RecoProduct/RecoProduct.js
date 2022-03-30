@@ -3,7 +3,7 @@ import 'Components/RecoProductList/RecoProduct/RecoProduct.scss';
 import React from 'react';
 
 const RecoProduct = ({ product, direction }) => {
-  const { id, name, price, image_url } = product;
+  const { name, price, image_url } = product;
   const [isClicked, setIsClicked] = useState(false);
 
   const paintHeartBtn = () => {
@@ -21,10 +21,7 @@ const RecoProduct = ({ product, direction }) => {
       <button>
         <i className={isClicked ? 'fas fa-heart' : 'far fa-heart'} />
       </button>
-      <h3>
-        {id}
-        {name}
-      </h3>
+      <h3>{name}</h3>
       <div className="price">${price}</div>
     </div>
   );
