@@ -1,6 +1,119 @@
 @import 'Styles/variables.scss';
 
-.Footer {
+.footer {
+  .footerTitle {
+    @include flexCenter;
+    height: 240px;
+    background-color: #445fae;
+    .text {
+      p {
+        color: $color-white;
+      }
+      h3 {
+        color: $color-white;
+        .currency {
+          font-size: 2rem;
+        }
+        .amount {
+        }
+      }
+      .links {
+        @include flexColumn;
+        span {
+          color: $color-white;
+        }
+        button {
+          a {
+            color: $color-white;
+          }
+        }
+      }
+    }
+    .footerImg {
+      width: 700px;
+      height: 240px;
+      margin-top: 30px;
+      margin-left: 30px;
+    }
+  }
   .footerContainer {
+    background-color: $color-white;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    .signUp {
+      width: 420px;
+      height: 150px;
+      margin-right: 80px;
+      .signUptext {
+        margin-bottom: 10px;
+      }
+      .signUpLinks {
+        display: flex;
+        margin-bottom: 10px;
+        button {
+          border: 1px solid $color-blue;
+          background-color: $color-blue;
+          border-radius: $border-radius;
+          color: $color-white;
+          width: 80px;
+          height: 40px;
+          margin-right: 15px;
+        }
+        div {
+          @include flexColumn;
+          span {
+            font-weight: $weight-bold;
+          }
+          a {
+            text-decoration: underline;
+          }
+        }
+      }
+      .socialIcons {
+        display: flex;
+      }
+    }
+    .items {
+      display: flex;
+      .category {
+        display: flex;
+        ul {
+          border-right: 1px solid $color-gray;
+          margin-right: 80px;
+          li {
+            margin-right: 50px;
+          }
+        }
+      }
+      .contentAsset {
+        display: flex;
+        ul {
+          margin-right: 80px;
+          li {
+          }
+        }
+      }
+    }
+  }
+  .footerCopyright {
+    div {
+      margin: 50px 80px;
+      ul {
+        li {
+          float: left;
+          padding-top: 10px;
+          padding-right: 10px;
+        }
+        li::after {
+          content: '|';
+          float: right;
+          margin-left: 10px;
+        }
+        li:last-child::after {
+          content: '';
+        }
+      }
+    }
   }
 }
