@@ -3,9 +3,9 @@ import './Main.scss';
 
 const Main = () => {
   return (
-    <main className="Main">
+    <main className="main">
       <section className="mainEvent">
-        <a>
+        <a href="/">
           <img
             src="https://i.ibb.co/K6MSKvW/main-event-toys-png.png"
             alt="main event"
@@ -13,14 +13,14 @@ const Main = () => {
         </a>
       </section>
       <section className="subEvent">
-        <a>
+        <a href="/">
           <img
             src="https://i.ibb.co/ngW27ZG/sub-event-toys.png"
             alt="sub event"
           />
         </a>
       </section>
-      <section className=""></section>
+      {/* <section className=""></section> */}
     </main>
   );
 };
