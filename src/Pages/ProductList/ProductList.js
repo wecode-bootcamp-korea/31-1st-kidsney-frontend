@@ -6,12 +6,15 @@ import './ProductList.scss';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const [subtotal, setSubtotal] = useState();
 
+  const URI = 'http://10.58.4.54:8000/products/main';
   useEffect(() => {
-    fetch('data/productData.json')
+    fetch(URI)
       .then(response => response.json())
       .then(product => {
-        setProducts(product);
+        setProducts(product.result);
+        setSubtotal(product.count);
       });
   }, []);
 
@@ -20,7 +23,7 @@ const ProductList = () => {
       <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
       <SorterBar />
       <div className="row">
-        <Aside />
+        <Aside subtotal={subtotal} products={products} />
         <SearchItems products={products} />
       </div>
     </div>
