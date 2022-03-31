@@ -6,11 +6,11 @@ const SearchItems = ({ products }) => {
   return (
     <div className="searchItems">
       <div className="divider" />
-      <div className="productGrid">
+      <ul className="productGrid">
         {products.map(product => (
           <Product key={product.id} product={product} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

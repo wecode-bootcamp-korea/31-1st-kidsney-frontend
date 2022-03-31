@@ -6,19 +6,20 @@ const Product = ({ product, direction }) => {
   const { id, name, price, image_url } = product;
   const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
+
   const paintHeartBtn = () => {
     setIsClicked(cur => !cur);
   };
+
+  const goToProductSpec = () => {
+    navigate(`/products/${id}`, {
+      state: product,
+    });
+  };
+
   return (
-    <div className={`Product ${direction}`}>
-      <div
-        className="productCard"
-        onClick={() => {
-          navigate(`/products/${id}`, {
-            state: product,
-          });
-        }}
-      >
+    <li className={`Product ${direction}`}>
+      <div className="productCard" onClick={goToProductSpec}>
         <img alt="thumbnail" src={image_url} />
         <button onClick={paintHeartBtn}>
           <i className={isClicked ? 'fas fa-heart' : 'far fa-heart'} />
@@ -26,7 +27,7 @@ const Product = ({ product, direction }) => {
         <h3>{name}</h3>
         <div className="price">${price}</div>
       </div>
-    </div>
+    </li>
   );
 };
 

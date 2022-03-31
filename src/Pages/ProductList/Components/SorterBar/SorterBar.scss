@@ -3,12 +3,15 @@
 .sorterBar {
   display: flex;
   justify-content: space-between;
+
   .productSubtotal {
     margin: 20px;
   }
+
   .priceSorter {
     margin: 20px;
   }
+
   .smallGray {
     font-size: $font-small;
     color: $color-gray;

@@ -3,8 +3,11 @@
 .aside {
   width: 240px;
   border: 1px gray solid;
-  .filterName {
-    margin: 20px;
-    font-size: $font-medium;
+
+  .accordionFilter {
+    .filterName {
+      margin: 20px;
+      font-size: $font-medium;
+    }
   }
 }

@@ -6,10 +6,12 @@
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
+
   img {
     width: 250px;
     height: 250px;
   }
+
   button {
     position: absolute;
     top: -20px;
@@ -19,16 +21,20 @@
     opacity: 0;
     transition: 0.4s ease opacity;
   }
+
   .price {
     font-size: 18px;
     color: $color-gray;
   }
+
   &:hover button {
     opacity: 1;
   }
+
   &.right {
     transform: translateX(-220%);
   }
+
   &.left {
     transform: translateX(220%);
   }
