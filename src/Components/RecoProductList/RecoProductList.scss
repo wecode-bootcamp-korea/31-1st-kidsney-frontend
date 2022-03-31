@@ -1,7 +1,6 @@
 @import '../../Styles/variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Hurricane&family=Ubuntu&display=swap');
 
-.RecoProductList {
+.recoProductList {
   @include flexColumn;
   align-items: center;
   font-family: 'Didact Gothic', sans-serif;
