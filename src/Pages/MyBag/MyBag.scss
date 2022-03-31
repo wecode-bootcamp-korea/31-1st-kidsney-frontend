@@ -1,0 +1,20 @@
+@import '../../Styles/variables.scss';
+
+.MyBag {
+  .event {
+    display: flex;
+
+    .sub-event {
+      height: 350px;
+      width: 100%;
+
+      &.left {
+        background-color: $color-gray;
+      }
+
+      &.right {
+        background-color: #96bde8;
+      }
+    }
+  }
+}
