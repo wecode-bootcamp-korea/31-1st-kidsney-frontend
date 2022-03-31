@@ -39,16 +39,16 @@ const Footer = () => {
           <div className="socialIcons">
             <ul>
               <li>
-                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fab fa-facebook-f"></i>
               </li>
               <li>
-                <i class="fa-brands fa-instagram"></i>
+                <i class="fab fa-instagram"></i>
               </li>
               <li>
-                <i class="fa-brands fa-twitter"></i>
+                <i class="fab fa-twitter"></i>
               </li>
               <li>
-                <i class="fa-brands fa-pinterest-p"></i>
+                <i class="fab fa-pinterest-p"></i>
               </li>
             </ul>
           </div>

@@ -12,54 +12,61 @@
       }
 
       h3 {
-        height: 50px;
-        padding-left: 40px;
-        padding-top: 30px;
         display: flex;
         align-items: center;
+        height: 50px;
+        padding-top: 30px;
+        padding-left: 40px;
         color: $color-white;
+
         .currency {
           padding-right: 5px;
           font-size: 2rem;
         }
+
         .amount {
           padding-right: 5px;
           font-size: 3.5rem;
         }
+
         .text {
           width: 150px;
           font-size: 2rem;
+          font-weight: 400;
         }
       }
 
       .links {
         @include flexCenter;
-        @include flexColumn;
+        flex-direction: column;
         padding-top: 25px;
+
         span {
           color: $color-white;
         }
+
         button {
           a {
             color: $color-white;
+            text-decoration: underline;
           }
         }
       }
     }
 
     .footerImg {
-      width: 700px;
+      width: 600px;
       height: 240px;
-      margin-top: 30px;
+      padding-top: 30px;
       margin-left: 30px;
     }
   }
 
   .footerContainer {
-    background-color: $color-white;
     display: flex;
     justify-content: center;
     padding-top: 30px;
+    background-color: $color-white;
 
     .signUp {
       width: 420px;
@@ -75,16 +82,15 @@
         margin-bottom: 10px;
 
         button {
-          border: 1px solid $color-blue;
-          background-color: $color-blue;
-          border-radius: $border-radius;
-          color: $color-white;
           width: 80px;
           height: 40px;
           margin-right: 15px;
+          color: $color-white;
+          background-color: $color-blue;
+          border: 1px solid $color-blue;
+          border-radius: $border-radius;
         }
-
-        div {
+        I’m div {
           @include flexColumn;
 
           span {
@@ -102,6 +108,11 @@
           display: flex;
 
           li {
+            margin-top: 10px;
+            margin-right: 15px;
+            i {
+              font-size: 24px;
+            }
           }
         }
       }
@@ -114,8 +125,8 @@
         display: flex;
 
         ul {
-          border-right: 1px solid $color-gray;
           margin-right: 80px;
+          border-right: 1px solid $color-gray;
 
           li {
             margin-right: 50px;
@@ -127,9 +138,8 @@
         display: flex;
 
         ul {
-          margin-right: 80px;
-
           li {
+            margin-right: 80px;
           }
         }
       }
@@ -137,6 +147,7 @@
   }
 
   .footerCopyright {
+    height: 70px;
     div {
       margin: 50px 80px;
 
