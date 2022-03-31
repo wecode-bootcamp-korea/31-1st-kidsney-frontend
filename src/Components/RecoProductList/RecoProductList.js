@@ -15,9 +15,9 @@ const RecoProductList = () => {
   useEffect(() => getData(), []);
 
   const handleDirection = e => {
-    const { className } = e.target;
-    setDirection(e.target.id);
-    console.log(className);
+    const { dir: className } = e.target;
+    setDirection(className);
+    //console.log(dir);
   };
 
   return (
@@ -25,7 +25,7 @@ const RecoProductList = () => {
       <h2>You May Also Like</h2>
       <div className="list">
         <button onClick={handleDirection}>
-          <i id="left" className="fas fa-angle-left" />
+          <i className="fas fa-angle-left" />
         </button>
         <div className="products">
           {products &&
@@ -40,7 +40,7 @@ const RecoProductList = () => {
             })}
         </div>
         <button onClick={handleDirection}>
-          <i id="right" className="fas fa-angle-right" />
+          <i className="fas fa-angle-right" />
         </button>
       </div>
     </div>
