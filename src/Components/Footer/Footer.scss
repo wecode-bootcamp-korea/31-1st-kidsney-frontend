@@ -71,7 +71,11 @@
         }
       }
       .socialIcons {
-        display: flex;
+        ul {
+          display: flex;
+          li {
+          }
+        }
       }
     }
     .items {
