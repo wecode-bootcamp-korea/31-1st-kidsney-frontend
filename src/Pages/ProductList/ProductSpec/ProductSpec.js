@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
-import Button from 'Components/Button/Button';
-import Size from 'Components/Size/Size';
-
-import 'Pages/ProductList/ProductSpec/ProductSpec.scss';
 import { useLocation } from 'react-router';
+
+import Button from '../../../Components/Button/Button';
+import Size from '../../../Components/Size/Size';
+
+import './ProductSpec.scss';
 
 const ProductSpec = () => {
   const [count, setCount] = useState(1);
@@ -27,17 +27,18 @@ const ProductSpec = () => {
     setListId(listId => (listId = id));
   };
 
+  //check which list is clicked by comparing list's id and listId
   const checkId = id => listId === id;
 
   return (
-    <div className="ProductSpec">
+    <div className="productSpec">
       <div className="spec row">
         <div className="imgContainer">
           <div className="thumnail">
             <img alt="thumnail" src={image_url} />
             <img alt="thumnail" src={image_url} />
           </div>
-          <div className="main-img">
+          <div className="mainImg">
             <img alt="main-img" src={image_url} />
           </div>
         </div>
@@ -66,8 +67,8 @@ const ProductSpec = () => {
             </div>
 
             <div className="btns">
-              <Button type="bag" text="Add to Bag" />
-              <Button type="wishList" text="♡ &nbsp; Add to Wish List" />
+              <Button text="Add to Bag" />
+              <Button type="white" text="♡ &nbsp; Add to Wish List" />
             </div>
           </div>
         </div>
@@ -75,15 +76,24 @@ const ProductSpec = () => {
       <div className="descriptions row">
         <ul>
           <li id={1} onClick={updateListId}>
-            <i className={checkId('1') ? 'fas fa-minus' : 'fas fa-plus'} />{' '}
+            <i
+              id={1}
+              className={checkId('1') ? 'fas fa-minus' : 'fas fa-plus'}
+            />{' '}
             &nbsp; Product Details
           </li>
           <li id={2} onClick={updateListId}>
-            <i className={checkId('2') ? 'fas fa-minus' : 'fas fa-plus'} />{' '}
+            <i
+              id={2}
+              className={checkId('2') ? 'fas fa-minus' : 'fas fa-plus'}
+            />{' '}
             &nbsp; Shipping & Delivery
           </li>
           <li id={3} onClick={updateListId}>
-            <i className={checkId('3') ? 'fas fa-minus' : 'fas fa-plus'} />{' '}
+            <i
+              id={3}
+              className={checkId('3') ? 'fas fa-minus' : 'fas fa-plus'}
+            />{' '}
             &nbsp; Reviews{' '}
           </li>
         </ul>

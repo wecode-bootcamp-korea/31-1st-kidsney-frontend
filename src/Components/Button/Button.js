@@ -1,8 +1,8 @@
-import 'Components/Button/Button.scss';
+import './Button.scss';
 
 const Button = ({ type, text }) => {
   return (
-    <button className={type === 'wishList' ? 'Button wishList' : 'Button'}>
+    <button className={type === 'white' ? 'button white' : 'button'}>
       {text}
     </button>
   );

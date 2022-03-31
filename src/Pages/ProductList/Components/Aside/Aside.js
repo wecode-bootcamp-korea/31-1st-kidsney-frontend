@@ -5,7 +5,7 @@ const Aside = () => {
   return (
     <aside className="aside">
       <ul className="accordionFilter">
-        <li className="filterName">Product Type</li>
+        <li className="filterName">Product Type </li>
         <li className="filterName">Size</li>
         <li className="filterName">Character</li>
       </ul>
