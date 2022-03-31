@@ -12,23 +12,9 @@
     height: 250px;
   }
 
-  button {
-    position: absolute;
-    top: -20px;
-    right: 10px;
-    color: $color-blue;
-    font-size: $font-regular;
-    opacity: 0;
-    transition: 0.4s ease opacity;
-  }
-
   .price {
     font-size: 18px;
     color: $color-gray;
-  }
-
-  &:hover button {
-    opacity: 1;
   }
 
   &.right {

@@ -4,12 +4,7 @@ import './Product.scss';
 
 const Product = ({ product, direction }) => {
   const { id, name, price, image_url } = product;
-  const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
-
-  const paintHeartBtn = () => {
-    setIsClicked(!isClicked);
-  };
 
   const goToProductSpec = () => {
     navigate(`/products/${id}`, {
@@ -21,9 +16,6 @@ const Product = ({ product, direction }) => {
     <li className={`product ${direction}`}>
       <div className="productCard" onClick={goToProductSpec}>
         <img alt="thumbnail" src={image_url} />
-        <button onClick={paintHeartBtn}>
-          <i className={isClicked ? 'fas fa-heart' : 'far fa-heart'} />
-        </button>
         <h3>{name}</h3>
         <div className="price">${price}</div>
       </div>
