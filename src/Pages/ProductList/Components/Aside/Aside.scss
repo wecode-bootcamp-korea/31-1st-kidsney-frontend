@@ -1,13 +1,22 @@
 @import 'Styles/variables.scss';
 
 .aside {
-  width: 240px;
-  border: 1px gray solid;
+  width: 360px;
+  transition: all ease 0.4s;
 
   .accordionFilter {
     .filterName {
       margin: 20px;
-      font-size: $font-medium;
+      padding: 15px 0;
+      width: 100%;
+      font-size: $font-regular;
+      border-bottom: $border-bottom;
+      transition: all ease 0.4s;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-blue;
+      }
     }
   }
 }

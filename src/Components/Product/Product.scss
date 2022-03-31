@@ -12,6 +12,10 @@
     height: 250px;
   }
 
+  h3 {
+    transition: all ease 0.4s;
+  }
+
   .price {
     font-size: 18px;
     color: $color-gray;
@@ -23,5 +27,9 @@
 
   &.left {
     transform: translateX(220%);
+  }
+
+  &:hover h3 {
+    color: $color-blue;
   }
 }

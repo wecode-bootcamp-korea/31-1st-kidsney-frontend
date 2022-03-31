@@ -1,7 +1,11 @@
 @import 'Styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Hurricane&family=Ubuntu&display=swap');
 
 .productList {
+  font-family: 'Didact Gothic', sans-serif;
+
   .row {
     display: flex;
+    margin: 0px 80px;
   }
 }
