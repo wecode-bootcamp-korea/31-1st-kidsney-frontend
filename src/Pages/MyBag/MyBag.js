@@ -25,7 +25,6 @@ const MyBag = () => {
     },
   ];
 
-  const { name, price, image_url, detail } = orderProducts;
   const subTotal = 274.96;
   const total = 315.91;
   //price 가격 계산 어떻게 해? 일단 그냥 임의로?
@@ -33,7 +32,16 @@ const MyBag = () => {
   return (
     <div className="MyBag">
       <div className="event">
-        <div className="sub-event left">Left</div>
+        <div className="sub-event left">
+          <img src="/images/promotion/creditcard.png" alt="banner" />
+          <div className="description">
+            <h2>Earn a $100 Statement Credit</h2>
+            <p>
+              after you spend $100 in your first 3 months with a new Kidsney®
+              Visa® Card.
+            </p>
+          </div>
+        </div>
         <div className="sub-event right">Right</div>
       </div>
       <main>
