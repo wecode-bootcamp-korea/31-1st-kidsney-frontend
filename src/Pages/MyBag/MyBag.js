@@ -4,7 +4,7 @@ import OrderProduct from './OrderProduct/OrderProduct';
 import OrderSummary from './OrderSummary/OrderSummary';
 
 const MyBag = () => {
-  const myProducts = [
+  const orderProducts = [
     {
       id: 1,
       name: 'Mick Mouse Bodysuit',
@@ -25,7 +25,7 @@ const MyBag = () => {
     },
   ];
 
-  const { name, price, image_url, detail } = myProducts;
+  const { name, price, image_url, detail } = orderProducts;
   const subTotal = 274.96;
   const total = 315.91;
   //price 가격 계산 어떻게 해? 일단 그냥 임의로?
@@ -36,13 +36,16 @@ const MyBag = () => {
         <div className="sub-event left">Left</div>
         <div className="sub-event right">Right</div>
       </div>
-
-      <h1>MyBag ({myProducts.length})</h1>
       <main>
-        {myProducts.map(orderProduct => (
-          <OrderProduct key={orderProduct.id} orderProduct={orderProduct} />
-        ))}
-        <OrderSummary subTotal={subTotal} total={total} />
+        <h2>My Bag ({orderProducts.length})</h2>
+        <div className="contents">
+          <div className="orderProducts">
+            {orderProducts.map(orderProduct => (
+              <OrderProduct key={orderProduct.id} orderProduct={orderProduct} />
+            ))}
+          </div>
+          <OrderSummary subTotal={subTotal} total={total} />
+        </div>
       </main>
     </div>
   );

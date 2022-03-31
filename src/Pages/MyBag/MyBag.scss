@@ -1,6 +1,9 @@
 @import '../../Styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Hurricane&family=Ubuntu&display=swap');
 
 .MyBag {
+  font-family: 'Didact Gothic', sans-serif;
+
   .event {
     display: flex;
 
@@ -14,6 +17,20 @@
 
       &.right {
         background-color: #96bde8;
+      }
+    }
+  }
+
+  main {
+    margin: 50px 80px;
+
+    .contents {
+      display: flex;
+      width: 100%;
+      margin: 0;
+
+      .orderProducts {
+        @include flexColumn;
       }
     }
   }
