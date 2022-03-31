@@ -1,5 +1,5 @@
 import React from 'react';
-import 'Pages/ProductList/Components/SorterBar/SorterBar.scss';
+import './SorterBar.scss';
 
 const SorterBar = () => {
   return (
