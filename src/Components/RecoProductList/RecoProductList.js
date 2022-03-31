@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import './RecoProductList.scss';
+import Product from '../../Components/Product/Product';
 
 const RecoProductList = () => {
   const [products, setProducts] = useState();
@@ -14,8 +15,9 @@ const RecoProductList = () => {
   useEffect(() => getData(), []);
 
   const handleDirection = e => {
-    const { id } = e.target;
-    setDirection(cur => (cur = id));
+    const { className } = e.target;
+    setDirection(e.target.id);
+    console.log(className);
   };
 
   return (
@@ -29,7 +31,7 @@ const RecoProductList = () => {
           {products &&
             products.map(product => {
               return (
-                <RecoProduct
+                <Product
                   key={product.id}
                   product={product}
                   direction={direction}
