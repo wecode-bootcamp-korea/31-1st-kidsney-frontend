@@ -5,12 +5,12 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footerTitle">
-        <div className="text">
+        <div className="footerText">
           <p>New Kidsney® Visa® Cardmembers can earn a</p>
           <h3>
             <span className="currency">$</span>
             <span className="amount">100</span>
-            <span className="">Statement Credit</span>
+            <span className="text">Statement Credit</span>
           </h3>
           <div className="links">
             <span>Restrictions apply.</span>
