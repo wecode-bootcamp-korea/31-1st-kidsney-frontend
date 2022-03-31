@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footerImg">
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/CardArray_1600x393?fit=constrain&cropN=0,0,1,1&fmt=webp-alpha&qlt=70&wid=1600" />
+          <img src="https://images.unsplash.com/photo-1572635148619-a66d0ddbc9bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
         </div>
       </div>
       <div className="footerContainer">
