@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import SorterBar from 'Pages/ProductList/Components/SorterBar/SorterBar';
-import Aside from 'Pages/ProductList/Components/Aside/Aside';
-import SearchItems from 'Pages/ProductList/Components/SearchItems/SearchItems';
-import 'Pages/ProductList/ProductList.scss';
+import SorterBar from './Components/SorterBar/SorterBar';
+import Aside from './Components/Aside/Aside';
+import SearchItems from './Components/SearchItems/SearchItems';
+import './ProductList.scss';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);

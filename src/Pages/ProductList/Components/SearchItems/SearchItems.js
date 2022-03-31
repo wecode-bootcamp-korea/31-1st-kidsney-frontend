@@ -1,6 +1,6 @@
 import React from 'react';
-import Product from 'Pages/ProductList/Components/Product/Product';
-import 'Pages/ProductList/Components/SearchItems/SearchItems.scss';
+import Product from '../Product/Product';
+import './SearchItems.scss';
 
 const SearchItems = ({ products }) => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import 'Pages/ProductList/Components/Aside/Aside.scss';
+import './Aside.scss';
 
 const Aside = () => {
   return (

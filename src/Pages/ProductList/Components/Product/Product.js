@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import 'Pages/ProductList/Components/Product/Product.scss';
+import './Product.scss';
 
 const Product = product => {
   const { id, name, price, image_url } = product;
