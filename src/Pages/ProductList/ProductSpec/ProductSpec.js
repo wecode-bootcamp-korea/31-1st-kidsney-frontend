@@ -4,22 +4,24 @@ import Button from 'Components/Button/Button';
 import Size from 'Components/Size/Size';
 
 import 'Pages/ProductList/ProductSpec/ProductSpec.scss';
+import { useLocation } from 'react-router';
 
 const ProductSpec = () => {
   const [count, setCount] = useState(1);
   const [listId, setListId] = useState('1');
+  const location = useLocation();
+  console.log(location.state);
+  // const product = {
+  //   id: 1,
+  //   name: 'Mick Mouse Bodysuit',
+  //   price: '29.90',
+  //   image_url: '/images/Boys/happiness_classic_hat.png',
+  //   character: 'happiness',
+  //   detail:
+  //     'Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No.',
+  // };
 
-  const product = {
-    id: 1,
-    name: 'Mick Mouse Bodysuit',
-    price: '29.90',
-    image_url: '/images/Boys/happiness_classic_hat.png',
-    character: 'happiness',
-    detail:
-      'Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No.',
-  };
-
-  const { id, name, price, image_url, character, detail } = product;
+  const { id, name, price, image_url, character, detail } = location.state;
 
   const plusCount = () => {
     setCount(cur => (cur = cur + 1));
