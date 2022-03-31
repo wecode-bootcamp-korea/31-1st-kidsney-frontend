@@ -1,15 +1,17 @@
 import React from 'react';
+import AsideFilter from './AsideFilter/AsideFilter';
 import './Aside.scss';
 
 const Aside = ({ products }) => {
   return (
     <aside className="aside">
       <ul className="accordionFilter">
-        <li className="filterName">
-          <Aside />
+        <li>
+          <AsideFilter />
         </li>
-        <li className="filterName">Size</li>
-        <li className="filterName">Character</li>
+        <li>
+          <AsideFilter />
+        </li>
       </ul>
     </aside>
   );
