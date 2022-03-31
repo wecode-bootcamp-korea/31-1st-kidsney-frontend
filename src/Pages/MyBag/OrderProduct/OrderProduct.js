@@ -2,7 +2,7 @@ import React from 'react';
 import './OrderProduct.scss';
 
 const OrderProduct = ({ orderProduct }) => {
-  const { id, name, price, image_url, detail } = orderProduct;
+  const { id, name, price, image_url } = orderProduct;
 
   return (
     <div className="OrderProduct">
