@@ -1,11 +1,11 @@
 import React from 'react';
 import './SorterBar.scss';
 
-const SorterBar = () => {
+const SorterBar = ({ subtotal }) => {
   return (
     <div className="sorterBar">
       <div className="productSubtotal">
-        <span className="smallGray">26</span>
+        <span className="smallGray">{subtotal}</span>
         <span className="smallGray">product</span>
       </div>
       <div className="priceSorter">
