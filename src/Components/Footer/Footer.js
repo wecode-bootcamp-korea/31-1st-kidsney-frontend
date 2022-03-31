@@ -15,12 +15,15 @@ const Footer = () => {
           <div className="links">
             <span>Restrictions apply.</span>
             <button>
-              <a>Learn More</a>
+              <a href="/">Learn More</a>
             </button>
           </div>
         </div>
         <div className="footerImg">
-          <img src="https://images.unsplash.com/photo-1572635148619-a66d0ddbc9bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
+          <img
+            src="https://images.unsplash.com/photo-1572635148619-a66d0ddbc9bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+            alt="card img"
+          />
         </div>
       </div>
       <div className="footerContainer">
@@ -33,22 +36,22 @@ const Footer = () => {
             <button>Sign up</button>
             <div>
               <span>Stay in Touch</span>
-              <a>Privacy Policy</a>
+              <a href="/">Privacy Policy</a>
             </div>
           </div>
           <div className="socialIcons">
             <ul>
               <li>
-                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-facebook-f" />
               </li>
               <li>
-                <i class="fab fa-instagram"></i>
+                <i class="fab fa-instagram" />
               </li>
               <li>
-                <i class="fab fa-twitter"></i>
+                <i class="fab fa-twitter" />
               </li>
               <li>
-                <i class="fab fa-pinterest-p"></i>
+                <i class="fab fa-pinterest-p" />
               </li>
             </ul>
           </div>
