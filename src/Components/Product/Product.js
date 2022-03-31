@@ -8,7 +8,7 @@ const Product = ({ product, direction }) => {
   const navigate = useNavigate();
 
   const paintHeartBtn = () => {
-    setIsClicked(cur => !cur);
+    setIsClicked(!isClicked);
   };
 
   const goToProductSpec = () => {
@@ -18,7 +18,7 @@ const Product = ({ product, direction }) => {
   };
 
   return (
-    <li className={`Product ${direction}`}>
+    <li className={`product ${direction}`}>
       <div className="productCard" onClick={goToProductSpec}>
         <img alt="thumbnail" src={image_url} />
         <button onClick={paintHeartBtn}>
