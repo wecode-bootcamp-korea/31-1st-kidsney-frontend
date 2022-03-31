@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import RecoProduct from 'Components/RecoProductList/RecoProduct/RecoProduct';
-import 'Components/RecoProductList/RecoProductList.scss';
+import './RecoProductList.scss';
 
 const RecoProductList = () => {
   const [products, setProducts] = useState();

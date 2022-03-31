@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import 'Components/RecoProductList/RecoProduct/RecoProduct.scss';
-import React from 'react';
+import React, { useState } from 'react';
+import './RecoProduct.scss';
 
 const RecoProduct = ({ product, direction }) => {
   const { name, price, image_url } = product;
