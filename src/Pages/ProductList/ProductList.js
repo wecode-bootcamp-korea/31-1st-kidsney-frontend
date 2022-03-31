@@ -23,7 +23,7 @@ const ProductList = () => {
       />
       <SorterBar />
       <div className="row">
-        <Aside />
+        <Aside products={products} />
         <SearchItems products={products} />
       </div>
     </div>
