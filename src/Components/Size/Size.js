@@ -1,4 +1,4 @@
-import 'Components/Size/Size.scss';
+import './Size.scss';
 
 const Size = ({ text, value }) => {
   return (
