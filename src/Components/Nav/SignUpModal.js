@@ -24,7 +24,6 @@ const SignUpModal = () => {
 
   function handleInputValue(e) {
     const { name, value } = e.target;
-    console.log(value);
     setInputValue(inputValue => ({ ...inputValue, [name]: value }));
   }
 
@@ -42,6 +41,7 @@ const SignUpModal = () => {
         date_of_birth: date_of_birth,
       }),
     })
+      .then(res => res.json())
       .then(res => {
         if (res.ok) {
           alert('회원가입 성공!');
@@ -53,7 +53,6 @@ const SignUpModal = () => {
         }
         return res.json();
       })
-      .then(result => console.log(result))
       .catch(error => {
         console.log(error.message);
       });
@@ -77,42 +76,42 @@ const SignUpModal = () => {
             placeholder="First Name"
             onChange={handleInputValue}
             name="first_name"
-          ></input>
+          />
           <input
             className="lastName"
             type="text"
             placeholder="Last Name"
             onChange={handleInputValue}
             name="last_name"
-          ></input>
+          />
           <input
             className="signUpEmail"
             type="email"
             placeholder="Email Address"
             onChange={handleInputValue}
             name="email"
-          ></input>
+          />
           <input
             className="signUpPw"
             type="password"
             placeholder="Password"
             onChange={handleInputValue}
             name="password"
-          ></input>
+          />
           <input
             className="phoneNumber"
             type="text"
             placeholder="Phone Number"
             onChange={handleInputValue}
             name="phone_number"
-          ></input>
+          />
           <input
             className="birthDate"
             type="text"
             placeholder="Birth Date mm/dd/yyyy"
             onChange={handleInputValue}
             name="date_of_birth"
-          ></input>
+          />
           <button className="createBtn" type="button" onClick={goToLogin}>
             Create Account
           </button>

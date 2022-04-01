@@ -14,7 +14,6 @@ const LoginModal = () => {
 
   function handleInputValue(e) {
     const { name, value } = e.target;
-    console.log(value);
     setInputValue(inputValue => ({ ...inputValue, [name]: value }));
   }
 
@@ -57,14 +56,14 @@ const LoginModal = () => {
             placeholder="Username or Email Address"
             onChange={handleInputValue}
             name="email"
-          ></input>
+          />
           <input
             className="loginPw"
             type="password"
             placeholder="Password"
             onChange={handleInputValue}
             name="password"
-          ></input>
+          />
           <button
             className={isInputValid ? 'activeBtn' : 'noneBtn'}
             type="button"
@@ -74,7 +73,7 @@ const LoginModal = () => {
           </button>
         </form>
         <div className="loginHelp">
-          <a href="">Need help signing in?</a>
+          <a href="/">Need help signing in?</a>
         </div>
         <div className="createId">
           <a href="/signup">Create an Account</a>
