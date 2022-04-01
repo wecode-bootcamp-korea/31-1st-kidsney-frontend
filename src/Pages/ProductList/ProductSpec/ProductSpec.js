@@ -7,9 +7,11 @@ import Size from '../../../Components/Size/Size';
 import './ProductSpec.scss';
 
 const ProductSpec = () => {
+  const location = useLocation();
+
+  const [size, setSize] = useState();
   const [count, setCount] = useState(1);
   const [listId, setListId] = useState('1');
-  const location = useLocation();
 
   const { name, price, image_url, detail } = location.state;
 
@@ -20,6 +22,15 @@ const ProductSpec = () => {
   const minusCount = () => {
     setCount(count => (count = count <= 0 ? 0 : count - 1));
   };
+
+  //Store clothing's size value
+  const handleSize = e => {
+    const { value } = e.target;
+
+    setSize(value);
+  };
+
+  const showMyBag = () => {};
 
   const updateListId = e => {
     const { id } = e.target;
@@ -49,9 +60,9 @@ const ProductSpec = () => {
             <p>{detail}</p>
             <div className="sizeOptions">
               <h3> Size </h3>
-              <Size text="S" value="small" />
-              <Size text="M" value="medium" />
-              <Size text="L" value="large" />
+              <Size handleSize={handleSize} text="S" value="small" />
+              <Size handleSize={handleSize} text="M" value="medium" />
+              <Size handleSize={handleSize} text="L" value="large" />
             </div>
             <div className="quantity">
               <h3>Quantity</h3>
@@ -67,8 +78,12 @@ const ProductSpec = () => {
             </div>
 
             <div className="btns">
-              <Button text="Add to Bag" />
-              <Button type="white" text="♡ &nbsp; Add to Wish List" />
+              <Button text="Add to Bag" onClick={showMyBag} />
+              <Button
+                type="white"
+                text="♡ &nbsp; Add to Wish List"
+                //onClick={goToWishList}
+              />
             </div>
           </div>
         </div>
