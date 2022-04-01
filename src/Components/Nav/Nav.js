@@ -11,7 +11,7 @@ const Nav = () => {
   }
 
   return (
-    <nav className="Nav">
+    <nav className="nav">
       <div className="headerNav">
         <h1 className="logo">
           <a href="/">KIDSNEY</a>
@@ -33,16 +33,16 @@ const Nav = () => {
       </div>
       <div className="navBar">
         <ul className="navBarUl">
-          <li className="boys">
+          <li className="navBarLi">
             Boys
-            {/* <ul className="navMenuUl">
-              <li className="navMenu">Top</li>
-              <li className="navMenu">Bottom</li>
-              <li className="navMenu">Acc</li>
-            </ul> */}
+            <ul className="navMenu">
+              <li className="menuTab">Top</li>
+              <li className="menuTab">Bottom</li>
+              <li className="menuTab">Acc</li>
+            </ul>
           </li>
-          <li className="girls">Girls</li>
-          <li className="toys">Toys</li>
+          <li className="navBarLi">Girls</li>
+          <li className="navBarLi">Toys</li>
         </ul>
         <div className="search">
           <input type="text" placeholder="SERACH" />
