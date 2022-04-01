@@ -30,13 +30,17 @@ p {
   color: $color-black;
   margin: 4px 0;
 }
+
 body {
   font-family: 'Didact Gothic', sans-serif;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
+
 .logo {
   font-family: 'Hurricane', cursive;
 }
+
 .navMenu {
   font-family: 'Ubuntu', sans-serif;
   font-weight: $weight-bold;

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import OrderProduct from '../OrderProduct/OrderProduct';
 import Button from '../Button/Button';
 import './MyBagModal.scss';
 
-const MyBagModal = () => {
-  const [isClosed, setIsClosed] = useState(true);
+const MyBagModal = ({ isClosed, showMyBag }) => {
   const orderProducts = [
     {
       id: 1,
@@ -26,15 +25,10 @@ const MyBagModal = () => {
         'Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No.',
     },
   ];
-
-  const closeModal = () => {
-    setIsClosed(!isClosed);
-  };
-
   return (
     <div className={isClosed ? 'myBagModal' : 'myBagModal active'}>
       <h2>My Bag ({orderProducts.length})</h2>
-      <button className="closeBtn" onClick={closeModal}>
+      <button className="closeBtn" onClick={showMyBag}>
         <i className="fas fa-times" />
       </button>
       <div className="contents">

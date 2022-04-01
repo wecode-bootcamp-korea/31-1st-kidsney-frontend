@@ -8,41 +8,20 @@ import './ProductSpec.scss';
 
 const ProductSpec = () => {
   const location = useLocation();
+  const { name, price, image_url, detail } = location.state;
 
   const [size, setSize] = useState();
   const [count, setCount] = useState(1);
   const [checkedList, setCheckedList] = useState('0');
 
-  const { name, price, image_url, detail } = location.state;
+  //check whether my box modal window is open or close
+  const [isClosed, setIsClosed] = useState(true);
 
-  const plusCount = () => {
-    setCount(count + 1);
-  };
-
-  const minusCount = () => {
-    setCount(count <= 0 ? 0 : count - 1);
-  };
-
-  //Store clothing's size value
-  const handleSize = e => {
-    const { value } = e.target;
-
-    setSize(value);
-  };
-
-  const showMyBag = () => {
-    // 만약 size 값 없으면 size 선택하라는 메세지
-    //size ? null :
-    // size 존재하면 모달창 보여주기! <MyBagModal />
-  };
-
-  const handleCheckedList = e => {
-    setCheckedList(e.target.id);
-  };
-
-  const checkList = i => {
-    return i === checkedList;
-  };
+  const sizeList = [
+    { id: 1, value: 'S', name: 'small' },
+    { id: 2, value: 'M', name: 'medium' },
+    { id: 3, value: 'L', name: 'large' },
+  ];
 
   const DescriptionList = [
     {
@@ -63,9 +42,36 @@ const ProductSpec = () => {
     },
   ];
 
+  const plusCount = () => {
+    setCount(count + 1);
+  };
+
+  const minusCount = () => {
+    setCount(count <= 0 ? 0 : count - 1);
+  };
+
+  //Store clothing's size value
+  const handleSize = e => {
+    const { value } = e.target;
+
+    setSize(value);
+  };
+
+  const showMyBag = () => {
+    size && setIsClosed(!isClosed);
+  };
+
+  const handleCheckedList = e => {
+    setCheckedList(e.target.id);
+  };
+
+  const checkList = i => {
+    return i === checkedList;
+  };
+
   return (
     <div className="productSpec">
-      <MyBagModal />
+      <MyBagModal isClosed={isClosed} showMyBag={showMyBag} />
       <div className="spec row">
         <div className="imgContainer">
           <div className="thumnail">
@@ -83,33 +89,24 @@ const ProductSpec = () => {
             <p>{detail}</p>
             <div className="sizeOptions">
               <h3> Size </h3>
-              <label className="size">
-                <input
-                  type="checkbox"
-                  name="sizeOption"
-                  value="small"
-                  onClick={handleSize}
-                />
-                <span>S</span>
-              </label>
-              <label className="size">
-                <input
-                  type="checkbox"
-                  name="sizeOption"
-                  value="medium"
-                  onClick={handleSize}
-                />
-                <span>M</span>
-              </label>
-              <label className="size">
-                <input
-                  type="checkbox"
-                  name="sizeOption"
-                  value="large"
-                  onClick={handleSize}
-                />
-                <span>L</span>
-              </label>
+              {sizeList.map(list => {
+                const { id, value, name } = list;
+
+                return (
+                  <label
+                    key={id}
+                    className={size === name ? 'size clicked' : 'size'}
+                  >
+                    <input
+                      type="checkbox"
+                      name="sizeOption"
+                      value={name}
+                      onClick={handleSize}
+                    />
+                    <span>{value}</span>
+                  </label>
+                );
+              })}
 
               <div className={size ? 'errorMsg' : 'errorMsg show'}>
                 사이즈를 선택해주세요.
@@ -129,7 +126,7 @@ const ProductSpec = () => {
             </div>
 
             <div className="btns">
-              <Button text="Add to Bag" onClick={showMyBag} />
+              <Button showMyBag={showMyBag} text="Add to Bag" />
               <Button
                 type="white"
                 text="♡ &nbsp; Add to Wish List"
