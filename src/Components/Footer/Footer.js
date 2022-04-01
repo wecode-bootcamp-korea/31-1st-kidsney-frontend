@@ -6,15 +6,15 @@ const Footer = () => {
     <footer className="footer">
       <div className="footerTitle">
         <div className="footerText">
-          <p>New Kidsney® Visa® Cardmembers can earn a</p>
-          <h3>
+          <p className="headTxt">New Kidsney® Visa® Cardmembers can earn a</p>
+          <h3 className="midTxt">
             <span className="currency">$</span>
             <span className="amount">100</span>
-            <span className="text">Statement Credit</span>
+            <span className="txt">Statement Credit</span>
           </h3>
           <div className="links">
-            <span>Restrictions apply.</span>
-            <button>
+            <span className="linksTxt">Restrictions apply.</span>
+            <button class="linksBtn">
               <a href="/">Learn More</a>
             </button>
           </div>
@@ -22,38 +22,28 @@ const Footer = () => {
         <div className="footerImg">
           <img
             src="https://images.unsplash.com/photo-1572635148619-a66d0ddbc9bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            alt="card img"
+            alt="cards"
           />
         </div>
       </div>
       <div className="footerContainer">
         <div className="signUp">
-          <div className="signUptext">
+          <div className="signUpTxt">
             Sign up for our emails to get the inside scoop on special offers and
             new products.
           </div>
           <div className="signUpLinks">
-            <button>Sign up</button>
-            <div>
-              <span>Stay in Touch</span>
+            <button className="signUpBtn">Sign up</button>
+            <div className="privacyPolicy">
+              <span className="policy">Stay in Touch</span>
               <a href="/">Privacy Policy</a>
             </div>
           </div>
           <div className="socialIcons">
-            <ul>
-              <li>
-                <i class="fab fa-facebook-f" />
-              </li>
-              <li>
-                <i class="fab fa-instagram" />
-              </li>
-              <li>
-                <i class="fab fa-twitter" />
-              </li>
-              <li>
-                <i class="fab fa-pinterest-p" />
-              </li>
-            </ul>
+            <i class="fab fa-facebook-f" />
+            <i class="fab fa-instagram" />
+            <i class="fab fa-twitter" />
+            <i class="fab fa-pinterest-p" />
           </div>
         </div>
         <div className="items">
@@ -96,7 +86,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footerCopyright">
-        <div>
+        <div className="copyrightList">
           <ul>
             <li>© Kidsney, All Rights Reserved</li>
             <li>Terms of Use</li>
@@ -114,5 +104,7 @@ const Footer = () => {
     </footer>
   );
 };
+
+const FOOTER_INFO_LIST = [];
 
 export default Footer;
