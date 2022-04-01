@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 
 import Button from '../../../Components/Button/Button';
 import Size from '../../../Components/Size/Size';
+import MyBagModal from '../../../Components/MyBagModal/MyBagModal';
 
 import './ProductSpec.scss';
 
@@ -30,7 +31,11 @@ const ProductSpec = () => {
     setSize(value);
   };
 
-  const showMyBag = () => {};
+  const showMyBag = () => {
+    // 만약 size 값 없으면 size 선택하라는 메세지
+    //size ? null :
+    // size 존재하면 모달창 보여주기! <MyBagModal />
+  };
 
   const updateListId = e => {
     const { id } = e.target;
@@ -43,6 +48,7 @@ const ProductSpec = () => {
 
   return (
     <div className="productSpec">
+      <MyBagModal />
       <div className="spec row">
         <div className="imgContainer">
           <div className="thumnail">
@@ -63,6 +69,9 @@ const ProductSpec = () => {
               <Size handleSize={handleSize} text="S" value="small" />
               <Size handleSize={handleSize} text="M" value="medium" />
               <Size handleSize={handleSize} text="L" value="large" />
+              <div className={size ? 'errorMsg' : 'errorMsg show'}>
+                사이즈를 선택해주세요.
+              </div>
             </div>
             <div className="quantity">
               <h3>Quantity</h3>

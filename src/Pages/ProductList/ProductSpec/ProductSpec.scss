@@ -56,8 +56,20 @@
       }
 
       .sizeOptions {
+        position: relative;
         border-bottom: $border-bottom;
         padding-bottom: 50px;
+
+        .errorMsg {
+          display: none;
+          position: absolute;
+          bottom: 10px;
+          color: red;
+
+          &.show {
+            display: block;
+          }
+        }
       }
 
       .quantity {
