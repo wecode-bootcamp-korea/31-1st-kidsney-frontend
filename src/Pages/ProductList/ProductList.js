@@ -20,7 +20,7 @@ const ProductList = () => {
       <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
       <SorterBar />
       <div className="row">
-        <Aside products={products} />
+        <Aside />
         <SearchItems products={products} />
       </div>
     </div>

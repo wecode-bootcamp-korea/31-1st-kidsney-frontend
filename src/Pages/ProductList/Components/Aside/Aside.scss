@@ -1,13 +1,11 @@
 @import 'Styles/variables.scss';
 
-.aside {
-  width: 240px;
-  border: 1px gray solid;
-
-  .accordionFilter {
-    .filterName {
-      margin: 20px;
-      font-size: $font-medium;
+.categoryName {
+  font-size: $font-medium;
+  ul {
+    .categoryAttr {
+      margin-left: 20px;
+      font-size: $font-small;
     }
   }
 }
