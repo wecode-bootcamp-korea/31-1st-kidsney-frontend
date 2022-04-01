@@ -142,22 +142,23 @@ const ProductSpec = () => {
 
       <ul className="descriptions row">
         {DescriptionList.map(li => {
+          const { id, title, description } = li;
           return (
             <>
-              <li key={li.id} id={li.id} onClick={handleCheckedList}>
+              <li key={id} id={id} onClick={handleCheckedList}>
                 <i
                   className={
-                    checkList(`${li.id}`) ? `fas fa-minus` : `fas fa-plus`
+                    checkList(`${id}`) ? `fas fa-minus` : `fas fa-plus`
                   }
                 />
-                &nbsp; {li.title}
+                &nbsp; {title}
               </li>
               <div
                 className={
-                  checkList(`${li.id}`) ? 'description' : 'description hidden'
+                  checkList(`${id}`) ? 'description' : 'description hidden'
                 }
               >
-                {li.description}
+                {description}
               </div>{' '}
             </>
           );
