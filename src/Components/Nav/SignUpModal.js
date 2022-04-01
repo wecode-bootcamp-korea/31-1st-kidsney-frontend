@@ -106,7 +106,6 @@ const SignUpModal = () => {
             onChange={handleInputValue}
             name="phone_number"
           ></input>
-          {/* <input className="" type="" placeholder="" name=""></input> */}
           <input
             className="birthDate"
             type="text"
@@ -114,7 +113,7 @@ const SignUpModal = () => {
             onChange={handleInputValue}
             name="date_of_birth"
           ></input>
-          <button className="" type="button" onClick={goToLogin}>
+          <button className="createBtn" type="button" onClick={goToLogin}>
             Create Account
           </button>
           <div className="goToSignIn">

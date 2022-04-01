@@ -103,7 +103,7 @@
     border-radius: 15px;
     background-color: $color-light-blue;
 
-    input {
+    .searchInput {
       position: relative;
       width: 120px;
       height: 30px;
@@ -113,7 +113,7 @@
       text-align: left;
     }
 
-    i {
+    .fas {
       position: absolute;
       right: 30px;
       color: $color-blue;
