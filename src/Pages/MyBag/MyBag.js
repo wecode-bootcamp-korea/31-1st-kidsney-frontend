@@ -1,12 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
+import './MyBag.scss';
+import OrderProduct from './OrderProduct/OrderProduct';
+import OrderSummary from './OrderSummary/OrderSummary';
 
-import OrderProduct from '../OrderProduct/OrderProduct';
-import Button from '../Button/Button';
-import './MyBagModal.scss';
-
-const MyBagModal = ({ isClosed, showMyBag }) => {
-  const navigate = useNavigate();
+const MyBag = () => {
   const orderProducts = [
     {
       id: 1,
@@ -28,32 +25,38 @@ const MyBagModal = ({ isClosed, showMyBag }) => {
     },
   ];
 
-  const goToMyBag = () => {
-    navigate('/my-bag');
-  };
-  return (
-    <div className={isClosed ? 'myBagModal' : 'myBagModal active'}>
-      <h2>My Bag ({orderProducts.length})</h2>
-      <button className="closeBtn" onClick={showMyBag}>
-        <i className="fas fa-times" />
-      </button>
-      <div className="contents">
-        <div className="orderProducts">
-          {orderProducts.map(orderProduct => (
-            <OrderProduct
-              type="small"
-              key={orderProduct.id}
-              orderProduct={orderProduct}
-            />
-          ))}
-        </div>
-      </div>
+  const subTotal = 274.96;
+  const total = 315.91;
+  //price 가격 계산 어떻게 해? 일단 그냥 임의로?
 
-      <footer>
-        <Button text="View Full Bag" goToMyBag={goToMyBag} type="viewFullBag" />
-      </footer>
+  return (
+    <div className="MyBag">
+      <div className="event">
+        <div className="sub-event left">
+          <img src="/images/promotion/creditcard.png" alt="banner" />
+          <div className="description">
+            <h2>Earn a $100 Statement Credit</h2>
+            <p>
+              after you spend $100 in your first 3 months with a new Kidsney®
+              Visa® Card.
+            </p>
+          </div>
+        </div>
+        <div className="sub-event right">Right</div>
+      </div>
+      <main>
+        <h2>My Bag ({orderProducts.length})</h2>
+        <div className="contents">
+          <div className="orderProducts">
+            {orderProducts.map(orderProduct => (
+              <OrderProduct key={orderProduct.id} orderProduct={orderProduct} />
+            ))}
+          </div>
+          <OrderSummary subTotal={subTotal} total={total} />
+        </div>
+      </main>
     </div>
   );
 };
 
-export default MyBagModal;
+export default MyBag;

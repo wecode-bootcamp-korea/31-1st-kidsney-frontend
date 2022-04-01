@@ -1,0 +1,45 @@
+@import '../../Styles/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Hurricane&family=Ubuntu&display=swap');
+
+.MyBag {
+  font-family: 'Didact Gothic', sans-serif;
+
+  .event {
+    display: flex;
+
+    .sub-event {
+      height: 350px;
+      width: 100%;
+
+      &.left {
+        display: flex;
+        align-items: center;
+        background-color: #f5f5f5;
+
+        img {
+          width: 250px;
+          height: 200px;
+          transform: translateX(-30px);
+        }
+      }
+
+      &.right {
+        background-color: #96bde8;
+      }
+    }
+  }
+
+  main {
+    margin: 50px 120px;
+
+    .contents {
+      display: flex;
+      width: 100%;
+      margin: 0;
+
+      .orderProducts {
+        @include flexColumn;
+      }
+    }
+  }
+}
