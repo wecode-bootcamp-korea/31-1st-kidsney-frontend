@@ -33,14 +33,7 @@ const Nav = () => {
       </div>
       <div className="navBar">
         <ul className="navBarUl">
-          <li className="navBarLi">
-            Boys
-            {/* <ul className="navMenu">
-              <li className="menuTab">Top</li>
-              <li className="menuTab">Bottom</li>
-              <li className="menuTab">Acc</li>
-            </ul> */}
-          </li>
+          <li className="navBarLi">Boys</li>
           <li className="navBarLi">Girls</li>
           <li className="navBarLi">Toys</li>
         </ul>

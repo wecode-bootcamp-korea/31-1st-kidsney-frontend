@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'Components/Nav/Nav.scss';
 import './SignUpModal.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignUpModal = () => {
   const [inputValue, setInputValue] = useState({
@@ -62,7 +62,7 @@ const SignUpModal = () => {
   }
 
   return (
-    <div className="SignUpModal">
+    <div className="signUpModal">
       <div className="signUp">
         <h1 className="logo">KIDSNEY account</h1>
         <button className="closeBtn" onClick={closeToMain}>
@@ -117,7 +117,7 @@ const SignUpModal = () => {
           </button>
           <div className="goToSignIn">
             <p>
-              Already have an account? <a href="/login">Sign In</a>
+              Already have an account? <Link to="/login">Sign In</Link>
             </p>
           </div>
         </form>

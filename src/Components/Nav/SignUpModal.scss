@@ -2,7 +2,7 @@
 @import 'Styles/common.scss';
 @import './LoginModal.scss';
 
-.SignUpModal {
+.signUpModal {
   @include Modal;
 
   .signUp {

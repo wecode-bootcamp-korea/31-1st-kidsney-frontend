@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './LoginModal.scss';
 import 'Styles/common.scss';
 
@@ -14,7 +14,7 @@ const LoginModal = () => {
 
   function handleInputValue(e) {
     const { name, value } = e.target;
-    setInputValue(inputValue => ({ ...inputValue, [name]: value }));
+    setInputValue({ ...inputValue, [name]: value });
   }
 
   const navigate = useNavigate();
@@ -73,10 +73,10 @@ const LoginModal = () => {
           </button>
         </form>
         <div className="loginHelp">
-          <a href="/">Need help signing in?</a>
+          <Link to="/">Need help signing in?</Link>
         </div>
         <div className="createId">
-          <a href="/signup">Create an Account</a>
+          <Link to="/signup">Create an Account</Link>
         </div>
       </div>
     </div>
