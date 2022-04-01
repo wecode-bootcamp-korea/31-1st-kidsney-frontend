@@ -16,8 +16,8 @@ const RecoProductList = () => {
 
   const handleDirection = e => {
     const { className } = e.target;
-    const dir = className.split(' ')[0];
-    setDirection(dir);
+    const direction = className.split(' ')[0];
+    setDirection(direction);
   };
 
   return (
