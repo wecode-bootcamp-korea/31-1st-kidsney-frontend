@@ -54,7 +54,7 @@ const SignUpModal = () => {
         return res.json();
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   }
   function closeToMain() {

@@ -18,15 +18,15 @@ const Nav = () => {
         </h1>
         <ul className="navLinks">
           <li onClick={goToLogin}>
-            <i className="fas fa-user"></i>
+            <i className="fas fa-user" />
             Sign in | Sign Up
           </li>
           <li>
-            <i className="fas fa-heart"></i>
+            <i className="fas fa-heart" />
             My Wish List
           </li>
           <li>
-            <i className="fas fa-shopping-bag"></i>
+            <i className="fas fa-shopping-bag" />
             My Bag
           </li>
         </ul>
@@ -46,7 +46,7 @@ const Nav = () => {
         </ul>
         <div className="search">
           <input className="searchInput" type="text" placeholder="SERACH" />
-          <i className="fas fa-search"></i>
+          <i className="fas fa-search" />
         </div>
       </div>
     </nav>
