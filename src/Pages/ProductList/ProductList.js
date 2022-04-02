@@ -14,7 +14,7 @@ const ProductList = () => {
   const [subtotal, setSubtotal] = useState();
 
   useEffect(() => {
-    fetch(url) //주소+카테고리+filter경로 형식으로 진행
+    fetch(url)
       .then(response => response.json())
       .then(product => {
         setProducts(product.result);
@@ -24,7 +24,7 @@ const ProductList = () => {
 
   const handleFilter = e => {
     let filterArr = filters;
-    filterArr.indexOf(e.target.id)
+    filterArr.indexOf(e.target.id) === -1
       ? filterArr.push(e.target.id)
       : filterArr.splice(filterArr.indexOf(e.target.id), 1);
     setFilters(filterArr);
@@ -43,7 +43,6 @@ const ProductList = () => {
       queryParameter = `${API.productList}${param}`;
     }
     setUrl(queryParameter);
-    console.log(url);
   };
 
   return (
