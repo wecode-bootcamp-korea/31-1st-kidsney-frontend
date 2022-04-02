@@ -20,7 +20,7 @@ const ProductList = () => {
         setProducts(product.result);
         setSubtotal(product.count);
       });
-  }, filters);
+  }, [url]);
 
   const handleFilter = e => {
     let filterArr = filters;
@@ -36,7 +36,7 @@ const ProductList = () => {
     let addParamFilters = [];
     if (filters) {
       filters.forEach(filter => {
-        addParamFilters.push(`${param}_${filter}`);
+        addParamFilters.push(`${param}-${filter}`);
       });
       queryParameter = `${API.productList}${param}&sub=${addParamFilters}`;
     } else {
