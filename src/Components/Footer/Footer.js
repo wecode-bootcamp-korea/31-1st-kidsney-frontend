@@ -106,6 +106,6 @@ const Footer = () => {
   );
 };
 
-const FOOTER_INFO_LIST = [];
+const FOOTER_INFO_LIST = [{}];
 
 export default Footer;
