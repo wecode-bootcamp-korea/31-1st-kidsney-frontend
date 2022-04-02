@@ -12,7 +12,7 @@ const Nav = () => {
 
   return (
     <nav className="nav">
-      {isClicked && <LoginModal onClickModal={onClickModal}></LoginModal>}
+      {isClicked && <LoginModal onClickModal={onClickModal} />}
       <div className="headerNav">
         <h1 className="logo">KIDSNEY</h1>
         <ul className="navLinks">

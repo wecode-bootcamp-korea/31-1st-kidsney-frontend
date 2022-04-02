@@ -8,7 +8,6 @@ const LoginModal = ({ onClickModal }) => {
 
   const onLoginClickModal = () => {
     setIsLoginClicked(!isLoginClicked);
-    console.log(isLoginClicked);
   };
 
   const [inputValue, setInputValue] = useState({
@@ -41,13 +40,9 @@ const LoginModal = ({ onClickModal }) => {
       });
   }
 
-  console.log(isLoginClicked);
-
   return (
     <div className="loginModal">
-      {isLoginClicked && (
-        <SignUpModal onLoginClickModal={onLoginClickModal}></SignUpModal>
-      )}
+      {isLoginClicked && <SignUpModal onLoginClickModal={onLoginClickModal} />}
       <div className="login">
         <h1 className="logo">KIDSNEY account</h1>
         <button className="closeBtn" onClick={onClickModal}>
