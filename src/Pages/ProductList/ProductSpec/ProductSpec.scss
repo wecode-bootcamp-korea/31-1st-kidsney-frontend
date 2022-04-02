@@ -161,6 +161,7 @@
     @include flexColumn;
     position: relative;
     padding: 30px;
+    margin-bottom: 60px;
 
     li {
       padding: 30px 20px;
@@ -174,9 +175,9 @@
 
     .description {
       position: absolute;
-      padding: 30px;
       top: 30px;
       right: 0;
+      padding: 30px;
       width: 70%;
       font-size: $font-regular;
 
@@ -254,6 +255,7 @@
     }
 
     .descriptions {
+      margin-bottom: 200px;
       li {
         transform: translateX(-20px);
         padding: 20px 0;

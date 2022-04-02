@@ -5,14 +5,18 @@ import './Product.scss';
 const Product = ({ product, direction }) => {
   const { id, name, price, image_urls } = product;
   const navigate = useNavigate();
-
   let [imageIdx, setImageIdx] = useState('0');
 
   const goToProductSpec = () => {
-    navigate(`/products/${id}`, {
-      state: product,
-    });
+    navigate(
+      `/products/${id}`,
+      {
+        state: product,
+      },
+      { replace: true }
+    );
   };
+
   const hoverImg = () => {
     setImageIdx(parseInt(imageIdx) + 1);
   };

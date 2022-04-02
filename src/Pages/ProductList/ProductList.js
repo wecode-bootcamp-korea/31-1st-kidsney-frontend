@@ -12,7 +12,7 @@ const ProductList = () => {
     fetch('/data/productData.json')
       .then(response => response.json())
       .then(product => {
-        setProducts(product.result);
+        setProducts(product);
         setSubtotal(product.count);
       });
   }, []);

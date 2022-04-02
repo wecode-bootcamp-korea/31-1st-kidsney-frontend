@@ -1,14 +1,20 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router';
 
 import Button from '../../../Components/Button/Button';
 import MyBagModal from './MyBagModal/MyBagModal';
 import WishListModal from './WishListModal/WishListModal';
+import RecoProductList from '../../../Components/RecoProductList/RecoProductList';
 
 import './ProductSpec.scss';
 
 const ProductSpec = () => {
   const detailRef = useRef();
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, [pathname]);
 
   const location = useLocation();
   const { name, price, image_urls, detail } = location.state;
@@ -227,6 +233,7 @@ const ProductSpec = () => {
           );
         })}
       </ul>
+      <RecoProductList />
     </div>
   );
 };
