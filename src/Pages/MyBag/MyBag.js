@@ -36,12 +36,10 @@ const MyBag = () => {
 
   const addCount = () => {
     count === 1 ? setCount(count) : setCount(count + 1);
-    console.log(count);
   };
 
   const subTractCount = () => {
     count === -1 ? setCount(count) : setCount(count - 1);
-    console.log(count);
   };
 
   return (

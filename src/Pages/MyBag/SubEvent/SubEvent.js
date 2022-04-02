@@ -1,8 +1,9 @@
 import React from 'react';
-import './SubEvent.scss';
 import Button from '../../../Components/Button/Button';
+import './SubEvent.scss';
 
 const SubEvent = ({ count }) => {
+  // 가상의 event 상품들
   const eventProducts = [
     {
       id: 1,
@@ -23,6 +24,7 @@ const SubEvent = ({ count }) => {
       image_url: 'https://i.ibb.co/wN3b5yj/surprised-toy-1.png',
     },
   ];
+
   return (
     <div className="subEvent">
       {eventProducts.map(product => {
