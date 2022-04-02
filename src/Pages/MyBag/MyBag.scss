@@ -1,7 +1,6 @@
 @import '../../Styles/variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Hurricane&family=Ubuntu&display=swap');
 
-.MyBag {
+.myBag {
   font-family: 'Didact Gothic', sans-serif;
 
   .event {
@@ -36,9 +35,64 @@
       display: flex;
       width: 100%;
       margin: 0;
+      transition: all ease 0.4s;
 
       .orderProducts {
         @include flexColumn;
+        transition: all ease 0.4s;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .myBag {
+    main {
+      margin: 30px;
+      .contents {
+        .orderProducts {
+          width: 600px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .myBag {
+    .event {
+      .sub-event {
+        &.left {
+          h2 {
+            font-size: 20px;
+          }
+
+          p {
+            font-size: $font-small;
+          }
+
+          img {
+            width: 180px;
+            height: 180px;
+          }
+        }
+      }
+    }
+
+    main {
+      margin: 20px;
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .contents {
+        .orderProducts {
+          width: 500px;
+          img {
+            width: 120px;
+          }
+        }
       }
     }
   }

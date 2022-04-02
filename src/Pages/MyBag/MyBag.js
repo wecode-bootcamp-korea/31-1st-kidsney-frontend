@@ -1,6 +1,6 @@
 import React from 'react';
 import './MyBag.scss';
-import OrderProduct from './OrderProduct/OrderProduct';
+import OrderProduct from '../../Components/OrderProduct/OrderProduct';
 import OrderSummary from './OrderSummary/OrderSummary';
 
 const MyBag = () => {
@@ -25,12 +25,12 @@ const MyBag = () => {
     },
   ];
 
+  // 백과 통신 전 가상의 데이터
   const subTotal = 274.96;
   const total = 315.91;
-  //price 가격 계산 어떻게 해? 일단 그냥 임의로?
 
   return (
-    <div className="MyBag">
+    <div className="myBag">
       <div className="event">
         <div className="sub-event left">
           <img src="/images/promotion/creditcard.png" alt="banner" />

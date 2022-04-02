@@ -5,7 +5,7 @@ const OrderProduct = ({ orderProduct }) => {
   const { id, name, price, image_url } = orderProduct;
 
   return (
-    <div className="OrderProduct">
+    <div className="orderProduct">
       <img src={image_url} alt="thumbnail" />
       <div className="description">
         <h3 className="price">${price}</h3>
