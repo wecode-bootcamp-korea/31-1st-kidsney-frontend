@@ -1,0 +1,34 @@
+@import '../../Styles/variables.scss';
+
+.recoProductList {
+  @include flexColumn;
+  align-items: center;
+  font-family: 'Didact Gothic', sans-serif;
+
+  .list {
+    display: flex;
+
+    .products {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      width: 1050px;
+      white-space: nowrap;
+      overflow-x: hidden;
+    }
+
+    button {
+      font-size: 40px;
+      margin: 10px;
+
+      &.active:hover {
+        color: $color-blue;
+      }
+
+      &.disabled {
+        opacity: 0.2;
+        cursor: default;
+      }
+    }
+  }
+}
