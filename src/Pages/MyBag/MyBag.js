@@ -1,8 +1,10 @@
 import React from 'react';
-import './MyBag.scss';
+
+import SubEvent from './SubEvent/SubEvent';
 import OrderProduct from '../../Components/OrderProduct/OrderProduct';
 import OrderSummary from './OrderSummary/OrderSummary';
 
+import './MyBag.scss';
 const MyBag = () => {
   const orderProducts = [
     {
@@ -32,7 +34,7 @@ const MyBag = () => {
   return (
     <div className="myBag">
       <div className="event">
-        <div className="sub-event left">
+        <div className="subEvent left">
           <img src="/images/promotion/creditcard.png" alt="banner" />
           <div className="description">
             <h2>Earn a $100 Statement Credit</h2>
@@ -42,7 +44,10 @@ const MyBag = () => {
             </p>
           </div>
         </div>
-        <div className="sub-event right">Right</div>
+
+        <div className="subEvent right">
+          <SubEvent />
+        </div>
       </div>
       <main>
         <h2>My Bag ({orderProducts.length})</h2>

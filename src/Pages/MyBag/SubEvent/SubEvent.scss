@@ -1,0 +1,25 @@
+@import '../../../Styles/variables.scss';
+
+.subEvent {
+  @include flexCenter;
+  width: 100%;
+
+  .eventCard {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 140px;
+      height: 140px;
+    }
+
+    .description {
+      @include flexCenter;
+      flex-direction: column;
+
+      p {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
