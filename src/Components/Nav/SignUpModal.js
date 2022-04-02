@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import 'Components/Nav/Nav.scss';
+import './Nav.scss';
 import './SignUpModal.scss';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const SignUpModal = () => {
+const SignUpModal = ({ onLoginClickModal }) => {
   const [inputValue, setInputValue] = useState({
     first_name: '',
     last_name: '',
@@ -57,15 +57,12 @@ const SignUpModal = () => {
         // console.log(error.message);
       });
   }
-  function closeToMain() {
-    navigate('/');
-  }
 
   return (
     <div className="signUpModal">
       <div className="signUp">
         <h1 className="logo">KIDSNEY account</h1>
-        <button className="closeBtn" onClick={closeToMain}>
+        <button className="closeBtn" onClick={onLoginClickModal}>
           X
         </button>
         <h2>Create Your Account</h2>
@@ -117,7 +114,7 @@ const SignUpModal = () => {
           </button>
           <div className="goToSignIn">
             <p>
-              Already have an account? <Link to="/login">Sign In</Link>
+              Already have an account? <button>Sign In</button>
             </p>
           </div>
         </form>

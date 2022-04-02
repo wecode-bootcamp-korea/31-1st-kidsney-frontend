@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import SignUpModal from './SignUpModal';
 import './LoginModal.scss';
-import 'Styles/common.scss';
+import '../../Styles/common.scss';
 
-const LoginModal = () => {
+const LoginModal = ({ onClickModal }) => {
+  const [isLoginClicked, setIsLoginClicked] = useState(false);
+
+  const onLoginClickModal = () => {
+    setIsLoginClicked(!isLoginClicked);
+    console.log(isLoginClicked);
+  };
+
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
   });
 
   const { email, password } = inputValue;
-  const isInputValid = email.includes('@') && password.length >= 5;
 
   function handleInputValue(e) {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
   }
-
-  const navigate = useNavigate();
 
   function goToMain() {
     fetch('http://10.58.1.95:8000/users/signin', {
@@ -31,22 +35,22 @@ const LoginModal = () => {
       .then(res => {
         if (res.token) {
           localStorage.setItem('token', res.token);
-          navigate('/');
         } else {
           alert('');
         }
       });
   }
 
-  function closeToMain() {
-    navigate('/');
-  }
+  console.log(isLoginClicked);
 
   return (
-    <div className="LoginModal">
+    <div className="loginModal">
+      {isLoginClicked && (
+        <SignUpModal onLoginClickModal={onLoginClickModal}></SignUpModal>
+      )}
       <div className="login">
         <h1 className="logo">KIDSNEY account</h1>
-        <button className="closeBtn" onClick={closeToMain}>
+        <button className="closeBtn" onClick={onClickModal}>
           X
         </button>
         <form className="loginContainer">
@@ -64,19 +68,19 @@ const LoginModal = () => {
             onChange={handleInputValue}
             name="password"
           />
-          <button
-            className={isInputValid ? 'activeBtn' : 'noneBtn'}
-            type="button"
-            onClick={goToMain}
-          >
+          <button type="button" onClick={goToMain}>
             Sign In
           </button>
         </form>
-        <div className="loginHelp">
-          <Link to="/">Need help signing in?</Link>
-        </div>
+        <div className="loginHelp">Need help signing in?</div>
         <div className="createId">
-          <Link to="/signup">Create an Account</Link>
+          <button
+            onClick={() => {
+              onLoginClickModal();
+            }}
+          >
+            Create an Account
+          </button>
         </div>
       </div>
     </div>

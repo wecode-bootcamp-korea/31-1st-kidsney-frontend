@@ -1,50 +1,33 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import LoginModal from './LoginModal';
 
 import './Nav.scss';
 
 const Nav = () => {
-  const [isLogin, setIsLogin] = useState(false);
-  const [isSignup, setIsSignup] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-  const handleLoginModal = () => {
-    setIsLogin(!isLogin);
+  const onClickModal = () => {
+    setIsClicked(!isClicked);
   };
-
-  const handleSignupModal = () => {
-    setIsSignup(true);
-    setIsLogin(false);
-  };
-
-  const handleJoinClick = () => {
-    setIsSignup(false);
-  };
-
-  const navigate = useNavigate();
-
-  function goToLogin() {
-    navigate('/login');
-  }
 
   return (
     <nav className="nav">
+      {isClicked && <LoginModal onClickModal={onClickModal}></LoginModal>}
       <div className="headerNav">
-        <h1 className="logo">
-          <a href="/">KIDSNEY</a>
-        </h1>
+        <h1 className="logo">KIDSNEY</h1>
         <ul className="navLinks">
-          <li onClick={handleLoginModal}>
+          <button onClick={onClickModal}>
             <i className="fas fa-user" />
             Sign in | Sign Up
-          </li>
-          <li>
+          </button>
+          <button>
             <i className="fas fa-heart" />
             My Wish List
-          </li>
-          <li>
+          </button>
+          <button>
             <i className="fas fa-shopping-bag" />
             My Bag
-          </li>
+          </button>
         </ul>
       </div>
       <div className="navBar">
