@@ -49,6 +49,8 @@ const ProductList = () => {
           case 'CHARACTER':
             addParamFilters.push(`&character=${splittedFilter[1]}`);
             break;
+
+          default:
         }
       });
       queryString = `${API.productList}${param}${addParamFilters.join('')}`;
