@@ -18,6 +18,7 @@ const ProductSpec = () => {
   const [count, setCount] = useState(1);
   const [checkedList, setCheckedList] = useState('0');
 
+  // 모달창 관리
   const [isClosedBoxModal, setIsClosedBoxModal] = useState(true);
   const [isShowedWishModal, setIsShowedWishModal] = useState(false);
 
@@ -55,7 +56,6 @@ const ProductSpec = () => {
   };
 
   //wishList modal part
-
   const handleWishListBtn = () => {
     setIsAddedWishList(!isAddedWishList);
   };
