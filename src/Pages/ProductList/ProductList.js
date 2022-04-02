@@ -17,7 +17,7 @@ const ProductList = () => {
     fetch(url)
       .then(response => response.json())
       .then(product => {
-        setProducts(product.result);
+        setProducts(product.result[0]);
         setSubtotal(product.count);
       });
   }, [url]);
@@ -28,21 +28,34 @@ const ProductList = () => {
       ? filterArr.push(e.target.id)
       : filterArr.splice(filterArr.indexOf(e.target.id), 1);
     setFilters(filterArr);
-    setQueryParameter();
+    setQueryStrings();
   };
 
-  const setQueryParameter = () => {
-    let queryParameter = '';
+  const setQueryStrings = () => {
+    let queryString = '';
     let addParamFilters = [];
     if (filters) {
       filters.forEach(filter => {
-        addParamFilters.push(`${param}-${filter}`);
+        const splittedFilter = filter.split(`,`);
+        switch (splittedFilter[0]) {
+          case 'TYPE':
+            addParamFilters.push(`&sub=${param}-${splittedFilter[1]}`);
+            break;
+
+          case 'SIZE':
+            addParamFilters.push(`&size=${splittedFilter[1]}`);
+            break;
+
+          case 'CHARACTER':
+            addParamFilters.push(`&character=${splittedFilter[1]}`);
+            break;
+        }
       });
-      queryParameter = `${API.productList}${param}&sub=${addParamFilters}`;
+      queryString = `${API.productList}${param}${addParamFilters.join('')}`;
     } else {
-      queryParameter = `${API.productList}${param}`;
+      queryString = `${API.productList}${param}`;
     }
-    setUrl(queryParameter);
+    setUrl(queryString);
   };
 
   return (

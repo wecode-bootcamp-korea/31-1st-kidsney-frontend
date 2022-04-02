@@ -1,17 +1,20 @@
 const filterCategory = [
   {
     id: 1,
-    categoryName: 'Type',
-    categoryAttries: ['Top', 'bottom', 'ACC'],
+    categoryName: 'TYPE',
+    categoryKey: 'sub',
+    categoryAttries: ['top', 'bottom', 'acc'],
   },
   {
     id: 2,
-    categoryName: 'Size',
+    categoryName: 'SIZE',
+    categoryKey: 'size',
     categoryAttries: ['S', 'M', 'L'],
   },
   {
     id: 3,
-    categoryName: 'Character',
+    categoryName: 'CHARACTER',
+    categoryKey: 'character',
     categoryAttries: ['행복하냥', '놀고싶냥', '놀랐냥'],
   },
 ];
