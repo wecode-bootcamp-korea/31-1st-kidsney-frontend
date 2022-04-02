@@ -28,6 +28,7 @@ const ProductList = () => {
       ? filterArr.push(e.target.id)
       : filterArr.splice(filterArr.indexOf(e.target.id), 1);
     setFilters(filterArr);
+    console.log(filters);
     setQueryParameter();
   };
 

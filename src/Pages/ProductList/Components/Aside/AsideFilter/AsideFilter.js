@@ -5,17 +5,19 @@ const AsideFilter = ({ id, categoryName, categoryAttries, handleFilter }) => {
   return (
     <li className="categoryName">
       {categoryName}
-      <ul>
+      <ul className="categoryAttrContainer">
         {categoryAttries.map(categoryAttr => {
           return (
-            <button
-              key={categoryAttr}
-              id={categoryAttr}
-              className="categoryAttr"
-              onClick={handleFilter}
-            >
-              {categoryAttr}
-            </button>
+            <li>
+              <input
+                type="button"
+                key={categoryAttr}
+                id={categoryAttr}
+                className="categoryAttr"
+                onClick={handleFilter}
+                value={categoryAttr}
+              />
+            </li>
           );
         })}
       </ul>
