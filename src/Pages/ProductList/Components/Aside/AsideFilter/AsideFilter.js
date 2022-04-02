@@ -1,14 +1,22 @@
 import React from 'react';
-import AsideSubFilter from './AsideSubFilter/AsideSubFilter';
 import './AsideFilter.scss';
 
-const AsideFilter = ({ categoryName, categoryAttries }) => {
+const AsideFilter = ({ id, categoryName, categoryAttries, handleFilter }) => {
   return (
     <li className="categoryName">
       {categoryName}
       <ul>
         {categoryAttries.map(categoryAttr => {
-          return <AsideSubFilter categoryAttr={categoryAttr} />;
+          return (
+            <button
+              key={categoryAttr}
+              id={categoryAttr}
+              className="categoryAttr"
+              onClick={handleFilter}
+            >
+              {categoryAttr}
+            </button>
+          );
         })}
       </ul>
     </li>

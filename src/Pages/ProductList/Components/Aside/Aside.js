@@ -3,7 +3,7 @@ import AsideFilter from './AsideFilter/AsideFilter';
 import FILTER_CATEGORY from '../../../../filterCategory';
 import './Aside.scss';
 
-const Aside = () => {
+const Aside = ({ handleFilter }) => {
   return (
     <aside className="aside">
       <ul className="accordionFilter">
@@ -13,6 +13,7 @@ const Aside = () => {
               key={filter.id}
               categoryName={filter.categoryName}
               categoryAttries={filter.categoryAttries}
+              handleFilter={handleFilter}
             />
           );
         })}
