@@ -2,7 +2,7 @@ import React from 'react';
 import './SubEvent.scss';
 import Button from '../../../Components/Button/Button';
 
-const SubEvent = () => {
+const SubEvent = ({ count }) => {
   const eventProducts = [
     {
       id: 1,
@@ -10,29 +10,29 @@ const SubEvent = () => {
       price: '133.00',
       image_url: 'https://i.ibb.co/qdNL0w0/wannaplay-toy-3.png',
     },
-    // {
-    //   id: 2,
-    //   name: '놀랐냥 곰미',
-    //   price: '300.00',
-    //   image_url: 'https://i.ibb.co/CKt1rQ3/surprised-toy-2.png',
-    // },
-    // {
-    //   id: 3,
-    //   name: '놀랐냥 띠부띠부실',
-    //   price: '10.00',
-    //   image_url: 'https://i.ibb.co/wN3b5yj/surprised-toy-1.png',
-    // },
+    {
+      id: 2,
+      name: '놀랐냥 곰미',
+      price: '300.00',
+      image_url: 'https://i.ibb.co/CKt1rQ3/surprised-toy-2.png',
+    },
+    {
+      id: 3,
+      name: '놀랐냥 띠부띠부실',
+      price: '10.00',
+      image_url: 'https://i.ibb.co/wN3b5yj/surprised-toy-1.png',
+    },
   ];
-
   return (
     <div className="subEvent">
-      <button>
-        <i className="left fas fa-angle-left" />
-      </button>
       {eventProducts.map(product => {
         const { id, name, price, image_url } = product;
         return (
-          <div key={id} className="eventCard">
+          <div
+            key={id}
+            className="eventCard"
+            style={{ transform: `translateX(${600 * count}px) ` }}
+          >
             <img src={image_url} alt="thumbnail" />
             <div className="description">
               <h2>
@@ -44,9 +44,6 @@ const SubEvent = () => {
           </div>
         );
       })}
-      <button>
-        <i className="left fas fa-angle-right" />
-      </button>
     </div>
   );
 };

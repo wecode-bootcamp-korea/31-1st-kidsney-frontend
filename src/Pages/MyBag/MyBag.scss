@@ -23,8 +23,34 @@
       }
 
       &.right {
+        position: relative;
+        width: 100%;
+        white-space: nowrap;
+        overflow-x: hidden;
         border-top: $border-bottom;
         border-bottom: $border-bottom;
+
+        .leftBtn,
+        .rightBtn {
+          position: absolute;
+          z-index: 10;
+
+          i {
+            font-size: $font-large;
+          }
+
+          &:disabled {
+            color: rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        .leftBtn {
+          left: 10px;
+        }
+
+        .rightBtn {
+          right: 10px;
+        }
       }
     }
   }

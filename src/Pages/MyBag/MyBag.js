@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import SubEvent from './SubEvent/SubEvent';
 import OrderProduct from '../../Components/OrderProduct/OrderProduct';
@@ -6,6 +6,7 @@ import OrderSummary from './OrderSummary/OrderSummary';
 
 import './MyBag.scss';
 const MyBag = () => {
+  // 가상의 프로모션 상품들
   const orderProducts = [
     {
       id: 1,
@@ -31,6 +32,18 @@ const MyBag = () => {
   const subTotal = 274.96;
   const total = 315.91;
 
+  const [count, setCount] = useState(0);
+
+  const addCount = () => {
+    count === 1 ? setCount(count) : setCount(count + 1);
+    console.log(count);
+  };
+
+  const subTractCount = () => {
+    count === -1 ? setCount(count) : setCount(count - 1);
+    console.log(count);
+  };
+
   return (
     <div className="myBag">
       <div className="event">
@@ -46,7 +59,21 @@ const MyBag = () => {
         </div>
 
         <div className="subEvent right">
-          <SubEvent />
+          <button
+            className="leftBtn"
+            onClick={addCount}
+            disabled={count >= 1 && 'disabled'}
+          >
+            <i className="left fas fa-angle-left" />
+          </button>
+          <SubEvent count={count} />
+          <button
+            className="rightBtn"
+            onClick={subTractCount}
+            disabled={count <= -1 && 'disabled'}
+          >
+            <i className="left fas fa-angle-right" />
+          </button>
         </div>
       </div>
       <main>

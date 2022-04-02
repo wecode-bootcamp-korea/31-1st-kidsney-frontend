@@ -2,11 +2,20 @@
 
 .subEvent {
   @include flexCenter;
-  width: 100%;
 
   .eventCard {
     display: flex;
     align-items: center;
+    margin: 0 70px;
+    transition: all 0.4s ease;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-left: 45px;
+    }
 
     img {
       width: 140px;
