@@ -51,11 +51,7 @@ const ProductList = () => {
       <img src={ProductsMainEvent} alt="메인프로모션 배너" />
       <SorterBar />
       <div className="row">
-<<<<<<< HEAD
         <Aside products={products} />
-=======
-        <Aside subtotal={subtotal} handleFilter={handleFilter} />
->>>>>>> feature/asideFilter
         <SearchItems products={products} />
       </div>
     </div>
