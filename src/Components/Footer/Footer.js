@@ -38,8 +38,8 @@ const Footer = () => {
           <div className="signUpLinks">
             <button className="signUpBtn">Sign up</button>
             <div className="privacyPolicy">
-              <span className="policy">Stay in Touch</span>
-              Privacy Policy
+              <span className="message">Stay in Touch</span>
+              <span className="policy">Privacy Policy</span>
             </div>
           </div>
           <div className="socialIcons">

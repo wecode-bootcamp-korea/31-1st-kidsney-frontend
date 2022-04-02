@@ -46,10 +46,8 @@
         }
 
         .linksBtn {
-          a {
-            color: $color-white;
-            text-decoration: underline;
-          }
+          color: $color-white;
+          text-decoration: underline;
         }
       }
     }
@@ -93,11 +91,11 @@
         .privacyPolicy {
           @include flexColumn;
 
-          .policy {
+          .message {
             font-weight: $weight-bold;
           }
 
-          a {
+          .policy {
             text-decoration: underline;
           }
         }
