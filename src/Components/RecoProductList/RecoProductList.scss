@@ -19,6 +19,16 @@
 
     button {
       font-size: 40px;
+      margin: 10px;
+
+      &.active:hover {
+        color: $color-blue;
+      }
+
+      &.disabled {
+        opacity: 0.2;
+        cursor: default;
+      }
     }
   }
 }

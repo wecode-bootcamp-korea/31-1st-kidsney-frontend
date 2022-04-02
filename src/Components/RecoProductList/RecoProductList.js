@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import './RecoProductList.scss';
 import Product from '../../Components/Product/Product';
+import './RecoProductList.scss';
 
 const RecoProductList = () => {
-  const [products, setProducts] = useState();
-  const [direction, setDirection] = useState();
+  const [products, setProducts] = useState([]);
+  const [direction, setDirection] = useState('left');
 
   const getData = async () => {
     const data = await (await fetch('/data/productData.json')).json();
@@ -24,9 +24,13 @@ const RecoProductList = () => {
     <div className="recoProductList">
       <h2>You May Also Like</h2>
       <div className="list">
-        <button onClick={handleDirection}>
+        <button
+          className={direction === 'left' ? 'disabled' : 'active'}
+          onClick={handleDirection}
+        >
           <i className="left fas fa-angle-left" />
         </button>
+
         <div className="products">
           {products &&
             products.map(product => {
@@ -39,7 +43,11 @@ const RecoProductList = () => {
               );
             })}
         </div>
-        <button onClick={handleDirection}>
+
+        <button
+          className={direction === 'right' ? 'disabled' : 'active'}
+          onClick={handleDirection}
+        >
           <i className="right fas fa-angle-right" />
         </button>
       </div>
