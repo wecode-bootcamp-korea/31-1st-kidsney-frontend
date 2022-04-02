@@ -1,6 +1,6 @@
 import React from 'react';
 import './MyBag.scss';
-import OrderProduct from './OrderProduct/OrderProduct';
+import OrderProduct from '../../Components/OrderProduct/OrderProduct';
 import OrderSummary from './OrderSummary/OrderSummary';
 
 const MyBag = () => {
