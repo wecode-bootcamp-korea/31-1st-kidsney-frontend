@@ -1,13 +1,1 @@
 @import '../../../../Styles/variables.scss';
-
-.aside {
-  width: 240px;
-  border: 1px gray solid;
-
-  .accordionFilter {
-    .filterName {
-      margin: 20px;
-      font-size: $font-medium;
-    }
-  }
-}

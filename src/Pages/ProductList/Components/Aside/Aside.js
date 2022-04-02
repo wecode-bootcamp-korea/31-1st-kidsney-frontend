@@ -1,17 +1,22 @@
 import React from 'react';
 import AsideFilter from './AsideFilter/AsideFilter';
+import FILTER_CATEGORY from '../../../../filterCategory';
 import './Aside.scss';
 
-const Aside = ({ products }) => {
+const Aside = ({ handleFilter }) => {
   return (
     <aside className="aside">
       <ul className="accordionFilter">
-        <li>
-          <AsideFilter />
-        </li>
-        <li>
-          <AsideFilter />
-        </li>
+        {FILTER_CATEGORY.map(filter => {
+          return (
+            <AsideFilter
+              key={filter.id}
+              categoryName={filter.categoryName}
+              categoryAttries={filter.categoryAttries}
+              handleFilter={handleFilter}
+            />
+          );
+        })}
       </ul>
     </aside>
   );

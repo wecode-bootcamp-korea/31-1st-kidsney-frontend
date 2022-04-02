@@ -1,6 +1,8 @@
-export const BASE_URL = 'http://10.58.7.66:8000';
+export const BASE_URL = 'http://10.58.1.194:8000';
 export const API = {
   products: `${BASE_URL}/products`,
-  boy: `${BASE_URL}/products/boy`,
+  productList: `${BASE_URL}/products?main=`,
+  girl: `${BASE_URL}/products?main=girl&sub=boy_top,boy_bottom,boy_acc`,
+  toy: `${BASE_URL}/products?main=toy&sub=boy_top,boy_bottom,boy_acc`,
 };
 export const ProductsMainEvent = 'https://i.ibb.co/sQ7D7XJ/001-14.png';
