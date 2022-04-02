@@ -116,25 +116,32 @@
       display: flex;
 
       .category {
-        display: flex;
+        @include flexColumn;
 
-        ul {
+        .categoryList {
           margin-right: 80px;
           border-right: 1px solid $color-gray;
-
-          li {
-            margin-right: 50px;
-          }
         }
       }
 
       .contentAsset {
-        display: flex;
+        @include flexColumn;
 
-        ul {
-          li {
-            margin-right: 80px;
-          }
+        .list {
+        }
+      }
+
+      .contentInfo {
+        @include flexColumn;
+
+        .info {
+        }
+      }
+
+      .contentCards {
+        @include flexColumn;
+
+        .cards {
         }
       }
     }
@@ -142,24 +149,6 @@
 
   .footerCopyright {
     height: 70px;
-    .copyrightList {
-      margin: 50px 80px;
-      ul {
-        li {
-          float: left;
-          padding: 10px 10px 0 0;
-        }
-
-        li::after {
-          content: '|';
-          float: right;
-          margin-left: 10px;
-        }
-
-        li:last-child::after {
-          content: '';
-        }
-      }
-    }
+    margin: 50px 80px;
   }
 }

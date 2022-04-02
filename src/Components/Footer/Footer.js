@@ -1,5 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Category from './Category';
+import ContentAsset from './ContentAsset';
+import ContentCards from './ContentCards';
+import ContentInfo from './ContentInfo';
+import Copyright from './ContentCopyright';
 import './Footer.scss';
 
 const Footer = () => {
@@ -15,9 +19,7 @@ const Footer = () => {
           </h3>
           <div className="links">
             <span className="linksTxt">Restrictions apply.</span>
-            <button class="linksBtn">
-              <Link to="/">Learn More</Link>
-            </button>
+            <button class="linksBtn">Learn More</button>
           </div>
         </div>
         <div className="footerImg">
@@ -37,7 +39,7 @@ const Footer = () => {
             <button className="signUpBtn">Sign up</button>
             <div className="privacyPolicy">
               <span className="policy">Stay in Touch</span>
-              <Link to="/">Privacy Policy</Link>
+              Privacy Policy
             </div>
           </div>
           <div className="socialIcons">
@@ -49,63 +51,199 @@ const Footer = () => {
         </div>
         <div className="items">
           <div className="category">
-            <ul>
-              <li>Characters</li>
-              <li>Parks</li>
-              <li>Disney</li>
-              <li>Pixar</li>
-              <li>Star Wars</li>
-              <li>Marvel</li>
-              <li>National Geographic</li>
+            <ul className="categoryList">
+              {FOOTER_INFO_LIST.map(category => {
+                return (
+                  <Category key={category.id} content={category.content} />
+                );
+              })}
             </ul>
           </div>
           <div className="contentAsset">
-            <ul>
-              <li>D23</li>
-              <li>Careers</li>
-              <li>Contact Us</li>
-              <li>Site Map</li>
-              <li>New</li>
-              <li>Sale</li>
+            <ul class="list">
+              {FOOTER_CONTENT_ASSET.map(asset => {
+                return <ContentAsset key={asset.id} content={asset.content} />;
+              })}
             </ul>
-            <ul>
-              <li>Order Tracking</li>
-              <li>Return/Exchange</li>
-              <li>Shipping Info</li>
-              <li>Account Info</li>
-              <li>Store Locator</li>
+          </div>
+          <div className="contentInfo">
+            <ul className="info">
+              {FOOTER_CONTENT_INFO.map(info => {
+                return <ContentInfo key={info.id} content={info.content} />;
+              })}
             </ul>
-            <ul>
-              <li>Disney Gift Cards</li>
-              <li>Guest Services</li>
-              <li>Affiliates</li>
-              <li>About shopDisney</li>
-              <li>Disney® Visa® Card</li>
-              <li>Personalization Shop</li>
+          </div>
+          <div className="contentCards">
+            <ul className="cards">
+              {FOOTER_CONTENT_CARDS.map(cards => {
+                return <ContentCards key={cards.id} content={cards.content} />;
+              })}
             </ul>
           </div>
         </div>
       </div>
       <div className="footerCopyright">
-        <div className="copyrightList">
-          <ul>
-            <li>© Kidsney, All Rights Reserved</li>
-            <li>Terms of Use</li>
-            <li>Additional Content Information</li>
-            <li>Privacy Policy</li>
-            <li>Your California Privacy Rights</li>
-            <li>Do Not Sell My Personal Information</li>
-            <li>Children's Online Privacy Policy</li>
-            <li>About Kidsney</li>
-            <li>Interest-Based Ads</li>
-            <li>California Transparency in Supply Chains Act</li>
-          </ul>
-        </div>
+        <ul className="copyrightList">
+          {FOOTER_CONTENT_COPYRIGHT.map(copyright => {
+            return (
+              <Copyright key={copyright.id} copyright={copyright.copyright} />
+            );
+          })}
+        </ul>
       </div>
     </footer>
   );
 };
 
-const FOOTER_INFO_LIST = [{}];
+const FOOTER_INFO_LIST = [
+  {
+    id: 1,
+    content: 'Character',
+  },
+  {
+    id: 2,
+    content: 'Parks',
+  },
+  {
+    id: 3,
+    content: 'Disney',
+  },
+  {
+    id: 4,
+    content: 'Pixar',
+  },
+  {
+    id: 5,
+    content: 'Star Wars',
+  },
+  {
+    id: 6,
+    content: 'Marvel',
+  },
+  {
+    id: 7,
+    content: 'National Geographic',
+  },
+];
+
+const FOOTER_CONTENT_ASSET = [
+  {
+    id: 1,
+    content: 'D23',
+  },
+  {
+    id: 2,
+    content: 'Careers',
+  },
+  {
+    id: 3,
+    content: 'Contact Us',
+  },
+  {
+    id: 4,
+    content: 'Site Map',
+  },
+  {
+    id: 5,
+    content: 'New',
+  },
+  {
+    id: 6,
+    content: 'Sale',
+  },
+];
+
+const FOOTER_CONTENT_INFO = [
+  {
+    id: 1,
+    content: 'Order Tracking',
+  },
+  {
+    id: 2,
+    content: 'Return/Exchange',
+  },
+  {
+    id: 3,
+    content: 'Shipping Info',
+  },
+  {
+    id: 4,
+    content: 'Account Info',
+  },
+  {
+    id: 5,
+    content: 'Store Locator',
+  },
+];
+
+const FOOTER_CONTENT_CARDS = [
+  {
+    id: 1,
+    content: 'Disney Gift Cards',
+  },
+  {
+    id: 2,
+    content: 'Guest Services',
+  },
+  {
+    id: 3,
+    content: 'Affiliate',
+  },
+  {
+    id: 4,
+    content: 'About shopDisney',
+  },
+  {
+    id: 5,
+    content: 'Disney® Visa® Card',
+  },
+  {
+    id: 6,
+    content: 'Personalization Shop',
+  },
+];
+
+const FOOTER_CONTENT_COPYRIGHT = [
+  {
+    id: 1,
+    copyright: '© Kidsney, All Rights Reserved',
+  },
+  {
+    id: 2,
+    copyright: 'Terms of Use',
+  },
+  {
+    id: 3,
+    copyright: 'Additional Content Information',
+  },
+  {
+    id: 4,
+    copyright: 'Privacy Policy',
+  },
+  {
+    id: 5,
+    copyright: 'Your California Privacy Rights',
+  },
+  {
+    id: 6,
+    copyright: 'Do Not Sell My Personal Information',
+  },
+  {
+    id: 7,
+    copyright: "Children's Online Privacy Policy",
+  },
+  {
+    id: 8,
+    copyright: 'About Kidsney',
+  },
+  {
+    id: 9,
+    copyright: 'Interest-Based Ads',
+  },
+  {
+    id: 10,
+    copyright: 'California Transparency in Supply Chains Act',
+  },
+];
 
 export default Footer;
