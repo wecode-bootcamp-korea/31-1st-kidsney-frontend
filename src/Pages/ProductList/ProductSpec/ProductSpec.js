@@ -9,16 +9,18 @@ import './ProductSpec.scss';
 
 const ProductSpec = () => {
   const location = useLocation();
-  const { name, price, image_url, detail } = location.state;
+  const { name, price, image_urls, detail } = location.state;
 
-  const [size, setSize] = useState();
+  const [clickedImg, setClickedImg] = useState(0);
+  const [size, setSize] = useState('');
   const [count, setCount] = useState(1);
   const [checkedList, setCheckedList] = useState('0');
 
-  //check whether my box modal window is open or close
-  const [isClosed, setIsClosed] = useState(true);
-
+  const [isClosedBoxModal, setIsClosedBoxModal] = useState(true);
   const [isShowedWishModal, setIsShowedWishModal] = useState(false);
+
+  // wish list 좋아요 관리하는 가상의 데이터
+  const [isAddedWishList, setIsAddedWishList] = useState(false);
 
   const sizeList = [
     { id: 1, value: 'S', name: 'small' },
@@ -45,6 +47,33 @@ const ProductSpec = () => {
     },
   ];
 
+  //myBag modal part
+  const showMyBag = () => {
+    size && setIsClosedBoxModal(!isClosedBoxModal);
+  };
+
+  //wishList modal part
+
+  const handleWishListBtn = () => {
+    setIsAddedWishList(!isAddedWishList);
+  };
+
+  const showWishList = () => {
+    handleWishListBtn();
+    !isAddedWishList && setIsShowedWishModal(!isShowedWishModal);
+  };
+
+  //Thumnail, Main img part
+  const handleClickedImg = e => {
+    const clickedIdx = e.target.className.split(' ')[0];
+    setClickedImg(clickedIdx);
+  };
+
+  const checkClickedImg = i => {
+    return i === clickedImg;
+  };
+
+  //Quantitiy part
   const plusCount = () => {
     setCount(count + 1);
   };
@@ -60,20 +89,13 @@ const ProductSpec = () => {
     setSize(value);
   };
 
-  const showMyBag = () => {
-    size && setIsClosed(!isClosed);
-  };
-
+  //Description part
   const handleCheckedList = e => {
     setCheckedList(e.target.id);
   };
 
   const checkList = i => {
     return i === checkedList;
-  };
-
-  const showWishList = () => {
-    setIsShowedWishModal(!isShowedWishModal);
   };
 
   return (
@@ -84,15 +106,28 @@ const ProductSpec = () => {
           setIsShowedWishModal={setIsShowedWishModal}
         />
       )}
-      <MyBagModal isClosed={isClosed} showMyBag={showMyBag} />
+      <MyBagModal isClosed={isClosedBoxModal} showMyBag={showMyBag} />
       <div className="spec row">
         <div className="imgContainer">
-          <div className="thumnail">
-            <img alt="thumnail" src={image_url} />
-            <img alt="thumnail" src={image_url} />
+          <div className="thumnails">
+            {image_urls.map((img, i) => {
+              return (
+                <img
+                  key={i}
+                  className={
+                    checkClickedImg(`${i}`)
+                      ? `${i} thumnail clicked`
+                      : `${i} thumnail`
+                  }
+                  alt="thumnail"
+                  src={img}
+                  onClick={handleClickedImg}
+                />
+              );
+            })}
           </div>
           <div className="mainImg">
-            <img alt="main-img" src={image_url} />
+            <img alt="main-img" src={image_urls[clickedImg]} />
           </div>
         </div>
         <div className="orderContainer">
@@ -140,11 +175,19 @@ const ProductSpec = () => {
 
             <div className="btns">
               <Button text="Add to Bag" functionType={showMyBag} />
-              <Button
-                color="white"
-                text="♡ &nbsp; Add to Wish List"
-                functionType={showWishList}
-              />
+              {isAddedWishList ? (
+                <Button
+                  color="white"
+                  text="♡ &nbsp; Remove"
+                  functionType={showWishList}
+                />
+              ) : (
+                <Button
+                  color="white"
+                  text="♡ &nbsp; Add to Wish List"
+                  functionType={showWishList}
+                />
+              )}
             </div>
           </div>
         </div>

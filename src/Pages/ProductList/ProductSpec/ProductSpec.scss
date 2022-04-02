@@ -16,29 +16,39 @@
       display: flex;
       flex: 2;
 
-      .thumnail {
+      .thumnails {
         @include flexColumn;
+        margin-right: 20px;
         width: 100px;
         height: 100px;
 
-        img {
-          margin-bottom: 10px;
+        cursor: pointer;
+
+        .thumnail {
+          margin-bottom: 30px;
+
+          &.clicked {
+            border: $border-bottom;
+            border-radius: $border-radius;
+          }
         }
       }
 
       .mainImg {
         text-align: center;
         margin: auto;
+        animation: fadeIn ease 1s;
 
         img {
           width: 620px;
-          transition: all 0.2s ease-in-out;
+          animation: fadeIn ease 1s;
         }
       }
     }
 
     .orderContainer {
       flex: 1;
+      margin-left: 20px;
 
       h2:nth-child(2) {
         border-bottom: $border-bottom;
@@ -170,8 +180,9 @@
     .spec {
       .imgContainer {
         .main-img {
+          margin: 20px;
           img {
-            width: 580px;
+            width: 550px;
           }
         }
 
@@ -180,5 +191,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
