@@ -1,0 +1,27 @@
+@import '../../Styles/variables.scss';
+
+.product {
+  position: relative;
+  margin: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .price {
+    font-size: 18px;
+    color: $color-gray;
+  }
+
+  &.right {
+    transform: translateX(-220%);
+  }
+
+  &.left {
+    transform: translateX(220%);
+  }
+}
