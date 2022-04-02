@@ -1,41 +1,32 @@
 @import '../../../../Styles/variables.scss';
 
-aside > ul {
-  .categoryName {
-    font-size: $font-medium;
-    margin: 10px 0 0 10px;
-    .categoryAttrContainer {
-      display: none;
-    }
-  }
+.categoryName {
+  font-size: $font-medium;
+  margin: 10px 0 0 10px;
 
-  .categoryName:hover {
-    font-size: $font-medium;
-    margin: 10px 0 0 10px;
+  .categoryAttrContainer {
+    @include flexColumn;
 
-    .categoryAttrContainer {
-      @include flexColumn;
-
-      .categoryAttr {
-        @include flexColumn;
-        margin-left: 40px;
-        font-size: $font-medium;
-        width: 130px;
-        height: 40px;
-        color: $color-gray;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .categoryAttr:hover {
-        color: $color-blue;
+    li {
+      @include flexCenter;
+      input {
+        zoom: 1.5;
       }
     }
+    span {
+      margin-left: 20px;
+      font-size: $font-medium;
+      width: 130px;
+      height: 40px;
+      color: $color-gray;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-    .activated {
-      background-color: yellow;
+    span:hover {
+      color: $color-blue;
     }
   }
 }

@@ -1,22 +1,35 @@
 import React from 'react';
 import '../Aside.scss';
 
-const AsideFilter = ({ id, categoryName, categoryAttries, handleFilter }) => {
+const AsideFilter = ({
+  categoryName,
+  categoryAttries,
+  filters,
+  handleFilter,
+}) => {
   return (
     <li className="categoryName">
       {categoryName}
       <ul className="categoryAttrContainer">
         {categoryAttries.map(categoryAttr => {
           return (
-            <li key={categoryAttr}>
+            <li
+              key={categoryAttr}
+              id={[categoryName, categoryAttr]}
+              className="categoryAttr"
+              onClick={handleFilter}
+            >
               <input
-                id={[categoryName, categoryAttr]}
-                categoryname={categoryName}
-                className="categoryAttr"
-                value={categoryAttr}
-                type="button"
-                onClick={handleFilter}
+                id={categoryAttr + 'checkbox'}
+                type="checkbox"
+                checked={
+                  filters.indexOf(categoryName + ',' + categoryAttr) === -1
+                    ? false
+                    : true
+                }
+                readOnly
               />
+              <span>{categoryAttr}</span>
             </li>
           );
         })}

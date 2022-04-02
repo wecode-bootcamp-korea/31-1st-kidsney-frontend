@@ -23,13 +23,21 @@ const ProductList = () => {
   }, [url]);
 
   const handleFilter = e => {
-    let filterArr = filters;
-    filterArr.indexOf(e.target.id) === -1
-      ? filterArr.push(e.target.id)
-      : filterArr.splice(filterArr.indexOf(e.target.id), 1);
-    setFilters(filterArr);
+    filters.indexOf(e.currentTarget.id) === -1
+      ? filters.push(e.currentTarget.id)
+      : filters.splice(filters.indexOf(e.currentTarget.id), 1);
+    setFilters(filters);
     setQueryStrings();
   };
+
+  // const handleFilter = e => {
+  //   let filterArr = filters;
+  //   filterArr.indexOf(e.target.id) === -1
+  //     ? filterArr.push(e.target.id)
+  //     : filterArr.splice(filterArr.indexOf(e.target.id), 1);
+  //   setFilters(filterArr);
+  //   setQueryStrings();
+  // };
 
   const setQueryStrings = () => {
     let queryString = '';
@@ -65,7 +73,11 @@ const ProductList = () => {
       <img src={ProductsMainEvent} alt="메인프로모션 배너" />
       <SorterBar />
       <div className="row">
-        <Aside subtotal={subtotal} handleFilter={handleFilter} />
+        <Aside
+          subtotal={subtotal}
+          filters={filters}
+          handleFilter={handleFilter}
+        />
         <SearchItems products={products} />
       </div>
     </div>
