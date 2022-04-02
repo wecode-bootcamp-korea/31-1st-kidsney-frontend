@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 
 import Button from '../../../Components/Button/Button';
-import MyBagModal from '../../../Components/MyBagModal/MyBagModal';
+import MyBagModal from './MyBagModal/MyBagModal';
+import WishListModal from './WishListModal/WishListModal';
 
 import './ProductSpec.scss';
 
@@ -71,6 +72,7 @@ const ProductSpec = () => {
 
   return (
     <div className="productSpec">
+      <WishListModal />
       <MyBagModal isClosed={isClosed} showMyBag={showMyBag} />
       <div className="spec row">
         <div className="imgContainer">
@@ -136,7 +138,6 @@ const ProductSpec = () => {
           </div>
         </div>
       </div>
-
       <ul className="descriptions row">
         {DescriptionList.map(li => {
           const { id, title, description } = li;
