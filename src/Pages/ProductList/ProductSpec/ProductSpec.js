@@ -13,7 +13,7 @@ const ProductSpec = () => {
   const location = useLocation();
   const { name, price, image_urls, detail } = location.state;
 
-  const [clickedImg, setClickedImg] = useState(0);
+  const [clickedImg, setClickedImg] = useState('0');
   const [size, setSize] = useState('');
   const [count, setCount] = useState(1);
   const [checkedList, setCheckedList] = useState('0');
@@ -98,7 +98,7 @@ const ProductSpec = () => {
 
   //Description part
   const handleCheckedList = e => {
-    setCheckedList(e.target.id);
+    setCheckedList(e.target.className);
   };
 
   const checkList = i => {
@@ -208,7 +208,7 @@ const ProductSpec = () => {
           const { id, title, description } = li;
           return (
             <>
-              <li key={id} id={id} onClick={handleCheckedList}>
+              <li key={id} className={id} onClick={handleCheckedList}>
                 <i
                   className={
                     checkList(`${id}`) ? `fas fa-minus` : `fas fa-plus`
