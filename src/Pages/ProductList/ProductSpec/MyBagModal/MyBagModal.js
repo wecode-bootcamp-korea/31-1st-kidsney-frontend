@@ -50,7 +50,11 @@ const MyBagModal = ({ isClosed, showMyBag }) => {
       </div>
 
       <footer>
-        <Button text="View Full Bag" goToMyBag={goToMyBag} type="viewFullBag" />
+        <Button
+          text="View Full Bag"
+          functionType={goToMyBag}
+          type="viewFullBag"
+        />
       </footer>
     </div>
   );

@@ -18,6 +18,8 @@ const ProductSpec = () => {
   //check whether my box modal window is open or close
   const [isClosed, setIsClosed] = useState(true);
 
+  const [isShowedModal, setIsShowedModal] = useState(false);
+
   const sizeList = [
     { id: 1, value: 'S', name: 'small' },
     { id: 2, value: 'M', name: 'medium' },
@@ -70,9 +72,13 @@ const ProductSpec = () => {
     return i === checkedList;
   };
 
+  const showWishList = () => {
+    setIsShowedModal(!isShowedModal);
+  };
+
   return (
     <div className="productSpec">
-      <WishListModal />
+      {isShowedModal && <WishListModal />}
       <MyBagModal isClosed={isClosed} showMyBag={showMyBag} />
       <div className="spec row">
         <div className="imgContainer">
@@ -128,11 +134,11 @@ const ProductSpec = () => {
             </div>
 
             <div className="btns">
-              <Button showMyBag={showMyBag} text="Add to Bag" />
+              <Button text="Add to Bag" functionType={showMyBag} />
               <Button
-                type="white"
+                color="white"
                 text="♡ &nbsp; Add to Wish List"
-                //onClick={goToWishList}
+                functionType={showWishList}
               />
             </div>
           </div>
