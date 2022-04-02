@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer = () => {
@@ -15,7 +16,7 @@ const Footer = () => {
           <div className="links">
             <span className="linksTxt">Restrictions apply.</span>
             <button class="linksBtn">
-              <a href="/">Learn More</a>
+              <Link to="/">Learn More</Link>
             </button>
           </div>
         </div>
@@ -36,7 +37,7 @@ const Footer = () => {
             <button className="signUpBtn">Sign up</button>
             <div className="privacyPolicy">
               <span className="policy">Stay in Touch</span>
-              <a href="/">Privacy Policy</a>
+              <Link to="/">Privacy Policy</Link>
             </div>
           </div>
           <div className="socialIcons">
