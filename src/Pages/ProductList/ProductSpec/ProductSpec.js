@@ -18,7 +18,7 @@ const ProductSpec = () => {
   //check whether my box modal window is open or close
   const [isClosed, setIsClosed] = useState(true);
 
-  const [isShowedModal, setIsShowedModal] = useState(false);
+  const [isShowedWishModal, setIsShowedWishModal] = useState(false);
 
   const sizeList = [
     { id: 1, value: 'S', name: 'small' },
@@ -73,12 +73,17 @@ const ProductSpec = () => {
   };
 
   const showWishList = () => {
-    setIsShowedModal(!isShowedModal);
+    setIsShowedWishModal(!isShowedWishModal);
   };
 
   return (
     <div className="productSpec">
-      {isShowedModal && <WishListModal />}
+      {isShowedWishModal && (
+        <WishListModal
+          isShowedWishModal={isShowedWishModal}
+          setIsShowedWishModal={setIsShowedWishModal}
+        />
+      )}
       <MyBagModal isClosed={isClosed} showMyBag={showMyBag} />
       <div className="spec row">
         <div className="imgContainer">
