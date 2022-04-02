@@ -55,16 +55,30 @@
         padding-bottom: 30px;
       }
 
-      p {
+      .detail {
+        position: relative;
         display: inline-block;
         margin: 30px 0;
         padding-bottom: 25px;
         height: 60px;
         width: 400px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         border-bottom: $border-bottom;
+
+        p {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        span {
+          position: absolute;
+          top: 25px;
+          right: 10px;
+          text-decoration: underline;
+          font-size: $font-regular;
+          color: $color-blue;
+          cursor: pointer;
+        }
       }
 
       .sizeOptions {

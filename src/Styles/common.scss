@@ -5,6 +5,7 @@
   box-sizing: border-box;
   outline: none;
 }
+
 /* Typography */
 h1 {
   font-size: $font-large;
@@ -12,18 +13,21 @@ h1 {
   color: $color-black;
   margin: 16px 0px;
 }
+
 h2 {
   font-size: $font-medium;
   font-weight: $weight-semi-bold;
   color: $color-black;
   margin: 8px 0;
 }
+
 h3 {
   font-size: $font-regular;
   font-weight: $weight-regular;
   color: $color-black;
   margin: 8px 0;
 }
+
 p {
   font-size: $font-regular;
   font-weight: $weight-regular;

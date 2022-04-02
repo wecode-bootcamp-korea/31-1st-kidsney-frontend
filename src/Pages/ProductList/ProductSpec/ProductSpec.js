@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useLocation } from 'react-router';
 
 import Button from '../../../Components/Button/Button';
@@ -8,6 +8,8 @@ import WishListModal from './WishListModal/WishListModal';
 import './ProductSpec.scss';
 
 const ProductSpec = () => {
+  const detailRef = useRef();
+
   const location = useLocation();
   const { name, price, image_urls, detail } = location.state;
 
@@ -73,6 +75,11 @@ const ProductSpec = () => {
     return i === clickedImg;
   };
 
+  //Detail part
+  const scrollToDetail = () => {
+    detailRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   //Quantitiy part
   const plusCount = () => {
     setCount(count + 1);
@@ -134,7 +141,11 @@ const ProductSpec = () => {
           <div className="orderList">
             <h2>{name}</h2>
             <h2>${price}</h2>
-            <p>{detail}</p>
+            <div className="detail">
+              <p>{detail}</p>
+              <span onClick={scrollToDetail}>View Details</span>
+            </div>
+
             <div className="sizeOptions">
               <h3> Size </h3>
               {sizeList.map(list => {
@@ -192,7 +203,7 @@ const ProductSpec = () => {
           </div>
         </div>
       </div>
-      <ul className="descriptions row">
+      <ul ref={detailRef} className="descriptions row">
         {DescriptionList.map(li => {
           const { id, title, description } = li;
           return (
