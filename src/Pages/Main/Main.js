@@ -1,5 +1,5 @@
-import RecoProductList from '../../Components/RecoProductList/RecoProductList';
 import React from 'react';
+import RecoProductList from '../../Components/RecoProductList/RecoProductList';
 import './Main.scss';
 
 const Main = () => {
