@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Nav.scss';
 
 const Nav = () => {
+  const [isLogin, setIsLogin] = useState(false);
+  const [isSignup, setIsSignup] = useState(false);
+
+  const handleLoginModal = () => {
+    setIsLogin(!isLogin);
+  };
+
+  const handleSignupModal = () => {
+    setIsSignup(true);
+    setIsLogin(false);
+  };
+
+  const handleJoinClick = () => {
+    setIsSignup(false);
+  };
+
   const navigate = useNavigate();
 
   function goToLogin() {
@@ -17,7 +33,7 @@ const Nav = () => {
           <a href="/">KIDSNEY</a>
         </h1>
         <ul className="navLinks">
-          <li onClick={goToLogin}>
+          <li onClick={handleLoginModal}>
             <i className="fas fa-user" />
             Sign in | Sign Up
           </li>
