@@ -3,21 +3,32 @@ import LoginModal from './LoginModal';
 import MenuTab from './MenuTab';
 
 import './Nav.scss';
+import SignUpModal from './SignUpModal';
 
 const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const [activeModal, setActiveModal] = useState('loginModal');
 
-  const onClickModal = () => {
+  const openModal = () => {
     setIsClicked(true);
+  };
+
+  const closeModal = () => {
+    setIsClicked(false);
   };
 
   return (
     <nav className="nav">
-      {/* <LoginModal setIsClicked={setIsClicked} /> */}
+      {isClicked && activeModal === 'loginModal' && (
+        <LoginModal closeModal={closeModal} setActiveModal={setActiveModal} />
+      )}
+      {isClicked && activeModal === 'signUpModal' && (
+        <SignUpModal closeModal={closeModal} setActiveModal={setActiveModal} />
+      )}
       <div className="headerNav">
         <h1 className="logo">KIDSNEY</h1>
         <ul className="navLinks">
-          <button onClick={onClickModal}>
+          <button onClick={openModal}>
             <i className="fas fa-user" />
             Sign in | Sign Up
           </button>

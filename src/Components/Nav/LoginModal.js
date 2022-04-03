@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-import SignUpModal from './SignUpModal';
+
 import './LoginModal.scss';
 import '../../Styles/common.scss';
 
-const LoginModal = ({ onClickModal }) => {
-  const [isLoginClicked, setIsLoginClicked] = useState(false);
-
-  const onLoginClickModal = () => {
-    setIsLoginClicked(!isLoginClicked);
-  };
-
-  const closeLoginModal = () => {
-    setIsLoginClicked(false);
+const LoginModal = ({ setActiveModal, closeModal }) => {
+  const changeActiveModal = () => {
+    setActiveModal('signUpModal');
   };
 
   const [inputValue, setInputValue] = useState({
@@ -29,7 +23,7 @@ const LoginModal = ({ onClickModal }) => {
 
   const getIsActive = isValidEmail && specialLetter === 0 && isValidPassword;
 
-  const handleButtonValid = () => {
+  const checkValidity = () => {
     if (!isValidEmail) {
       alert('이메일 형식이 맞지 않습니다.');
       return false;
@@ -50,7 +44,7 @@ const LoginModal = ({ onClickModal }) => {
   }
 
   function goToMain() {
-    handleButtonValid() &&
+    checkValidity() &&
       fetch('http://10.58.2.64:8000/users/signin', {
         method: 'POST',
         body: JSON.stringify({
@@ -70,10 +64,10 @@ const LoginModal = ({ onClickModal }) => {
 
   return (
     <div className="loginModal">
-      {isLoginClicked && <SignUpModal onLoginClickModal={onLoginClickModal} />}
+      {/* {isLoginClicked && <SignUpModal onLoginClickModal={onLoginClickModal} />} */}
       <div className="login">
         <h1 className="logo">KIDSNEY account</h1>
-        <button className="closeBtn" onClick={onClickModal}>
+        <button className="closeBtn" onClick={closeModal}>
           X
         </button>
         <form className="loginContainer">
@@ -101,14 +95,7 @@ const LoginModal = ({ onClickModal }) => {
         </form>
         <div className="loginHelp">Need help signing in?</div>
         <div className="createId">
-          <button
-            onClick={() => {
-              onLoginClickModal();
-              closeLoginModal();
-            }}
-          >
-            Create an Account
-          </button>
+          <button onClick={changeActiveModal}>Create an Account</button>
         </div>
       </div>
     </div>

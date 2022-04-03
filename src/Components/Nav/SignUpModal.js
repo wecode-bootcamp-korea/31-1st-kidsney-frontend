@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './Nav.scss';
 import './SignUpModal.scss';
-import { useNavigate } from 'react-router-dom';
 
-const SignUpModal = ({ onLoginClickModal }) => {
+const SignUpModal = ({ setActiveModal, closeModal }) => {
+  const goToLoginModal = () => {
+    setActiveModal('loginModal');
+  };
+
   const [inputValue, setInputValue] = useState({
     first_name: '',
     last_name: '',
@@ -67,8 +70,6 @@ const SignUpModal = ({ onLoginClickModal }) => {
     setInputValue(inputValue => ({ ...inputValue, [name]: value }));
   }
 
-  const navigate = useNavigate();
-
   function goToLogin() {
     handleButtonValid() &&
       fetch('http://10.58.2.64:8000/users/signup', {
@@ -85,7 +86,7 @@ const SignUpModal = ({ onLoginClickModal }) => {
         .then(res => {
           if (res.ok) {
             alert('회원가입 성공!');
-            navigate('/login');
+            goToLoginModal();
           } else if (res.status === 400) {
             throw new Error('Not Found');
           } else {
@@ -102,7 +103,7 @@ const SignUpModal = ({ onLoginClickModal }) => {
     <div className="signUpModal">
       <div className="signUp">
         <h1 className="logo">KIDSNEY account</h1>
-        <button className="closeBtn" onClick={onLoginClickModal}>
+        <button className="closeBtn" onClick={closeModal}>
           X
         </button>
         <h2>Create Your Account</h2>
@@ -158,7 +159,8 @@ const SignUpModal = ({ onLoginClickModal }) => {
           </button>
           <div className="goToSignIn">
             <p>
-              Already have an account? <button>Sign In</button>
+              Already have an account?{' '}
+              <button onClick={goToLoginModal}>Sign In</button>
             </p>
           </div>
         </form>
