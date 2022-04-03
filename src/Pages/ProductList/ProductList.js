@@ -17,7 +17,7 @@ const ProductList = () => {
     fetch(url)
       .then(response => response.json())
       .then(product => {
-        setProducts(product.result[0]);
+        setProducts(product.result);
         setSubtotal(product.count);
       });
   }, [url]);
@@ -28,6 +28,7 @@ const ProductList = () => {
       : filters.splice(filters.indexOf(e.currentTarget.id), 1);
     setFilters(filters);
     setQueryStrings();
+    console.log(filters);
   };
 
   // const handleFilter = e => {
@@ -38,7 +39,6 @@ const ProductList = () => {
   //   setFilters(filterArr);
   //   setQueryStrings();
   // };
-
   const setQueryStrings = () => {
     let queryString = '';
     let addParamFilters = [];
@@ -58,6 +58,10 @@ const ProductList = () => {
             addParamFilters.push(`&character=${splittedFilter[1]}`);
             break;
 
+          case 'PRICE':
+            addParamFilters.push(`&order-by=${splittedFilter[1]}`);
+            break;
+
           default:
         }
       });
@@ -66,18 +70,15 @@ const ProductList = () => {
       queryString = `${API.productList}${param}`;
     }
     setUrl(queryString);
+    console.log(url);
   };
 
   return (
     <div className="productList">
       <img src={ProductsMainEvent} alt="메인프로모션 배너" />
-      <SorterBar />
+      <SorterBar subtotal={subtotal} handleFilter={handleFilter} />
       <div className="row">
-        <Aside
-          subtotal={subtotal}
-          filters={filters}
-          handleFilter={handleFilter}
-        />
+        <Aside filters={filters} handleFilter={handleFilter} />
         <SearchItems products={products} />
       </div>
     </div>
