@@ -3,8 +3,8 @@ import SorterBar from './Components/SorterBar/SorterBar';
 import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
 import { API } from '../../config.js';
-import { ProductsMainEvent } from '../../config.js';
 import './ProductList.scss';
+import { useLocation } from 'react-router-dom';
 
 const ProductList = () => {
   const [param, setParam] = useState('boy');
@@ -12,6 +12,7 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState([]);
   const [subtotal, setSubtotal] = useState();
+  const location = useLocation();
 
   useEffect(() => {
     fetch(url)
@@ -72,10 +73,10 @@ const ProductList = () => {
     setUrl(queryString);
     console.log(url);
   };
-
+  console.log(location);
   return (
     <div className="productList">
-      <img src={ProductsMainEvent} alt="메인프로모션 배너" />
+      <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
       <SorterBar subtotal={subtotal} handleFilter={handleFilter} />
       <div className="row">
         <Aside filters={filters} handleFilter={handleFilter} />
