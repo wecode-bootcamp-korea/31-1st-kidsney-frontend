@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ReviewModal from './ReviewModal/ReviewModal';
 import './Review.scss';
 
 const Review = () => {
-  //product spec으로부터 product에 대한 정보 props로 전달받는다.
+  const [isClicked, setIsClicked] = useState(false);
+  const [reviewList, setReviewList] = useState([]);
+
+  const getData = async () => {
+    const data = await (
+      await fetch('http://10.58.2.64:8000/products/1')
+    ).json();
+
+    setReviewList(data.result.reviews);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  //product spec으로부터 상세페이지 내에 있는 product에 대한 정보 props로 전달받는다.
 
   // 가상의 review data
   const product = {
@@ -24,24 +39,43 @@ const Review = () => {
   //가상의 userId
   const userId = 'dfdfas123';
 
-  //가상의 댓글 data
-  let reviewTextarea =
-    "I bought this to use as an Easter basket for my great grandson. He loves Spiderman. After seeing this I know he won't be disappointed on Easter morning!. It's great, well made. He will love it.";
+  const showReviewModal = () => {
+    setIsClicked(!isClicked);
+  };
 
   return (
     <div className="review">
-      {/* <ReviewModal product={product} userId={userId} /> */}
+      {isClicked && (
+        <ReviewModal
+          product={product}
+          user={userId}
+          showReviewModal={showReviewModal}
+          setReviewList={setReviewList}
+        />
+      )}
       <h2>Reviews</h2>
-      <button className="reviewBtn">Write a review</button>
+      <button className="reviewBtn" onClick={showReviewModal}>
+        Write a review
+      </button>
       <ul className="reviewList">
-        <li className="reviewCard">
-          <h3 className="userId">{userId}</h3>
-          <p className="contents">{reviewTextarea}</p>
-        </li>
-        <li className="reviewCard">
-          <h3 className="userId">{userId}</h3>
-          <p className="contents">{reviewTextarea}</p>
-        </li>
+        {reviewList.length > 0 &&
+          reviewList.map((li, i) => {
+            const { user, content, created_at } = li;
+            const [day, month, date, year] = Date(created_at)
+              .split(' ')
+              .slice(0, 4);
+            return (
+              <li key={i} className="reviewCard">
+                <div className="row">
+                  <h3 className="userId">{user}</h3>
+                  <span className="createdTime">
+                    {year}/ {month} / {date} / {day}
+                  </span>{' '}
+                </div>
+                <p className="contents">{content}</p>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

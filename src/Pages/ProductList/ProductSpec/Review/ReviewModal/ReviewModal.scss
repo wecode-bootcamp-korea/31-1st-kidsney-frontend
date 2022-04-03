@@ -1,13 +1,13 @@
 @import '../../../../../Styles/variables.scss';
 
 .reviewModal {
-  position: absolute;
+  position: fixed;
   @include flexCenter;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 100;
 
   .contents {
