@@ -23,11 +23,26 @@ const Review = () => {
 
   //가상의 userId
   const userId = 'dfdfas123';
+
+  //가상의 댓글 data
+  let reviewTextarea =
+    "I bought this to use as an Easter basket for my great grandson. He loves Spiderman. After seeing this I know he won't be disappointed on Easter morning!. It's great, well made. He will love it.";
+
   return (
     <div className="review">
-      <ReviewModal product={product} userId={userId} />
+      {/* <ReviewModal product={product} userId={userId} /> */}
       <h2>Reviews</h2>
       <button className="reviewBtn">Write a review</button>
+      <ul className="reviewList">
+        <li className="reviewCard">
+          <h3 className="userId">{userId}</h3>
+          <p className="contents">{reviewTextarea}</p>
+        </li>
+        <li className="reviewCard">
+          <h3 className="userId">{userId}</h3>
+          <p className="contents">{reviewTextarea}</p>
+        </li>
+      </ul>
     </div>
   );
 };
