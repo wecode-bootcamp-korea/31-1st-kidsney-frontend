@@ -22,6 +22,46 @@ const SignUpModal = ({ onLoginClickModal }) => {
     date_of_birth,
   } = inputValue;
 
+  const isValidEmail = email.includes('@') && email.includes('.');
+  const specialLetter = password.search(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/
+  );
+  const isValidPassword = password.length >= 8;
+
+  const checkPhonenumber = phone_number.search(
+    /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/
+  );
+
+  const isValidInput =
+    first_name.length >= 1 &&
+    last_name.length >= 1 &&
+    date_of_birth.length >= 1;
+
+  const getIsActive =
+    isValidEmail &&
+    specialLetter === 0 &&
+    isValidPassword &&
+    checkPhonenumber === 0 &&
+    isValidInput;
+
+  const handleButtonValid = () => {
+    if (!isValidEmail) {
+      alert('이메일 형식이 맞지 않습니다.');
+      return false;
+    } else if (specialLetter === -1) {
+      alert('비밀번호에 대문자, 소문자, 특수문자를 포함해주세요.');
+      return false;
+    } else if (!isValidPassword) {
+      alert('비밀번호 8자 이상으로 적어주세요');
+      return false;
+    } else if (checkPhonenumber === -1) {
+      alert('핸드폰번호 형식은 010-0000-0000 입니다.');
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   function handleInputValue(e) {
     const { name, value } = e.target;
     setInputValue(inputValue => ({ ...inputValue, [name]: value }));
@@ -30,32 +70,32 @@ const SignUpModal = ({ onLoginClickModal }) => {
   const navigate = useNavigate();
 
   function goToLogin() {
-    fetch('http://10.58.1.95:8000/users/signup', {
-      method: 'POST',
-      body: JSON.stringify({
-        first_name: first_name,
-        last_name: last_name,
-        email: email,
-        password: password,
-        phone_number: phone_number,
-        date_of_birth: date_of_birth,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.ok) {
-          alert('회원가입 성공!');
-          navigate('/login');
-        } else if (res.status === 400) {
-          throw new Error('Not Found');
-        } else {
-          throw new Error('Unexpected Http Status Code');
-        }
-        return res.json();
+    handleButtonValid() &&
+      fetch('http://10.58.2.64:8000/users/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          first_name: first_name,
+          last_name: last_name,
+          email: email,
+          password: password,
+          phone_number: phone_number,
+          date_of_birth: date_of_birth,
+        }),
       })
-      .catch(error => {
-        // console.log(error.message);
-      });
+        .then(res => {
+          if (res.ok) {
+            alert('회원가입 성공!');
+            navigate('/login');
+          } else if (res.status === 400) {
+            throw new Error('Not Found');
+          } else {
+            throw new Error('Unexpected Http Status Code');
+          }
+          return res.json();
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
   }
 
   return (
@@ -98,7 +138,7 @@ const SignUpModal = ({ onLoginClickModal }) => {
           <input
             className="phoneNumber"
             type="text"
-            placeholder="Phone Number"
+            placeholder="010-0000-0000"
             onChange={handleInputValue}
             name="phone_number"
           />
@@ -109,7 +149,11 @@ const SignUpModal = ({ onLoginClickModal }) => {
             onChange={handleInputValue}
             name="date_of_birth"
           />
-          <button className="createBtn" type="button" onClick={goToLogin}>
+          <button
+            className={getIsActive ? 'signUpButtonActive' : 'signUpButton'}
+            type="button"
+            onClick={goToLogin}
+          >
             Create Account
           </button>
           <div className="goToSignIn">

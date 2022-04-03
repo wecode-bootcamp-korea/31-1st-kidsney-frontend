@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
 import Boys from './Boys';
 import Girls from './Girls';
 import Toys from './Toys';
@@ -6,6 +7,14 @@ import './MenuTab.scss';
 
 const MenuTab = () => {
   const [currentId, setCurrentId] = useState(1);
+  const [isTabClicked, setIsTabClicked] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsTabClicked(true);
+  };
+  const handleMouseLeave = () => {
+    setIsTabClicked(false);
+  };
 
   const clickHandler = id => {
     setCurrentId(id);
@@ -16,17 +25,27 @@ const MenuTab = () => {
       <ul className="tabs">
         {CATEGORY_ARR.map((category, idx) => {
           return (
-            <button
+            <li
               keys={category + idx}
               className={category}
-              onClick={() => clickHandler(idx + 1)}
+              onClick={() => {
+                clickHandler(idx + 1);
+              }}
+              onMouseOver={handleMouseOver}
+              onMouseLeave={handleMouseLeave}
             >
               {category}
-            </button>
+            </li>
           );
         })}
       </ul>
-      <div className="contents">{MAPPING_OBJ[currentId]}</div>
+      <div
+        className={isTabClicked ? 'contents active' : 'contents'}
+        onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
+      >
+        {MAPPING_OBJ[currentId]}
+      </div>
     </div>
   );
 };

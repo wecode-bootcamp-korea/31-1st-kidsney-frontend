@@ -8,12 +8,12 @@ const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);
 
   const onClickModal = () => {
-    setIsClicked(!isClicked);
+    setIsClicked(true);
   };
 
   return (
     <nav className="nav">
-      {isClicked && <LoginModal onClickModal={onClickModal} />}
+      {/* <LoginModal setIsClicked={setIsClicked} /> */}
       <div className="headerNav">
         <h1 className="logo">KIDSNEY</h1>
         <ul className="navLinks">

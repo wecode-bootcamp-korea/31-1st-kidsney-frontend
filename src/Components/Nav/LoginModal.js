@@ -10,6 +10,10 @@ const LoginModal = ({ onClickModal }) => {
     setIsLoginClicked(!isLoginClicked);
   };
 
+  const closeLoginModal = () => {
+    setIsLoginClicked(false);
+  };
+
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
@@ -17,27 +21,51 @@ const LoginModal = ({ onClickModal }) => {
 
   const { email, password } = inputValue;
 
+  const isValidEmail = email.includes('@') && email.includes('.');
+  const specialLetter = password.search(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/
+  );
+  const isValidPassword = password.length >= 8;
+
+  const getIsActive = isValidEmail && specialLetter === 0 && isValidPassword;
+
+  const handleButtonValid = () => {
+    if (!isValidEmail) {
+      alert('이메일 형식이 맞지 않습니다.');
+      return false;
+    } else if (specialLetter === -1) {
+      alert('비밀번호에 대문자, 소문자, 특수문자를 포함해주세요.');
+      return false;
+    } else if (!isValidPassword) {
+      alert('비밀번호 8자 이상으로 적어주세요');
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   function handleInputValue(e) {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
   }
 
   function goToMain() {
-    fetch('http://10.58.1.95:8000/users/signin', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.token) {
-          localStorage.setItem('token', res.token);
-        } else {
-          alert('');
-        }
-      });
+    handleButtonValid() &&
+      fetch('http://10.58.2.64:8000/users/signin', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.token) {
+            localStorage.setItem('token', res.token);
+          } else {
+            alert('');
+          }
+        });
   }
 
   return (
@@ -63,7 +91,11 @@ const LoginModal = ({ onClickModal }) => {
             onChange={handleInputValue}
             name="password"
           />
-          <button type="button" onClick={goToMain}>
+          <button
+            className={getIsActive ? 'loginButtonActive' : 'loginButton'}
+            type="button"
+            onClick={goToMain}
+          >
             Sign In
           </button>
         </form>
@@ -72,6 +104,7 @@ const LoginModal = ({ onClickModal }) => {
           <button
             onClick={() => {
               onLoginClickModal();
+              closeLoginModal();
             }}
           >
             Create an Account

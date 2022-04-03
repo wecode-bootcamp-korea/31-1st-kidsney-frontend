@@ -35,7 +35,12 @@
     position: absolute;
     margin-top: 172px;
     font-size: $font-regular;
-    background-color: red;
-    transform: translateX(300%);
+    background-color: $color-light-blue;
+    transform: translateX(150%);
+    transition: all 0.8s ease-in;
+
+    &.active {
+      transform: translateX(0);
+    }
   }
 }

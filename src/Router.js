@@ -4,7 +4,7 @@ import Nav from './Components/Nav/Nav';
 import Main from './Pages/Main/Main';
 import LoginModal from './Components/Nav/LoginModal';
 import SignUpModal from './Components/Nav/SignUpModal';
-import MenuTab from './Components/Nav/MenuTab';
+
 import ProductList from './Pages/ProductList/ProductList';
 import ProductSpec from './Pages/ProductList/ProductSpec/ProductSpec';
 import Footer from './Components/Footer/Footer';

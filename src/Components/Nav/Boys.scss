@@ -1,10 +1,18 @@
+@import '../../Styles/variables.scss';
 .boys {
   display: flex;
 
   .clothesType {
-    margin-right: 40px;
+    margin-right: 50px;
+    font-size: 20px;
+    &:hover {
+      color: $color-blue;
+    }
     &:last-child {
       margin: 0;
+    }
+    .fas {
+      margin-right: 7px;
     }
   }
 }

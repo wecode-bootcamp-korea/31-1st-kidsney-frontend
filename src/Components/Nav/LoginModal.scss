@@ -50,7 +50,7 @@
         color: $color-gray;
       }
 
-      button {
+      .loginButtonActive {
         width: 380px;
         height: 50px;
         border: 1px solid $color-blue;
@@ -59,9 +59,15 @@
         color: $color-white;
         margin-top: 7px;
       }
-      button:hover {
+
+      .loginButton {
+        width: 380px;
+        height: 50px;
+        border: 1px solid $color-light-blue;
+        background-color: $color-light-blue;
+        border-radius: 4px;
         color: $color-white;
-        background-color: $color-dark-blue;
+        margin-top: 7px;
       }
     }
 

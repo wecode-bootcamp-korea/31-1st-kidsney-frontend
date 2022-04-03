@@ -1,12 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Toys.scss';
 
 const Toys = () => {
   return (
     <div className="toys">
-      <li className="clothesType">Top</li>
-      <li className="clothesType">Bottom</li>
-      <li className="clothesType">Acc</li>
+      <li className="clothesType">
+        <Link to="/products?main=toy">
+          <i class="fas fa-car" />
+          Toys
+        </Link>
+      </li>
     </div>
   );
 };
