@@ -1,9 +1,8 @@
 @import '../../../../Styles/variables.scss';
 
 .review {
-  @include flexColumn;
   position: relative;
-  flex-direction: column;
+  @include flexColumn;
   width: 700px;
   font-family: 'Didact Gothic', sans-serif;
 

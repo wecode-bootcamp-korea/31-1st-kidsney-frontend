@@ -25,24 +25,25 @@ const Review = () => {
       body: JSON.stringify({
         review_id: e.target.id,
       }),
-    }).then(res => {
-      if (res.ok) {
-        alert('삭제되었습니다.');
+    })
+      .then(res => {
+        if (res.ok) {
+          alert('삭제되었습니다.');
+        } else {
+          alert('네트워크 오류입니다.');
+        }
 
+        return res.json();
+      })
+      .then(data => {
         fetch('http://10.58.2.64:8000/products/1')
           .then(res => res.json())
           .then(data => setReviewList(data.result.reviews));
-      } else {
-        alert('네트워크 오류입니다.');
-      }
-
-      return res.json();
-    });
+      });
   };
 
   //product spec으로부터 상세페이지 내에 있는 product에 대한 정보 props로 전달받는다.
-
-  // 가상의 review data
+  // 가상의 상품 상세 data
   const product = {
     id: 2,
     name: 'Mick Mouse Bodysuit',

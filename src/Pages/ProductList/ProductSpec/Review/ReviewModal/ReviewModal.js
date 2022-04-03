@@ -19,15 +19,16 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
     })
       .then(res => {
         if (res.ok) {
-          alert('등록완료');
-          fetch('http://10.58.2.64:8000/products/1')
-            .then(res => res.json())
-            .then(data => setReviewList(data.result.reviews));
+          alert('리뷰 등록이 완료되었습니다.');
         } else {
           alert('네트워크 오류입니다.');
         }
-
         return res.json();
+      })
+      .then(data => {
+        fetch('http://10.58.2.64:8000/products/1')
+          .then(res => res.json())
+          .then(data => setReviewList(data.result.reviews));
       })
       .catch(error => console.error(error.message));
   };
@@ -62,7 +63,6 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
             className="postBtn"
             onClick={() => {
               showReviewModal();
-
               submitReview();
             }}
           >
