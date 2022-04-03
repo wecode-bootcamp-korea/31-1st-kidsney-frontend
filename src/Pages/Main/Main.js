@@ -1,10 +1,10 @@
-import RecoProductList from '../../Components/RecoProductList/RecoProductList';
 import React from 'react';
 
+import Review from '../ProductList/ProductSpec/Review/Review';
 const Main = () => {
   return (
     <div>
-      <RecoProductList />
+      <Review />
     </div>
   );
 };
