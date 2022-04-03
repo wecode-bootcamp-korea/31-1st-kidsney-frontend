@@ -27,10 +27,16 @@
     text-align: left;
 
     .reviewCard {
+      position: relative;
       padding: 0 20px;
       margin: 20px 0;
       height: 100px;
       border-bottom: $border-bottom;
+
+      .closeBtn {
+        position: absolute;
+        right: 10px;
+      }
 
       .row {
         display: flex;

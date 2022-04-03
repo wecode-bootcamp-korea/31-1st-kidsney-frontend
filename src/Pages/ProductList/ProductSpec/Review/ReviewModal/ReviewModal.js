@@ -20,16 +20,14 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
       .then(res => {
         if (res.ok) {
           alert('등록완료');
+          fetch('http://10.58.2.64:8000/products/1')
+            .then(res => res.json())
+            .then(data => setReviewList(data.result.reviews));
         } else {
           alert('네트워크 오류입니다.');
         }
 
         return res.json();
-      })
-      .then(data => {
-        fetch('http://10.58.2.64:8000/products/1')
-          .then(res => res.json())
-          .then(data => setReviewList(data.result.reviews));
       })
       .catch(error => console.error(error.message));
   };

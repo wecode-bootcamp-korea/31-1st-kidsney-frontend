@@ -19,6 +19,27 @@ const Review = () => {
     getData();
   }, []);
 
+  const deleteReview = e => {
+    fetch('http://10.58.2.64:8000/products/1', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        review_id: e.target.id,
+      }),
+    }).then(res => {
+      if (res.ok) {
+        alert('삭제되었습니다.');
+
+        fetch('http://10.58.2.64:8000/products/1')
+          .then(res => res.json())
+          .then(data => setReviewList(data.result.reviews));
+      } else {
+        alert('네트워크 오류입니다.');
+      }
+
+      return res.json();
+    });
+  };
+
   //product spec으로부터 상세페이지 내에 있는 product에 대한 정보 props로 전달받는다.
 
   // 가상의 review data
@@ -60,17 +81,24 @@ const Review = () => {
       <ul className="reviewList">
         {reviewList.length > 0 &&
           reviewList.map((li, i) => {
-            const { user, content, created_at } = li;
+            const { review_id, user, content, created_at } = li;
             const [day, month, date, year] = Date(created_at)
               .split(' ')
               .slice(0, 4);
             return (
               <li key={i} className="reviewCard">
+                <button
+                  id={review_id}
+                  className="closeBtn"
+                  onClick={deleteReview}
+                >
+                  <i className="fas fa-times" />
+                </button>
                 <div className="row">
                   <h3 className="userId">{user}</h3>
                   <span className="createdTime">
                     {year}/ {month} / {date} / {day}
-                  </span>{' '}
+                  </span>
                 </div>
                 <p className="contents">{content}</p>
               </li>
