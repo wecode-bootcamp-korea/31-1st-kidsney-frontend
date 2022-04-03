@@ -4,7 +4,6 @@ import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
 import { API } from '../../config.js';
 import './ProductList.scss';
-import { useLocation } from 'react-router-dom';
 
 const ProductList = () => {
   const [param, setParam] = useState('boy');
@@ -12,7 +11,6 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState([]);
   const [subtotal, setSubtotal] = useState();
-  const location = useLocation();
 
   useEffect(() => {
     fetch(url)
@@ -29,7 +27,6 @@ const ProductList = () => {
       : filters.splice(filters.indexOf(e.currentTarget.id), 1);
     setFilters(filters);
     setQueryStrings();
-    console.log(filters);
   };
 
   // const handleFilter = e => {
@@ -59,9 +56,9 @@ const ProductList = () => {
             addParamFilters.push(`&character=${splittedFilter[1]}`);
             break;
 
-          case 'PRICE':
-            addParamFilters.push(`&order-by=${splittedFilter[1]}`);
-            break;
+          // case 'SORTER':
+          //   addParamFilters.push(`&order-by=${splittedFilter[1]}`);
+          //   break;
 
           default:
         }
@@ -73,11 +70,22 @@ const ProductList = () => {
     setUrl(queryString);
     console.log(url);
   };
-  console.log(location);
+
+  const sorterHandler = e => {
+    let queryString = url;
+
+    setUrl(
+      queryString
+        .replace('&order-by=high-price', '')
+        .replace('&order-by=low-price', '') + e.target.id
+    );
+    console.log(url);
+  };
+
   return (
     <div className="productList">
       <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
-      <SorterBar subtotal={subtotal} handleFilter={handleFilter} />
+      <SorterBar subtotal={subtotal} sorterHandler={sorterHandler} />
       <div className="row">
         <Aside filters={filters} handleFilter={handleFilter} />
         <SearchItems products={products} />
