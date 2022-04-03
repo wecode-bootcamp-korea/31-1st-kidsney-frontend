@@ -11,6 +11,10 @@ const SorterBar = ({ subtotal }) => {
       <div className="priceSorter">
         <span className="smallGray">SortBy</span>
         <i className="fas fa-arrow-circle-down" />
+        <div className="sorterSeletor">
+          <span className="orderby-high">가격높은순</span>
+          <span className="orderby-low">가격낮은순</span>
+        </div>
       </div>
     </div>
   );
