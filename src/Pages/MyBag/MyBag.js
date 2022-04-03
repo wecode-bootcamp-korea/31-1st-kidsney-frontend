@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import SubEvent from './SubEvent/SubEvent';
 import OrderProduct from '../../Components/OrderProduct/OrderProduct';
 import OrderSummary from './OrderSummary/OrderSummary';
+import Button from '../../Components/Button/Button';
 
 import './MyBag.scss';
+
 const MyBag = () => {
+  const navigate = useNavigate();
   // 가상의 프로모션 상품들
   const orderProducts = [
     {
@@ -40,6 +44,10 @@ const MyBag = () => {
 
   const subTractCount = () => {
     count === -1 ? setCount(count) : setCount(count - 1);
+  };
+
+  const goToMain = () => {
+    navigate('/');
   };
 
   return (
@@ -85,6 +93,17 @@ const MyBag = () => {
           <OrderSummary subTotal={subTotal} total={total} />
         </div>
       </main>
+
+      {
+        /* /* 저장된 상품이 없을 경우 */
+        // <main className="empty">
+        //   <i class="fas fa-shopping-bag" />
+        //   <h2>Your Bag is Empty!</h2>
+        //   <p>Not seeing items you've added?</p>
+        //   <p className="signIn">Sign in</p>
+        //   <Button text="Continue Shopping" functionType={goToMain} /> */}
+        // </main>
+      }
     </div>
   );
 };
