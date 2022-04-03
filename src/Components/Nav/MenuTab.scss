@@ -1,0 +1,41 @@
+@import '../../Styles/variables.scss';
+
+.menuTab {
+  @include flexCenter;
+  width: 100%;
+  .tabs {
+    display: flex;
+  }
+  .Boys,
+  .Girls,
+  .Toys {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 60px;
+    height: 70px;
+    margin-right: 60px;
+    font-size: 23px;
+    // background-color: red;
+    &:last-child {
+      margin: 0;
+    }
+  }
+  .Boys:hover,
+  .Girls:hover,
+  .Toys:hover {
+    border-bottom: 2px solid $color-blue;
+  }
+  .contents {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 172px;
+    font-size: $font-regular;
+    background-color: red;
+    transform: translateX(300%);
+  }
+}

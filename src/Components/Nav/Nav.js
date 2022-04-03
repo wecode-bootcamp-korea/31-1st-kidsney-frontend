@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LoginModal from './LoginModal';
+import MenuTab from './MenuTab';
 
 import './Nav.scss';
 
@@ -32,9 +33,7 @@ const Nav = () => {
       </div>
       <div className="navBar">
         <ul className="navBarUl">
-          <li className="navBarLi">Boys</li>
-          <li className="navBarLi">Girls</li>
-          <li className="navBarLi">Toys</li>
+          <MenuTab />
         </ul>
         <div className="search">
           <input className="searchInput" type="text" placeholder="SERACH" />

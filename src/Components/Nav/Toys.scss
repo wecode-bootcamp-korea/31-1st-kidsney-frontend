@@ -1,0 +1,10 @@
+.toys {
+  display: flex;
+
+  .clothesType {
+    margin-right: 40px;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
