@@ -1,6 +1,6 @@
-@import 'Styles/variables.scss';
+@import '../../Styles/variables.scss';
 
-.Button {
+.button {
   padding: 13px 10px;
   margin: 10px;
   background-color: $color-blue;
@@ -13,7 +13,7 @@
   }
 }
 
-.Button.white {
+.button.white {
   background-color: $color-white;
   color: $color-blue;
   border: 1px solid $color-blue;

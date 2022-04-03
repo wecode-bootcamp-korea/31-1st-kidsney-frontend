@@ -38,7 +38,7 @@ const SubEvent = ({ count }) => {
             <img src={image_url} alt="thumbnail" />
             <div className="description">
               <h2>
-                ${price / 2} {name} 할인 이벤트!
+                ${price / 2} {name} 특가 SALE!
               </h2>
               <p>절반 가격 할인 이벤트 진행(04.07~)</p>
               <Button text="Add to Bag" />

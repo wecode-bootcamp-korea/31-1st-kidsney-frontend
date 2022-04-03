@@ -29,11 +29,15 @@
         overflow-x: hidden;
         border-top: $border-bottom;
         border-bottom: $border-bottom;
+        background-color: #fff;
 
         .leftBtn,
         .rightBtn {
           position: absolute;
           z-index: 10;
+          background-color: $color-white;
+
+          height: 100%;
 
           i {
             font-size: $font-large;
@@ -45,11 +49,13 @@
         }
 
         .leftBtn {
-          left: 10px;
+          left: 0px;
+          width: 80px;
         }
 
         .rightBtn {
-          right: 10px;
+          right: 0px;
+          width: 110px;
         }
       }
     }
@@ -58,8 +64,12 @@
   main {
     margin: 50px 120px;
 
+    .title {
+      margin: 0;
+    }
+
     .contents {
-      display: flex;
+      @include flexCenter;
       width: 100%;
       margin: 0;
       transition: all ease 0.4s;
@@ -74,6 +84,21 @@
 
 @media (max-width: 1200px) {
   .myBag {
+    .event {
+      .subEvent {
+        &.right {
+          h2 {
+            font-size: 20px;
+          }
+
+          .leftBtn,
+          .rightBtn {
+            width: 20px;
+          }
+        }
+      }
+    }
+
     main {
       margin: 30px;
       .contents {
@@ -88,12 +113,8 @@
 @media (max-width: 1000px) {
   .myBag {
     .event {
-      .sub-event {
+      .subEvent {
         &.left {
-          h2 {
-            font-size: 20px;
-          }
-
           p {
             font-size: $font-small;
           }

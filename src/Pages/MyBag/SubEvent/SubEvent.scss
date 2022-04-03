@@ -32,3 +32,19 @@
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .subEvent {
+    .eventCard {
+      margin: 0 70px;
+
+      &:first-child {
+        margin-right: 150px;
+      }
+
+      &:last-child {
+        margin-left: 150px;
+      }
+    }
+  }
+}

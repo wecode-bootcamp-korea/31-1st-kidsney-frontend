@@ -75,7 +75,7 @@ const MyBag = () => {
         </div>
       </div>
       <main>
-        <h2>My Bag ({orderProducts.length})</h2>
+        <h2 className="title">My Bag ({orderProducts.length})</h2>
         <div className="contents">
           <div className="orderProducts">
             {orderProducts.map(orderProduct => (
