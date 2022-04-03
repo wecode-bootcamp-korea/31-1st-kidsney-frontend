@@ -26,7 +26,7 @@ const MenuTab = () => {
         {CATEGORY_ARR.map((category, idx) => {
           return (
             <li
-              keys={category + idx}
+              key={category + idx}
               className={category}
               onClick={() => {
                 clickHandler(idx + 1);

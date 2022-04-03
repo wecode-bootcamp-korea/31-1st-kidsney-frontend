@@ -95,7 +95,7 @@ const SignUpModal = ({ setActiveModal, closeModal }) => {
           return res.json();
         })
         .catch(error => {
-          console.log(error.message);
+          // console.log(error.message);
         });
   }
 

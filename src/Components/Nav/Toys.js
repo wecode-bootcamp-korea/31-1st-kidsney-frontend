@@ -7,7 +7,7 @@ const Toys = () => {
     <div className="toys">
       <li className="clothesType">
         <Link to="/products?main=toy">
-          <i class="fas fa-car" />
+          <i className="fas fa-car" />
           Toys
         </Link>
       </li>
