@@ -1,9 +1,9 @@
 import React from 'react';
-import Category from './Category';
-import ContentAsset from './ContentAsset';
-import ContentCards from './ContentCards';
-import ContentInfo from './ContentInfo';
-import Copyright from './ContentCopyright';
+import Category from './Category/Category';
+import ContentAsset from './ContentAsset/ContentAsset';
+import ContentCards from './ContentCards/ContentCards';
+import ContentInfo from './ContentInfo/ContentInfo';
+import Copyright from './ContentCopyright/ContentCopyright';
 import './Footer.scss';
 
 const Footer = () => {
@@ -52,7 +52,7 @@ const Footer = () => {
         <div className="items">
           <div className="category">
             <ul className="categoryList">
-              {FOOTER_INFO_LIST.map(category => {
+              {FOOTER_CATEGORY_LIST.map(category => {
                 return (
                   <Category key={category.id} content={category.content} />
                 );
@@ -95,7 +95,7 @@ const Footer = () => {
   );
 };
 
-const FOOTER_INFO_LIST = [
+const FOOTER_CATEGORY_LIST = [
   {
     id: 1,
     content: 'Character',

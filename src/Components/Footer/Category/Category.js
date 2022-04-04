@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.scss';
+import '../Footer.scss';
 import './Category.scss';
 
 const Category = ({ id, content }) => {

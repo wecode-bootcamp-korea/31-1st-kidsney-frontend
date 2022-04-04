@@ -124,23 +124,14 @@
 
       .contentAsset {
         @include flexColumn;
-
-        .list {
-        }
       }
 
       .contentInfo {
         @include flexColumn;
-
-        .info {
-        }
       }
 
       .contentCards {
         @include flexColumn;
-
-        .cards {
-        }
       }
     }
   }
