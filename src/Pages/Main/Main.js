@@ -1,11 +1,26 @@
 import React from 'react';
+import RecoProductList from '../../Components/RecoProductList/RecoProductList';
+import './Main.scss';
 
-import Review from '../ProductList/ProductSpec/Review/Review';
 const Main = () => {
   return (
-    <div>
-      <Review />
-    </div>
+    <main className="main">
+      <div className="mainEvent">
+        <img
+          src="https://i.ibb.co/K6MSKvW/main-event-toys-png.png"
+          alt="main event"
+        />
+      </div>
+      <div className="subEvent">
+        <img
+          src="https://i.ibb.co/ngW27ZG/sub-event-toys.png"
+          alt="sub event"
+        />
+      </div>
+      <div>
+        <RecoProductList />
+      </div>
+    </main>
   );
 };
 
