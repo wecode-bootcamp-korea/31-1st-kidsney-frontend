@@ -29,9 +29,10 @@ const ProductList = () => {
   const sorterHandler = e => {
     setSorter(e.target.id && `&order-by=${e.target.id}`);
   };
+
   return (
     <div className="productList">
-      <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />{' '}
+      <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
       <SorterBar subtotal={subtotal} sorterHandler={sorterHandler} />
       <div className="row">
         <Aside products={products} />
