@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+
+import { API } from '../../../config';
+
 import Button from '../../../Components/Button/Button';
 import MyBagModal from './MyBagModal/MyBagModal';
 import WishListModal from './WishListModal/WishListModal';
@@ -21,7 +24,7 @@ const ProductSpec = () => {
 
   const getData = async () => {
     const data = await (
-      await fetch(`http://10.58.4.26:8000/products/${id}
+      await fetch(`${API.products}/${id}
     `)
     ).json();
 
@@ -31,6 +34,15 @@ const ProductSpec = () => {
   useEffect(() => getData(), []);
 
   const { name, price, images, detail, stock } = product;
+
+  let S = 0;
+  let M = 0;
+  let L = 0;
+  let F = 0;
+
+  if (stock) {
+    [{ S }, { M }, { L }, { F }] = stock;
+  }
 
   const [clickedImg, setClickedImg] = useState('0');
   const [size, setSize] = useState('');
@@ -89,6 +101,14 @@ const ProductSpec = () => {
   const scrollToDetail = () => {
     detailRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+
+  //Size part
+  const sizeList = [
+    { id: 1, value: 'S', name: 'small', count: S },
+    { id: 2, value: 'M', name: 'medium', count: M },
+    { id: 3, value: 'L', name: 'large', count: L },
+    { id: 4, value: 'FREE', name: 'free', count: F },
+  ];
 
   //Quantitiy part
   const plusCount = () => {
@@ -159,17 +179,21 @@ const ProductSpec = () => {
 
             <div className="sizeOptions">
               <h3> Size </h3>
-              {Size_List.map(({ id, value, name }) => {
+              {sizeList.map(({ id, value, name, count }) => {
+                console.log(count === 0);
                 return (
                   <label
                     key={id}
                     className={size === name ? 'size clicked' : 'size'}
                   >
                     <input
+                      key={id}
                       type="checkbox"
                       name="sizeOption"
                       value={name}
                       onClick={handleSize}
+                      className={count === 0 ? 'disabled' : null}
+                      disabled={count === 0 ? 'disabled' : null}
                     />
                     <span>{value}</span>
                   </label>
@@ -241,9 +265,3 @@ const ProductSpec = () => {
 };
 
 export default ProductSpec;
-
-const Size_List = [
-  { id: 1, value: 'S', name: 'small' },
-  { id: 2, value: 'M', name: 'medium' },
-  { id: 3, value: 'L', name: 'large' },
-];
