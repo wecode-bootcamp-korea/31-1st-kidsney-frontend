@@ -1,0 +1,39 @@
+@import '../../Styles/variables.scss';
+
+.emptyList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 660px;
+  margin: 0 150px 70px 150px;
+  border-top: $border-bottom;
+  border-bottom: $border-bottom;
+  .empty {
+    .heart {
+      display: flex;
+      justify-content: center;
+      .far {
+        font-size: 150px;
+      }
+    }
+    .emptyTxt {
+    }
+
+    .continueShopping {
+      display: flex;
+      justify-content: center;
+      .shoppingBtn {
+        width: 220px;
+        padding: 15px;
+        border: 1px solid $color-blue;
+        background-color: $color-blue;
+        border-radius: $border-radius;
+        color: $color-white;
+        font-size: 20px;
+        &:hover {
+          background-color: $color-dark-blue;
+        }
+      }
+    }
+  }
+}
