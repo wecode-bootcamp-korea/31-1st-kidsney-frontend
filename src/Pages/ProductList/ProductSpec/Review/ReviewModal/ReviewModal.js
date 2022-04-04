@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+
+import { API } from '../../../../../config';
 import './ReviewModal.scss';
 
 const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
@@ -7,7 +9,9 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
   const [content, setContent] = useState('');
 
   const submitReview = () => {
-    fetch('http://10.58.2.64:8000/products/1', {
+    showReviewModal();
+
+    fetch(`${API.products}/1`, {
       method: 'post',
       headers: {
         Authorization:
@@ -26,7 +30,7 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
         return res.json();
       })
       .then(data => {
-        fetch('http://10.58.2.64:8000/products/1')
+        fetch(`${API.products}/1`)
           .then(res => res.json())
           .then(data => setReviewList(data.result.reviews));
       })
@@ -59,13 +63,7 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
               placeholder="Example : I bought this a month ago and am so happy that I did..."
             />
           </label>
-          <button
-            className="postBtn"
-            onClick={() => {
-              showReviewModal();
-              submitReview();
-            }}
-          >
+          <button className="postBtn" onClick={submitReview}>
             Post Review
           </button>
         </main>

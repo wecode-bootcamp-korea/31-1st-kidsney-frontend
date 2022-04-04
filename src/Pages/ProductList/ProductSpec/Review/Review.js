@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ReviewModal from './ReviewModal/ReviewModal';
+import { API } from '../../../../config';
 import './Review.scss';
 
 const Review = () => {
@@ -8,9 +9,7 @@ const Review = () => {
   const [reviewList, setReviewList] = useState([]);
 
   const getData = async () => {
-    const data = await (
-      await fetch('http://10.58.2.64:8000/products/1')
-    ).json();
+    const data = await (await fetch(`${API.products}/1`)).json();
 
     setReviewList(data.result.reviews);
   };
@@ -20,11 +19,12 @@ const Review = () => {
   }, []);
 
   const deleteReview = e => {
-    fetch('http://10.58.2.64:8000/products/1', {
+    fetch(`${API.products}/1?review-id=${e.target.id}`, {
       method: 'DELETE',
-      body: JSON.stringify({
-        review_id: e.target.id,
-      }),
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjksImlhdCI6MTY0ODk3NTA3NCwiZXhwIjoxNjQ5MTQ3ODc0fQ.dWaX70ng-CtJfbOrVnl_s4Cma49pRW_N8vbhZ4vZECU',
+      },
     })
       .then(res => {
         if (res.ok) {
@@ -36,9 +36,13 @@ const Review = () => {
         return res.json();
       })
       .then(data => {
-        fetch('http://10.58.2.64:8000/products/1')
-          .then(res => res.json())
-          .then(data => setReviewList(data.result.reviews));
+        if (data.message === 'deleted') {
+          fetch(`${API.products}/1`)
+            .then(res => res.json())
+            .then(data => {
+              setReviewList(data.result.reviews);
+            });
+        }
       });
   };
 
@@ -81,19 +85,22 @@ const Review = () => {
       </button>
       <ul className="reviewList">
         {reviewList.length > 0 &&
-          reviewList.map((li, i) => {
-            const { review_id, user, content, created_at } = li;
+          reviewList.map((review, i) => {
+            const { review_id, user, content, created_at } = review;
             const [day, month, date, year] = Date(created_at)
               .split(' ')
               .slice(0, 4);
             return (
               <li key={i} className="reviewCard">
                 <button
-                  id={review_id}
                   className="closeBtn"
-                  onClick={deleteReview}
+                  onClick={e => {
+                    if (window.confirm('삭제하시겠습니까?')) {
+                      deleteReview(e);
+                    }
+                  }}
                 >
-                  <i className="fas fa-times" />
+                  <i id={review_id} className="fas fa-times" />
                 </button>
                 <div className="row">
                   <h3 className="userId">{user}</h3>
