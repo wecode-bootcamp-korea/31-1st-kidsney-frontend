@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import ReviewModal from './ReviewModal/ReviewModal';
 import { API } from '../../../../config';
+
 import './Review.scss';
 
 const Review = () => {
@@ -43,7 +44,8 @@ const Review = () => {
               setReviewList(data.result.reviews);
             });
         }
-      });
+      })
+      .then(() => window.location.reload());
   };
 
   //product spec으로부터 상세페이지 내에 있는 product에 대한 정보 props로 전달받는다.
@@ -83,8 +85,15 @@ const Review = () => {
       <button className="reviewBtn" onClick={showReviewModal}>
         Write a review
       </button>
+
       <ul className="reviewList">
-        {reviewList.length > 0 &&
+        {reviewList.length === 0 ? (
+          <img
+            className="loadingImg"
+            src="/images/loading/loading-gif.gif"
+            alt="loading..."
+          />
+        ) : (
           reviewList.map((review, i) => {
             const { review_id, user, content, created_at } = review;
             const [day, month, date, year] = Date(created_at)
@@ -111,7 +120,8 @@ const Review = () => {
                 <p className="contents">{content}</p>
               </li>
             );
-          })}
+          })
+        )}
       </ul>
     </div>
   );

@@ -34,6 +34,7 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
           .then(res => res.json())
           .then(data => setReviewList(data.result.reviews));
       })
+      .then(() => window.location.reload())
       .catch(error => console.error(error.message));
   };
 

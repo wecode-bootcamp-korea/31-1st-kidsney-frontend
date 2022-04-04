@@ -25,6 +25,14 @@
   .reviewList {
     text-align: left;
 
+    .loadingImg {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      right: 50%;
+      transform: translateX(-50%);
+    }
+
     .reviewCard {
       position: relative;
       padding: 0 20px;
