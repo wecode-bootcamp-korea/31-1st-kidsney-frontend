@@ -32,20 +32,16 @@ const ProductList = () => {
   );
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
-  // const [offset, setOffset] = useState(0);
-  const [pageUrl, setPageUrl] = useState('');
+  const [pageNum, setPageNum] = useState('');
 
   useEffect(() => {
-    fetch(url + pageUrl)
+    fetch(url + pageNum)
       .then(response => response.json())
       .then(product => {
         setProducts(product.result);
         setSubtotal(product.count);
-
-        // console.log(offset);
-        console.log(pageUrl);
       });
-  }, [url, pageUrl]);
+  }, [url, pageNum]);
 
   const handleFilter = e => {
     filters.indexOf(e.currentTarget.id) === -1
@@ -105,8 +101,7 @@ const ProductList = () => {
   };
 
   const pageHandler = e => {
-    // setOffset((e.target.id - 1) * LIMIT);
-    setPageUrl(`&offset=${(e.target.id - 1) * LIMIT}&limit=${LIMIT}`);
+    setPageNum(`&offset=${(e.target.id - 1) * LIMIT}&limit=${LIMIT}`);
   };
 
   return (
