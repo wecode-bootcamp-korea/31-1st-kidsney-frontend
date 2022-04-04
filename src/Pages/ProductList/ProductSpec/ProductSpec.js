@@ -12,6 +12,7 @@ import './ProductSpec.scss';
 
 const ProductSpec = () => {
   const detailRef = useRef();
+  const { id } = useParams();
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -19,8 +20,6 @@ const ProductSpec = () => {
   }, [pathname]);
 
   const [product, setProduct] = useState({});
-
-  const { id } = useParams();
 
   const getData = async () => {
     const data = await (
@@ -30,23 +29,20 @@ const ProductSpec = () => {
 
     setProduct(data.result);
   };
-
   useEffect(() => getData(), []);
-
   const { name, price, images, detail, stock } = product;
 
   let S = 0;
   let M = 0;
   let L = 0;
   let F = 0;
-
   if (stock) {
     [{ S }, { M }, { L }, { F }] = stock;
   }
 
   const [clickedImg, setClickedImg] = useState('0');
   const [size, setSize] = useState('');
-  const [count, setCount] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const [checkedList, setCheckedList] = useState('0');
 
   const [isClosedBoxModal, setIsClosedBoxModal] = useState(true);
@@ -71,6 +67,35 @@ const ProductSpec = () => {
       description: <h2>Reviews</h2>,
     },
   ];
+
+  const [orderProducts, setOrderProducts] = useState([]);
+
+  const sendToBag = () => {
+    fetch(`${API}/바구니페이지 주소`, {
+      method: 'post',
+      headers: {
+        Authorization: '토큰 주소',
+      },
+      body: JSON.stringify({
+        id: id,
+        quantity: quantity,
+        size: size,
+      }),
+    })
+      .then(res => {
+        if (res.ok) {
+          alert('장바구니 성공!');
+        } else {
+          console.log('error');
+        }
+        return res.json();
+      })
+      .then(data => {
+        fetch(`${API}/바구니페이지 주소`).then(data =>
+          console.log(data.result)
+        );
+      });
+  };
 
   //myBag modal part
   const showMyBag = () => {
@@ -111,12 +136,12 @@ const ProductSpec = () => {
   ];
 
   //Quantitiy part
-  const plusCount = () => {
-    setCount(count => count + 1);
+  const plusQuantity = () => {
+    setQuantity(quantity => quantity + 1);
   };
 
-  const minusCount = () => {
-    setCount(count <= 0 ? 0 : count - 1);
+  const minusQuantity = () => {
+    setQuantity(quantity <= 0 ? 0 : quantity - 1);
   };
 
   //Store clothing's size value
@@ -180,7 +205,6 @@ const ProductSpec = () => {
             <div className="sizeOptions">
               <h3> Size </h3>
               {sizeList.map(({ id, value, name, count }) => {
-                console.log(count === 0);
                 return (
                   <label
                     key={id}
@@ -193,7 +217,7 @@ const ProductSpec = () => {
                       value={name}
                       onClick={handleSize}
                       className={count === 0 ? 'disabled' : null}
-                      disabled={count === 0 ? 'disabled' : null}
+                      disabled={count === 0}
                     />
                     <span>{value}</span>
                   </label>
@@ -207,11 +231,11 @@ const ProductSpec = () => {
             <div className="quantity">
               <h3>Quantity</h3>
               <div className="countBtns">
-                <button onClick={minusCount}>
+                <button onClick={minusQuantity}>
                   <i className="fas fa-minus" />
                 </button>
-                {count}
-                <button onClick={plusCount}>
+                {quantity}
+                <button onClick={plusQuantity}>
                   <i className="fas fa-plus" />
                 </button>
               </div>
