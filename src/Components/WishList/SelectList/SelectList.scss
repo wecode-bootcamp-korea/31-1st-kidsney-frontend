@@ -1,0 +1,14 @@
+@import '../../../Styles/variables.scss';
+
+.selectList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 660px;
+  margin: 0 150px 70px 150px;
+  border-top: $border-bottom;
+  border-bottom: $border-bottom;
+  li {
+    margin-right: 30px;
+  }
+}

@@ -85,7 +85,10 @@
       }
 
       .productNum {
+        position: absolute;
         display: flex;
+        width: 400px;
+        right: 10px;
       }
     }
 

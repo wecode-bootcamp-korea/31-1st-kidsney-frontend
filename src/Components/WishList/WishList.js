@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import RecoProductList from '../RecoProductList/RecoProductList';
-import EmptyList from './EmptyList';
-import SelectList from './SelectList';
+import EmptyList from './EmptyList/EmptyList';
+import SelectList from './SelectList/SelectList';
 
 import './WishList.scss';
 
 const WishList = () => {
+  const [wishProducts, setWishProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/wishProducts.json')
+      .then(res => res.json())
+      .then(data => setWishProducts(data));
+  }, []);
+
   return (
     <div className="wishList">
       <div className="header">
@@ -42,7 +50,7 @@ const WishList = () => {
           <button className="selectTheme">
             <span className="themeTxt">
               Select Your Theme
-              <i class="far fa-arrow-alt-circle-up" />
+              <i className="far fa-arrow-alt-circle-up" />
             </span>
           </button>
           <div className="productNum">1 Product</div>
@@ -74,8 +82,11 @@ const WishList = () => {
           </a>
         </div>
       </div>
-      <EmptyList />
-      <SelectList />
+      {wishProducts.length > 0 ? (
+        <SelectList wishProducts={wishProducts} />
+      ) : (
+        <EmptyList />
+      )}
       <RecoProductList />
     </div>
   );
