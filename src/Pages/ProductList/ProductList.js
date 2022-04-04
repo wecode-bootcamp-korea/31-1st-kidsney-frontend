@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import SorterBar from './Components/SorterBar/SorterBar';
 import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
 import { API } from '../../config.js';
 import './ProductList.scss';
 
+// /products?main=boy
 const ProductList = () => {
-  const [param, setParam] = useState('boy');
+  const [param, setParam] = useState();
   const [url, setUrl] = useState(`${API.productList}${param}`);
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState([]);
   const [subtotal, setSubtotal] = useState();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    paramHandler();
+    filterHandler();
+  }, []);
 
   useEffect(() => {
     fetch(url)
@@ -37,28 +46,43 @@ const ProductList = () => {
   //   setFilters(filterArr);
   //   setQueryStrings();
   // };
+
+  const paramHandler = () => {
+    const search = location.search.split('&');
+    setParam(search[0].replace('?main=', ''));
+  };
+
+  const filterHandler = () => {
+    const search = location.search.split('&');
+    const categoryName = search[1].split('=')[0];
+    const typeName = search[1]
+      .split('=')[1]
+      .replace('boy-', '')
+      .replace('girl-', '');
+
+    const initFilter = [categoryName + ',' + typeName];
+    setFilters(initFilter);
+  };
+
   const setQueryStrings = () => {
     let queryString = '';
+
     let addParamFilters = [];
     if (filters) {
       filters.forEach(filter => {
         const splittedFilter = filter.split(`,`);
         switch (splittedFilter[0]) {
-          case 'TYPE':
+          case 'sub':
             addParamFilters.push(`&sub=${param}-${splittedFilter[1]}`);
             break;
 
-          case 'SIZE':
+          case 'type':
             addParamFilters.push(`&size=${splittedFilter[1]}`);
             break;
 
-          case 'CHARACTER':
+          case 'character':
             addParamFilters.push(`&character=${splittedFilter[1]}`);
             break;
-
-          // case 'SORTER':
-          //   addParamFilters.push(`&order-by=${splittedFilter[1]}`);
-          //   break;
 
           default:
         }
@@ -68,7 +92,6 @@ const ProductList = () => {
       queryString = `${API.productList}${param}`;
     }
     setUrl(queryString);
-    console.log(url);
   };
 
   const sorterHandler = e => {
@@ -79,7 +102,6 @@ const ProductList = () => {
         .replace('&order-by=high-price', '')
         .replace('&order-by=low-price', '') + e.target.id
     );
-    console.log(url);
   };
 
   return (
