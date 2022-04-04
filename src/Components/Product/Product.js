@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../config';
 import './Product.scss';
 
-const Product = ({ product, direction, isHeart, wishListIdx }) => {
+const Product = ({ product, direction, isHeart }) => {
   const { id, name, price, image_urls } = product;
   const navigate = useNavigate();
   let [imageIdx, setImageIdx] = useState('0');
   const [isAdded, setIsAdded] = useState(isHeart);
 
-  useEffect(() => {
-    console.log(isHeart, wishListIdx);
-  }, []);
   const addToWishList = () => {
-    fetch(`http://10.58.3.194:8000/users/wishlist?product-id=${id}`, {
+    fetch(`${BASE_URL}/users/wishlist?product-id=${id}`, {
       method: 'POST',
       headers: {
         Authorization:
@@ -21,14 +18,8 @@ const Product = ({ product, direction, isHeart, wishListIdx }) => {
       },
       body: JSON.stringify({ id: id }),
     })
-      .then(res => {
-        if (!res.ok) {
-          console.log('error');
-        }
-        return res.json();
-      })
+      .then(res => res.json())
       .then(data => {
-        console.log(data);
         setIsAdded(data.message === 'ADDED');
       })
       .catch(error => console.error(error.message));
