@@ -1,7 +1,6 @@
 import React from 'react';
 import './SorterBar.scss';
-
-const SorterBar = ({ subtotal }) => {
+const SorterBar = ({ subtotal, sorterHandler }) => {
   return (
     <div className="sorterBar">
       <div className="productSubtotal">
@@ -12,12 +11,18 @@ const SorterBar = ({ subtotal }) => {
         <span className="smallGray">SortBy</span>
         <i className="fas fa-arrow-circle-down" />
         <div className="sorterSeletor">
-          <span className="high-price">가격높은순</span>
-          <span className="low-price">가격낮은순</span>
+          <span className="" onClick={sorterHandler}>
+            최신순
+          </span>
+          <span id="high-price" onClick={sorterHandler}>
+            가격높은순
+          </span>
+          <span id="low-price" onClick={sorterHandler}>
+            가격낮은순
+          </span>
         </div>
       </div>
     </div>
   );
 };
-
 export default SorterBar;
