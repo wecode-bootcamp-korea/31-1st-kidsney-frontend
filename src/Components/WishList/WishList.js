@@ -21,22 +21,20 @@ const WishList = () => {
         <div className="titleContainer">
           <p className="titleTxt">My Wish List</p>
           <div className="share">Share</div>
-          <ul className="shareList">
-            <li className="listItem">
-              <button className="listBtn">
-                <i className="icon fas fa-link" />
-              </button>
-              <button className="listBtn">
-                <i className="icon fa fa-envelope"></i>
-              </button>
-              <button className="listBtn">
-                <i className="icon fab fa-facebook-square" />
-              </button>
-              <button className="listBtn">
-                <i className="icon fab fa-twitter-square" />
-              </button>
-            </li>
-          </ul>
+          <div>
+            <button className="listBtn">
+              <i className="icon fas fa-link" />
+            </button>
+            <button className="listBtn">
+              <i className="icon fa fa-envelope"></i>
+            </button>
+            <button className="listBtn">
+              <i className="icon fab fa-facebook-square" />
+            </button>
+            <button className="listBtn">
+              <i className="icon fab fa-twitter-square" />
+            </button>
+          </div>
           <p className="infoTxt">
             Your wish list will be temporarily saved for 7 days.
           </p>
@@ -56,30 +54,14 @@ const WishList = () => {
           <div className="productNum">1 Product</div>
         </div>
         <div className="themeList">
-          <a>
-            <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          </a>
-          <a>
-            <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          </a>
-          <a>
-            <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          </a>
-          <a>
-            <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          </a>
-          <a>
-            <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          </a>
-          <a>
-            <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          </a>
-          <a>
-            <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          </a>
-          <a>
-            <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          </a>
+          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
+          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
+          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
+          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
+          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
+          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
+          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
+          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
         </div>
       </div>
       {wishProducts.length > 0 ? (
