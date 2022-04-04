@@ -1,29 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../../Components/Button/Button';
 import './SubEvent.scss';
 
 const SubEvent = ({ count }) => {
-  // 가상의 event 상품들
-  const eventProducts = [
-    {
-      id: 1,
-      name: '놀고싶냥 토선생',
-      price: '133.00',
-      image_url: 'https://i.ibb.co/qdNL0w0/wannaplay-toy-3.png',
-    },
-    {
-      id: 2,
-      name: '놀랐냥 곰미',
-      price: '300.00',
-      image_url: 'https://i.ibb.co/CKt1rQ3/surprised-toy-2.png',
-    },
-    {
-      id: 3,
-      name: '놀랐냥 띠부띠부실',
-      price: '10.00',
-      image_url: 'https://i.ibb.co/wN3b5yj/surprised-toy-1.png',
-    },
-  ];
+  const [eventProducts, setEventProducts] = useState([]);
+
+  const getData = async () => {
+    const data = await (await fetch('/data/eventProducts.json')).json();
+
+    setEventProducts(data);
+  };
+
+  useEffect(() => getData(), []);
 
   return (
     <div className="subEvent">
