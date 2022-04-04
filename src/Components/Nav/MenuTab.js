@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Boys from './Boys';
 import Girls from './Girls';
 import Toys from './Toys';
@@ -24,18 +24,25 @@ const MenuTab = () => {
     <div className="menuTab">
       <ul className="tabs">
         {CATEGORY_ARR.map((category, idx) => {
+          console.log(category);
+          console.log(currentId);
           return (
-            <li
-              key={category + idx}
-              className={category}
-              onClick={() => {
-                clickHandler(idx + 1);
+            <Link
+              to={category.url}
+              key={category.menu + idx}
+              onMouseOver={() => {
+                clickHandler(category.id);
               }}
-              onMouseOver={handleMouseOver}
-              onMouseLeave={handleMouseLeave}
             >
-              {category}
-            </li>
+              <li
+                key={category.menu + idx}
+                className={category.menu}
+                onMouseOver={handleMouseOver}
+                onMouseLeave={handleMouseLeave}
+              >
+                {category.menu}
+              </li>
+            </Link>
           );
         })}
       </ul>
@@ -56,6 +63,10 @@ const MAPPING_OBJ = {
   3: <Toys />,
 };
 
-const CATEGORY_ARR = ['Boys', 'Girls', 'Toys'];
+const CATEGORY_ARR = [
+  { id: 1, menu: 'Boys', url: '/products?main=boy' },
+  { id: 2, menu: 'Girls', url: '/products?main=girl' },
+  { id: 3, menu: 'Toys', url: '/products?main=toy' },
+];
 
 export default MenuTab;

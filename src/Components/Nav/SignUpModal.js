@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Nav.scss';
 import './SignUpModal.scss';
 
-const SignUpModal = ({ setActiveModal, closeModal }) => {
+const SignUpModal = ({ closeModal, setActiveModal }) => {
   const goToLoginModal = () => {
     setActiveModal('loginModal');
   };

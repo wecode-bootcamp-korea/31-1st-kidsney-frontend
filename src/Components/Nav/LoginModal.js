@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './LoginModal.scss';
 import '../../Styles/common.scss';
 
-const LoginModal = ({ setActiveModal, closeModal }) => {
+const LoginModal = ({ closeModal, setActiveModal }) => {
   const changeActiveModal = () => {
     setActiveModal('signUpModal');
   };
@@ -64,7 +64,6 @@ const LoginModal = ({ setActiveModal, closeModal }) => {
 
   return (
     <div className="loginModal">
-      {/* {isLoginClicked && <SignUpModal onLoginClickModal={onLoginClickModal} />} */}
       <div className="login">
         <h1 className="logo">KIDSNEY account</h1>
         <button className="closeBtn" onClick={closeModal}>
