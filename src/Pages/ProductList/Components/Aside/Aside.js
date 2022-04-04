@@ -4,38 +4,29 @@ import './Aside.scss';
 
 const Aside = () => {
   const [clickedList, setIsClickedList] = useState('0');
-  const filterList = [
-    {
-      name: 'product Type',
-    },
-    {
-      name: 'Size',
-    },
-    {
-      name: 'Character',
-    },
-  ];
 
   const handleClickedList = e => {
     setIsClickedList(e.target.className.split(' ')[0]);
   };
 
-  const checkList = i => i === clickedList;
+  const checkList = listId => listId === clickedList;
 
   return (
     <aside className="aside">
       <ul className="accordionFilter">
-        {filterList.map((li, i) => {
+        {Filter_List.map(({ id, name }) => {
           return (
             <li
-              key={i}
-              className={`${i} filterName`}
+              key={id}
+              className={`${id} filterName`}
               onClick={handleClickedList}
             >
-              {li.name}
+              {name}
               <i
                 className={
-                  checkList(`${i}`) ? `${i} fas fa-minus` : `${i} fas fa-plus`
+                  checkList(`${id}`)
+                    ? `${id} fas fa-minus`
+                    : `${id} fas fa-plus`
                 }
               />
             </li>
@@ -47,3 +38,18 @@ const Aside = () => {
 };
 
 export default Aside;
+
+const Filter_List = [
+  {
+    id: 0,
+    name: 'product Type',
+  },
+  {
+    id: 1,
+    name: 'Size',
+  },
+  {
+    id: 2,
+    name: 'Character',
+  },
+];

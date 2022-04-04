@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
 import SorterBar from './Components/SorterBar/SorterBar';
 import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
 import { ProductsMainEvent } from '../../config.js';
+
 import './ProductList.scss';
 
 const ProductList = () => {

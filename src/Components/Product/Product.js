@@ -8,13 +8,7 @@ const Product = ({ product, direction }) => {
   let [imageIdx, setImageIdx] = useState('0');
 
   const goToProductSpec = () => {
-    navigate(
-      `/products/${id}`,
-      {
-        state: product,
-      },
-      { replace: true }
-    );
+    navigate(`/products/${id}`, { replace: true });
   };
 
   const hoverImg = () => {

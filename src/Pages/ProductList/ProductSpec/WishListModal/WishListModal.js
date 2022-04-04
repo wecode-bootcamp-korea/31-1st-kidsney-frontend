@@ -27,7 +27,7 @@ const WishListModal = ({ setIsShowedWishModal, isShowedWishModal }) => {
       {!isSigned && (
         <p>
           Your wish list will be temporarily saved. <br /> Sign In to save this
-          wish list permanently.{' '}
+          wish list permanently.
         </p>
       )}
       <Button text="View Wish List" functionType={goToWishList} />

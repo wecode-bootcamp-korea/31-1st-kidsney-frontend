@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router';
-
+import { useLocation, useParams } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
 import MyBagModal from './MyBagModal/MyBagModal';
 import WishListModal from './WishListModal/WishListModal';
@@ -16,28 +15,33 @@ const ProductSpec = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [pathname]);
 
-  const location = useLocation();
-  const { name, price, image_urls, detail } = location.state;
+  const [product, setProduct] = useState({});
+
+  const { id } = useParams();
+
+  const getData = async () => {
+    const data = await (
+      await fetch(`http://10.58.4.26:8000/products/${id}
+    `)
+    ).json();
+
+    setProduct(data.result);
+  };
+
+  useEffect(() => getData(), []);
+
+  const { name, price, images, detail, stock } = product;
 
   const [clickedImg, setClickedImg] = useState('0');
   const [size, setSize] = useState('');
   const [count, setCount] = useState(1);
   const [checkedList, setCheckedList] = useState('0');
 
-  // 모달창 관리
   const [isClosedBoxModal, setIsClosedBoxModal] = useState(true);
   const [isShowedWishModal, setIsShowedWishModal] = useState(false);
 
-  // wish list 좋아요 관리하는 가상의 데이터
   const [isAddedWishList, setIsAddedWishList] = useState(false);
-
-  const sizeList = [
-    { id: 1, value: 'S', name: 'small' },
-    { id: 2, value: 'M', name: 'medium' },
-    { id: 3, value: 'L', name: 'large' },
-  ];
-
-  const DescriptionList = [
+  const descriptionList = [
     {
       id: 0,
       title: 'Product Details',
@@ -88,7 +92,7 @@ const ProductSpec = () => {
 
   //Quantitiy part
   const plusCount = () => {
-    setCount(count + 1);
+    setCount(count => count + 1);
   };
 
   const minusCount = () => {
@@ -123,24 +127,25 @@ const ProductSpec = () => {
       <div className="spec row">
         <div className="imgContainer">
           <div className="thumnails">
-            {image_urls.map((img, i) => {
-              return (
-                <img
-                  key={i}
-                  className={
-                    checkClickedImg(`${i}`)
-                      ? `${i} thumnail clicked`
-                      : `${i} thumnail`
-                  }
-                  alt="thumnail"
-                  src={img}
-                  onClick={handleClickedImg}
-                />
-              );
-            })}
+            {images &&
+              images.map((img, i) => {
+                return (
+                  <img
+                    key={i}
+                    className={
+                      checkClickedImg(`${i}`)
+                        ? `${i} thumnail clicked`
+                        : `${i} thumnail`
+                    }
+                    alt="thumnail"
+                    src={img}
+                    onClick={handleClickedImg}
+                  />
+                );
+              })}
           </div>
           <div className="mainImg">
-            <img alt="main-img" src={image_urls[clickedImg]} />
+            <img alt="main-img" src={images && images[clickedImg]} />
           </div>
         </div>
         <div className="orderContainer">
@@ -154,9 +159,7 @@ const ProductSpec = () => {
 
             <div className="sizeOptions">
               <h3> Size </h3>
-              {sizeList.map(list => {
-                const { id, value, name } = list;
-
+              {Size_List.map(({ id, value, name }) => {
                 return (
                   <label
                     key={id}
@@ -210,8 +213,7 @@ const ProductSpec = () => {
         </div>
       </div>
       <ul ref={detailRef} className="descriptions row">
-        {DescriptionList.map(li => {
-          const { id, title, description } = li;
+        {descriptionList.map(({ id, title, description }) => {
           return (
             <>
               <li key={id} className={id} onClick={handleCheckedList}>
@@ -228,7 +230,7 @@ const ProductSpec = () => {
                 }
               >
                 {description}
-              </div>{' '}
+              </div>
             </>
           );
         })}
@@ -239,3 +241,9 @@ const ProductSpec = () => {
 };
 
 export default ProductSpec;
+
+const Size_List = [
+  { id: 1, value: 'S', name: 'small' },
+  { id: 2, value: 'M', name: 'medium' },
+  { id: 3, value: 'L', name: 'large' },
+];
