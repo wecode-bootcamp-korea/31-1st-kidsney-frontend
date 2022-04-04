@@ -4,22 +4,34 @@ import SorterBar from './Components/SorterBar/SorterBar';
 import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
 import { API } from '../../config.js';
+import { BASE_URL } from '../../config.js';
 import './ProductList.scss';
 
-// /products?main=boy
 const ProductList = () => {
-  const [param, setParam] = useState();
-  const [url, setUrl] = useState(`${API.productList}${param}`);
-  const [products, setProducts] = useState([]);
-  const [filters, setFilters] = useState([]);
-  const [subtotal, setSubtotal] = useState();
-
   const location = useLocation();
 
-  useEffect(() => {
-    paramHandler();
-    filterHandler();
-  }, []);
+  const [filters, setFilters] = useState(
+    location.search.split('&')[1]
+      ? [
+          location.search.split('&')[1].split('=')[0] +
+            ',' +
+            location.search
+              .split('&')[1]
+              .split('=')[1]
+              .replace('boy-', '')
+              .replace('girl-', ''),
+        ]
+      : []
+  );
+  const [param, setParam] = useState(
+    location.search.split('&')[0].replace('?main=', '')
+  );
+  const [url, setUrl] = useState(
+    `${BASE_URL}` + location.pathname + location.search
+  );
+  const [products, setProducts] = useState([]);
+
+  const [subtotal, setSubtotal] = useState();
 
   useEffect(() => {
     fetch(url)
@@ -47,23 +59,6 @@ const ProductList = () => {
   //   setQueryStrings();
   // };
 
-  const paramHandler = () => {
-    const search = location.search.split('&');
-    setParam(search[0].replace('?main=', ''));
-  };
-
-  const filterHandler = () => {
-    const search = location.search.split('&');
-    const categoryName = search[1].split('=')[0];
-    const typeName = search[1]
-      .split('=')[1]
-      .replace('boy-', '')
-      .replace('girl-', '');
-
-    const initFilter = [categoryName + ',' + typeName];
-    setFilters(initFilter);
-  };
-
   const setQueryStrings = () => {
     let queryString = '';
 
@@ -76,7 +71,7 @@ const ProductList = () => {
             addParamFilters.push(`&sub=${param}-${splittedFilter[1]}`);
             break;
 
-          case 'type':
+          case 'size':
             addParamFilters.push(`&size=${splittedFilter[1]}`);
             break;
 

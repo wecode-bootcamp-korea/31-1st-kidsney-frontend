@@ -11,6 +11,7 @@ const Aside = ({ handleFilter, filters }) => {
           return (
             <AsideFilter
               key={filter.id}
+              displayedName={filter.displayedName}
               categoryName={filter.categoryName}
               categoryAttries={filter.categoryAttries}
               filters={filters}

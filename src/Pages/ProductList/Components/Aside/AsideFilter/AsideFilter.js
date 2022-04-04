@@ -2,6 +2,7 @@ import React from 'react';
 import '../Aside.scss';
 
 const AsideFilter = ({
+  displayedName,
   categoryName,
   categoryAttries,
   filters,
@@ -9,7 +10,7 @@ const AsideFilter = ({
 }) => {
   return (
     <li className="categoryName">
-      {categoryName}
+      {displayedName}
       <ul className="categoryAttrContainer">
         {categoryAttries.map(categoryAttr => {
           return (
