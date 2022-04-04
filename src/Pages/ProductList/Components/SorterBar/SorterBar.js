@@ -15,10 +15,10 @@ const SorterBar = ({ subtotal, sorterHandler }) => {
           <span className="" onClick={sorterHandler}>
             최신순
           </span>
-          <span id="&order-by=high-price" onClick={sorterHandler}>
+          <span id="high-price" onClick={sorterHandler}>
             가격높은순
           </span>
-          <span id="&order-by=low-price" onClick={sorterHandler}>
+          <span id="low-price" onClick={sorterHandler}>
             가격낮은순
           </span>
         </div>

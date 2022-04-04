@@ -24,24 +24,25 @@ const ProductList = () => {
         ]
       : []
   );
-  const [param, setParam] = useState(
-    location.search.split('&')[0].replace('?main=', '')
-  );
+  // const [param, setParam] = useState(
+  //   location.search.split('&')[0].replace('?main=', '')
+  // );
   const [url, setUrl] = useState(
     `${BASE_URL}` + location.pathname + location.search
   );
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
   const [pageNum, setPageNum] = useState('');
+  const [sorter, setSorter] = useState('');
 
   useEffect(() => {
-    fetch(url + pageNum)
+    fetch(url + pageNum + sorter)
       .then(response => response.json())
       .then(product => {
         setProducts(product.result);
         setSubtotal(product.count);
       });
-  }, [url, pageNum]);
+  }, [url, pageNum, sorter]);
 
   const handleFilter = e => {
     filters.indexOf(e.currentTarget.id) === -1
@@ -64,6 +65,7 @@ const ProductList = () => {
     let queryString = '';
 
     let addParamFilters = [];
+    const param = location.search.split('&')[0].replace('?main=', '');
     if (filters) {
       filters.forEach(filter => {
         const splittedFilter = filter.split(`,`);
@@ -83,7 +85,10 @@ const ProductList = () => {
           default:
         }
       });
-      queryString = `${API.productList}${param}${addParamFilters.join('')}`;
+      // queryString = `${API.productList}${param}${addParamFilters.join('')}`;
+      queryString = `${BASE_URL}${location.pathname}${addParamFilters.join(
+        ''
+      )}`;
     } else {
       queryString = `${API.productList}${param}`;
     }
@@ -91,13 +96,13 @@ const ProductList = () => {
   };
 
   const sorterHandler = e => {
-    let queryString = url;
-
-    setUrl(
-      queryString
-        .replace('&order-by=high-price', '')
-        .replace('&order-by=low-price', '') + e.target.id
-    );
+    // let queryString = url;
+    // setUrl(
+    //   queryString
+    //     .replace(`&order-by=${e.target.id}`, '')
+    //     .replace('&order-by=low-price', '') + e.target.id
+    // );
+    setSorter(e.target.id && `&order-by=${e.target.id}`);
   };
 
   const pageHandler = e => {
