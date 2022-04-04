@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import SorterBar from './Components/SorterBar/SorterBar';
 import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
+import Pagination from './Components/Pagination/Pagination';
 import { API } from '../../config.js';
 import { BASE_URL } from '../../config.js';
 import './ProductList.scss';
@@ -30,17 +31,21 @@ const ProductList = () => {
     `${BASE_URL}` + location.pathname + location.search
   );
   const [products, setProducts] = useState([]);
-
   const [subtotal, setSubtotal] = useState();
+  // const [offset, setOffset] = useState(0);
+  const [pageUrl, setPageUrl] = useState('');
 
   useEffect(() => {
-    fetch(url)
+    fetch(url + pageUrl)
       .then(response => response.json())
       .then(product => {
         setProducts(product.result);
         setSubtotal(product.count);
+
+        // console.log(offset);
+        console.log(pageUrl);
       });
-  }, [url]);
+  }, [url, pageUrl]);
 
   const handleFilter = e => {
     filters.indexOf(e.currentTarget.id) === -1
@@ -58,7 +63,7 @@ const ProductList = () => {
   //   setFilters(filterArr);
   //   setQueryStrings();
   // };
-
+  const LIMIT = 6;
   const setQueryStrings = () => {
     let queryString = '';
 
@@ -99,6 +104,11 @@ const ProductList = () => {
     );
   };
 
+  const pageHandler = e => {
+    // setOffset((e.target.id - 1) * LIMIT);
+    setPageUrl(`&offset=${(e.target.id - 1) * LIMIT}&limit=${LIMIT}`);
+  };
+
   return (
     <div className="productList">
       <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
@@ -106,6 +116,11 @@ const ProductList = () => {
       <div className="row">
         <Aside filters={filters} handleFilter={handleFilter} />
         <SearchItems products={products} />
+        <Pagination
+          subtotal={subtotal}
+          pageHandler={pageHandler}
+          LIMIT={LIMIT}
+        />
       </div>
     </div>
   );
