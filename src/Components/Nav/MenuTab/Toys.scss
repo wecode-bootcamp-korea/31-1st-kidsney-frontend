@@ -1,16 +1,20 @@
-@import '../../Styles/variables.scss';
-.boys {
+@import '../../../Styles/variables.scss';
+
+.toys {
   display: flex;
 
   .clothesType {
     margin-right: 50px;
     font-size: 20px;
-    &:hover {
-      color: $color-blue;
-    }
+
     &:last-child {
       margin: 0;
     }
+
+    .link:hover {
+      color: $color-blue;
+    }
+
     .fas {
       margin-right: 7px;
     }

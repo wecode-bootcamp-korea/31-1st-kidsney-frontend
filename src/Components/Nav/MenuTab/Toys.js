@@ -6,7 +6,7 @@ const Toys = () => {
   return (
     <div className="toys">
       <li className="clothesType">
-        <Link to="/products?main=toy">
+        <Link to="/products?main=toy" className="link">
           <i className="fas fa-car" />
           Toys
         </Link>

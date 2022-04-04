@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import LoginModal from './LoginModal';
-import MenuTab from './MenuTab';
+import LoginModal from './Modal/LoginModal';
+import MenuTab from './MenuTab/MenuTab';
 
 import './Nav.scss';
-import SignUpModal from './SignUpModal';
+import SignUpModal from './Modal/SignUpModal';
 
 const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);

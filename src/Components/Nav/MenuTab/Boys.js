@@ -6,17 +6,20 @@ const Boys = () => {
   return (
     <div className="boys">
       <li className="clothesType">
-        <Link to="/products?main=boy&sub=boy-top">
+        <Link to="/products?main=boy&sub=boy-top" className="link">
           <i className="fas fa-tshirt" />
-          Boy-Top
+          Top
         </Link>
       </li>
       <li className="clothesType">
-        <Link to="/products?main=boy&sub=boy-bottom">Bottom</Link>
+        <Link to="/products?main=boy&sub=boy-bottom" className="link">
+          <i className="fas fa-heart" />
+          Bottom
+        </Link>
       </li>
       <li className="clothesType">
-        <Link to="/products?main=boy&sub=boy-acc">
-          <i className="fas fa-heart" />
+        <Link to="/products?main=boy&sub=boy-acc" className="link">
+          <i class="fas fa-hat-cowboy" />
           Accessories
         </Link>
       </li>

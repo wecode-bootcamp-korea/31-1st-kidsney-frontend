@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './LoginModal.scss';
-import '../../Styles/common.scss';
+import '../../../Styles/common.scss';
 
 const LoginModal = ({ closeModal, setActiveModal }) => {
   const changeActiveModal = () => {
@@ -94,7 +94,9 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
         </form>
         <div className="loginHelp">Need help signing in?</div>
         <div className="createId">
-          <button onClick={changeActiveModal}>Create an Account</button>
+          <button onClick={changeActiveModal} className="createBtn">
+            Create an Account
+          </button>
         </div>
       </div>
     </div>

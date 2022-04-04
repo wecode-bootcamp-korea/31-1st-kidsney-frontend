@@ -1,5 +1,4 @@
-@import '../../Styles/variables.scss';
-@import '../../Styles/common.scss';
+@import '../../../Styles/variables.scss';
 
 .loginModal {
   position: absolute;
@@ -14,23 +13,23 @@
   .login {
     position: relative;
     width: 500px;
-    padding-top: 50px;
-    background-color: #fff;
     height: 450px;
+    padding-top: 60px;
+    background-color: #fff;
 
     .logo {
       width: 300px;
       height: 70px;
       margin: 0 auto;
-      text-align: center;
       color: $color-logo;
+      text-align: center;
     }
 
     .closeBtn {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 15px;
+      top: 20px;
+      right: 25px;
+      font-size: 17px;
       font-weight: 800;
     }
 
@@ -46,6 +45,7 @@
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: $border-radius;
       }
+
       input::placeholder {
         color: $color-gray;
       }
@@ -53,44 +53,44 @@
       .loginButtonActive {
         width: 380px;
         height: 50px;
-        border: 1px solid $color-blue;
-        background-color: $color-blue;
-        border-radius: 4px;
+        height: 50px;
         color: $color-white;
-        margin-top: 7px;
+        background-color: $color-blue;
+        border: 1px solid $color-blue;
+        border-radius: 4px;
       }
 
       .loginButton {
         width: 380px;
         height: 50px;
-        border: 1px solid $color-light-blue;
-        background-color: $color-light-blue;
-        border-radius: 4px;
-        color: $color-white;
         margin-top: 7px;
+        color: $color-white;
+        background-color: $color-light-blue;
+        border: 1px solid $color-light-blue;
+        border-radius: 4px;
       }
     }
 
     .loginHelp {
       display: flex;
-      width: 400px;
-      height: 50px;
-      margin: 0 auto;
-      text-decoration: underline;
       justify-content: flex-end;
       align-items: center;
-      margin-top: 15px;
-      padding-right: 10px;
-    }
-    .createId {
-      display: flex;
       width: 400px;
       height: 50px;
       margin: 0 auto;
+      padding-right: 10px;
       text-decoration: underline;
-      justify-content: center;
-      margin-top: 5px;
-      font-size: 24px;
+    }
+
+    .createId {
+      .createBtn {
+        @include flexCenter;
+        width: 400px;
+        height: 50px;
+        margin: 0 auto;
+        font-size: 24px;
+        text-decoration: underline;
+      }
     }
   }
 }

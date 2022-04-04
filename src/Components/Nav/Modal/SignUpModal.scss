@@ -1,9 +1,8 @@
-@import '../../Styles/variables.scss';
-@import './LoginModal.scss';
+@import '../../../Styles/variables.scss';
 
 .signUpModal {
-  display: none;
   position: absolute;
+  display: none;
   @include flexCenter;
   top: 0;
   left: 0;
@@ -19,27 +18,27 @@
   .signUp {
     position: relative;
     width: 500px;
-    padding-top: 50px;
+    padding-top: 20px;
     background-color: #fff;
     height: 750px;
 
     .logo {
       margin-top: 40px;
-      text-align: center;
       color: $color-logo;
+      text-align: center;
     }
 
     .closeBtn {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 15px;
+      top: 20px;
+      right: 25px;
+      font-size: 17px;
       font-weight: 800;
     }
 
     h2 {
-      text-align: center;
       margin-bottom: 30px;
+      text-align: center;
     }
 
     .signUpContainer {
@@ -54,6 +53,7 @@
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: $border-radius;
       }
+
       input::placeholder {
         color: $color-gray;
       }
@@ -61,21 +61,21 @@
       .signUpButtonActive {
         width: 380px;
         height: 50px;
-        border: 1px solid $color-blue;
-        background-color: $color-blue;
-        border-radius: 4px;
-        color: $color-white;
         margin-top: 20px;
+        color: $color-white;
+        background-color: $color-blue;
+        border: 1px solid $color-blue;
+        border-radius: 4px;
       }
 
       .signUpButton {
         width: 380px;
         height: 50px;
-        border: 1px solid $color-light-blue;
-        background-color: $color-light-blue;
-        border-radius: 4px;
-        color: $color-white;
         margin-top: 20px;
+        color: $color-white;
+        background-color: $color-light-blue;
+        border: 1px solid $color-light-blue;
+        border-radius: 4px;
       }
 
       .goToSignIn {

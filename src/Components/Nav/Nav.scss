@@ -1,5 +1,5 @@
 @import '../../Styles/variables.scss';
-@import './MenuTab.scss';
+@import './MenuTab/MenuTab.scss';
 
 @mixin navBox {
   margin: 0 20px;
@@ -35,10 +35,11 @@
 
       button {
         @include flexCenter;
-        margin-top: 15px;
         width: 130px;
         height: 30px;
+        margin-top: 15px;
         background-color: #fff;
+        font-size: 16px;
         cursor: pointer;
 
         .fas {

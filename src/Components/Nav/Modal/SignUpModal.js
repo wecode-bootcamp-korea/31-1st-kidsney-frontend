@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Nav.scss';
+import '../Nav.scss';
 import './SignUpModal.scss';
 
 const SignUpModal = ({ closeModal, setActiveModal }) => {
@@ -139,14 +139,14 @@ const SignUpModal = ({ closeModal, setActiveModal }) => {
           <input
             className="phoneNumber"
             type="text"
-            placeholder="010-0000-0000"
+            placeholder="Phone Number"
             onChange={handleInputValue}
             name="phone_number"
           />
           <input
             className="birthDate"
             type="text"
-            placeholder="Birth Date mm/dd/yyyy"
+            placeholder="Birth Date yyyy-mm-dd"
             onChange={handleInputValue}
             name="date_of_birth"
           />

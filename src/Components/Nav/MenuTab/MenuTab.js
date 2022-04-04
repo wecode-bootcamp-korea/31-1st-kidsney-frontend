@@ -24,14 +24,12 @@ const MenuTab = () => {
     <div className="menuTab">
       <ul className="tabs">
         {CATEGORY_ARR.map((category, idx) => {
-          console.log(category);
-          console.log(currentId);
           return (
             <Link
               to={category.url}
               key={category.menu + idx}
               onMouseOver={() => {
-                clickHandler(category.id);
+                clickHandler(idx + 1);
               }}
             >
               <li
@@ -64,9 +62,9 @@ const MAPPING_OBJ = {
 };
 
 const CATEGORY_ARR = [
-  { id: 1, menu: 'Boys', url: '/products?main=boy' },
-  { id: 2, menu: 'Girls', url: '/products?main=girl' },
-  { id: 3, menu: 'Toys', url: '/products?main=toy' },
+  { menu: 'Boys', url: '/products?main=boy' },
+  { menu: 'Girls', url: '/products?main=girl' },
+  { menu: 'Toys', url: '/products?main=toy' },
 ];
 
 export default MenuTab;
