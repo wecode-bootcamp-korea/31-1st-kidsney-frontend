@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../../config';
+import { BASE_URL, Token } from '../../config';
 import './Product.scss';
 
 const Product = ({ product, direction, isHeart }) => {
-  const { id, name, price, image_urls } = product;
+  const { id, name, price, images } = product;
   const navigate = useNavigate();
   let [imageIdx, setImageIdx] = useState('0');
   const [isAdded, setIsAdded] = useState(isHeart);
@@ -13,8 +13,7 @@ const Product = ({ product, direction, isHeart }) => {
     fetch(`${BASE_URL}/users/wishlist?product-id=${id}`, {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjQ5MDc0ODQwLCJleHAiOjE2NDkyNDc2NDB9.-6SFIdrgdVJJcYFfBjk1jgk3h3g6mmyHc8xcn7lm9J8',
+        Authorization: Token,
       },
       body: JSON.stringify({ id: id }),
     })
@@ -26,11 +25,11 @@ const Product = ({ product, direction, isHeart }) => {
   };
 
   const goToProductSpec = () => {
-    navigate(`/products/${id}`);
+    navigate(`/products/${id}`, { state: { isHeart: isHeart } });
   };
 
   const hoverImg = () => {
-    setImageIdx(parseInt(imageIdx) + 1);
+    images.length === 2 && setImageIdx('1');
   };
 
   const leaveImg = () => {
@@ -48,7 +47,7 @@ const Product = ({ product, direction, isHeart }) => {
         onMouseLeave={leaveImg}
         onClick={goToProductSpec}
       >
-        <img alt="thumbnail" src={image_urls[imageIdx]} />
+        <img alt="thumbnail" src={images[imageIdx]} />
 
         <h3>{name}</h3>
         <div className="price">${price}</div>

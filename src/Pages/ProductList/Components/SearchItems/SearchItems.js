@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../../../Components/Product/Product';
 import { BASE_URL } from '../../../../config';
+
 import './SearchItems.scss';
 
 const SearchItems = ({ products }) => {
@@ -10,7 +11,7 @@ const SearchItems = ({ products }) => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
         Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjQ5MDc0ODQwLCJleHAiOjE2NDkyNDc2NDB9.-6SFIdrgdVJJcYFfBjk1jgk3h3g6mmyHc8xcn7lm9J8',
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjQ5MTIyMDA5LCJleHAiOjE2NDkyOTQ4MDl9.l7va-KqdmxPP7fbhjJ6spnWsp4wxOoRR8DQpo8DXU1o',
       },
     })
       .then(res => res.json())

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import Product from '../../Components/Product/Product';
+import { API } from '../../config';
+
 import './RecoProductList.scss';
 
 const RecoProductList = () => {
@@ -8,8 +10,8 @@ const RecoProductList = () => {
   const [direction, setDirection] = useState('left');
 
   const getData = async () => {
-    const data = await (await fetch('/data/productData.json')).json();
-    setProducts(data);
+    const data = await (await fetch(`${API.products}`)).json();
+    setProducts(data.result);
   };
 
   useEffect(() => getData(), []);
@@ -32,7 +34,7 @@ const RecoProductList = () => {
         </button>
 
         <div className="products">
-          {products &&
+          {products.length > 0 &&
             products.map(product => {
               return (
                 <Product

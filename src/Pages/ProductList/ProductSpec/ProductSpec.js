@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { API } from '../../../config';
+import { BASE_URL } from '../../../config';
 
 import Button from '../../../Components/Button/Button';
 import MyBagModal from './MyBagModal/MyBagModal';
@@ -20,6 +21,8 @@ const ProductSpec = () => {
   }, [pathname]);
 
   const [product, setProduct] = useState({});
+  const { isHeart } = useLocation().state;
+  const [isAddedWishList, setIsAddedWishList] = useState(isHeart);
 
   const getData = async () => {
     const data = await (
@@ -48,7 +51,6 @@ const ProductSpec = () => {
   const [isClosedBoxModal, setIsClosedBoxModal] = useState(true);
   const [isShowedWishModal, setIsShowedWishModal] = useState(false);
 
-  const [isAddedWishList, setIsAddedWishList] = useState(false);
   const descriptionList = [
     {
       id: 0,
@@ -69,6 +71,10 @@ const ProductSpec = () => {
   ];
 
   const [orderProducts, setOrderProducts] = useState([]);
+  //myBag modal part
+  const showMyBag = () => {
+    size && setIsClosedBoxModal(!isClosedBoxModal);
+  };
 
   const sendToBag = () => {
     fetch(`${API}/바구니페이지 주소`, {
@@ -97,19 +103,30 @@ const ProductSpec = () => {
       });
   };
 
-  //myBag modal part
-  const showMyBag = () => {
-    size && setIsClosedBoxModal(!isClosedBoxModal);
-  };
-
   //wishList modal part
-  const handleWishListBtn = () => {
-    setIsAddedWishList(!isAddedWishList);
+  const showWishList = () => {
+    setIsShowedWishModal(true);
   };
 
-  const showWishList = () => {
-    handleWishListBtn();
-    !isAddedWishList && setIsShowedWishModal(!isShowedWishModal);
+  const addToWishList = () => {
+    fetch(`${BASE_URL}/users/wishlist?product-id=${id}`, {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjQ5MTIyMDA5LCJleHAiOjE2NDkyOTQ4MDl9.l7va-KqdmxPP7fbhjJ6spnWsp4wxOoRR8DQpo8DXU1o',
+      },
+      body: JSON.stringify({ id: id }),
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setIsAddedWishList(data.message === 'ADDED');
+        if (data.message === 'ADDED') {
+          showWishList();
+        }
+      })
+      .catch(error => console.error(error.message));
   };
 
   //Thumnail, Main img part
@@ -247,13 +264,13 @@ const ProductSpec = () => {
                 <Button
                   color="white"
                   text="♡ &nbsp; Remove"
-                  functionType={showWishList}
+                  functionType={addToWishList}
                 />
               ) : (
                 <Button
                   color="white"
                   text="♡ &nbsp; Add to Wish List"
-                  functionType={showWishList}
+                  functionType={addToWishList}
                 />
               )}
             </div>

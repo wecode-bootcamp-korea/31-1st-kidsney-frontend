@@ -4,6 +4,7 @@ import SorterBar from './Components/SorterBar/SorterBar';
 import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
 import { ProductsMainEvent } from '../../config.js';
+import { API } from '../../config.js';
 
 import './ProductList.scss';
 
@@ -11,10 +12,10 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
   useEffect(() => {
-    fetch('/data/productData.json')
+    fetch(`${API.boy}`)
       .then(response => response.json())
       .then(product => {
-        setProducts(product);
+        setProducts(product.result);
         setSubtotal(product.count);
       });
   }, []);
