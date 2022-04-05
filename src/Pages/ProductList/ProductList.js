@@ -22,6 +22,7 @@ const ProductList = () => {
         setProducts(product.result);
         setSubtotal(product.count);
       });
+    console.log(url);
   }, [url]);
 
   const [filters, setFilters] = useState(
@@ -39,10 +40,17 @@ const ProductList = () => {
   );
 
   const handleFilter = e => {
-    filters.indexOf(e.currentTarget.id) === -1
+    let newFilter = [...filters];
+
+    // newFilter.includes(`${name},${attr}`)
+    //   ? (newFilter = newFilter.filter(opt => !opt))
+    //   : newFilter.push(`${name},${attr}`);
+    newFilter.indexOf(e.currentTarget.id) === -1
       ? filters.push(e.currentTarget.id)
-      : filters.splice(filters.indexOf(e.currentTarget.id), 1);
-    setFilters(filters);
+      : newFilter.splice(newFilter.indexOf(e.currentTarget.id), 1);
+    // console.log('2차:' + newFilter);
+    setFilters(newFilter);
+    // console.log('3차:' + filters);
     setQueryStrings();
   };
 

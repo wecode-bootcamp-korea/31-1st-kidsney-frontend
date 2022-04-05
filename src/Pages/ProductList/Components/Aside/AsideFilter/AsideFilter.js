@@ -18,6 +18,7 @@ const AsideFilter = ({
               key={categoryAttr}
               id={[categoryName, categoryAttr]}
               className="categoryAttr"
+              // onClick={() => handleFilter(categoryName, categoryAttr)}
               onClick={handleFilter}
             >
               <input
