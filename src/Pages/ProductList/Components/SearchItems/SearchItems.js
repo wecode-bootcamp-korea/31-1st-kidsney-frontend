@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../../../Components/Product/Product';
-import { BASE_URL } from '../../../../config';
+import { BASE_URL, Token } from '../../../../config';
 
 import './SearchItems.scss';
 
@@ -10,8 +10,7 @@ const SearchItems = ({ products }) => {
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjQ5MTIyMDA5LCJleHAiOjE2NDkyOTQ4MDl9.l7va-KqdmxPP7fbhjJ6spnWsp4wxOoRR8DQpo8DXU1o',
+        Authorization: Token,
       },
     })
       .then(res => res.json())
@@ -30,10 +29,10 @@ const SearchItems = ({ products }) => {
         {wishListIdx.length > 0 &&
           products.map(product => (
             <Product
-              wishListIdx={wishListIdx}
-              isHeart={wishListIdx.includes(product.id)}
               key={product.id}
               product={product}
+              wishListIdx={wishListIdx}
+              isHeart={wishListIdx.includes(product.id)}
             />
           ))}
       </ul>
