@@ -85,15 +85,15 @@ const ProductSpec = () => {
       );
       return;
     } else {
-      fetch(`${API}/바구니페이지 주소`, {
+      fetch(`${API}/carts/cart`, {
         method: 'post',
         headers: {
           Authorization: Token,
         },
         body: JSON.stringify({
-          id: id,
+          product_id: id,
           quantity: quantity,
-          size: size,
+          size: size.sizeName,
         }),
       })
         .then(res => {

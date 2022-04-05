@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router';
 
 import OrderProduct from '../../../../Components/OrderProduct/OrderProduct';
 import Button from '../../../../Components/Button/Button';
+import { BASE_URL, Token } from '../../../../config';
+
 import './MyBagModal.scss';
 
 const MyBagModal = ({ isClosed, showMyBag }) => {
@@ -10,9 +12,14 @@ const MyBagModal = ({ isClosed, showMyBag }) => {
   const [orderProducts, setOrderProducts] = useState([]);
 
   const getData = async () => {
-    const data = await (await fetch('/data/orderProducts.json')).json();
+    const res = await fetch(`${BASE_URL}/carts/cart`, {
+      headers: {
+        Authorization: Token,
+      },
+    });
 
-    setOrderProducts(data);
+    const data = res.json();
+    setOrderProducts(data.result);
   };
 
   useEffect(() => {
@@ -35,7 +42,7 @@ const MyBagModal = ({ isClosed, showMyBag }) => {
             {orderProducts.map(orderProduct => (
               <OrderProduct
                 type="small"
-                key={orderProduct.id}
+                key={orderProduct.cart_id}
                 orderProduct={orderProduct}
               />
             ))}
