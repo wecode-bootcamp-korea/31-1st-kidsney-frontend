@@ -17,14 +17,14 @@ const MyBag = () => {
   const subTotal =
     orderProducts.length > 0
       ? orderProducts
-          .map(product => product.price)
+          .map(product => product.product_price)
           .reduce((a, b) => parseInt(a) + parseInt(b))
       : 0;
   const total = (subTotal + shippingCost).toFixed(2);
 
   const getData = async () => {
     const res = await fetch('/data/orderProducts.json');
-    const data = res.json();
+    const data = await res.json();
 
     setOrderProducts(data);
   };

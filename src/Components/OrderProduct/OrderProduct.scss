@@ -1,6 +1,7 @@
 @import '../../Styles/variables.scss';
 
 .orderProduct {
+  position: relative;
   display: flex;
   margin: 20px 0px;
   padding: 30px 0px 3px;
@@ -35,7 +36,24 @@
 
     .id {
       position: absolute;
+      bottom: -20px;
+      font-size: 15px;
+    }
+
+    .btns {
+      position: absolute;
+      display: flex;
       bottom: 10px;
+      left: 0;
+
+      .removeBtn {
+        margin-left: 20px;
+      }
+
+      .editBtn,
+      .removeBtn {
+        text-decoration: underline;
+      }
     }
   }
 }

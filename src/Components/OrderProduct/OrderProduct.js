@@ -2,17 +2,31 @@ import React from 'react';
 import './OrderProduct.scss';
 
 const OrderProduct = ({ orderProduct }) => {
-  const { id, name, price, image_url } = orderProduct;
+  const {
+    cart_id,
+    quantity,
+    product_name,
+    product_price,
+    size_tag,
+    total_price,
+    images,
+  } = orderProduct;
 
   return (
     <div className="orderProduct">
-      <img src={image_url} alt="thumbnail" />
+      <img src={images[0]} alt="thumbnail" />
       <div className="description">
-        <h3 className="price">${price}</h3>
-        <h3>{name}</h3>
-        <p className="quantity">Quantity : 1 at $119.99</p>
-        <p className="size">Size : s</p>
-        <p className="id">Id : {id}</p>
+        <h3 className="price">${product_price}</h3>
+        <h3>{product_name}</h3>
+        <p className="quantity">
+          Quantity : ${quantity} at ${total_price}
+        </p>
+        <p className="size">Size : {size_tag}</p>
+        <p className="id">Id : {cart_id}</p>
+        <div className="btns">
+          <button className="editBtn">Edit</button>
+          <button className="removeBtn">Remove</button>
+        </div>
       </div>
     </div>
   );

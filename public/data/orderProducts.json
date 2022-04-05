@@ -1,18 +1,26 @@
 [
   {
-    "id": 1,
-    "name": "Mick Mouse Bodysuit",
-    "price": "29.90",
-    "image_url": "/images/Boys/happiness_classic_hat.png",
-    "character": "happiness",
-    "detail": "Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No."
+    "cart_id": 1,
+    "quantity": 10,
+    "product_name": "Mick Mouse Bodysuit",
+    "product_price": "29.90",
+    "size_tag": "L",
+    "total_price": "800.00",
+    "images": [
+      "/images/Boys/happiness_classic_hat.png",
+      "/images/Boys/happiness_classic_hat.png"
+    ]
   },
   {
-    "id": 2,
-    "name": "Mick Mouse Bodysuit",
-    "price": "100.90",
-    "image_url": "/images/Boys/surprised_ballcap.png",
-    "character": "surprised",
-    "detail": "Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No."
+    "cart_id": 2,
+    "quantity": 10,
+    "product_name": "Mick Mouse Bodysuit",
+    "product_price": "29.90",
+    "size_tag": "L",
+    "total_price": "800.00",
+    "images": [
+      "/images/Boys/happiness_classic_hat.png",
+      "/images/Boys/happiness_classic_hat.png"
+    ]
   }
 ]
