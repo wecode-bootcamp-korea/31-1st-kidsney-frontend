@@ -1,23 +1,42 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import RecoProductList from '../RecoProductList/RecoProductList';
 import EmptyList from './EmptyList/EmptyList';
 import SelectList from './SelectList/SelectList';
+import ThemeListImg from './ThemeListImg/ThemeListImg';
+import { BASE_URL } from '../../config';
 
 import './WishList.scss';
 
 const WishList = () => {
   const [wishProducts, setWishProducts] = useState([]);
+  const [imgSource, setImgSource] = useState(
+    'https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV501?$xlargeFull$&fit=constrain&fmt=webp&cropN=0,0,1,1'
+  );
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch('/data/wishProducts.json')
+    fetch(`${BASE_URL}/users/wishlist`, {
+      headers: {
+        Authorization: token,
+      },
+    })
       .then(res => res.json())
-      .then(data => setWishProducts(data));
+      .then(data => {
+        setWishProducts(data.wish_list);
+        // console.log(wishProducts);
+      });
   }, []);
+
+  const handleImageSource = e => {
+    console.log(e);
+    setImgSource(e.target.src);
+  };
 
   return (
     <div className="wishList">
       <div className="header">
-        <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV501?$xlargeFull$&fit=constrain&fmt=webp&cropN=0,0,1,1" />
+        <img src={imgSource} />
         <div className="titleContainer">
           <p className="titleTxt">My Wish List</p>
           <div className="share">Share</div>
@@ -39,7 +58,10 @@ const WishList = () => {
             Your wish list will be temporarily saved for 7 days.
           </p>
           <p className="signInTxt">
-            <a href="/login">Sign In</a>to save or share this wish list.
+            <Link to="/login" className="linkToLogin">
+              Sign In
+            </Link>{' '}
+            to save or share this wish list.
           </p>
         </div>
       </div>
@@ -53,25 +75,61 @@ const WishList = () => {
           </button>
           <div className="productNum">1 Product</div>
         </div>
-        <div className="themeList">
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
-          <img src="https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV505_thumb_2x?$xlargeFull$&fit=constrain&cropN=0,0,1,1" />
+        <div className="theme">
+          <ul className="themeList">
+            {WISHLIST_IMG_LIST.map(img => {
+              return (
+                <ThemeListImg
+                  key={img.id}
+                  src={img.src}
+                  handleImageSource={handleImageSource}
+                />
+              );
+            })}
+          </ul>
         </div>
       </div>
-      {wishProducts.length > 0 ? (
-        <SelectList wishProducts={wishProducts} />
-      ) : (
-        <EmptyList />
-      )}
+      {wishProducts[0] && <SelectList wishProducts={wishProducts} />}
+      {wishProducts.length === 0 && <EmptyList />}
+
       <RecoProductList />
     </div>
   );
 };
+
+const WISHLIST_IMG_LIST = [
+  {
+    id: 1,
+    src: 'https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+  },
+  {
+    id: 2,
+    src: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+  },
+  {
+    id: 3,
+    src: 'https://images.unsplash.com/photo-1614852206758-0caebadbba66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+  },
+  {
+    id: 4,
+    src: 'https://images.unsplash.com/photo-1579546929593-b824f1e71808?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+  },
+  {
+    id: 5,
+    src: 'https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+  },
+  {
+    id: 6,
+    src: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1429&q=80',
+  },
+  {
+    id: 7,
+    src: 'https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1429&q=80',
+  },
+  {
+    id: 8,
+    src: 'https://images.unsplash.com/photo-1601752943749-7dd8d89f407a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+  },
+];
 
 export default WishList;
