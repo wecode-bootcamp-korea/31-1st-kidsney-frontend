@@ -1,21 +1,51 @@
 import React from 'react';
+import '../Checkout.scss';
 
 const Shipping = () => {
   return (
-    <div>
-      <span>이름</div>
-      <input className="username" placeholder="이름을 입력하세요" />
-      <span className="id">ID</div>      
-      <div className="addressContainer">
-        <span>주소</span>/>
-        <input className="address">주소</input>
-        <input type="button" className="address" value="검색">주소</input>
-        <input></input>
-
+    <>
+      <div className="titleWrapper">
+        <div className="num">1</div>
+        <h2>Shipping</h2>
       </div>
-      이름() 아이디 (이메일 가져옴) 주소&우편번호 API(주소,상세주소, 우편번호).
-      이 주소를 저장. 배송방법(일반배송, 키즈니 익스프레스 딜리버리)
-    </div>
+      <form className="shippingContainer">
+        <div className="guidance">
+          <span className="id">ID</span>
+          <span>님 배송정보를 입력해주세요</span>
+        </div>
+        <div className="Wrapper">
+          <div>이름</div>
+          <input className="username" placeholder="이름을 입력하세요" />
+        </div>
+        <div className="Wrapper">
+          <span>주소</span>
+          <div className="searchAddress">
+            <input className="inputAddress" />
+            <input type="button" className="address" value="검색" />
+          </div>
+          <input
+            className="addressDetail"
+            placeholder="나머지 주소를 입력해주세요"
+          />
+        </div>
+        <div className="checkAddressWrapper">
+          <input className="saveAddress" type="checkbox" />
+          <span>위의 주소를 기본 배송지로 저장합니다.</span>
+        </div>
+        <form className="deliverOption">
+          <input name="deliverySelector" type="radio" value="kilivery" />
+          <div className="bannerWrapper">
+            <span>킬리버리 (죽여주는 킬리버리 초음속배송)</span>
+            <img src="https://i.ibb.co/S692R4D/001-2.png" alt="킬리버리 배너" />
+          </div>
+          <input name="deliverySelector" type="radio" value="postbox" />
+          <div className="bannerWrapper">
+            <span>느릿느릿 선불택배</span>
+            <img src="https://i.ibb.co/S692R4D/001-2.png" alt="킬리버리 배너" />
+          </div>
+        </form>
+      </form>
+    </>
   );
 };
 

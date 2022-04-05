@@ -10,7 +10,7 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
   useEffect(() => {
-    fetch(`${API.boy}`)
+    fetch(API.boy)
       .then(response => response.json())
       .then(product => {
         setProducts(product.result);

@@ -1,0 +1,63 @@
+@import '../../Styles/variables.scss';
+
+div {
+  h1 {
+    @include flexCenter;
+  }
+  .checkoutProcessWrapper {
+    @include flexColumn;
+    margin: 20px;
+
+    .titleWrapper {
+      display: flex;
+      align-items: center;
+
+      border: 1px solid $color-gray;
+
+      .num {
+        @include flexCenter;
+        width: 40px;
+        font-size: $font-medium;
+        color: white;
+        background-color: $color-dark-blue;
+      }
+      h2::before {
+        content: '';
+        margin-right: 20px;
+      }
+    }
+    .shippingContainer {
+      @include flexColumn;
+      padding: 10px;
+      border: 1px solid $color-gray;
+
+      .guidance {
+        margin: 10px 0;
+        .id {
+          font-size: $font-regular;
+        }
+        .id::after {
+          content: '';
+          margin-left: 5px;
+        }
+      }
+      .Wrapper {
+        margin: 10px 0;
+        border-bottom: 2px solid $color-gray;
+        input {
+          border: none;
+          margin: 10px 0;
+          font-size: $font-regular;
+        }
+        .searchAddress {
+          .inputAddress {
+            width: 80%;
+          }
+          .address {
+            width: 20%;
+          }
+        }
+      }
+    }
+  }
+}
