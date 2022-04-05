@@ -39,18 +39,13 @@ const ProductList = () => {
       : []
   );
 
-  const handleFilter = e => {
-    let newFilter = [...filters];
-
-    // newFilter.includes(`${name},${attr}`)
-    //   ? (newFilter = newFilter.filter(opt => !opt))
-    //   : newFilter.push(`${name},${attr}`);
-    newFilter.indexOf(e.currentTarget.id) === -1
-      ? filters.push(e.currentTarget.id)
-      : newFilter.splice(newFilter.indexOf(e.currentTarget.id), 1);
-    // console.log('2차:' + newFilter);
-    setFilters(newFilter);
-    // console.log('3차:' + filters);
+  const handleFilter = (name, attr) => {
+    let filterArr = filters;
+    filterArr.includes(`${name},${attr}`)
+      ? filterArr.splice(filterArr.indexOf(`${name},${attr}`), 1)
+      : // ?(filterArr = filterArr.filter(opt => opt != `${name},${attr}`))
+        filterArr.push(`${name},${attr}`);
+    setFilters(filterArr);
     setQueryStrings();
   };
 

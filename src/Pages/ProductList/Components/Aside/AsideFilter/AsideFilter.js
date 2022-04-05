@@ -16,10 +16,8 @@ const AsideFilter = ({
           return (
             <li
               key={categoryAttr}
-              id={[categoryName, categoryAttr]}
               className="categoryAttr"
-              // onClick={() => handleFilter(categoryName, categoryAttr)}
-              onClick={handleFilter}
+              onClick={() => handleFilter(categoryName, categoryAttr)}
             >
               <input
                 id={categoryAttr + 'checkbox'}
