@@ -1,7 +1,7 @@
 import React from 'react';
 import './OrderProduct.scss';
 
-const OrderProduct = ({ orderProduct }) => {
+const OrderProduct = ({ orderProduct, setEditedProductId }) => {
   const {
     cart_id,
     quantity,
@@ -11,6 +11,10 @@ const OrderProduct = ({ orderProduct }) => {
     total_price,
     images,
   } = orderProduct;
+
+  const storeEditedId = () => {
+    setEditedProductId(cart_id);
+  };
 
   return (
     <div className="orderProduct">
@@ -25,7 +29,9 @@ const OrderProduct = ({ orderProduct }) => {
         <p className="id">Id : {cart_id}</p>
         <div className="btns">
           <button className="editBtn">Edit</button>
-          <button className="removeBtn">Remove</button>
+          <button className="removeBtn" onClick={storeEditedId}>
+            Remove
+          </button>
         </div>
       </div>
     </div>

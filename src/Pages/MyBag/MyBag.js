@@ -5,12 +5,14 @@ import SubEvent from './SubEvent/SubEvent';
 import OrderProduct from '../../Components/OrderProduct/OrderProduct';
 import OrderSummary from './OrderSummary/OrderSummary';
 import Button from '../../Components/Button/Button';
+import EditModal from './EditModal/EditModal';
 
 import './MyBag.scss';
 
 const MyBag = () => {
   const navigate = useNavigate();
   const [orderProducts, setOrderProducts] = useState([]);
+  const [editedProductId, setEditedProductId] = useState();
   const [slideCount, setSlideCount] = useState(0);
 
   const shippingCost = 40.95;
@@ -49,6 +51,7 @@ const MyBag = () => {
 
   return (
     <div className="myBag">
+      {editedProductId && <EditModal editedProductId={editedProductId} />}
       <div className="event">
         <div className="subEvent left">
           <img src="/images/promotion/creditcard.png" alt="banner" />
@@ -79,7 +82,6 @@ const MyBag = () => {
           </button>
         </div>
       </div>
-
       {orderProducts.length > 0 ? (
         <main>
           <h2 className="title">My Bag ({orderProducts.length})</h2>
@@ -89,6 +91,7 @@ const MyBag = () => {
                 <OrderProduct
                   key={orderProduct.id}
                   orderProduct={orderProduct}
+                  setEditedProductId={setEditedProductId}
                 />
               ))}
             </div>
