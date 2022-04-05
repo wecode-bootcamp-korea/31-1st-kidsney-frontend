@@ -5,7 +5,6 @@ const ThemeListImg = ({ id, src, handleImageSource }) => {
   return (
     <div className="themeListImg">
       <img src={src} onClick={handleImageSource} />
-      <div></div>
     </div>
   );
 };
