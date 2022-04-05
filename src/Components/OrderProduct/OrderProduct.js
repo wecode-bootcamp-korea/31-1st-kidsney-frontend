@@ -1,10 +1,39 @@
 import React from 'react';
+
+import { BASE_URL, Token } from '../../config';
 import './OrderProduct.scss';
 
-const orderProduct = ({ type, orderProduct }) => {
+const OrderProduct = ({
+  type,
+  orderProduct,
+  setEditedProductId,
+  setOrderProducts,
+}) => {
   const { cart_id, product, total_price } = orderProduct;
 
   const { id, images, name, quantity, size, stock, price } = product;
+
+  const storeEditedId = () => {
+    setEditedProductId(cart_id);
+  };
+
+  const removeItem = () => {
+    fetch(`${BASE_URL}/carts?cart-id=${cart_id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: Token,
+      },
+    }).then(res => {
+      if (res.ok) {
+        alert('삭제되었습니다.');
+        fetch(`${BASE_URL}/carts`)
+          .then(res => res.json())
+          .then(data => setOrderProducts(data.carts));
+      }
+
+      return res.json();
+    });
+  };
 
   return (
     <div className={`orderProduct ${type}`}>
@@ -22,9 +51,22 @@ const orderProduct = ({ type, orderProduct }) => {
         </p>
         <p className="size">Size : {size}</p>
         <p className="id">Id : {cart_id}</p>
+        <div className="editBtn">
+          <button className="editBtn" onClick={storeEditedId}>
+            Edit
+          </button>
+          <button
+            className="removeBtn"
+            onClick={() => {
+              if (window.confirm('삭제하시겠습니까?')) removeItem();
+            }}
+          >
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default orderProduct;
+export default OrderProduct;

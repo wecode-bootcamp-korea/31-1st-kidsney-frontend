@@ -152,6 +152,14 @@ const ProductSpec = () => {
     { id: 3, value: 'F', name: 'FREE', count: F },
   ];
 
+  //Store clothing's size value
+  const handleSize = e => {
+    const { value } = e.target;
+    const { id } = e.target;
+
+    setSize({ ...size, sizeName: value, sizeId: id });
+  };
+
   //Quantitiy part
   const plusQuantity = () => {
     setQuantity(quantity => quantity + 1);
@@ -161,13 +169,6 @@ const ProductSpec = () => {
     setQuantity(quantity <= 0 ? 0 : quantity - 1);
   };
 
-  //Store clothing's size value
-  const handleSize = e => {
-    const { value } = e.target;
-    const { id } = e.target;
-
-    setSize({ ...size, sizeName: value, sizeId: id });
-  };
   //Description part
   const handleCheckedList = e => {
     setCheckedList(e.target.className);

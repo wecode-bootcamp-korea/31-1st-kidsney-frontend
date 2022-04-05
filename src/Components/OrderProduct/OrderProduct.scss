@@ -6,6 +6,10 @@
   padding: 30px 0px 3px 0px;
   border-top: $border-bottom;
 
+  &:first-child {
+    margin-top: 0;
+  }
+
   img {
     width: 180px;
   }
@@ -37,6 +41,22 @@
     .deleteBtn {
       display: none;
     }
+
+    .btns {
+      position: absolute;
+      display: flex;
+      bottom: 10px;
+      left: 0;
+
+      .removeBtn {
+        margin-left: 20px;
+      }
+
+      .editBtn,
+      .removeBtn {
+        text-decoration: underline;
+      }
+    }
   }
 
   &.small {
@@ -56,6 +76,15 @@
     .description {
       h3 {
         font-size: 18px;
+      }
+    }
+
+    .btns {
+      display: none;
+
+      .editBtn,
+      .removeBtn {
+        display: none;
       }
     }
   }
