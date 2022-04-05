@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { API } from '../../../config';
-import { BASE_URL } from '../../../config';
+import { BASE_URL, Token } from '../../../config';
 
 import Button from '../../../Components/Button/Button';
 import MyBagModal from './MyBagModal/MyBagModal';
@@ -20,9 +20,17 @@ const ProductSpec = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [pathname]);
 
-  const [product, setProduct] = useState({});
   const { isHeart } = useLocation().state;
   const [isAddedWishList, setIsAddedWishList] = useState(isHeart);
+
+  const [product, setProduct] = useState({});
+  const [clickedImg, setClickedImg] = useState('0');
+  const [size, setSize] = useState({ sizeId: '', sizeName: '' });
+  const [quantity, setQuantity] = useState(1);
+  const [checkedList, setCheckedList] = useState('0');
+
+  const [isClosedBoxModal, setIsClosedBoxModal] = useState(true);
+  const [isShowedWishModal, setIsShowedWishModal] = useState(false);
 
   const getData = async () => {
     const data = await (
@@ -33,6 +41,7 @@ const ProductSpec = () => {
     setProduct(data.result);
   };
   useEffect(() => getData(), []);
+
   const { name, price, images, detail, stock } = product;
 
   let S = 0;
@@ -42,14 +51,6 @@ const ProductSpec = () => {
   if (stock) {
     [{ S }, { M }, { L }, { F }] = stock;
   }
-
-  const [clickedImg, setClickedImg] = useState('0');
-  const [size, setSize] = useState('');
-  const [quantity, setQuantity] = useState(1);
-  const [checkedList, setCheckedList] = useState('0');
-
-  const [isClosedBoxModal, setIsClosedBoxModal] = useState(true);
-  const [isShowedWishModal, setIsShowedWishModal] = useState(false);
 
   const descriptionList = [
     {
@@ -70,37 +71,41 @@ const ProductSpec = () => {
     },
   ];
 
-  const [orderProducts, setOrderProducts] = useState([]);
   //myBag modal part
   const showMyBag = () => {
-    size && setIsClosedBoxModal(!isClosedBoxModal);
+    size && setIsClosedBoxModal(false);
   };
 
   const sendToBag = () => {
-    fetch(`${API}/바구니페이지 주소`, {
-      method: 'post',
-      headers: {
-        Authorization: '토큰 주소',
-      },
-      body: JSON.stringify({
-        id: id,
-        quantity: quantity,
-        size: size,
-      }),
-    })
-      .then(res => {
-        if (res.ok) {
-          alert('장바구니 성공!');
-        } else {
-          console.log('error');
-        }
-        return res.json();
+    if (sizeList[size.sizeId].count < quantity) {
+      alert(
+        `죄송하지만 현재 선택하신 사이즈의 상품 재고수량은 ${
+          sizeList[size.sizeId].count
+        }개 입니다.`
+      );
+      return;
+    } else {
+      fetch(`${API}/바구니페이지 주소`, {
+        method: 'post',
+        headers: {
+          Authorization: Token,
+        },
+        body: JSON.stringify({
+          id: id,
+          quantity: quantity,
+          size: size,
+        }),
       })
-      .then(data => {
-        fetch(`${API}/바구니페이지 주소`).then(data =>
-          console.log(data.result)
-        );
-      });
+        .then(res => {
+          if (res.ok) {
+            showMyBag();
+            return res.json();
+          }
+        })
+        .then(data => {
+          console.log(data);
+        });
+    }
   };
 
   //wishList modal part
@@ -112,8 +117,7 @@ const ProductSpec = () => {
     fetch(`${BASE_URL}/users/wishlist?product-id=${id}`, {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjQ5MTIyMDA5LCJleHAiOjE2NDkyOTQ4MDl9.l7va-KqdmxPP7fbhjJ6spnWsp4wxOoRR8DQpo8DXU1o',
+        Authorization: Token,
       },
       body: JSON.stringify({ id: id }),
     })
@@ -146,10 +150,10 @@ const ProductSpec = () => {
 
   //Size part
   const sizeList = [
-    { id: 1, value: 'S', name: 'small', count: S },
-    { id: 2, value: 'M', name: 'medium', count: M },
-    { id: 3, value: 'L', name: 'large', count: L },
-    { id: 4, value: 'FREE', name: 'free', count: F },
+    { id: 0, value: 'S', name: 'small', count: S },
+    { id: 1, value: 'M', name: 'medium', count: M },
+    { id: 2, value: 'L', name: 'large', count: L },
+    { id: 3, value: 'FREE', name: 'free', count: F },
   ];
 
   //Quantitiy part
@@ -164,9 +168,12 @@ const ProductSpec = () => {
   //Store clothing's size value
   const handleSize = e => {
     const { value } = e.target;
+    const { id } = e.target;
 
-    setSize(value);
+    setSize({ ...size, sizeName: value, sizeId: id });
   };
+
+  console.log();
 
   //Description part
   const handleCheckedList = e => {
@@ -185,7 +192,7 @@ const ProductSpec = () => {
           setIsShowedWishModal={setIsShowedWishModal}
         />
       )}
-      <MyBagModal isClosed={isClosedBoxModal} showMyBag={showMyBag} />
+      <MyBagModal isClosed={isClosedBoxModal} showMyBag={sendToBag} />
       <div className="spec row">
         <div className="imgContainer">
           <div className="thumnails">
@@ -225,10 +232,11 @@ const ProductSpec = () => {
                 return (
                   <label
                     key={id}
-                    className={size === name ? 'size clicked' : 'size'}
+                    className={size.sizeName === name ? 'size clicked' : 'size'}
                   >
                     <input
                       key={id}
+                      id={id}
                       type="checkbox"
                       name="sizeOption"
                       value={name}
@@ -241,7 +249,11 @@ const ProductSpec = () => {
                 );
               })}
 
-              <div className={size ? 'errorMsg' : 'errorMsg show'}>
+              <div
+                className={
+                  size.sizeName.length > 0 ? 'errorMsg' : 'errorMsg show'
+                }
+              >
                 사이즈를 선택해주세요.
               </div>
             </div>

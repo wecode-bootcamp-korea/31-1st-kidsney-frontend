@@ -24,31 +24,33 @@ const MyBagModal = ({ isClosed, showMyBag }) => {
   };
 
   return (
-    <div className={isClosed ? 'myBagModal' : 'myBagModal active'}>
-      <h2>My Bag ({orderProducts.length})</h2>
-      <button className="closeBtn" onClick={showMyBag}>
-        <i className="fas fa-times" />
-      </button>
-      <div className="contents">
-        <div className="orderProducts">
-          {orderProducts.map(orderProduct => (
-            <OrderProduct
-              type="small"
-              key={orderProduct.id}
-              orderProduct={orderProduct}
-            />
-          ))}
+    orderProducts && (
+      <div className={isClosed ? 'myBagModal' : 'myBagModal active'}>
+        <h2>My Bag ({orderProducts.length})</h2>
+        <button className="closeBtn" onClick={showMyBag}>
+          <i className="fas fa-times" />
+        </button>
+        <div className="contents">
+          <div className="orderProducts">
+            {orderProducts.map(orderProduct => (
+              <OrderProduct
+                type="small"
+                key={orderProduct.id}
+                orderProduct={orderProduct}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <footer>
-        <Button
-          text="View Full Bag"
-          functionType={goToMyBag}
-          type="viewFullBag"
-        />
-      </footer>
-    </div>
+        <footer>
+          <Button
+            text="View Full Bag"
+            functionType={goToMyBag}
+            type="viewFullBag"
+          />
+        </footer>
+      </div>
+    )
   );
 };
 
