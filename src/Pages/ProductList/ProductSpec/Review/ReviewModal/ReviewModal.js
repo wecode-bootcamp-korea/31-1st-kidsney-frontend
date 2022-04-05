@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { API } from '../../../../../config';
+import { API, Token } from '../../../../../config';
 import './ReviewModal.scss';
 
 const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
@@ -14,8 +14,7 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
     fetch(`${API.products}/1`, {
       method: 'post',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjksImlhdCI6MTY0ODk3NTA3NCwiZXhwIjoxNjQ5MTQ3ODc0fQ.dWaX70ng-CtJfbOrVnl_s4Cma49pRW_N8vbhZ4vZECU',
+        Authorization: Token,
       },
       body: JSON.stringify({
         content: content,
@@ -24,17 +23,14 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
       .then(res => {
         if (res.ok) {
           alert('리뷰 등록이 완료되었습니다.');
+          fetch(`${API.products}/1`)
+            .then(res => res.json())
+            .then(data => setReviewList(data.result.reviews));
         } else {
           alert('네트워크 오류입니다.');
         }
         return res.json();
       })
-      .then(data => {
-        fetch(`${API.products}/1`)
-          .then(res => res.json())
-          .then(data => setReviewList(data.result.reviews));
-      })
-      .then(() => window.location.reload())
       .catch(error => console.error(error.message));
   };
 

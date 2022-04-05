@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <main className="main">
       <Review />
-      <div className="mainEvent">
+      {/* <div className="mainEvent">
         <img
           src="https://i.ibb.co/K6MSKvW/main-event-toys-png.png"
           alt="main event"
@@ -21,7 +21,7 @@ const Main = () => {
       </div>
       <div>
         <RecoProductList />
-      </div>
+      </div> */}
     </main>
   );
 };

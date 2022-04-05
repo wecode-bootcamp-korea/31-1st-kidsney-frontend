@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ReviewModal from './ReviewModal/ReviewModal';
-import { API } from '../../../../config';
+import { API, Token } from '../../../../config';
 
 import './Review.scss';
 
@@ -23,29 +23,22 @@ const Review = () => {
     fetch(`${API.products}/1?review-id=${e.target.id}`, {
       method: 'DELETE',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjksImlhdCI6MTY0ODk3NTA3NCwiZXhwIjoxNjQ5MTQ3ODc0fQ.dWaX70ng-CtJfbOrVnl_s4Cma49pRW_N8vbhZ4vZECU',
+        Authorization: Token,
       },
-    })
-      .then(res => {
-        if (res.ok) {
-          alert('삭제되었습니다.');
-        } else {
-          alert('네트워크 오류입니다.');
-        }
+    }).then(res => {
+      if (res.ok) {
+        alert('삭제되었습니다.');
+        fetch(`${API.products}/1`)
+          .then(res => res.json())
+          .then(data => {
+            setReviewList(data.result.reviews);
+          });
+      } else {
+        alert('네트워크 오류입니다.');
+      }
 
-        return res.json();
-      })
-      .then(data => {
-        if (data.message === 'deleted') {
-          fetch(`${API.products}/1`)
-            .then(res => res.json())
-            .then(data => {
-              setReviewList(data.result.reviews);
-            });
-        }
-      })
-      .then(() => window.location.reload());
+      return res.json();
+    });
   };
 
   //product spec으로부터 상세페이지 내에 있는 product에 대한 정보 props로 전달받는다.
@@ -87,13 +80,7 @@ const Review = () => {
       </button>
 
       <ul className="reviewList">
-        {reviewList.length === 0 ? (
-          <img
-            className="loadingImg"
-            src="/images/loading/loading-gif.gif"
-            alt="loading..."
-          />
-        ) : (
+        {reviewList &&
           reviewList.map((review, i) => {
             const { review_id, user, content, created_at } = review;
             const [day, month, date, year] = Date(created_at)
@@ -120,8 +107,7 @@ const Review = () => {
                 <p className="contents">{content}</p>
               </li>
             );
-          })
-        )}
+          })}
       </ul>
     </div>
   );
