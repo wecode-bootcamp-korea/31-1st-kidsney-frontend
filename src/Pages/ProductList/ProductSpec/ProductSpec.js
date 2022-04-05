@@ -29,7 +29,7 @@ const ProductSpec = () => {
   const [quantity, setQuantity] = useState(1);
   const [checkedList, setCheckedList] = useState('0');
 
-  const [isClosedBoxModal, setIsClosedBoxModal] = useState(true);
+  const [isShowedBagModal, setIsShowedBagModal] = useState(false);
   const [isShowedWishModal, setIsShowedWishModal] = useState(false);
 
   const getData = async () => {
@@ -73,11 +73,13 @@ const ProductSpec = () => {
 
   //myBag modal part
   const showMyBag = () => {
-    size && setIsClosedBoxModal(false);
+    setIsShowedBagModal(true);
   };
 
   const sendToBag = () => {
-    if (sizeList[size.sizeId].count < quantity) {
+    if (size.sizeId.length === 0) {
+      return;
+    } else if (sizeList[size.sizeId].count < quantity) {
       alert(
         `죄송하지만 현재 선택하신 사이즈의 상품 재고수량은 ${
           sizeList[size.sizeId].count
@@ -85,7 +87,7 @@ const ProductSpec = () => {
       );
       return;
     } else {
-      fetch(`${API}/carts/cart`, {
+      fetch(`${BASE_URL}/carts?product-id=${id}`, {
         method: 'post',
         headers: {
           Authorization: Token,
@@ -95,19 +97,13 @@ const ProductSpec = () => {
           quantity: quantity,
           size: size.sizeName,
         }),
-      })
-        .then(res => {
-          if (res.ok) {
-            showMyBag();
-            return res.json();
-          }
-        })
-        .then(data => {
-          console.log(data);
-        });
+      }).then(res => {
+        if (res.ok) {
+          showMyBag();
+        }
+      });
     }
   };
-
   //wishList modal part
   const showWishList = () => {
     setIsShowedWishModal(true);
@@ -150,10 +146,10 @@ const ProductSpec = () => {
 
   //Size part
   const sizeList = [
-    { id: 0, value: 'S', name: 'small', count: S },
-    { id: 1, value: 'M', name: 'medium', count: M },
-    { id: 2, value: 'L', name: 'large', count: L },
-    { id: 3, value: 'FREE', name: 'free', count: F },
+    { id: 0, value: 'S', name: 'S', count: S },
+    { id: 1, value: 'M', name: 'M', count: M },
+    { id: 2, value: 'L', name: 'L', count: L },
+    { id: 3, value: 'F', name: 'FREE', count: F },
   ];
 
   //Quantitiy part
@@ -172,9 +168,6 @@ const ProductSpec = () => {
 
     setSize({ ...size, sizeName: value, sizeId: id });
   };
-
-  console.log();
-
   //Description part
   const handleCheckedList = e => {
     setCheckedList(e.target.className);
@@ -192,7 +185,10 @@ const ProductSpec = () => {
           setIsShowedWishModal={setIsShowedWishModal}
         />
       )}
-      <MyBagModal isClosed={isClosedBoxModal} showMyBag={sendToBag} />
+      <MyBagModal
+        isShowedBagModal={isShowedBagModal}
+        setIsShowedBagModal={setIsShowedBagModal}
+      />
       <div className="spec row">
         <div className="imgContainer">
           <div className="thumnails">
@@ -232,19 +228,21 @@ const ProductSpec = () => {
                 return (
                   <label
                     key={id}
-                    className={size.sizeName === name ? 'size clicked' : 'size'}
+                    className={
+                      size.sizeName === value ? 'size clicked' : 'size'
+                    }
                   >
                     <input
                       key={id}
                       id={id}
                       type="checkbox"
                       name="sizeOption"
-                      value={name}
+                      value={value}
                       onClick={handleSize}
                       className={count === 0 ? 'disabled' : null}
                       disabled={count === 0}
                     />
-                    <span>{value}</span>
+                    <span>{name}</span>
                   </label>
                 );
               })}
@@ -271,7 +269,7 @@ const ProductSpec = () => {
             </div>
 
             <div className="btns">
-              <Button text="Add to Bag" functionType={showMyBag} />
+              <Button text="Add to Bag" functionType={sendToBag} />
               {isAddedWishList ? (
                 <Button
                   color="white"

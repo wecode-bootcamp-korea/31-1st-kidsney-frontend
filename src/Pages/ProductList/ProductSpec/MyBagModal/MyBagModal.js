@@ -7,19 +7,20 @@ import { BASE_URL, Token } from '../../../../config';
 
 import './MyBagModal.scss';
 
-const MyBagModal = ({ isClosed, showMyBag }) => {
+const MyBagModal = ({ isShowedBagModal, setIsShowedBagModal }) => {
   const navigate = useNavigate();
   const [orderProducts, setOrderProducts] = useState([]);
 
   const getData = async () => {
-    const res = await fetch(`${BASE_URL}/carts/cart`, {
+    const res = await fetch(`${BASE_URL}/carts`, {
       headers: {
         Authorization: Token,
       },
     });
 
-    const data = res.json();
-    setOrderProducts(data.result);
+    const data = await res.json();
+    setOrderProducts(data.carts);
+    console.log(data.carts);
   };
 
   useEffect(() => {
@@ -30,34 +31,36 @@ const MyBagModal = ({ isClosed, showMyBag }) => {
     navigate('/my-bag');
   };
 
+  const closeMyBagModal = () => {
+    setIsShowedBagModal(false);
+  };
+
   return (
-    orderProducts && (
-      <div className={isClosed ? 'myBagModal' : 'myBagModal active'}>
-        <h2>My Bag ({orderProducts.length})</h2>
-        <button className="closeBtn" onClick={showMyBag}>
-          <i className="fas fa-times" />
-        </button>
-        <div className="contents">
-          <div className="orderProducts">
-            {orderProducts.map(orderProduct => (
+    <div className={!isShowedBagModal ? 'myBagModal' : 'myBagModal active'}>
+      <h2>My Bag ({orderProducts.length})</h2>
+      <button className="closeBtn" onClick={closeMyBagModal}>
+        <i className="fas fa-times" />
+      </button>
+      <div className="contents">
+        <div className="orderProducts">
+          {orderProducts.length > 0 &&
+            orderProducts.map(orderProduct => (
               <OrderProduct
                 type="small"
                 key={orderProduct.cart_id}
                 orderProduct={orderProduct}
               />
             ))}
-          </div>
         </div>
-
-        <footer>
-          <Button
-            text="View Full Bag"
-            functionType={goToMyBag}
-            type="viewFullBag"
-          />
-        </footer>
       </div>
-    )
+      <footer>
+        <Button
+          text="View Full Bag"
+          functionType={goToMyBag}
+          type="viewFullBag"
+        />
+      </footer>
+    </div>
   );
 };
 
