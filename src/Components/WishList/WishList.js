@@ -11,7 +11,7 @@ import './WishList.scss';
 const WishList = () => {
   const [wishProducts, setWishProducts] = useState([]);
   const [imgSource, setImgSource] = useState(
-    'https://cdn-ssl.s7.disneystore.com/is/image/ShopDisney/WishlistHeaderV501?$xlargeFull$&fit=constrain&fmt=webp&cropN=0,0,1,1'
+    'https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1429&q=80'
   );
   const token = localStorage.getItem('token');
 
@@ -39,20 +39,12 @@ const WishList = () => {
         <img src={imgSource} />
         <div className="titleContainer">
           <p className="titleTxt">My Wish List</p>
-          <div className="share">Share</div>
-          <div>
-            <button className="listBtn">
-              <i className="icon fas fa-link" />
-            </button>
-            <button className="listBtn">
-              <i className="icon fa fa-envelope"></i>
-            </button>
-            <button className="listBtn">
-              <i className="icon fab fa-facebook-square" />
-            </button>
-            <button className="listBtn">
-              <i className="icon fab fa-twitter-square" />
-            </button>
+          <p className="share">Share</p>
+          <div className="listBtn">
+            <i className="icon fas fa-link" />
+            <i className="icon fa fa-envelope" />
+            <i className="icon fab fa-facebook-square" />
+            <i className="icon fab fa-twitter-square" />
           </div>
           <p className="infoTxt">
             Your wish list will be temporarily saved for 7 days.
