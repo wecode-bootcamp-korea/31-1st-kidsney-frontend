@@ -23,7 +23,7 @@ const WishList = () => {
     })
       .then(res => res.json())
       .then(data => {
-        setWishProducts(data.wish_list);
+        setWishProducts(product => (product = data.wish_list));
       });
   }, []);
 
@@ -34,7 +34,7 @@ const WishList = () => {
   return (
     <div className="wishList">
       <div className="header">
-        <img src={imgSource} />
+        <img src={imgSource} alt="source" />
         <div className="titleContainer">
           <p className="titleTxt">My Wish List</p>
           <p className="share">Share</p>

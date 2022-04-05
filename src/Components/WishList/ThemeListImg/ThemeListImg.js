@@ -4,7 +4,7 @@ import './ThemeListImg.scss';
 const ThemeListImg = ({ id, src, handleImageSource }) => {
   return (
     <div className="themeListImg">
-      <img src={src} onClick={handleImageSource} />
+      <img src={src} onClick={handleImageSource} alt="theme" />
     </div>
   );
 };
