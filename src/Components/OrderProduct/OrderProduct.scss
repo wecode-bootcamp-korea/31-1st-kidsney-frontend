@@ -33,12 +33,24 @@
       position: absolute;
       bottom: 10px;
     }
+
+    .deleteBtn {
+      display: none;
+    }
   }
 
   &.small {
+    position: relative;
     padding-top: 12px;
     img {
       width: 120px;
+    }
+
+    .deleteBtn {
+      display: inline;
+      margin-left: 5px;
+      font-size: 18px;
+      color: $color-gray;
     }
 
     .description {

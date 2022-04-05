@@ -10,7 +10,12 @@ const orderProduct = ({ type, orderProduct }) => {
     <div className={`orderProduct ${type}`}>
       <img src={images[0]} alt="thumbnail" />
       <div className="description">
-        <h3 className="price">${price}</h3>
+        <h3 className="price">
+          ${price}
+          <button className="deleteBtn">
+            <i className="fas fa-times" />
+          </button>
+        </h3>
         <h3>{name}</h3>
         <p className="quantity">
           Quantity : {quantity} at {total_price}

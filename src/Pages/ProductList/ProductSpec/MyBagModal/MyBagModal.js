@@ -20,7 +20,6 @@ const MyBagModal = ({ isShowedBagModal, setIsShowedBagModal }) => {
 
     const data = await res.json();
     setOrderProducts(data.carts);
-    console.log(data.carts);
   };
 
   useEffect(() => {
