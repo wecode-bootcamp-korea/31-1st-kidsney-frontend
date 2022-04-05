@@ -6,6 +6,7 @@ import OrderProduct from '../../Components/OrderProduct/OrderProduct';
 import OrderSummary from './OrderSummary/OrderSummary';
 import Button from '../../Components/Button/Button';
 import EditModal from './EditModal/EditModal';
+import { BASE_URL, Token } from '../../config';
 
 import './MyBag.scss';
 
@@ -25,10 +26,14 @@ const MyBag = () => {
   const total = (subTotal + shippingCost).toFixed(2);
 
   const getData = async () => {
-    const res = await fetch('/data/orderProducts.json');
+    const res = await fetch(`${BASE_URL}/carts`, {
+      headers: {
+        Authorization: Token,
+      },
+    });
     const data = await res.json();
 
-    setOrderProducts(data);
+    setOrderProducts(data.carts);
   };
 
   useEffect(() => getData(), []);
@@ -89,9 +94,10 @@ const MyBag = () => {
             <div className="orderProducts">
               {orderProducts.map(orderProduct => (
                 <OrderProduct
-                  key={orderProduct.id}
+                  key={orderProduct.cart_id}
                   orderProduct={orderProduct}
                   setEditedProductId={setEditedProductId}
+                  setOrderProducts={setOrderProducts}
                 />
               ))}
             </div>

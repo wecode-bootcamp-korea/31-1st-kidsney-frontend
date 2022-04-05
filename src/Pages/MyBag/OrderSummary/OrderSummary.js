@@ -3,6 +3,8 @@ import Button from '../../../Components/Button/Button';
 import './OrderSummary.scss';
 
 const OrderSummary = ({ subTotal, total }) => {
+  let isSigned = true;
+
   return (
     <div className="orderSummary">
       <h2>Order Summary</h2>
@@ -20,7 +22,7 @@ const OrderSummary = ({ subTotal, total }) => {
       <p>* Tax estimated at checkout</p>
       <div className="btns">
         <Button text="Sign In & Checkout" />
-        <Button text="Guest Checkout" type="white" />
+        <Button text="Guest Checkout" type="white" />{' '}
       </div>
     </div>
   );
