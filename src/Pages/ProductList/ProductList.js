@@ -40,23 +40,20 @@ const ProductList = () => {
   );
 
   const handleFilter = (name, attr) => {
-    let filterArr = [...filters]; //shallow copy , state에 따라 같이 변화
-
+    let filterArr = [...filters];
     filterArr.includes(`${name},${attr}`)
       ? filterArr.splice(filterArr.indexOf(`${name},${attr}`), 1)
-      : // ?(filterArr = filterArr.filter(opt => opt != `${name},${attr}`))
-        filterArr.push(`${name},${attr}`);
+      : filterArr.push(`${name},${attr}`);
     setFilters(filterArr);
-
     setQueryStrings(filterArr);
   };
 
-  const setQueryStrings = filter => {
+  const setQueryStrings = filterArr => {
     let queryString = '';
     let addParamFilters = [];
     const param = location.search.split('&')[0].replace('?main=', '');
-    if (filter) {
-      filter.forEach(filter => {
+    if (filterArr) {
+      filterArr.forEach(filter => {
         const splittedFilter = filter.split(`,`);
         switch (splittedFilter[0]) {
           case 'sub':
