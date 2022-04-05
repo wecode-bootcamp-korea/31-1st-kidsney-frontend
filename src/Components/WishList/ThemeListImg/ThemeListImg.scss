@@ -8,4 +8,8 @@
     border-radius: 50%;
     cursor: pointer;
   }
+  img:hover {
+    padding: 3px;
+    border: 1px solid $color-blue;
+  }
 }

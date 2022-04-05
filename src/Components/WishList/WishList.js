@@ -91,7 +91,6 @@ const WishList = () => {
       </div>
       {wishProducts[0] && <SelectList wishProducts={wishProducts} />}
       {wishProducts.length === 0 && <EmptyList />}
-
       <RecoProductList />
     </div>
   );
