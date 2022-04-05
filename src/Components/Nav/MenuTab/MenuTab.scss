@@ -14,10 +14,10 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        width: 60px;
+        width: 100px;
         height: 70px;
         margin-right: 70px;
-        font-size: 23px;
+        font-size: 25px;
       }
 
       .Toys:last-child {
@@ -28,6 +28,8 @@
       .Girls:hover,
       .Toys:hover {
         border-bottom: 2px solid $color-blue;
+        transition: all 0.4s ease-in;
+        transform: translateY(1%);
       }
     }
   }
@@ -40,11 +42,14 @@
     margin-top: 172px;
     background-color: #def7fe;
     font-size: $font-regular;
-    transform: translateX(150%);
-    transition: all 0.8s ease-in;
+    transition: all 0.5s ease-in;
+    transform: translateY(-5%);
+    opacity: 0;
 
     &.active {
-      transform: translateX(0);
+      @include flexCenter;
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }

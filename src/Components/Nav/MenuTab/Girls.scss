@@ -2,10 +2,12 @@
 
 .girls {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
 
   .clothesType {
-    margin-right: 50px;
-    font-size: 20px;
+    font-size: 23px;
 
     &:last-child {
       margin: 0;
