@@ -16,21 +16,21 @@ const OrderProduct = ({
   };
 
   const removeItem = () => {
-    if (window.confirm('삭제하시겠습니까?')) {
-      fetch(`${BASE_URL}/carts?cart-id=${cart_id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: Token,
-        },
-      }).then(res => {
-        console.log(res);
-        if (res.ok) {
-          fetch(`${BASE_URL}/carts`)
-            .then(res => res.json())
-            .then(data => setOrderProducts(data.carts));
-        }
-      });
-    }
+    fetch(`${BASE_URL}/carts?cart-id=${cart_id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: Token,
+      },
+    }).then(res => {
+      if (res.ok) {
+        alert('삭제되었습니다.');
+        fetch(`${BASE_URL}/carts`)
+          .then(res => res.json())
+          .then(data => setOrderProducts(data.carts));
+      }
+
+      return res.json();
+    });
   };
 
   return (
@@ -48,7 +48,12 @@ const OrderProduct = ({
           <button className="editBtn" onClick={storeEditedId}>
             Edit
           </button>
-          <button className="removeBtn" onClick={removeItem}>
+          <button
+            className="removeBtn"
+            onClick={() => {
+              if (window.confirm('삭제하시겠습니까?')) removeItem();
+            }}
+          >
             Remove
           </button>
         </div>

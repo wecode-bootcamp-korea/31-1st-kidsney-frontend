@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../../Components/Button/Button';
 import './SubEvent.scss';
 
-const SubEvent = ({ count }) => {
+const SubEvent = ({ slideCount }) => {
   const [eventProducts, setEventProducts] = useState([]);
 
   const getData = async () => {
@@ -21,7 +21,7 @@ const SubEvent = ({ count }) => {
           <div
             key={id}
             className="eventCard"
-            style={{ transform: `translateX(${600 * count}px) ` }}
+            style={{ transform: `translateX(${600 * slideCount}px) ` }}
           >
             <img src={image_url} alt="thumbnail" />
             <div className="description">

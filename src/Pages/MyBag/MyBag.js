@@ -18,7 +18,7 @@ const MyBag = () => {
 
   const shippingCost = 40.95;
   const subTotal =
-    orderProducts.length > 0
+    orderProducts && orderProducts.length > 0
       ? orderProducts
           .map(product => product.product_price)
           .reduce((a, b) => parseInt(a) + parseInt(b))
