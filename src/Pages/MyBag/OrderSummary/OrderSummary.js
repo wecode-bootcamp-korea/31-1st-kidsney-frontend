@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../../Components/Button/Button.js';
+import Button from '../../../Components/Button/Button';
 import './OrderSummary.scss';
 
 const OrderSummary = ({ subTotal, total }) => {

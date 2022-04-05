@@ -11,15 +11,15 @@
   &:hover {
     background-color: $color-dark-blue;
   }
-}
 
-.button.white {
-  background-color: $color-white;
-  color: $color-blue;
-  border: 1px solid $color-blue;
+  &.white {
+    background-color: $color-white;
+    color: $color-blue;
+    border: 1px solid $color-blue;
 
-  &:hover {
-    background-color: $color-dark-blue;
-    color: $color-white;
+    &:hover {
+      background-color: $color-dark-blue;
+      color: $color-white;
+    }
   }
 }

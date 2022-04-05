@@ -11,25 +11,25 @@ import './MyBag.scss';
 const MyBag = () => {
   const navigate = useNavigate();
   const [orderProducts, setOrderProducts] = useState([]);
+  const [slideCount, setSlideCount] = useState(0);
 
-  const getData = async () => {
-    const data = await (await fetch('/data/orderProducts.json')).json();
-
-    setOrderProducts(data);
-  };
-
-  useEffect(() => getData(), []);
-
+  const shippingCost = 40.95;
   const subTotal =
     orderProducts.length > 0
       ? orderProducts
           .map(product => product.price)
           .reduce((a, b) => parseInt(a) + parseInt(b))
       : 0;
-  const shippingCost = 40.95;
   const total = (subTotal + shippingCost).toFixed(2);
 
-  const [slideCount, setSlideCount] = useState(0);
+  const getData = async () => {
+    const res = await fetch('/data/orderProducts.json');
+    const data = res.json();
+
+    setOrderProducts(data);
+  };
+
+  useEffect(() => getData(), []);
 
   const addSlideCount = () => {
     slideCount === 1
