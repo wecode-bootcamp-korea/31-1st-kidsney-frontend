@@ -24,12 +24,10 @@ const WishList = () => {
       .then(res => res.json())
       .then(data => {
         setWishProducts(data.wish_list);
-        // console.log(wishProducts);
       });
   }, []);
 
   const handleImageSource = e => {
-    console.log(e);
     setImgSource(e.target.src);
   };
 
@@ -40,11 +38,19 @@ const WishList = () => {
         <div className="titleContainer">
           <p className="titleTxt">My Wish List</p>
           <p className="share">Share</p>
-          <div className="listBtn">
-            <i className="icon fas fa-link" />
-            <i className="icon fa fa-envelope" />
-            <i className="icon fab fa-facebook-square" />
-            <i className="icon fab fa-twitter-square" />
+          <div>
+            <button className="listBtn">
+              <i className="icon fas fa-link" />
+            </button>
+            <button className="listBtn">
+              <i className="icon fa fa-envelope" />
+            </button>
+            <button className="listBtn">
+              <i className="icon fab fa-facebook-square" />
+            </button>
+            <button className="listBtn">
+              <i className="icon fab fa-twitter-square" />
+            </button>
           </div>
           <p className="infoTxt">
             Your wish list will be temporarily saved for 7 days.

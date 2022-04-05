@@ -1,5 +1,4 @@
 import React from 'react';
-import ProductList from '../../../Pages/ProductList/ProductList';
 import Product from '../../Product/Product';
 import './SelectList.scss';
 
