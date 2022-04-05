@@ -22,7 +22,6 @@ const ProductList = () => {
         setProducts(product.result);
         setSubtotal(product.count);
       });
-    console.log(url);
   }, [url]);
 
   const [filters, setFilters] = useState(
