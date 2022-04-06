@@ -14,9 +14,9 @@
 }
 
 .main {
-  height: 100%;
-  padding-bottom: 40px;
   background-color: $color-light-blue;
+  height: 100%;
+  padding-bottom: 30px;
 
   .mainEvent {
     @include imgHover;
