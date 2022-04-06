@@ -1,8 +1,8 @@
 import './Button.scss';
 
-const Button = ({ type, text }) => {
+const Button = ({ color, functionType, text }) => {
   return (
-    <button className={type === 'white' ? 'button white' : 'button'}>
+    <button className={`button ${color}`} onClick={functionType}>
       {text}
     </button>
   );

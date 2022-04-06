@@ -20,5 +20,31 @@
     h2 {
       text-align: center;
     }
+
+    main {
+      display: flex;
+      height: 300px;
+
+      .imgContainer {
+        @include flexColumn;
+        align-items: center;
+        margin-right: 10px;
+
+        .mainImg {
+          margin-bottom: 20px;
+          width: 300px;
+        }
+
+        .thumnail {
+          width: 60px;
+          margin: 0 10px;
+        }
+      }
+
+      .price {
+        padding-bottom: 20px;
+        border-bottom: $border-bottom;
+      }
+    }
   }
 }

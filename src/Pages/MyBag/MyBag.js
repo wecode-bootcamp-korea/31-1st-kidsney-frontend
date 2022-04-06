@@ -25,15 +25,22 @@ const MyBag = () => {
       : 0;
   const total = (subTotal + shippingCost).toFixed(2);
 
+  // const getData = async () => {
+  //   const res = await fetch(`${BASE_URL}/carts`, {
+  //     headers: {
+  //       Authorization: Token,
+  //     },
+  //   });
+  //   const data = await res.json();
+
+  //   setOrderProducts(data.carts);
+  // };
+
   const getData = async () => {
-    const res = await fetch(`${BASE_URL}/carts`, {
-      headers: {
-        Authorization: Token,
-      },
-    });
+    const res = await fetch('/data/orderProducts.json');
     const data = await res.json();
 
-    setOrderProducts(data.carts);
+    setOrderProducts(data);
   };
 
   useEffect(() => getData(), []);
