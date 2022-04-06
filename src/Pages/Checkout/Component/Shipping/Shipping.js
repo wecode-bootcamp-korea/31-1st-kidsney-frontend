@@ -31,12 +31,13 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
           />
         </div>
         <div className="addressContainer">
-          <span>주소</span>
-          <div className="addressMain wrapper">
+          <div className="wrapper">
+            <div>우편번호</div>
             <input
-              className="inputAddress"
-              placeholder="우측 검색버튼을 클릭해주세요"
-              readOnly
+              className="zipCode"
+              placeholder="우측 버튼으로 우편번호를 검색해주세요"
+              onChange={orderInfoHandler}
+              // readOnly
             />
             <button
               id="devU01TX0FVVEgyMDIyMDQwNjE0MTcyMTExMjQyMzg="
@@ -46,10 +47,19 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
               검색
             </button>
           </div>
+          <span>주소</span>
           <div className="wrapper">
-            <div>주소</div>
             <input
-              className="address"
+              className="addressMain"
+              placeholder="우편번호를 검색해주세요"
+              onChange={orderInfoHandler}
+              // readOnly
+            />
+          </div>
+          <div className="wrapper">
+            <div>상세주소</div>
+            <input
+              className="addressDetail"
               placeholder="나머지 주소를 입력해주세요"
               onChange={orderInfoHandler}
             />
@@ -74,7 +84,7 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
               onChange={orderInfoHandler}
             />
             <div className="bannerWrapper">
-              <span>킬리버리 (죽여주는 킬리버리 초음속배송)</span>
+              <span>킬리버리 초음속배송</span>
               <img
                 src="https://i.ibb.co/S692R4D/001-2.png"
                 alt="킬리버리 배너"
@@ -91,7 +101,10 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
             />
             <div className="bannerWrapper">
               <span>느릿느릿 선불택배</span>
-              <img src="https://i.ibb.co/938ckQT/001-3.png" alt="거북이" />
+              <img
+                src="https://i.ibb.co/938ckQT/001-3.png"
+                alt="귀여운거북이"
+              />
             </div>
           </div>
         </form>

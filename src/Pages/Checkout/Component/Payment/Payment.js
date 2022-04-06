@@ -1,6 +1,7 @@
 import React from 'react';
+import './Payment.scss';
 
-const Payment = ({ orderInfoHandler }) => {
+const Payment = ({ orderInfoHandler, submitOrder }) => {
   return (
     <>
       <div className="titleWrapper">
@@ -25,12 +26,15 @@ const Payment = ({ orderInfoHandler }) => {
               name="paySelector"
               className="wayOfPayment"
               type="radio"
-              value="mileage"
+              value="creditCard"
               onChange={orderInfoHandler}
               disabled
             />
           </div>
         </div>
+        <button className="submitBtn" onClick={submitOrder}>
+          SUBMIT ORDER
+        </button>
       </div>
     </>
   );
