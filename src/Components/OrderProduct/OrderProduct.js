@@ -9,7 +9,7 @@ const OrderProduct = ({
   setEditedProduct,
   setIsClosed,
 }) => {
-  const { cart_id, product, total_price } = orderProduct;
+  const { id, product, total_price } = orderProduct;
   const { name, images, size, quantity, price } = product;
 
   const openEditModal = () => {
@@ -18,13 +18,11 @@ const OrderProduct = ({
 
   const findEditedProduct = () => {
     openEditModal();
-    setEditedProduct(
-      orderProducts.find(product => product.cart_id === cart_id)
-    );
+    setEditedProduct(orderProducts.find(product => product.id === id));
   };
 
   const removeItem = () => {
-    fetch(`${BASE_URL}/carts?cart-id=${cart_id}`, {
+    fetch(`${BASE_URL}/carts/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: Token,
@@ -47,7 +45,7 @@ const OrderProduct = ({
           Quantity : {quantity} at ${total_price}
         </p>
         <p className="size">Size : {size}</p>
-        <p className="id">Id : {cart_id}</p>
+        <p className="id">Id : {id}</p>
         <div className="btns">
           <button className="editBtn" onClick={findEditedProduct}>
             Edit

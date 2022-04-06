@@ -6,7 +6,7 @@ import { BASE_URL, Token } from '../../../config';
 import './EditModal.scss';
 
 const EditModal = ({ editedProduct, setIsClosed }) => {
-  const { cart_id, product } = editedProduct;
+  const { id, product } = editedProduct;
   const { images, name, price, quantity } = product;
 
   const [editedSize, setEditedSize] = useState({ sizeId: '', sizeName: '' });
@@ -24,7 +24,7 @@ const EditModal = ({ editedProduct, setIsClosed }) => {
     if (editedSize.sizeId === '') {
       return;
     } else {
-      fetch(`${BASE_URL}/carts?cart-id=${cart_id}`, {
+      fetch(`${BASE_URL}/carts/${id}`, {
         method: 'PATCH',
         headers: {
           Authorization: Token,
