@@ -7,7 +7,7 @@ import './EditModal.scss';
 
 const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
   const { cart_id, product, total_price } = editedProduct;
-  const { id, images, name, price, quantity, size, stock } = product;
+  const { images, name, price, quantity, size } = product;
 
   const [editedSize, setEditedSize] = useState({ sizeId: '', sizeName: '' });
   const [editedQuantity, setEditedQuantity] = useState(1);
@@ -17,10 +17,6 @@ const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
   let M = 10;
   let L = 10;
   let F = 0;
-
-  // if (stock) {
-  //   [{ S }, { M }, { L }, { F }] = stock;
-  // }
 
   const sizeList = [
     { id: 0, value: 'S', name: 'S', count: S },
@@ -43,7 +39,6 @@ const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
         quantity: editedQuantity,
       }),
     }).then(res => {
-      console.log(res);
       if (res.ok) {
         alert('상품 수정이 완료되었습니다.');
         closeModal();
