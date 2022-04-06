@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Aside.scss';
+import './AsideFilter.scss';
 
 const AsideFilter = ({
   displayedName,
@@ -12,27 +12,20 @@ const AsideFilter = ({
     <li className="categoryName">
       {displayedName}
       <ul className="categoryAttrContainer">
-        {categoryAttries.map(categoryAttr => {
-          return (
-            <li
-              key={categoryAttr}
-              className="categoryAttr"
-              onClick={() => handleFilter(categoryName, categoryAttr)}
-            >
-              <input
-                id={categoryAttr + 'checkbox'}
-                type="checkbox"
-                checked={
-                  filters.indexOf(categoryName + ',' + categoryAttr) === -1
-                    ? false
-                    : true
-                }
-                readOnly
-              />
-              <span>{categoryAttr}</span>
-            </li>
-          );
-        })}
+        {categoryAttries.map(categoryAttr => (
+          <li
+            key={categoryAttr}
+            className="categoryAttr"
+            onClick={() => handleFilter(categoryName, categoryAttr)}
+          >
+            <input
+              type="checkbox"
+              checked={filters.includes(categoryName + ',' + categoryAttr)}
+              readOnly
+            />
+            <span>{categoryAttr}</span>
+          </li>
+        ))}
       </ul>
     </li>
   );

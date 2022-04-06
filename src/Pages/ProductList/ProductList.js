@@ -8,22 +8,11 @@ import './ProductList.scss';
 
 const ProductList = () => {
   const location = useLocation();
-
+  const [products, setProducts] = useState([]);
+  const [subtotal, setSubtotal] = useState();
   const [url, setUrl] = useState(
     `${BASE_URL}` + location.pathname + location.search
   );
-  const [products, setProducts] = useState([]);
-  const [subtotal, setSubtotal] = useState();
-
-  useEffect(() => {
-    fetch(url)
-      .then(response => response.json())
-      .then(product => {
-        setProducts(product.result);
-        setSubtotal(product.count);
-      });
-  }, [url]);
-
   const [filters, setFilters] = useState(
     location.search.split('&')[1]
       ? [
@@ -38,6 +27,15 @@ const ProductList = () => {
       : []
   );
 
+  useEffect(() => {
+    fetch(url)
+      .then(response => response.json())
+      .then(product => {
+        setProducts(product.result);
+        setSubtotal(product.count);
+      });
+  }, [url]);
+
   const handleFilter = (name, attr) => {
     const filterArr = [...filters];
     filterArr.includes(`${name},${attr}`)
@@ -49,7 +47,7 @@ const ProductList = () => {
 
   const setQueryStrings = filterArr => {
     let queryString = '';
-    let addParamFilters = [];
+    const addParamFilters = [];
     const param = location.search.split('&')[0].replace('?main=', '');
     if (filterArr) {
       filterArr.forEach(filter => {
