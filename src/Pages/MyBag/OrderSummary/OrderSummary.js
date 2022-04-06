@@ -21,8 +21,7 @@ const OrderSummary = ({ subTotal, total }) => {
       </h2>
       <p>* Tax estimated at checkout</p>
       <div className="btns">
-        <Button text="Sign In & Checkout" />
-        <Button text="Guest Checkout" color="white" />
+        <Button text=" Checkout" />
       </div>
     </div>
   );

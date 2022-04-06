@@ -21,7 +21,7 @@ const MyBag = () => {
   const subTotal =
     orderProducts && orderProducts.length > 0
       ? orderProducts
-          .map(product => product.product_price)
+          .map(product => product.product.price)
           .reduce((a, b) => parseInt(a) + parseInt(b))
       : 0;
   const total = (subTotal + shippingCost).toFixed(2);
@@ -36,13 +36,6 @@ const MyBag = () => {
 
     setOrderProducts(data.carts);
   };
-
-  // const getData = async () => {
-  //   const res = await fetch('/data/orderProducts.json');
-  //   const data = await res.json();
-
-  //   setOrderProducts(data);
-  // };
 
   useEffect(() => getData(), []);
 
@@ -112,7 +105,6 @@ const MyBag = () => {
                   orderProduct={orderProduct}
                   orderProducts={orderProducts}
                   setEditedProduct={setEditedProduct}
-                  setOrderProducts={setOrderProducts}
                   setIsClosed={setIsClosed}
                 />
               ))}

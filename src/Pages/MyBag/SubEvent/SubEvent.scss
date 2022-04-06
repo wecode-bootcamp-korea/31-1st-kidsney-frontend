@@ -6,15 +6,15 @@
   .eventCard {
     display: flex;
     align-items: center;
-    margin: 0 70px;
+    margin: 0 100px;
     transition: all 0.4s ease;
 
     &:first-child {
-      margin-left: 0;
+      margin-left: 2000px;
     }
 
     &:last-child {
-      margin-left: 45px;
+      // margin-left: 150px;
     }
 
     img {
@@ -28,6 +28,16 @@
 
       p {
         margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .subEvent {
+    .eventCard {
+      &:last-child {
+        margin-left: -35px;
       }
     }
   }

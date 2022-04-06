@@ -7,7 +7,6 @@ const OrderProduct = ({
   orderProduct,
   orderProducts,
   setEditedProduct,
-  setOrderProducts,
   setIsClosed,
 }) => {
   const { cart_id, product, total_price } = orderProduct;
@@ -33,12 +32,8 @@ const OrderProduct = ({
     }).then(res => {
       if (res.ok) {
         alert('삭제되었습니다.');
-        fetch(`${BASE_URL}/carts`)
-          .then(res => res.json())
-          .then(data => setOrderProducts(data.carts));
+        window.location.reload();
       }
-
-      return res.json();
     });
   };
 
