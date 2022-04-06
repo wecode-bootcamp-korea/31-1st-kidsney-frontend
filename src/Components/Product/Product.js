@@ -10,7 +10,7 @@ const Product = ({ product, direction, isHeart }) => {
   const [isAdded, setIsAdded] = useState(isHeart);
 
   const addToWishList = () => {
-    fetch(`${BASE_URL}/users/wishlist?product-id=${id}`, {
+    fetch(`${BASE_URL}/users/wishlist/${id}`, {
       method: 'POST',
       headers: {
         Authorization: Token,
