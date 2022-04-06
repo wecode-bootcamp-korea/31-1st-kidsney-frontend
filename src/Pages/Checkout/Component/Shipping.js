@@ -1,9 +1,15 @@
 import React from 'react';
+import FindAddress from './FindAddress';
 import '../Checkout.scss';
 
 const Shipping = () => {
+  const openAddressModal = e => {
+    e.preventDefault();
+    //모달hidden변경로직
+  };
   return (
     <>
+      <FindAddress />
       <div className="titleWrapper">
         <div className="num">1</div>
         <h2>Shipping</h2>
@@ -13,23 +19,32 @@ const Shipping = () => {
           <span className="id">ID</span>
           <span>님 배송정보를 입력해주세요</span>
         </div>
-        <div className="Wrapper">
+        <div className="wrapper">
           <div>이름</div>
           <input className="username" placeholder="이름을 입력하세요" />
         </div>
-        <div className="Wrapper">
+        <div className="addressContainer">
           <span>주소</span>
-          <div className="searchAddress">
-            <input className="inputAddress" />
-            <input type="button" className="address" value="검색" />
+          <div className="addressMain wrapper">
+            <input
+              className="inputAddress"
+              placeholder="우측 검색버튼을 클릭해주세요"
+              readOnly
+            />
+            <button className="search" onClick={openAddressModal}>
+              검색
+            </button>
           </div>
-          <input
-            className="addressDetail"
-            placeholder="나머지 주소를 입력해주세요"
-          />
+          <div className="wrapper">
+            <div>주소</div>
+            <input
+              className="addressDetail"
+              placeholder="나머지 주소를 입력해주세요"
+            />
+          </div>
         </div>
-        <div className="checkAddressWrapper">
-          <input className="saveAddress" type="checkbox" />
+        <div className="saveAddress">
+          <input type="checkbox" />
           <span>위의 주소를 기본 배송지로 저장합니다.</span>
         </div>
         <form className="deliverOption">

@@ -7,7 +7,7 @@ import ItemSummary from './Component/ItemSummary';
 
 const Checkout = () => {
   return (
-    <div>
+    <div className="whole">
       <h1>Complete your Order</h1>
       <div className="checkoutProcessWrapper">
         <Shipping />

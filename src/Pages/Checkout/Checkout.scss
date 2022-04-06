@@ -41,21 +41,18 @@ div {
           margin-left: 5px;
         }
       }
-      .Wrapper {
+      .wrapper {
         margin: 10px 0;
         border-bottom: 2px solid $color-gray;
         input {
           border: none;
-          margin: 10px 0;
+          margin-bottom: 10px;
+          width: 80%;
           font-size: $font-regular;
         }
-        .searchAddress {
-          .inputAddress {
-            width: 80%;
-          }
-          .address {
-            width: 20%;
-          }
+        .search {
+          width: 20%;
+          border: 1px solid;
         }
       }
     }
