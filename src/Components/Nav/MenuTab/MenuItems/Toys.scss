@@ -1,0 +1,21 @@
+@import '../../../../Styles/variables.scss';
+
+.toys {
+  display: flex;
+
+  .clothesType {
+    font-size: 23px;
+
+    &:last-child {
+      margin: 0;
+    }
+
+    .link:hover {
+      color: $color-blue;
+    }
+
+    .fas {
+      margin-right: 7px;
+    }
+  }
+}
