@@ -17,9 +17,10 @@ const Product = ({ product, direction, isHeart }) => {
       },
       body: JSON.stringify({ id: id }),
     })
-      .then(res => res.json())
-      .then(data => {
-        setIsAdded(data.message === 'ADDED');
+      .then(res => {
+        if (res.ok) {
+          setIsAdded(true);
+        }
       })
       .catch(error => console.error(error.message));
   };
