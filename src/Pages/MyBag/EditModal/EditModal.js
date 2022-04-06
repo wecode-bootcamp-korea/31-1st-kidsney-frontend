@@ -17,9 +17,10 @@ const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
   let M = 10;
   let L = 10;
   let F = 0;
-  // if (stock[0]) {
-  //   [{ S, M, L, F }] = stock[0];
-  // }
+
+  if (stock) {
+    [{ S }, { M }, { L }, { F }] = stock;
+  }
 
   const sizeList = [
     { id: 0, value: 'S', name: 'S', count: S },

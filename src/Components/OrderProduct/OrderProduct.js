@@ -49,7 +49,7 @@ const OrderProduct = ({
         <h3 className="price">${price}</h3>
         <h3>{name}</h3>
         <p className="quantity">
-          Quantity : ${quantity} at ${total_price}
+          Quantity : {quantity} at ${total_price}
         </p>
         <p className="size">Size : {size}</p>
         <p className="id">Id : {cart_id}</p>
