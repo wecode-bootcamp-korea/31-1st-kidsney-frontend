@@ -13,7 +13,7 @@ const Product = ({ product, direction }) => {
   };
 
   return (
-    <li className={`product ${direction}`}>
+    <li key={id} className={`product ${direction}`}>
       <div className="productCard" onClick={goToProductSpec}>
         <img alt="thumbnail" src={image_url} />
         <h3>{name}</h3>

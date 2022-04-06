@@ -1,1 +1,29 @@
-@import 'Styles/variables.scss';
+@import '../../Styles/variables.scss';
+
+@mixin imgHover {
+  margin-bottom: 55px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.8s ease-in-out;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+  }
+}
+
+.main {
+  background-color: #ffe0c6;
+  height: 100%;
+
+  .mainEvent {
+    @include imgHover;
+  }
+
+  .subEvent {
+    @include imgHover;
+  }
+}
