@@ -1,0 +1,24 @@
+@import '../../../../Styles/variables.scss';
+
+.girls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+
+  .clothesType {
+    font-size: 23px;
+
+    &:last-child {
+      margin: 0;
+    }
+
+    .link:hover {
+      color: $color-blue;
+    }
+
+    .fas {
+      margin-right: 7px;
+    }
+  }
+}
