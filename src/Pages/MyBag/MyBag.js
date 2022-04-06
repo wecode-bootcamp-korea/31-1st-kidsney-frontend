@@ -65,7 +65,11 @@ const MyBag = () => {
   return (
     <div className="myBag">
       {!isClosed && editedProduct && (
-        <EditModal editedProduct={editedProduct} setIsClosed={setIsClosed} />
+        <EditModal
+          editedProduct={editedProduct}
+          setIsClosed={setIsClosed}
+          setOrderProducts={setOrderProducts}
+        />
       )}
       <div className="event">
         <div className="subEvent left">

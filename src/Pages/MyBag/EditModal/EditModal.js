@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 import Button from '../../../Components/Button/Button';
+import { BASE_URL, Token } from '../../../config';
 
 import './EditModal.scss';
 
-const EditModal = ({ editedProduct, setIsClosed }) => {
+const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
   const { cart_id, product, total_price } = editedProduct;
   const { id, images, name, price, quantity, size, stock } = product;
 
@@ -26,6 +27,41 @@ const EditModal = ({ editedProduct, setIsClosed }) => {
     { id: 2, value: 'L', name: 'L', count: L },
     { id: 3, value: 'F', name: 'FREE', count: F },
   ];
+
+  const editOrder = () => {
+    if (size.sizeId.length === 0) {
+      return;
+    } else if (sizeList[size.sizeId].count < quantity) {
+      alert(
+        `죄송하지만 현재 선택하신 사이즈의 상품 재고수량은 ${
+          sizeList[size.sizeId].count
+        }개 입니다.`
+      );
+      return;
+    } else {
+      fetch('API 주소', {
+        method: 'post',
+        headers: {
+          Authorization: Token,
+        },
+        body: JSON.stringify({
+          size: editedSize.sizeName,
+          quantity: editedQuantity,
+        }),
+      }).then(res => {
+        if (res.ok) {
+          alert('상품 수정이 완료되었습니다.');
+          fetch(`${BASE_URL}/carts`, {
+            headers: {
+              Authorization: Token,
+            },
+          })
+            .then(res => res.json())
+            .then(data => setOrderProducts(data.carts));
+        }
+      });
+    }
+  };
 
   const selectImg = e => {
     setSelectedImg(e.target.id);
@@ -49,8 +85,6 @@ const EditModal = ({ editedProduct, setIsClosed }) => {
   const closeModal = () => {
     setIsClosed(true);
   };
-
-  console.log(editedSize, editedQuantity);
   return (
     editedProduct && (
       <div className="editModal">
@@ -129,7 +163,7 @@ const EditModal = ({ editedProduct, setIsClosed }) => {
               </div>
 
               <div className="updateBtn">
-                <Button text="update" />
+                <Button text="update" functionType={editOrder} />
               </div>
             </div>
           </main>
