@@ -41,7 +41,7 @@ const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
       return;
     } else {
       fetch('API 주소', {
-        method: 'post',
+        method: 'patch',
         headers: {
           Authorization: Token,
         },
@@ -56,9 +56,8 @@ const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
             headers: {
               Authorization: Token,
             },
-          })
-            .then(res => res.json())
-            .then(data => setOrderProducts(data.carts));
+          }).then(res => res.json());
+          // .then(data => setOrderProducts(data.carts));
         }
       });
     }

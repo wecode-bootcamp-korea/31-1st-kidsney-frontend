@@ -10,7 +10,6 @@ const SubEvent = ({ slideCount }) => {
     const data = await (await fetch(`${BASE_URL}/products?main=toy`)).json();
 
     setEventProducts(data.result);
-    console.log(data.result);
   };
 
   useEffect(() => getData(), []);
