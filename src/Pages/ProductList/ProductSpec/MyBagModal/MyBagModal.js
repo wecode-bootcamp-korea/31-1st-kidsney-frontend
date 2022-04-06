@@ -7,24 +7,12 @@ import { BASE_URL, Token } from '../../../../config';
 
 import './MyBagModal.scss';
 
-const MyBagModal = ({ isShowedBagModal, setIsShowedBagModal }) => {
+const MyBagModal = ({
+  orderProducts,
+  isShowedBagModal,
+  setIsShowedBagModal,
+}) => {
   const navigate = useNavigate();
-  const [orderProducts, setOrderProducts] = useState([]);
-
-  const getData = async () => {
-    const res = await fetch(`${BASE_URL}/carts`, {
-      headers: {
-        Authorization: Token,
-      },
-    });
-
-    const data = await res.json();
-    setOrderProducts(data.carts);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   const goToMyBag = () => {
     navigate('/my-bag');

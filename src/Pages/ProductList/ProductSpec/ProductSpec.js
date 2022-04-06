@@ -24,6 +24,8 @@ const ProductSpec = () => {
   const [isAddedWishList, setIsAddedWishList] = useState(isHeart);
 
   const [product, setProduct] = useState({});
+  const [orderProducts, setOrderProducts] = useState([]);
+
   const [clickedImg, setClickedImg] = useState('0');
   const [size, setSize] = useState({ sizeId: '', sizeName: '' });
   const [quantity, setQuantity] = useState(1);
@@ -97,11 +99,27 @@ const ProductSpec = () => {
           quantity: quantity,
           size: size.sizeName,
         }),
-      }).then(res => {
-        if (res.ok) {
-          showMyBag();
-        }
-      });
+      })
+        .then(res => {
+          if (res.ok) {
+            showMyBag();
+          }
+          return res.json();
+        })
+        .then(data => {
+          if (data.message === 'NOT_ENOUGH_STOCK')
+            alert('재고 수량 초과입니다.');
+
+          fetch(`${BASE_URL}/carts`, {
+            headers: {
+              Authorization: Token,
+            },
+          })
+            .then(res => res.json())
+            .then(data => {
+              setOrderProducts(data.carts);
+            });
+        });
     }
   };
   //wishList modal part
@@ -187,6 +205,7 @@ const ProductSpec = () => {
         />
       )}
       <MyBagModal
+        orderProducts={orderProducts}
         isShowedBagModal={isShowedBagModal}
         setIsShowedBagModal={setIsShowedBagModal}
       />

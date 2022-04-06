@@ -3,12 +3,7 @@ import React from 'react';
 import { BASE_URL, Token } from '../../config';
 import './OrderProduct.scss';
 
-const OrderProduct = ({
-  type,
-  orderProduct,
-  setEditedProductId,
-  setOrderProducts,
-}) => {
+const OrderProduct = ({ type, orderProduct, setEditedProductId }) => {
   const { cart_id, product, total_price } = orderProduct;
 
   const { id, images, name, quantity, size, stock, price } = product;
@@ -26,9 +21,7 @@ const OrderProduct = ({
     }).then(res => {
       if (res.ok) {
         alert('삭제되었습니다.');
-        fetch(`${BASE_URL}/carts`)
-          .then(res => res.json())
-          .then(data => setOrderProducts(data.carts));
+        window.location.reload();
       }
 
       return res.json();
@@ -41,7 +34,12 @@ const OrderProduct = ({
       <div className="description">
         <h3 className="price">
           ${price}
-          <button className="deleteBtn">
+          <button
+            className="deleteBtn"
+            onClick={() => {
+              if (window.confirm('삭제하시겠습니까?')) removeItem();
+            }}
+          >
             <i className="fas fa-times" />
           </button>
         </h3>
@@ -51,18 +49,20 @@ const OrderProduct = ({
         </p>
         <p className="size">Size : {size}</p>
         <p className="id">Id : {cart_id}</p>
-        <div className="editBtn">
-          <button className="editBtn" onClick={storeEditedId}>
-            Edit
-          </button>
-          <button
-            className="removeBtn"
-            onClick={() => {
-              if (window.confirm('삭제하시겠습니까?')) removeItem();
-            }}
-          >
-            Remove
-          </button>
+        <div className="btns">
+          <div className="editBtn">
+            <button className="editBtn" onClick={storeEditedId}>
+              Edit
+            </button>
+            <button
+              className="removeBtn"
+              onClick={() => {
+                if (window.confirm('삭제하시겠습니까?')) removeItem();
+              }}
+            >
+              Remove
+            </button>
+          </div>
         </div>
       </div>
     </div>
