@@ -30,7 +30,7 @@ const SubEvent = ({ slideCount }) => {
                 ${price / 2} {name}
               </h2>
               <p>50% SALE (04.07~)</p>
-              <Button text="Add to Bag" />
+              <Button text="♡ Add to WishList" />
             </div>
           </div>
         );
