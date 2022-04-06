@@ -1,0 +1,32 @@
+@import '../../../../../Styles/variables.scss';
+
+.categoryName {
+  margin: 10px 0 0 10px;
+  font-size: $font-medium;
+
+  .categoryAttrContainer {
+    @include flexColumn;
+
+    li {
+      @include flexCenter;
+
+      input {
+        zoom: 1.5;
+      }
+    }
+
+    span {
+      margin-left: 20px;
+      width: 130px;
+      height: 40px;
+      font-size: $font-medium;
+      color: $color-gray;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    span:hover {
+      color: $color-blue;
+    }
+  }
+}
