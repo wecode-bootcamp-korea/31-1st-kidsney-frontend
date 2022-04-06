@@ -34,14 +34,12 @@ const Nav = () => {
             <i className="fas fa-user" />
             Sign in | Sign Up
           </button>
-
-          <button className="navBtn">
-            <Link to="/wish-list" className="navLinkBtn">
+          <Link to="/wish-list" className="navLinkBtn">
+            <button className="navBtn">
               <i className="fas fa-heart" />
               My Wish List
-            </Link>
-          </button>
-
+            </button>
+          </Link>
           <button className="navBtn">
             <i className="fas fa-shopping-bag" />
             My Bag
