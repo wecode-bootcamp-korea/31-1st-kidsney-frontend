@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BASE_URL } from '../../../config';
 import '../Nav.scss';
 import './SignUpModal.scss';
 
@@ -72,7 +73,7 @@ const SignUpModal = ({ closeModal, setActiveModal }) => {
 
   function goToLogin() {
     handleButtonValid() &&
-      fetch('http://10.58.2.64:8000/users/signup', {
+      fetch(`${BASE_URL}/users/signup`, {
         method: 'POST',
         body: JSON.stringify({
           first_name: first_name,
@@ -95,7 +96,8 @@ const SignUpModal = ({ closeModal, setActiveModal }) => {
           return res.json();
         })
         .catch(error => {
-          // console.log(error.message);
+          // eslint-disable-next-line no-console
+          console.log(error.message);
         });
   }
 
@@ -159,7 +161,7 @@ const SignUpModal = ({ closeModal, setActiveModal }) => {
           </button>
           <div className="goToSignIn">
             <p>
-              Already have an account?{' '}
+              Already have an account?&nbsp;
               <button onClick={goToLoginModal}>Sign In</button>
             </p>
           </div>

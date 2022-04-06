@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Boys from './Boys';
-import Girls from './Girls';
-import Toys from './Toys';
+import Boys from './MenuItems/Boys';
+import Girls from './MenuItems/Girls';
+import Toys from './MenuItems/Toys';
 import './MenuTab.scss';
 
 const MenuTab = () => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BASE_URL } from '../../../config';
 
 import './LoginModal.scss';
 import '../../../Styles/common.scss';
@@ -45,7 +46,7 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
 
   function goToMain() {
     checkValidity() &&
-      fetch('http://10.58.2.64:8000/users/signin', {
+      fetch(`${BASE_URL}/users/signin`, {
         method: 'POST',
         body: JSON.stringify({
           email: email,
@@ -55,9 +56,10 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
         .then(res => res.json())
         .then(res => {
           if (res.token) {
+            alert('로그인 성공!');
             localStorage.setItem('token', res.token);
           } else {
-            alert('');
+            alert('다시 시도해 주세요!');
           }
         });
   }

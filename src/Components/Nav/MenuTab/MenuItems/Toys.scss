@@ -1,10 +1,7 @@
-@import '../../../Styles/variables.scss';
+@import '../../../../Styles/variables.scss';
 
-.girls {
+.toys {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 600px;
 
   .clothesType {
     font-size: 23px;
