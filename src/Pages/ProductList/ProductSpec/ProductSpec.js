@@ -8,6 +8,7 @@ import Button from '../../../Components/Button/Button';
 import MyBagModal from './MyBagModal/MyBagModal';
 import WishListModal from './WishListModal/WishListModal';
 import RecoProductList from '../../../Components/RecoProductList/RecoProductList';
+import Review from './Review/Review';
 
 import './ProductSpec.scss';
 
@@ -69,7 +70,7 @@ const ProductSpec = () => {
     {
       id: 2,
       title: 'Reviews',
-      description: <h2>Reviews</h2>,
+      description: <Review />,
     },
   ];
 
@@ -79,7 +80,7 @@ const ProductSpec = () => {
   };
 
   const sendToBag = () => {
-    if (size.sizeId.length === 0) {
+    if (size.sizeId === '') {
       return;
     } else if (sizeList[size.sizeId].count < quantity) {
       alert(
@@ -89,7 +90,7 @@ const ProductSpec = () => {
       );
       return;
     } else {
-      fetch(`${BASE_URL}/carts?product-id=${id}`, {
+      fetch(`${BASE_URL}/carts/products/${id}`, {
         method: 'post',
         headers: {
           Authorization: Token,
@@ -99,17 +100,9 @@ const ProductSpec = () => {
           quantity: quantity,
           size: size.sizeName,
         }),
-      })
-        .then(res => {
-          if (res.ok) {
-            showMyBag();
-          }
-          return res.json();
-        })
-        .then(data => {
-          if (data.message === 'NOT_ENOUGH_STOCK')
-            alert('재고 수량 초과입니다.');
-
+      }).then(res => {
+        if (res.ok) {
+          showMyBag();
           fetch(`${BASE_URL}/carts`, {
             headers: {
               Authorization: Token,
@@ -119,16 +112,18 @@ const ProductSpec = () => {
             .then(data => {
               setOrderProducts(data.carts);
             });
-        });
+        }
+      });
     }
   };
+
   //wishList modal part
   const showWishList = () => {
     setIsShowedWishModal(true);
   };
 
   const addToWishList = () => {
-    fetch(`${BASE_URL}/users/wishlist?product-id=${id}`, {
+    fetch(`${BASE_URL}/users/wishlist/${id}`, {
       method: 'POST',
       headers: {
         Authorization: Token,
@@ -136,11 +131,8 @@ const ProductSpec = () => {
       body: JSON.stringify({ id: id }),
     })
       .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        setIsAddedWishList(data.message === 'ADDED');
-        if (data.message === 'ADDED') {
+        setIsAddedWishList(res.status === 201);
+        if (res.status === 201) {
           showWishList();
         }
       })

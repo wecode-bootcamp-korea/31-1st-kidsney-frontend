@@ -4,16 +4,15 @@ import { BASE_URL, Token } from '../../config';
 import './OrderProduct.scss';
 
 const OrderProduct = ({ type, orderProduct, setEditedProductId }) => {
-  const { cart_id, product, total_price } = orderProduct;
+  const { id, product, total_price } = orderProduct;
 
-  const { id, images, name, quantity, size, stock, price } = product;
+  const { images, name, quantity, size, price } = product;
 
   const storeEditedId = () => {
-    setEditedProductId(cart_id);
+    setEditedProductId(id);
   };
-
   const removeItem = () => {
-    fetch(`${BASE_URL}/carts?cart-id=${cart_id}`, {
+    fetch(`${BASE_URL}/carts/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: Token,
@@ -23,8 +22,6 @@ const OrderProduct = ({ type, orderProduct, setEditedProductId }) => {
         alert('삭제되었습니다.');
         window.location.reload();
       }
-
-      return res.json();
     });
   };
 
@@ -48,7 +45,7 @@ const OrderProduct = ({ type, orderProduct, setEditedProductId }) => {
           Quantity : {quantity} at {total_price}
         </p>
         <p className="size">Size : {size}</p>
-        <p className="id">Id : {cart_id}</p>
+        <p className="id">Id : {id}</p>
         <div className="btns">
           <div className="editBtn">
             <button className="editBtn" onClick={storeEditedId}>

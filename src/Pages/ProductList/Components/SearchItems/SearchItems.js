@@ -15,11 +15,10 @@ const SearchItems = ({ products }) => {
     })
       .then(res => res.json())
       .then(data => {
-        setWishListIdx(data.wish_list.map(list => list.id));
+        setWishListIdx(data.wish_list.map(list => list.product.id));
       })
       .catch(error => console.error(error.message));
   };
-
   useEffect(getWishList, []);
 
   return (

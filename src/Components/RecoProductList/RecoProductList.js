@@ -11,7 +11,8 @@ const RecoProductList = () => {
   const [direction, setDirection] = useState('left');
 
   const getData = async () => {
-    const data = await (await fetch(`${API.products}`)).json();
+    const res = await fetch(`${API.products}`);
+    const data = await res.json();
     setProducts(data.result);
   };
 

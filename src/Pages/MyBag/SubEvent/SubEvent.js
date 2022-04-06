@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../../../Components/Button/Button';
+import { API } from '../../../config';
 import './SubEvent.scss';
 
 const SubEvent = ({ count }) => {
   const [eventProducts, setEventProducts] = useState([]);
 
   const getData = async () => {
-    const data = await (await fetch('/data/eventProducts.json')).json();
+    const res = await fetch(`${API.products}?main=toy`);
+    const data = await res.json();
 
     setEventProducts(data);
   };

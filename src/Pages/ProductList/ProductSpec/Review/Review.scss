@@ -4,7 +4,12 @@
   position: relative;
   @include flexColumn;
   width: 700px;
+  height: 230px;
+  padding-bottom: 100px;
   font-family: 'Didact Gothic', sans-serif;
+  background-color: $color-white;
+  z-index: 100;
+  overflow: scroll;
 
   .reviewBtn {
     position: absolute;
@@ -23,16 +28,8 @@
   }
 
   .reviewList {
+    transform: translateX(-50px);
     text-align: left;
-
-    .loadingImg {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      right: 50%;
-      top: 50%;
-      transform: translate(-50%, 50%);
-    }
 
     .reviewCard {
       position: relative;
