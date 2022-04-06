@@ -21,7 +21,6 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
       }),
     })
       .then(res => {
-        //console.log(res);
         if (res.ok) {
           alert('리뷰 등록이 완료되었습니다.');
           fetch(`${API.products}/${id}`)
@@ -30,7 +29,6 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
         } else {
           alert('네트워크 오류입니다.');
         }
-        return res.json();
       })
       .catch(error => console.error(error.message));
   };
@@ -61,7 +59,10 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
               placeholder="Example : I bought this a month ago and am so happy that I did..."
             />
           </label>
-          <button className="postBtn" onClick={submitReview}>
+          <button
+            className="postBtn"
+            onClick={content.length > 0 && submitReview}
+          >
             Post Review
           </button>
         </main>
