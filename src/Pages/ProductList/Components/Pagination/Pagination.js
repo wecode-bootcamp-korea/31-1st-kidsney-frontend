@@ -1,7 +1,7 @@
 import React from 'react';
 import './Pagination.scss';
 
-const Pagination = ({ LIMIT, subtotal, pageHandler, offsetHandler }) => {
+const Pagination = ({ LIMIT, subtotal, pageHandler }) => {
   const pageCount = Math.ceil(subtotal / LIMIT);
   const pages = [];
   for (let i = 1; i <= pageCount; i++) {
