@@ -11,7 +11,6 @@ const Product = ({ product, direction, children }) => {
       state: product,
     });
   };
-  // console.log('check>>>>', product);
 
   return (
     <li key={id} className={`product ${direction}`}>

@@ -5,7 +5,6 @@ import EmptyList from './EmptyList/EmptyList';
 import SelectList from './SelectList/SelectList';
 import ThemeListImg from './ThemeListImg/ThemeListImg';
 import { BASE_URL } from '../../config';
-
 import './WishList.scss';
 
 const WishList = () => {
@@ -58,8 +57,8 @@ const WishList = () => {
           <p className="signInTxt">
             <Link to="/login" className="linkToLogin">
               Sign In
-            </Link>{' '}
-            to save or share this wish list.
+            </Link>
+            &nbsp;to save or share this wish list.
           </p>
         </div>
       </div>
