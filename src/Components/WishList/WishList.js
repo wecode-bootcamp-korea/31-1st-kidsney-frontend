@@ -24,7 +24,7 @@ const WishList = () => {
       .then(data => {
         setWishProducts(product => (product = data.wish_list));
       });
-  }, []);
+  }, [token]);
 
   const handleImageSource = e => {
     setImgSource(e.target.src);
@@ -74,11 +74,11 @@ const WishList = () => {
         </div>
         <div className="theme">
           <ul className="themeList">
-            {WISHLIST_IMG_LIST.map(img => {
+            {WISHLIST_THEME_LIST.map(({ id, src }) => {
               return (
                 <ThemeListImg
-                  key={img.id}
-                  src={img.src}
+                  key={id}
+                  src={src}
                   handleImageSource={handleImageSource}
                 />
               );
@@ -93,7 +93,7 @@ const WishList = () => {
   );
 };
 
-const WISHLIST_IMG_LIST = [
+const WISHLIST_THEME_LIST = [
   {
     id: 1,
     src: 'https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
