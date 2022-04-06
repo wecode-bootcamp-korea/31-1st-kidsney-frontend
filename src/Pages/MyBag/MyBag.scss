@@ -65,14 +65,15 @@
     margin: 50px 120px;
 
     .title {
-      margin: 0;
+      margin-left: 100px;
+      padding-bottom: 10px;
     }
 
     .contents {
       @include flexCenter;
       align-items: flex-start;
       width: 100%;
-      margin: 0;
+
       transition: all ease 0.4s;
 
       .orderProducts {

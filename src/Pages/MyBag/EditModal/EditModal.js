@@ -1,64 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Button from '../../../Components/Button/Button';
 import { BASE_URL, Token } from '../../../config';
 
 import './EditModal.scss';
 
-const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
-  const { cart_id, product, total_price } = editedProduct;
-  const { images, name, price, quantity, size } = product;
+const EditModal = ({ editedProduct, setIsClosed }) => {
+  const { cart_id, product } = editedProduct;
+  const { images, name, price, quantity } = product;
 
   const [editedSize, setEditedSize] = useState({ sizeId: '', sizeName: '' });
   const [editedQuantity, setEditedQuantity] = useState(1);
   const [selectedImg, setSelectedImg] = useState('0');
 
-  let S = 0;
-  let M = 10;
-  let L = 10;
-  let F = 0;
-
   const sizeList = [
-    { id: 0, value: 'S', name: 'S', count: S },
-    { id: 1, value: 'M', name: 'M', count: M },
-    { id: 2, value: 'L', name: 'L', count: L },
-    { id: 3, value: 'F', name: 'FREE', count: F },
+    { id: 0, value: 'S', name: 'S' },
+    { id: 1, value: 'M', name: 'M' },
+    { id: 2, value: 'L', name: 'L' },
+    { id: 3, value: 'F', name: 'FREE' },
   ];
 
   const editOrder = () => {
-    // if (size.sizeId.length === 0) {
-    //   return;
-    // } else {
-    fetch(`${BASE_URL}/carts?cart-id=${cart_id}`, {
-      method: 'PATCH',
-      headers: {
-        Authorization: Token,
-      },
-      body: JSON.stringify({
-        //size: editedSize.sizeName,
-        quantity: editedQuantity,
-      }),
-    }).then(res => {
-      if (res.ok) {
-        alert('상품 수정이 완료되었습니다.');
-        closeModal();
+    if (editedSize.sizeId === '') {
+      return;
+    } else {
+      fetch(`${BASE_URL}/carts?cart-id=${cart_id}`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: Token,
+        },
+        body: JSON.stringify({
+          size: editedSize.sizeName,
+          quantity: editedQuantity,
+        }),
+      }).then(res => {
+        if (res.ok) {
+          alert('상품 수정이 완료되었습니다.');
+          closeModal();
 
-        window.location.reload();
-      }
-    });
+          window.location.reload();
+        }
+      });
+    }
   };
 
   const selectImg = e => {
     setSelectedImg(e.target.id);
   };
 
+  // size parts
   const handleSize = e => {
     const { value } = e.target;
     const { id } = e.target;
 
-    setEditedSize({ ...size, sizeName: value, sizeId: id });
+    setEditedSize({ ...editedSize, sizeName: value, sizeId: id });
   };
 
+  // quantity parts
   const plusQuantity = () => {
     setEditedQuantity(quantity => quantity + 1);
   };
