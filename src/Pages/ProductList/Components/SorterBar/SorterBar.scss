@@ -1,5 +1,4 @@
 @import '../../../../Styles/variables.scss';
-
 .sorterBar {
   display: flex;
   justify-content: space-between;
@@ -9,14 +8,37 @@
     margin: 20px;
   }
 
+  .priceSorter:hover {
+    margin: 20px;
+
+    .smallGray {
+      font-size: $font-small;
+      color: $color-gray;
+      margin: 0 5px;
+    }
+
+    div {
+      @include flexColumn;
+      border: 1px solid black;
+
+      span {
+        font-size: $font-small;
+        color: $color-gray;
+        margin: 10px;
+        cursor: pointer;
+      }
+    }
+  }
   .priceSorter {
     margin: 20px;
-    cursor: pointer;
-  }
 
-  .smallGray {
-    font-size: $font-small;
-    color: $color-gray;
-    margin: 0 5px;
+    .smallGray {
+      font-size: $font-small;
+      color: $color-gray;
+      margin: 0 5px;
+    }
+    div {
+      display: none;
+    }
   }
 }

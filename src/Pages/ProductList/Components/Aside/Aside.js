@@ -1,55 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+import AsideFilter from './AsideFilter/AsideFilter';
+import FILTER_CATEGORY from '../../../../filterCategory';
 
 import './Aside.scss';
 
-const Aside = () => {
-  const [clickedList, setIsClickedList] = useState('0');
-
-  const handleClickedList = e => {
-    setIsClickedList(e.target.className.split(' ')[0]);
-  };
-
-  const checkList = listId => listId === clickedList;
-
+const Aside = ({ handleFilter, filters }) => {
   return (
     <aside className="aside">
       <ul className="accordionFilter">
-        {Filter_List.map(({ id, name }) => {
+        {FILTER_CATEGORY.map(filter => {
           return (
-            <li
-              key={id}
-              className={`${id} filterName`}
-              onClick={handleClickedList}
-            >
-              {name}
-              <i
-                className={
-                  checkList(`${id}`)
-                    ? `${id} fas fa-minus`
-                    : `${id} fas fa-plus`
-                }
-              />
-            </li>
+            <AsideFilter
+              key={filter.id}
+              displayedName={filter.displayedName}
+              categoryName={filter.categoryName}
+              categoryAttries={filter.categoryAttries}
+              filters={filters}
+              handleFilter={handleFilter}
+            />
           );
         })}
       </ul>
     </aside>
   );
 };
-
 export default Aside;
-
-const Filter_List = [
-  {
-    id: 0,
-    name: 'product Type',
-  },
-  {
-    id: 1,
-    name: 'Size',
-  },
-  {
-    id: 2,
-    name: 'Character',
-  },
-];

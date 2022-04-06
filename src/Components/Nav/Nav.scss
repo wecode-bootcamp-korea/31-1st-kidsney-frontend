@@ -1,1 +1,98 @@
-@import 'Styles/variables.scss';
+@import '../../Styles/variables.scss';
+@import './MenuTab/MenuTab.scss';
+
+@mixin navBox {
+  height: 70px;
+}
+
+.nav {
+  background-color: $color-white;
+  border-bottom: $border-bottom;
+
+  .headerNav {
+    position: relative;
+    @include flexCenter;
+    @include navBox;
+    background-color: $color-white;
+    cursor: pointer;
+
+    .logo {
+      width: 200px;
+      height: 60px;
+      color: $color-logo;
+    }
+
+    .navLinks {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      width: 400px;
+      height: 60px;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+
+      .navBtn {
+        @include flexCenter;
+        width: 130px;
+        height: 30px;
+        margin-top: 15px;
+        background-color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+
+        .fas {
+          padding-right: 5px;
+          color: $color-blue;
+        }
+      }
+
+      .navBtn:hover {
+        color: $color-blue;
+      }
+
+      .navBtn:nth-child(3) {
+        padding-right: 30px;
+      }
+    }
+  }
+
+  .navBar {
+    @include flexCenter;
+    @include navBox;
+    position: relative;
+
+    .navBarUl {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+  }
+
+  .search {
+    @include flexCenter;
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    right: 30px;
+    border-radius: 15px;
+    background-color: $color-light-blue;
+
+    .searchInput {
+      position: relative;
+      width: 120px;
+      height: 30px;
+      padding-left: 15px;
+      background-color: $color-light-blue;
+      border: none;
+      text-align: left;
+    }
+
+    .fas {
+      position: absolute;
+      right: 30px;
+      color: $color-blue;
+      font-size: 20px;
+    }
+  }
+}
