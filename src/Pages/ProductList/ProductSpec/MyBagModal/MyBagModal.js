@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router';
 
 import OrderProduct from '../../../../Components/OrderProduct/OrderProduct';
 import Button from '../../../../Components/Button/Button';
-import { BASE_URL, Token } from '../../../../config';
 
 import './MyBagModal.scss';
 
