@@ -8,11 +8,17 @@ const OrderProduct = ({
   orderProducts,
   setEditedProduct,
   setOrderProducts,
+  setIsClosed,
 }) => {
   const { cart_id, product, total_price } = orderProduct;
   const { id, name, images, size, quantity, stock, price } = product;
 
+  const openEditModal = () => {
+    setIsClosed(false);
+  };
+
   const findEditedProduct = () => {
+    openEditModal();
     setEditedProduct(
       orderProducts.find(product => product.cart_id === cart_id)
     );

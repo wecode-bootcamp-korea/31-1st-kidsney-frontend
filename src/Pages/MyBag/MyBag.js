@@ -15,6 +15,7 @@ const MyBag = () => {
   const [orderProducts, setOrderProducts] = useState([]);
   const [editedProduct, setEditedProduct] = useState();
   const [slideCount, setSlideCount] = useState(0);
+  const [isClosed, setIsClosed] = useState(false);
 
   const shippingCost = 40.95;
   const subTotal =
@@ -63,7 +64,9 @@ const MyBag = () => {
 
   return (
     <div className="myBag">
-      {editedProduct && <EditModal editedProduct={editedProduct} />}
+      {!isClosed && editedProduct && (
+        <EditModal editedProduct={editedProduct} setIsClosed={setIsClosed} />
+      )}
       <div className="event">
         <div className="subEvent left">
           <img src="/images/promotion/creditcard.png" alt="banner" />
@@ -106,6 +109,7 @@ const MyBag = () => {
                   orderProducts={orderProducts}
                   setEditedProduct={setEditedProduct}
                   setOrderProducts={setOrderProducts}
+                  setIsClosed={setIsClosed}
                 />
               ))}
             </div>

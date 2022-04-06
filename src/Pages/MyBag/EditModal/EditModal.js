@@ -4,16 +4,17 @@ import Button from '../../../Components/Button/Button';
 
 import './EditModal.scss';
 
-const EditModal = ({ editedProduct }) => {
+const EditModal = ({ editedProduct, setIsClosed }) => {
   const { cart_id, product, total_price } = editedProduct;
   const { id, images, name, price, quantity, size, stock } = product;
 
   const [editedSize, setEditedSize] = useState({ sizeId: '', sizeName: '' });
   const [editedQuantity, setEditedQuantity] = useState(1);
+  const [selectedImg, setSelectedImg] = useState('0');
 
   let S = 0;
-  let M = 0;
-  let L = 0;
+  let M = 10;
+  let L = 10;
   let F = 0;
   // if (stock[0]) {
   //   [{ S, M, L, F }] = stock[0];
@@ -26,6 +27,17 @@ const EditModal = ({ editedProduct }) => {
     { id: 3, value: 'F', name: 'FREE', count: F },
   ];
 
+  const selectImg = e => {
+    setSelectedImg(e.target.id);
+  };
+
+  const handleSize = e => {
+    const { value } = e.target;
+    const { id } = e.target;
+
+    setEditedSize({ ...size, sizeName: value, sizeId: id });
+  };
+
   const plusQuantity = () => {
     setEditedQuantity(quantity => quantity + 1);
   };
@@ -33,25 +45,33 @@ const EditModal = ({ editedProduct }) => {
   const minusQuantity = () => {
     setEditedQuantity(quantity <= 0 ? 0 : quantity - 1);
   };
+
+  const closeModal = () => {
+    setIsClosed(true);
+  };
+
+  console.log(editedSize, editedQuantity);
   return (
     editedProduct && (
       <div className="editModal">
         <div className="modalBox">
-          <button className="closeBtn">
+          <button className="closeBtn" onClick={closeModal}>
             <i className="fas fa-times" />
           </button>
           <h2>Edit Item</h2>
           <main>
             <div className="imgContainer">
-              <img className="mainImg" src={images[0]} alt="main" />
+              <img className="mainImg" src={images[selectedImg]} alt="main" />
               <div className="thumnails">
                 {images.map((img, i) => {
                   return (
                     <img
                       key={i}
+                      id={i}
                       className="thumnail"
                       src={img}
                       alt="thumnail"
+                      onClick={selectImg}
                     />
                   );
                 })}
@@ -67,7 +87,7 @@ const EditModal = ({ editedProduct }) => {
                     <label
                       key={id}
                       className={
-                        size.sizeName === value ? 'size clicked' : 'size'
+                        editedSize.sizeName === value ? 'size clicked' : 'size'
                       }
                     >
                       <input
@@ -78,6 +98,7 @@ const EditModal = ({ editedProduct }) => {
                         value={value}
                         className={count === 0 ? 'disabled' : null}
                         disabled={count === 0}
+                        onClick={handleSize}
                       />
                       <span>{name}</span>
                     </label>
@@ -100,7 +121,7 @@ const EditModal = ({ editedProduct }) => {
                   <button onClick={minusQuantity}>
                     <i className="fas fa-minus" />
                   </button>
-                  {quantity}
+                  {editedQuantity}
                   <button onClick={plusQuantity}>
                     <i className="fas fa-plus" />
                   </button>
