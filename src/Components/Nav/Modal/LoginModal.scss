@@ -1,0 +1,96 @@
+@import '../../../Styles/variables.scss';
+
+.loginModal {
+  position: absolute;
+  @include flexCenter;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 100;
+
+  .login {
+    position: relative;
+    width: 500px;
+    height: 450px;
+    padding-top: 60px;
+    background-color: #fff;
+
+    .logo {
+      width: 300px;
+      height: 70px;
+      margin: 0 auto;
+      color: $color-logo;
+      text-align: center;
+    }
+
+    .closeBtn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .loginContainer {
+      @include flexColumn;
+      align-items: center;
+
+      input {
+        width: 380px;
+        height: 50px;
+        margin-bottom: 7px;
+        padding-left: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: $border-radius;
+      }
+
+      input::placeholder {
+        color: $color-gray;
+      }
+
+      .loginButtonActive {
+        width: 380px;
+        height: 50px;
+        height: 50px;
+        color: $color-white;
+        background-color: $color-blue;
+        border: 1px solid $color-blue;
+        border-radius: 4px;
+      }
+
+      .loginButton {
+        width: 380px;
+        height: 50px;
+        margin-top: 7px;
+        color: $color-white;
+        background-color: $color-light-blue;
+        border: 1px solid $color-light-blue;
+        border-radius: 4px;
+      }
+    }
+
+    .loginHelp {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 400px;
+      height: 50px;
+      margin: 0 auto;
+      padding-right: 10px;
+      text-decoration: underline;
+    }
+
+    .createId {
+      .createBtn {
+        @include flexCenter;
+        width: 400px;
+        height: 50px;
+        margin: 0 auto;
+        font-size: 24px;
+        text-decoration: underline;
+      }
+    }
+  }
+}

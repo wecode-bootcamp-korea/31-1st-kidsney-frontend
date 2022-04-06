@@ -1,0 +1,14 @@
+@import '../../../Styles/variables.scss';
+
+.contentCopyright {
+  display: inline-block;
+
+  .copyright {
+    padding: 10px 10px 0 0;
+  }
+
+  .copyright::after {
+    content: '|';
+    margin-left: 10px;
+  }
+}
