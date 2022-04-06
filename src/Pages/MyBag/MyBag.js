@@ -13,7 +13,7 @@ import './MyBag.scss';
 const MyBag = () => {
   const navigate = useNavigate();
   const [orderProducts, setOrderProducts] = useState([]);
-  const [editedProductId, setEditedProductId] = useState();
+  const [editedProduct, setEditedProduct] = useState();
   const [slideCount, setSlideCount] = useState(0);
 
   const shippingCost = 40.95;
@@ -63,7 +63,7 @@ const MyBag = () => {
 
   return (
     <div className="myBag">
-      {editedProductId && <EditModal editedProductId={editedProductId} />}
+      {editedProduct && <EditModal editedProduct={editedProduct} />}
       <div className="event">
         <div className="subEvent left">
           <img src="/images/promotion/creditcard.png" alt="banner" />
@@ -103,7 +103,8 @@ const MyBag = () => {
                 <OrderProduct
                   key={orderProduct.cart_id}
                   orderProduct={orderProduct}
-                  setEditedProductId={setEditedProductId}
+                  orderProducts={orderProducts}
+                  setEditedProduct={setEditedProduct}
                   setOrderProducts={setOrderProducts}
                 />
               ))}

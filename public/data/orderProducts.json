@@ -12,7 +12,7 @@
         "/images/Boys/happiness_classic_hat.png",
         "/images/Boys/happiness_classic_hat.png"
       ],
-      "stock": [{ "S": 10, "M": 10, "L": 10, "F": 10 }]
+      "stock": [{ "S": 10 }, { "M": 10 }, { "L": 10 }, { "F": 10 }]
     },
     "total_price": 140
   },
@@ -29,7 +29,7 @@
         "/images/Boys/happiness_classic_hat.png",
         "/images/Boys/happiness_classic_hat.png"
       ],
-      "stock": 10
+      "stock": [{ "S": 10, "M": 10, "L": 10, "F": 10 }]
     },
     "total_price": 140
   }

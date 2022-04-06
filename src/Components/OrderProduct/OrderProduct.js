@@ -5,14 +5,17 @@ import './OrderProduct.scss';
 
 const OrderProduct = ({
   orderProduct,
-  setEditedProductId,
+  orderProducts,
+  setEditedProduct,
   setOrderProducts,
 }) => {
   const { cart_id, product, total_price } = orderProduct;
   const { id, name, images, size, quantity, stock, price } = product;
 
-  const storeEditedId = () => {
-    setEditedProductId(cart_id);
+  const findEditedProduct = () => {
+    setEditedProduct(
+      orderProducts.find(product => product.cart_id === cart_id)
+    );
   };
 
   const removeItem = () => {
@@ -45,7 +48,7 @@ const OrderProduct = ({
         <p className="size">Size : {size}</p>
         <p className="id">Id : {cart_id}</p>
         <div className="btns">
-          <button className="editBtn" onClick={storeEditedId}>
+          <button className="editBtn" onClick={findEditedProduct}>
             Edit
           </button>
           <button
