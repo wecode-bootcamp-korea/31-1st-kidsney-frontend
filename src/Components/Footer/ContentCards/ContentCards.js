@@ -1,13 +1,8 @@
 import React from 'react';
+import './ContentCards.scss';
 
 const ContentCards = ({ id, content }) => {
-  return (
-    <div className="contentCards">
-      <li key={id} className="content">
-        {content}
-      </li>
-    </div>
-  );
+  return <li className="contentCards">{content}</li>;
 };
 
 export default ContentCards;

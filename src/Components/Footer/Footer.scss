@@ -15,8 +15,7 @@
         display: flex;
         align-items: center;
         height: 50px;
-        padding-top: 30px;
-        padding-left: 40px;
+        padding: 30px 0 0 40px;
         color: $color-white;
 
         .currency {
@@ -113,7 +112,7 @@
     .items {
       display: flex;
 
-      .category {
+      .itemsCategory {
         @include flexColumn;
 
         .categoryList {
@@ -122,7 +121,7 @@
         }
       }
 
-      .contentAsset {
+      .asset {
         @include flexColumn;
       }
 

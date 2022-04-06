@@ -1,13 +1,8 @@
 import React from 'react';
+import './ContentAsset.scss';
 
 const ContentAsset = ({ id, content }) => {
-  return (
-    <div className="contentAsset">
-      <li key={id} className="content">
-        {content}
-      </li>
-    </div>
-  );
+  return <li className="contentAsset">{content}</li>;
 };
 
 export default ContentAsset;

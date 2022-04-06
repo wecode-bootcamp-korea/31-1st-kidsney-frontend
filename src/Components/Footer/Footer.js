@@ -50,45 +50,41 @@ const Footer = () => {
           </div>
         </div>
         <div className="items">
-          <div className="category">
+          <div className="itemsCategory">
             <ul className="categoryList">
-              {FOOTER_CATEGORY_LIST.map(category => {
-                return (
-                  <Category key={category.id} content={category.content} />
-                );
-              })}
+              {FOOTER_CATEGORY_LIST.map(category => (
+                <Category key={category.id} content={category.content} />
+              ))}
             </ul>
           </div>
-          <div className="contentAsset">
-            <ul class="list">
-              {FOOTER_CONTENT_ASSET.map(asset => {
-                return <ContentAsset key={asset.id} content={asset.content} />;
-              })}
+          <div className="asset">
+            <ul class="assetList">
+              {FOOTER_CONTENT_ASSET.map(asset => (
+                <ContentAsset key={asset.id} content={asset.content} />
+              ))}
             </ul>
           </div>
-          <div className="contentInfo">
-            <ul className="info">
-              {FOOTER_CONTENT_INFO.map(info => {
-                return <ContentInfo key={info.id} content={info.content} />;
-              })}
+          <div className="info">
+            <ul className="infoList">
+              {FOOTER_CONTENT_INFO.map(info => (
+                <ContentInfo key={info.id} content={info.content} />
+              ))}
             </ul>
           </div>
-          <div className="contentCards">
-            <ul className="cards">
-              {FOOTER_CONTENT_CARDS.map(cards => {
-                return <ContentCards key={cards.id} content={cards.content} />;
-              })}
+          <div className="cards">
+            <ul className="cardsList">
+              {FOOTER_CONTENT_CARDS.map(cards => (
+                <ContentCards key={cards.id} content={cards.content} />
+              ))}
             </ul>
           </div>
         </div>
       </div>
       <div className="footerCopyright">
         <ul className="copyrightList">
-          {FOOTER_CONTENT_COPYRIGHT.map(copyright => {
-            return (
-              <Copyright key={copyright.id} copyright={copyright.copyright} />
-            );
-          })}
+          {FOOTER_CONTENT_COPYRIGHT.map(copyright => (
+            <Copyright key={copyright.id} copyright={copyright.copyright} />
+          ))}
         </ul>
       </div>
     </footer>
