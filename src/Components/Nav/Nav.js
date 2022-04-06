@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import LoginModal from './Modal/LoginModal';
 import MenuTab from './MenuTab/MenuTab';
-
-import './Nav.scss';
 import SignUpModal from './Modal/SignUpModal';
+import './Nav.scss';
 
 const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -26,17 +26,23 @@ const Nav = () => {
         <SignUpModal closeModal={closeModal} setActiveModal={setActiveModal} />
       )}
       <div className="headerNav">
-        <h1 className="logo">KIDSNEY</h1>
+        <Link to="/" className="logo">
+          <h1 className="logo">KIDSNEY</h1>
+        </Link>
         <ul className="navLinks">
-          <button onClick={openModal}>
+          <button className="navBtn" onClick={openModal}>
             <i className="fas fa-user" />
             Sign in | Sign Up
           </button>
-          <button>
-            <i className="fas fa-heart" />
-            My Wish List
+
+          <button className="navBtn">
+            <Link to="/wish-list" className="navLinkBtn">
+              <i className="fas fa-heart" />
+              My Wish List
+            </Link>
           </button>
-          <button>
+
+          <button className="navBtn">
             <i className="fas fa-shopping-bag" />
             My Bag
           </button>
