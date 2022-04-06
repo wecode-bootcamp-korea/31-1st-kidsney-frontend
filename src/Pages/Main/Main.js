@@ -1,13 +1,11 @@
 import React from 'react';
 import RecoProductList from '../../Components/RecoProductList/RecoProductList';
-import Review from '../ProductList/ProductSpec/Review/Review';
 import './Main.scss';
 
 const Main = () => {
   return (
     <main className="main">
-      <Review />
-      {/* <div className="mainEvent">
+      <div className="mainEvent">
         <img
           src="https://i.ibb.co/K6MSKvW/main-event-toys-png.png"
           alt="main event"
@@ -21,7 +19,7 @@ const Main = () => {
       </div>
       <div>
         <RecoProductList />
-      </div> */}
+      </div>
     </main>
   );
 };
