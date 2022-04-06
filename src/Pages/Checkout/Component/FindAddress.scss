@@ -1,8 +1,15 @@
 .modal {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 50%;
   height: 50%;
   background-color: rgba(100, 100, 100, 1);
+
+  .searchedResult {
+    width: 40%;
+    height: 30%;
+    background-color: white;
+  }
 }

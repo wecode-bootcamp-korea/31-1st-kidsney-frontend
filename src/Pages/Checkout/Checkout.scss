@@ -26,9 +26,10 @@ div {
         margin-right: 20px;
       }
     }
-    .shippingContainer {
+    .mainContainer {
       @include flexColumn;
       padding: 10px;
+      margin-bottom: 20px;
       border: 1px solid $color-gray;
 
       .guidance {
@@ -53,6 +54,12 @@ div {
         .search {
           width: 20%;
           border: 1px solid;
+        }
+      }
+      form {
+        .deliveryOption {
+          display: flex;
+          flex-direction: row;
         }
       }
     }

@@ -1,38 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './FindAddress.scss';
 
 const FindAddress = () => {
   const [address, setAddress] = useState();
+  const [dong, setDong] = useState();
+
+  const ADDRESS_API_KEY = 'devU01TX0FVVEgyMDIyMDQwNjE1MTExMzExMjQyNDE=';
+  const ADDRESS_API = `www.juso.go.kr/addrlink/addrLinkApi.do?keyword=${dong}&currentPage=1&resultType=json&countPerPage=20&confmKey=${ADDRESS_API_KEY}`;
+
   const searchAddress = () => {
-    fetch('https://www.juso.go.kr/addrlink/addrLinkApiJsonp.do')
-      .then(response => response.json())
-      .then(product => {
-        setAddress(address.result);
+    fetch(ADDRESS_API)
+      .then(res => res.json())
+      .then(addrs => {
+        setAddress(addrs);
       });
   };
+
+  const dongHandler = e => {
+    setDong(e.target.value);
+  };
+
   return (
     <form className="modal" name="form" id="form" method="post">
-      <table>
-        <tbody>
-          <tr>
-            <th>우편번호</th>
-            <td>
-              <input type="text" id="zipNo" name="zipNo" readOnly />
-              <input
-                id="devU01TX0FVVEgyMDIyMDQwNTExMTYyOTExMjQxOTU="
-                name="devU01TX0FVVEgyMDIyMDQwNTExMTYyOTExMjQxOTU="
-              />
-              <input type="button" value="주소검색" onClick={searchAddress} />
-            </td>
-          </tr>
-          <tr>
-            <th>상세주소</th>
-            <td>
-              <input type="text" id="addrDetail" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="zipWrapper">
+        <span>우편번호</span>
+        <input type="text" id="zipNo" name="zipNo" readOnly />
+      </div>
+      <div>
+        <span>주소</span>
+        <input id="inputDong" onChange={dongHandler} />
+        <input type="button" value="주소검색" onClick={searchAddress} />
+      </div>
+      <ul className="searchedResult">
+        <li>주소1</li>
+        <li>주소2</li>
+        <li>주소3</li>
+      </ul>
     </form>
   );
 };

@@ -9,6 +9,7 @@ import './ProductList.scss';
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
+
   useEffect(() => {
     fetch(API.boy)
       .then(response => response.json())
