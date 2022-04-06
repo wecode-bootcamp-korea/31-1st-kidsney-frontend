@@ -1,0 +1,25 @@
+@import '../../Styles/variables.scss';
+
+.button {
+  padding: 13px 10px;
+  margin: 10px;
+  background-color: $color-blue;
+  color: $color-white;
+  border-radius: $border-radius;
+  font-size: 18px;
+
+  &:hover {
+    background-color: $color-dark-blue;
+  }
+
+  &.wishList {
+    background-color: $color-white;
+    color: $color-blue;
+    border: 1px solid $color-blue;
+
+    &:hover {
+      background-color: $color-dark-blue;
+      color: $color-white;
+    }
+  }
+}

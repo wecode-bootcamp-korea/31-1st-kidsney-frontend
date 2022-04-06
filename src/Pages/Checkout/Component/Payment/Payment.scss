@@ -6,24 +6,31 @@
 
   .num {
     @include flexCenter;
-    width: 40px;
+    padding: 10px;
     font-size: $font-medium;
     color: white;
     background-color: $color-dark-blue;
   }
+
   h2::before {
     content: '';
     margin-right: 20px;
   }
 }
+
 .mainContainer {
   .wrapper {
     margin: 10px 0;
-    input {
-      border: none;
-      margin-bottom: 10px;
-      width: 80%;
-      font-size: $font-regular;
+
+    .paymentOption {
+      display: flex;
+      align-items: center;
+
+      input {
+        margin: 10px;
+        border: none;
+        font-size: $font-regular;
+      }
     }
   }
   .submitBtn {

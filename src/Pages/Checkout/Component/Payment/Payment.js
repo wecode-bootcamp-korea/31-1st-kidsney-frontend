@@ -1,7 +1,7 @@
 import React from 'react';
 import './Payment.scss';
 
-const Payment = ({ orderInfoHandler, submitOrder }) => {
+const Payment = ({ orderInfoHandler }) => {
   return (
     <>
       <div className="titleWrapper">
@@ -11,7 +11,6 @@ const Payment = ({ orderInfoHandler, submitOrder }) => {
       <div className="mainContainer">
         <div className="wrapper">
           <div className="paymentOption">
-            <span>키니머니로 결제하기</span>
             <input
               name="paySelector"
               className="wayOfPayment"
@@ -19,9 +18,9 @@ const Payment = ({ orderInfoHandler, submitOrder }) => {
               value="mileage"
               onChange={orderInfoHandler}
             />
+            <span>키니머니로 결제하기</span>
           </div>
           <div className="paymentOption">
-            <span>카드로 결제하기(준비중)</span>
             <input
               name="paySelector"
               className="wayOfPayment"
@@ -30,11 +29,9 @@ const Payment = ({ orderInfoHandler, submitOrder }) => {
               onChange={orderInfoHandler}
               disabled
             />
+            <span>카드로 결제하기(준비중)</span>
           </div>
         </div>
-        <button className="submitBtn" onClick={submitOrder}>
-          SUBMIT ORDER
-        </button>
       </div>
     </>
   );

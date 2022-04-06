@@ -10,9 +10,12 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
     setIsFindAddressOpen(!isFindAddressOpen);
   };
 
+  const handleFindModal = () => {
+    setIsFindAddressOpen(!isFindAddressOpen);
+  };
   return (
     <>
-      <FindAddress isFindAddressOpen={isFindAddressOpen} />
+      <FindAddress />
       <div className="titleWrapper">
         <div className="num">1</div>
         <h2>Shipping</h2>
@@ -39,15 +42,11 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
               onChange={orderInfoHandler}
               // readOnly
             />
-            <button
-              id="devU01TX0FVVEgyMDIyMDQwNjE0MTcyMTExMjQyMzg="
-              className="search"
-              onClick={openAddressModal}
-            >
+            <button className="search" onClick={openAddressModal}>
               검색
             </button>
           </div>
-          <span>주소</span>
+          <div>주소</div>
           <div className="wrapper">
             <input
               className="addressMain"
@@ -74,8 +73,9 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
           />
           <span>위의 주소를 기본 배송지로 저장합니다.</span>
         </div>
-        <form>
-          <div className="deliverOption">
+        <form className="deliveryWrapper">
+          <span>배송방법</span>
+          <div className="deliveryOption">
             <input
               name="deliSelector"
               className="wayOfShipping"
@@ -91,7 +91,7 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
               />
             </div>
           </div>
-          <div className="deliverOption">
+          <div className="deliveryOption">
             <input
               name="deliSelector"
               className="wayOfShipping"

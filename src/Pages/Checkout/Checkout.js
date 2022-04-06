@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Shipping from './Component/Shipping/Shipping';
 import Payment from './Component/Payment/Payment';
 import { BASE_URL } from '../../config.js';
 import { Token } from '../../config.js';
+import Order from './Component/Order/Order';
+import './Checkout.scss';
 
-const Checkout = () => {
-  const [products, setProducts] = useState([]);
-  const [subtotal, setSubtotal] = useState(10000);
+//부모:마이박스에서 섭토탈, 토탈 받아오기
+const Checkout = ({ subtotal, total }) => {
   const [orderInfo, setOrderInfo] = useState({
-    name: '',
-    zipCode: '',
-    addressMain: '',
-    addressDetail: '',
-    updateAddress: '',
-    wayOfShipping: '',
-    wayOfPayment: '',
+    zipCode: null,
+    addressMain: null,
+    addressDetail: null,
+    updateAddress: null,
+    wayOfShipping: null,
+    wayOfPayment: null,
   });
-
-  useEffect(() => {
-    fetch(BASE_URL, {
-      headers: {
-        // Authorization: localStorage.getItem('토큰이름'),
-        Authorization: Token,
-      },
-    })
-      .then(response => response.json())
-      .then(product => {
-        setProducts(product.products);
-        setSubtotal(product.total_price);
-      });
-  }, []);
 
   const orderInfoHandler = e => {
     setOrderInfo({ ...orderInfo, [e.target.className]: e.target.value });
@@ -39,7 +25,7 @@ const Checkout = () => {
     fetch(`${BASE_URL}/users/`, {
       method: 'PATCH',
       headers: {
-        // Authorization: localStorage.getItem('토큰이름'),
+        // Authorization: localStorage.getItem(토큰),
         Authorization: Token,
       },
       body: JSON.stringify({
@@ -47,44 +33,63 @@ const Checkout = () => {
         location: orderInfo.addressMain,
         datail_address: orderInfo.addressDetail,
       }),
-    }).then(response => {
-      if (response.ok) {
-        alert('주소변경이 완료되었습니다.');
-        window.location.reload();
-      }
-    });
+    })
+      .then(response => {
+        if (response.ok) {
+          alert('주소변경이 완료되었습니다.');
+          window.location.reload();
+        } else {
+          throw new Error('Unexpected Error');
+        }
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log(error.message);
+      });
   };
 
-  const patchBalance = () => {
-    fetch('http://10.58.2.13:8000/orders', {
+  const postBalance = () => {
+    fetch(`${BASE_URL}/orders`, {
       method: 'POST',
       headers: {
-        // Authorization: localStorage.getItem('토큰이름'),
+        // Authorization: localStorage.getItem(토큰),
         Authorization: Token,
       },
       body: JSON.stringify({
         total_price: subtotal,
       }),
-    }).then(response => {
-      if (response.ok) {
-        alert('주문이 완료되었습니다.');
-      } else if (response.messege === 'moneyless') {
-        alert('잔액이 부족합니다...안타깝습니다..');
-      } else if (response.messege === 'stockless') {
-        alert('재고가 부족합니다...분발하겠습니다..');
-      } else {
-        throw new Error('Unexpected Error');
-      }
-    });
+    })
+      .then(response => {
+        if (response.ok) {
+          alert('주문이 완료되었습니다.');
+        } else if (response.message === 'moneyless') {
+          alert('잔액이 부족합니다...안타깝습니다..');
+        } else if (response.message === 'stockless') {
+          alert('재고가 부족합니다...분발하겠습니다..');
+        } else {
+          throw new Error('Unexpected Error');
+        }
+      })
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log(error.message);
+      });
   };
 
   const submitOrder = () => {
-    if (orderInfo.updateAddress === true) {
-      patchBalance();
-      // patchAddress();
-    } else {
-      patchBalance();
-    }
+    if (
+      orderInfo.zipCode &&
+      orderInfo.addressDetail &&
+      orderInfo.wayOfShipping &&
+      orderInfo.wayOfPayment
+    ) {
+      if (orderInfo.updateAddress === true) {
+        postBalance();
+        // patchAddress();
+      } else {
+        postBalance();
+      }
+    } else alert('정보를 모두 입력해주세요');
   };
 
   return (
@@ -93,12 +98,9 @@ const Checkout = () => {
       <div className="wholeWrapper">
         <div className="ProcessWrapper">
           <Shipping orderInfoHandler={orderInfoHandler} orderInfo={orderInfo} />
-          <Payment
-            orderInfoHandler={orderInfoHandler}
-            submitOrder={submitOrder}
-          />
+          <Payment orderInfoHandler={orderInfoHandler} />
         </div>
-        <div className="summaryWrapper" />
+        <Order subtotal={subtotal} total={total} submitOrder={submitOrder} />
       </div>
     </div>
   );
