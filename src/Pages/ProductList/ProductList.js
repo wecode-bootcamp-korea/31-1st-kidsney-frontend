@@ -39,7 +39,7 @@ const ProductList = () => {
   );
 
   const handleFilter = (name, attr) => {
-    let filterArr = [...filters];
+    const filterArr = [...filters];
     filterArr.includes(`${name},${attr}`)
       ? filterArr.splice(filterArr.indexOf(`${name},${attr}`), 1)
       : filterArr.push(`${name},${attr}`);
