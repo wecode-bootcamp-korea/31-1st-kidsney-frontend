@@ -5,13 +5,13 @@ import './ReviewModal.scss';
 
 const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
   const textareaInput = useRef();
-  const { name, image_url } = product;
+  const { name, image_url, id } = product;
   const [content, setContent] = useState('');
 
   const submitReview = () => {
     showReviewModal();
 
-    fetch(`${API.products}/1`, {
+    fetch(`${API.products}/${id}`, {
       method: 'post',
       headers: {
         Authorization: Token,
@@ -21,9 +21,10 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
       }),
     })
       .then(res => {
+        //console.log(res);
         if (res.ok) {
           alert('리뷰 등록이 완료되었습니다.');
-          fetch(`${API.products}/1`)
+          fetch(`${API.products}/${id}`)
             .then(res => res.json())
             .then(data => setReviewList(data.result.reviews));
         } else {
