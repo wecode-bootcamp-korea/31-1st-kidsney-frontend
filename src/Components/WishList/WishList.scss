@@ -73,9 +73,12 @@
         .themeTxt {
           font-size: 25px;
 
-          .far {
+          .fa-arrow-alt-circle-up {
             margin-left: 10px;
-            transform: rotate(180deg);
+            color: $color-blue;
+          }
+          .fa-arrow-alt-circle-down {
+            margin-left: 10px;
             color: $color-blue;
           }
         }
@@ -89,9 +92,18 @@
       }
     }
 
-    .themeList {
-      @include flexCenter;
+    .theme {
       height: 140px;
+      overflow: hidden;
+      transition: all 0.2s;
+
+      &.hide {
+        height: 0;
+      }
+
+      .themeList {
+        @include flexCenter;
+      }
     }
   }
 }

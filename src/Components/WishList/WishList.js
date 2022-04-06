@@ -12,6 +12,21 @@ const WishList = () => {
   const [imgSource, setImgSource] = useState(
     'https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1429&q=80'
   );
+  const [isBtnClicked, setIsBtnClicked] = useState(false);
+  const [isArrowClicked, setArrowClicked] = useState(false);
+
+  const handleHeightButton = () => {
+    setIsBtnClicked(!isBtnClicked);
+  };
+
+  const handleArrowButton = () => {
+    setArrowClicked(!isArrowClicked);
+  };
+
+  const handleImageSource = e => {
+    setImgSource(e.target.src);
+  };
+
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -25,10 +40,6 @@ const WishList = () => {
         setWishProducts(product => (product = data.wish_list));
       });
   }, [token]);
-
-  const handleImageSource = e => {
-    setImgSource(e.target.src);
-  };
 
   return (
     <div className="wishList">
@@ -64,15 +75,22 @@ const WishList = () => {
       </div>
       <div className="listSelect">
         <div className="selectLayout">
-          <button className="selectTheme">
+          <button className="selectTheme" onClick={handleHeightButton}>
             <span className="themeTxt">
               Select Your Theme
-              <i className="far fa-arrow-alt-circle-up" />
+              <i
+                className={
+                  isArrowClicked
+                    ? 'far fa-arrow-alt-circle-up'
+                    : 'far fa-arrow-alt-circle-down'
+                }
+                onClick={handleArrowButton}
+              />
             </span>
           </button>
           <div className="productNum">1 Product</div>
         </div>
-        <div className="theme">
+        <div className={'theme' + (isBtnClicked ? '' : ' hide')}>
           <ul className="themeList">
             {WISHLIST_THEME_LIST.map(({ id, src }) => {
               return (
