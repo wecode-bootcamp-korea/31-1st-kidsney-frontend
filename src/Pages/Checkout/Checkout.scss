@@ -4,64 +4,72 @@ div {
   h1 {
     @include flexCenter;
   }
-  .checkoutProcessWrapper {
-    @include flexColumn;
-    margin: 20px;
+  .wholeWrapper {
+    display: flex;
+    flex-direction: row;
 
-    .titleWrapper {
-      display: flex;
-      align-items: center;
+    .ProcessWrapper,
+    .summaryWrapper {
+      @include flexColumn;
+      margin: 20px;
 
-      border: 1px solid $color-gray;
+      .titleWrapper {
+        display: flex;
+        align-items: center;
+        border: 1px solid $color-gray;
 
-      .num {
-        @include flexCenter;
-        width: 40px;
-        font-size: $font-medium;
-        color: white;
-        background-color: $color-dark-blue;
+        .num {
+          @include flexCenter;
+          width: 40px;
+          font-size: $font-medium;
+          color: white;
+          background-color: $color-dark-blue;
+        }
+        h2::before {
+          content: '';
+          margin-right: 20px;
+        }
       }
-      h2::before {
-        content: '';
-        margin-right: 20px;
+      .mainContainer {
+        @include flexColumn;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid $color-gray;
+
+        .guidance {
+          margin: 10px 0;
+          .id {
+            font-size: $font-regular;
+          }
+          .id::after {
+            content: '';
+            margin-left: 5px;
+          }
+        }
+        .wrapper {
+          margin: 10px 0;
+          border-bottom: 2px solid $color-gray;
+          input {
+            border: none;
+            margin-bottom: 10px;
+            width: 80%;
+            font-size: $font-regular;
+          }
+          .search {
+            width: 20%;
+            border: 1px solid;
+          }
+        }
+        form {
+          .deliveryOption {
+            display: flex;
+            flex-direction: row;
+          }
+        }
       }
     }
-    .mainContainer {
-      @include flexColumn;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid $color-gray;
-
-      .guidance {
-        margin: 10px 0;
-        .id {
-          font-size: $font-regular;
-        }
-        .id::after {
-          content: '';
-          margin-left: 5px;
-        }
-      }
-      .wrapper {
-        margin: 10px 0;
-        border-bottom: 2px solid $color-gray;
-        input {
-          border: none;
-          margin-bottom: 10px;
-          width: 80%;
-          font-size: $font-regular;
-        }
-        .search {
-          width: 20%;
-          border: 1px solid;
-        }
-      }
-      form {
-        .deliveryOption {
-          display: flex;
-          flex-direction: row;
-        }
-      }
+    .summaryWrapper {
+      min-width: 30%;
     }
   }
 }

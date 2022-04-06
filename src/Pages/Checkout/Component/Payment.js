@@ -30,17 +30,6 @@ const Payment = ({ orderInfoHandler }) => {
               disabled
             />
           </div>
-          <div className="paymentOption">
-            <span>무통장입금하기(준비중)</span>
-            <input
-              name="paySelector"
-              className="wayOfPayment"
-              type="radio"
-              value="dd"
-              onChange={orderInfoHandler}
-              disabled
-            />
-          </div>
         </div>
       </div>
     </>
