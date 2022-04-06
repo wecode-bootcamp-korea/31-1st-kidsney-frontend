@@ -10,11 +10,6 @@ const ProductList = () => {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
-<<<<<<< HEAD
-
-  useEffect(() => {
-    fetch(API.boy)
-=======
   const [sorter, setSorter] = useState('');
   const [url, setUrl] = useState(
     `${BASE_URL}` + location.pathname + location.search
@@ -35,7 +30,6 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(url + sorter)
->>>>>>> master
       .then(response => response.json())
       .then(product => {
         setProducts(product.result);

@@ -1,17 +1,18 @@
-import React from 'react';
-import FindAddress from './FindAddress';
-import '../Checkout.scss';
+import React, { useState } from 'react';
+import FindAddress from './FindAddress/FindAddress';
+import './Shipping.scss';
 
 const Shipping = ({ orderInfoHandler, orderInfo }) => {
+  const [isFindAddressOpen, setIsFindAddressOpen] = useState(false);
+
   const openAddressModal = e => {
     e.preventDefault(e);
-
-    //모달hidden변경로직
+    setIsFindAddressOpen(!isFindAddressOpen);
   };
 
   return (
     <>
-      <FindAddress />
+      <FindAddress isFindAddressOpen={isFindAddressOpen} />
       <div className="titleWrapper">
         <div className="num">1</div>
         <h2>Shipping</h2>

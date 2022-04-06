@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Shipping from './Component/Shipping';
-import Payment from './Component/Payment';
+import Shipping from './Component/Shipping/Shipping';
+import Payment from './Component/Payment/Payment';
 import { BASE_URL } from '../../config.js';
-
-import OrderSummary from './Component/OrderSummary';
-import ItemSummary from './Component/ItemSummary';
 
 const Checkout = () => {
   const [products, setProducts] = useState([]);
@@ -31,7 +28,6 @@ const Checkout = () => {
   }, []);
   const orderInfoHandler = e => {
     setOrderInfo({ ...orderInfo, [e.target.className]: e.target.value });
-    console.log(orderInfo);
   };
 
   return (
@@ -42,10 +38,7 @@ const Checkout = () => {
           <Shipping orderInfoHandler={orderInfoHandler} orderInfo={orderInfo} />
           <Payment orderInfoHandler={orderInfoHandler} />
         </div>
-        <div className="summaryWrapper">
-          <OrderSummary subtotal={subtotal} />
-          <ItemSummary products={products} />
-        </div>
+        <div className="summaryWrapper" />
       </div>
     </div>
   );

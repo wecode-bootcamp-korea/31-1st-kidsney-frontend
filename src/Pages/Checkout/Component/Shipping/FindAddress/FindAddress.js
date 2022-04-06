@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './FindAddress.scss';
 
 const FindAddress = () => {
   const [address, setAddress] = useState();
   const [dong, setDong] = useState();
-
   const ADDRESS_API_KEY = 'devU01TX0FVVEgyMDIyMDQwNjE1MTExMzExMjQyNDE=';
   const ADDRESS_API = `www.juso.go.kr/addrlink/addrLinkApi.do?keyword=${dong}&currentPage=1&resultType=json&countPerPage=20&confmKey=${ADDRESS_API_KEY}`;
 
@@ -21,7 +20,7 @@ const FindAddress = () => {
   };
 
   return (
-    <form className="modal" name="form" id="form" method="post">
+    <form className="modal hidden" name="form" id="form" method="post">
       <div className="zipWrapper">
         <span>우편번호</span>
         <input type="text" id="zipNo" name="zipNo" readOnly />
@@ -35,6 +34,9 @@ const FindAddress = () => {
         <li>주소1</li>
         <li>주소2</li>
         <li>주소3</li>
+        <li>주소4</li>
+        <li>주소5</li>
+        <li>주소6</li>
       </ul>
     </form>
   );

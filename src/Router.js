@@ -6,12 +6,8 @@ import LoginModal from './Components/Nav/Modal/LoginModal';
 import SignUpModal from './Components/Nav/Modal/SignUpModal';
 import ProductList from './Pages/ProductList/ProductList';
 import ProductSpec from './Pages/ProductList/ProductSpec/ProductSpec';
-<<<<<<< HEAD
-import Checkout from './Pages/Checkout/Checkout';
-import Nav from './Components/Nav/Nav';
-=======
->>>>>>> master
 import Footer from './Components/Footer/Footer';
+import Checkout from './Pages/Checkout/Checkout';
 
 const Router = () => {
   return (
