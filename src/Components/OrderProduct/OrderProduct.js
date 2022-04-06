@@ -10,7 +10,7 @@ const OrderProduct = ({
   setIsClosed,
 }) => {
   const { cart_id, product, total_price } = orderProduct;
-  const { id, name, images, size, quantity, stock, price } = product;
+  const { name, images, size, quantity, price } = product;
 
   const openEditModal = () => {
     setIsClosed(false);

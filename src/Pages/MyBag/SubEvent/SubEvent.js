@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 import Button from '../../../Components/Button/Button';
-import { BASE_URL, Token } from '../../../config';
+import { BASE_URL } from '../../../config';
 import './SubEvent.scss';
 
 const SubEvent = ({ slideCount }) => {
@@ -10,7 +10,8 @@ const SubEvent = ({ slideCount }) => {
   const [eventProducts, setEventProducts] = useState([]);
 
   const getData = async () => {
-    const data = await (await fetch(`${BASE_URL}/products?main=toy`)).json();
+    const res = await fetch(`${BASE_URL}/products?main=toy`);
+    const data = await res.json();
 
     setEventProducts(data.result);
   };
