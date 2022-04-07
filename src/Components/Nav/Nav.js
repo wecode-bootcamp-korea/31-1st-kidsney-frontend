@@ -39,7 +39,7 @@ const Nav = () => {
               My Wish List
             </button>
           </Link>
-          <Link to="/my-bag">
+          <Link to="/my-bag" className="navLinkBtn">
             <button className="navBtn">
               <i className="fas fa-shopping-bag" />
               My Bag
