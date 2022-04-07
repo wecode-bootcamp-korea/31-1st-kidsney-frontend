@@ -4,7 +4,7 @@ import './SearchItems.scss';
 
 const SearchItems = ({ products }) => {
   return (
-    <div className="searchItems">
+    <div className="SearchItems">
       <div className="divider" />
       <ul className="productGrid">
         {products.map(product => (

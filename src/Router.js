@@ -9,6 +9,7 @@ import ProductSpec from './Pages/ProductList/ProductSpec/ProductSpec';
 import MyBag from './Pages/MyBag/MyBag';
 import Footer from './Components/Footer/Footer';
 import WishList from './Components/WishList/WishList';
+import Checkout from './Pages/Checkout/Checkout';
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path="/products/:id" element={<ProductSpec />} />
         <Route path="/my-bag" element={<MyBag />} />
         <Route path="/wish-list" element={<WishList />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </BrowserRouter>
