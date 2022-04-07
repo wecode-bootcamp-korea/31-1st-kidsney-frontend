@@ -1,6 +1,9 @@
 @import '../../Styles/variables.scss';
 
 .Checkout {
+  font-family: 'Didact Gothic', sans-serif;
+  padding: 40px;
+
   h1 {
     @include flexCenter;
   }

@@ -21,8 +21,9 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
       </div>
       <div className="mainContainer">
         <div className="guidance">
-          <span className="id">ID</span>
-          <span>님 배송정보를 입력해주세요</span>
+          <span className="id">
+            {localStorage.getItem('first_name')}님 배송정보를 입력해주세요.
+          </span>
         </div>
         <div className="wrapper">
           <div>이름</div>
