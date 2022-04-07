@@ -1,0 +1,151 @@
+@import '../../../Styles/variables.scss';
+
+.editModal {
+  position: fixed;
+  @include flexCenter;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  .modalBox {
+    position: relative;
+    background-color: $color-white;
+    margin: auto;
+    height: 530px;
+    width: 800px;
+    padding: 30px;
+    border-radius: $border-radius;
+
+    .closeBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      border-bottom: $border-bottom;
+    }
+
+    main {
+      display: flex;
+      height: 300px;
+
+      .imgContainer {
+        @include flexColumn;
+        align-items: center;
+        margin-right: 10px;
+
+        .mainImg {
+          margin-bottom: 20px;
+          width: 200px;
+        }
+
+        .thumnail {
+          width: 60px;
+          margin: 0 10px;
+          cursor: pointer;
+        }
+      }
+
+      .description {
+        @include flexColumn;
+        margin: auto;
+
+        .price {
+          padding-bottom: 20px;
+          border-bottom: $border-bottom;
+        }
+
+        .quantity {
+          display: flex;
+          justify-content: space-between;
+          padding: 25px 0;
+
+          .countBtns {
+            font-size: 20px;
+
+            button {
+              margin: 0 6px;
+              padding: 5px 10px;
+              border: $border-bottom;
+              border-radius: 50%;
+
+              i {
+                color: $color-gray;
+              }
+            }
+
+            button.active {
+              border: 1px solid $color-blue;
+
+              i {
+                color: $color-blue;
+              }
+            }
+          }
+        }
+
+        .sizeOptions {
+          position: relative;
+          padding-bottom: 50px;
+          border-bottom: $border-bottom;
+
+          .size {
+            margin-right: 10px;
+            cursor: pointer;
+
+            input {
+              display: none;
+            }
+
+            span {
+              display: inline-block;
+              padding: 5px 20px;
+              margin-top: 10px;
+              text-transform: uppercase;
+              border: 1px solid $color-black;
+              border-radius: $border-radius;
+            }
+
+            input.disabled + span,
+            input.disabled + span .size {
+              background-color: $color-gray;
+              color: rgba(0, 0, 0, 0.4);
+              border: $border-bottom;
+              cursor: not-allowed;
+            }
+
+            &:hover input.disabled + span,
+            &.clicked input.disabled + span {
+              background-color: $color-gray;
+              color: rgba(0, 0, 0, 0.4);
+            }
+
+            &:hover input + span,
+            &.clicked input + span {
+              background-color: $color-dark-blue;
+              color: $color-white;
+            }
+          }
+
+          .errorMsg {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            color: red;
+
+            &.show {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}

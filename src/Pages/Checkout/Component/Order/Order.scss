@@ -1,0 +1,38 @@
+@import '../../../../Styles/variables.scss';
+
+.Order {
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 450px;
+  padding: 20px;
+  border: $border-bottom;
+  border-radius: $border-radius;
+
+  .subTotal {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: $font-regular;
+  }
+
+  h2 {
+    border-bottom: $border-bottom;
+    padding: 10px 0;
+  }
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+    border-top: $border-bottom;
+    padding: 20px 0;
+  }
+
+  p {
+    padding: 20px 0;
+    color: $color-gray;
+  }
+
+  .btns {
+    @include flexColumn;
+  }
+}

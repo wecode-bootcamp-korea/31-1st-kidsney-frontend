@@ -1,0 +1,56 @@
+@import '../../../Styles/variables.scss';
+
+.subEvent {
+  @include flexCenter;
+
+  .eventCard {
+    display: flex;
+    align-items: center;
+    margin: 0 100px;
+    transition: all 0.4s ease;
+
+    &:first-child {
+      margin-left: 2000px;
+    }
+
+    img {
+      width: 140px;
+      height: 140px;
+    }
+
+    .description {
+      @include flexCenter;
+      flex-direction: column;
+
+      p {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .subEvent {
+    .eventCard {
+      &:last-child {
+        margin-left: -35px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .subEvent {
+    .eventCard {
+      margin: 0 70px;
+
+      &:first-child {
+        margin-right: 150px;
+      }
+
+      &:last-child {
+        margin-left: 150px;
+      }
+    }
+  }
+}

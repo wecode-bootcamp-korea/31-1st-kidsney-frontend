@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL, Token } from '../../config';
+import { BASE_URL } from '../../config';
 import './Product.scss';
 
 const Product = ({ product, direction, isHeart }) => {
@@ -12,7 +12,7 @@ const Product = ({ product, direction, isHeart }) => {
     fetch(`${BASE_URL}/users/wishlist/${id}`, {
       method: 'POST',
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({ id: id }),
     })

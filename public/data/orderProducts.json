@@ -1,0 +1,36 @@
+[
+  {
+    "cart_id": 1,
+    "product": {
+      "id": 1,
+      "quantity": 10,
+      "name": "Mick Mouse Bodysuit",
+      "price": "29.90",
+      "size": "L",
+      "": "800.00",
+      "images": [
+        "/images/Boys/happiness_classic_hat.png",
+        "/images/Boys/happiness_classic_hat.png"
+      ],
+      "stock": [{ "S": 10 }, { "M": 10 }, { "L": 10 }, { "F": 10 }]
+    },
+    "total_price": 140
+  },
+  {
+    "cart_id": 2,
+    "product": {
+      "id": 1,
+      "quantity": 10,
+      "name": "Mick Mouse Bodysuit",
+      "price": "29.90",
+      "size": "L",
+      "": "800.00",
+      "images": [
+        "/images/Boys/happiness_classic_hat.png",
+        "/images/Boys/happiness_classic_hat.png"
+      ],
+      "stock": [{ "S": 10 }, { "M": 10 }, { "L": 10 }, { "F": 10 }]
+    },
+    "total_price": 140
+  }
+]
