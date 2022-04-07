@@ -58,6 +58,7 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
             alert('로그인 성공!');
             localStorage.setItem('token', res.token);
             localStorage.setItem('first_name', res.first_name);
+            closeModal();
           } else {
             alert('다시 시도해 주세요!');
           }

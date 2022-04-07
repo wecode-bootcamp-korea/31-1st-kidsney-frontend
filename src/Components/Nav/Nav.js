@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import LoginModal from './Modal/LoginModal';
 import MenuTab from './MenuTab/MenuTab';
 import SignUpModal from './Modal/SignUpModal';
-import { BASE_URL, Token } from '../../config';
+import { BASE_URL } from '../../config';
 import './Nav.scss';
 
 const Nav = () => {
@@ -14,13 +14,17 @@ const Nav = () => {
   const userName = localStorage.getItem('first_name');
 
   useEffect(() => {
-    fetch(`${BASE_URL}/users/wishlist`, { headers: { Authorization: Token } })
+    fetch(`${BASE_URL}/users/wishlist`, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
       .then(data => setWishListCount(data.wish_list.length));
   }, []);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/carts`, { headers: { Authorization: Token } })
+    fetch(`${BASE_URL}/carts`, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
       .then(data => setMyBagCount(data.carts.length));
   }, []);
