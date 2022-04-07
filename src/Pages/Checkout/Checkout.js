@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Shipping from './Component/Shipping/Shipping';
 import Payment from './Component/Payment/Payment';
 import { BASE_URL } from '../../config.js';
-import { Token } from '../../config.js';
 import Order from './Component/Order/Order';
 import './Checkout.scss';
 
@@ -32,8 +31,7 @@ const Checkout = ({ subtotal, total }) => {
     fetch(`${BASE_URL}/users/`, {
       method: 'PATCH',
       headers: {
-        // Authorization: localStorage.getItem(토큰),
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         zip_code: orderInfo.zipCode,
@@ -58,8 +56,7 @@ const Checkout = ({ subtotal, total }) => {
     fetch(`${BASE_URL}/orders`, {
       method: 'POST',
       headers: {
-        // Authorization: localStorage.getItem(토큰),
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         total_price: subtotal,
