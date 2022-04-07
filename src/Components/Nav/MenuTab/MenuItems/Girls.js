@@ -7,7 +7,7 @@ const Girls = counterHandler => {
     <div className="girls">
       <li className="clothesType">
         <Link
-          to="/products?main=boy&sub=girl-top"
+          to="/products?main=girl&sub=girl-top"
           className="link"
           onClick={counterHandler}
         >
@@ -17,7 +17,7 @@ const Girls = counterHandler => {
       </li>
       <li className="clothesType">
         <Link
-          to="/products?main=boy&sub=girl-bottom"
+          to="/products?main=girl&sub=girl-bottom"
           className="link"
           onClick={counterHandler}
         >
@@ -27,7 +27,7 @@ const Girls = counterHandler => {
       </li>
       <li className="clothesType">
         <Link
-          to="/products?main=boy&sub=girl-acc"
+          to="/products?main=girl&sub=girl-acc"
           className="link"
           onClick={counterHandler}
         >

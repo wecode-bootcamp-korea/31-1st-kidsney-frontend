@@ -2,9 +2,42 @@
 .sorterBar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .productSubtotal {
     margin: 20px;
+
+    span {
+      font-size: $font-medium;
+      color: $color-blue;
+      margin: 0 5px;
+    }
+  }
+
+  .search {
+    @include flexCenter;
+
+    width: 300px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: $color-light-blue;
+
+    .searchInput {
+      position: relative;
+      width: 90%;
+      height: 30px;
+      padding-left: 15px;
+      background-color: $color-light-blue;
+      border: none;
+      text-align: left;
+    }
+
+    .fas {
+      position: absolute;
+      right: 30px;
+      color: $color-blue;
+      font-size: 20px;
+    }
   }
 
   .priceSorter:hover {

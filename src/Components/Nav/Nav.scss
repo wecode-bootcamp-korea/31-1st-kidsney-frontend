@@ -63,31 +63,4 @@
       cursor: pointer;
     }
   }
-
-  .search {
-    @include flexCenter;
-    position: absolute;
-    width: 150px;
-    height: 40px;
-    right: 30px;
-    border-radius: 15px;
-    background-color: $color-light-blue;
-
-    .searchInput {
-      position: relative;
-      width: 120px;
-      height: 30px;
-      padding-left: 15px;
-      background-color: $color-light-blue;
-      border: none;
-      text-align: left;
-    }
-
-    .fas {
-      position: absolute;
-      right: 30px;
-      color: $color-blue;
-      font-size: 20px;
-    }
-  }
 }

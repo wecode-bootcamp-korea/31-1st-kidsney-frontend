@@ -19,7 +19,7 @@ const MenuTab = () => {
   const clickHandler = id => {
     setCurrentId(id);
   };
-  const [counter, setCounter] = useState(true);
+  const [counter, setCounter] = useState(1);
 
   const counterHandler = () => {
     setCounter(counter++);
@@ -37,7 +37,6 @@ const MenuTab = () => {
               onMouseOver={() => {
                 clickHandler(idx + 1);
               }}
-              counterHandler={counterHandler}
               onClick={counterHandler}
             >
               <li
