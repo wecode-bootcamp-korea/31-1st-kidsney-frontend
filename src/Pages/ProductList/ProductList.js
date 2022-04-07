@@ -34,20 +34,20 @@ const ProductList = () => {
   );
 
   useEffect(() => {
-    fetch(url + sorter+pageNum)
+    fetch(url + sorter + pageNum)
       .then(response => response.json())
       .then(product => {
         setProducts(product.result);
         setSubtotal(product.count);
       });
-  }, [url, sorter,pageNum]);
+  }, [url, sorter, pageNum]);
 
   const sorterHandler = e => {
     setSorter(e.target.id && `&order-by=${e.target.id}`);
   };
   const pageHandler = e => {
     setPageNum(`&offset=${(e.target.id - 1) * LIMIT}&limit=${LIMIT}`);
-    
+  };
   const handleFilter = (name, attr) => {
     const filterArr = [...filters];
     filterArr.includes(`${name},${attr}`)
@@ -88,7 +88,6 @@ const ProductList = () => {
     }
     setUrl(queryString);
   };
-
   return (
     <div className="productList">
       <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
