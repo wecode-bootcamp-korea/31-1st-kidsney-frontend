@@ -52,6 +52,9 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
           password: password,
         }),
       })
+        .then(res => {
+          return res.json();
+        })
         .then(res => res.json())
         .then(res => {
           if (res.token) {
