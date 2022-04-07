@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import RecoProductList from '../RecoProductList/RecoProductList';
+import RecoProductList from '../../Components/RecoProductList/RecoProductList';
 import EmptyList from './EmptyList/EmptyList';
 import SelectList from './SelectList/SelectList';
 import ThemeListImg from './ThemeListImg/ThemeListImg';
@@ -27,20 +27,19 @@ const WishList = () => {
     setImgSource(e.target.src);
   };
 
-  const token = localStorage.getItem('token');
-
   useEffect(() => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
-        Authorization: token,
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
       .then(data => {
-        setWishProducts(product => (product = data.wish_list));
+        setWishProducts(
+          product => (product = data.wish_list.map(list => list.product))
+        );
       });
-  }, [token]);
-
+  }, []);
   return (
     <div className="wishList">
       <div className="header">
@@ -48,19 +47,11 @@ const WishList = () => {
         <div className="titleContainer">
           <p className="titleTxt">My Wish List</p>
           <p className="share">Share</p>
-          <div>
-            <button className="listBtn">
-              <i className="icon fas fa-link" />
-            </button>
-            <button className="listBtn">
-              <i className="icon fa fa-envelope" />
-            </button>
-            <button className="listBtn">
-              <i className="icon fab fa-facebook-square" />
-            </button>
-            <button className="listBtn">
-              <i className="icon fab fa-twitter-square" />
-            </button>
+          <div className="listBtn">
+            <i className="icon fas fa-link" />
+            <i className="icon fa fa-envelope" />
+            <i className="icon fab fa-facebook-square" />
+            <i className="icon fab fa-twitter-square" />
           </div>
           <p className="infoTxt">
             Your wish list will be temporarily saved for 7 days.
@@ -88,7 +79,7 @@ const WishList = () => {
               />
             </span>
           </button>
-          <div className="productNum">1 Product</div>
+          <div className="productNum">{wishProducts.length} Product</div>
         </div>
         <div className={'theme' + (isBtnClicked ? '' : ' hide')}>
           <ul className="themeList">

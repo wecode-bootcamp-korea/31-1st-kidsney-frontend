@@ -1,0 +1,21 @@
+@import '../../../Styles/variables.scss';
+
+.selectList {
+  width: 95%;
+  margin: 0 auto;
+  border-top: $border-bottom;
+  border-bottom: $border-bottom;
+
+  .selectProduct {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1200px;
+    height: 100%;
+    padding: 50px 0;
+    margin: 0 auto;
+  }
+
+  li {
+    padding-right: 30px;
+  }
+}

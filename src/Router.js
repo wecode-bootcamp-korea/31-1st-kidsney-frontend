@@ -8,7 +8,7 @@ import ProductList from './Pages/ProductList/ProductList';
 import ProductSpec from './Pages/ProductList/ProductSpec/ProductSpec';
 import MyBag from './Pages/MyBag/MyBag';
 import Footer from './Components/Footer/Footer';
-import WishList from './Components/WishList/WishList';
+import WishList from './Pages/WishList/WishList';
 import Checkout from './Pages/Checkout/Checkout';
 
 const Router = () => {
