@@ -43,7 +43,7 @@ const WishList = () => {
   useEffect(() => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
-        Authorization: token,
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
@@ -52,8 +52,7 @@ const WishList = () => {
           product => (product = data.wish_list.map(list => list.product))
         );
       });
-  }, [token]);
-
+  }, []);
   return (
     <div className="wishList">
       {isClicked && activeModal === 'loginModal' && (
@@ -73,19 +72,11 @@ const WishList = () => {
         <div className="titleContainer">
           <p className="titleTxt">My Wish List</p>
           <p className="share">Share</p>
-          <div>
-            <button className="listBtn">
-              <i className="icon fas fa-link" />
-            </button>
-            <button className="listBtn">
-              <i className="icon fa fa-envelope" />
-            </button>
-            <button className="listBtn">
-              <i className="icon fab fa-facebook-square" />
-            </button>
-            <button className="listBtn">
-              <i className="icon fab fa-twitter-square" />
-            </button>
+          <div className="listBtn">
+            <i className="icon fas fa-link" />
+            <i className="icon fa fa-envelope" />
+            <i className="icon fab fa-facebook-square" />
+            <i className="icon fab fa-twitter-square" />
           </div>
           <p className="infoTxt">
             Your wish list will be temporarily saved for 7 days.
@@ -113,7 +104,7 @@ const WishList = () => {
               />
             </span>
           </button>
-          <div className="productNum">1 Product</div>
+          <div className="productNum">{wishProducts.length} Product</div>
         </div>
         <div className={'theme' + (isBtnClicked ? '' : ' hide')}>
           <ul className="themeList">

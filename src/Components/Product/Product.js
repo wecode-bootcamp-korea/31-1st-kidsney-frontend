@@ -7,6 +7,7 @@ const Product = ({ product, direction, isHeart, setWishProducts }) => {
   const { id, name, price, images } = product;
   const navigate = useNavigate();
   let [imageIdx, setImageIdx] = useState('0');
+
   const [isAdded, setIsAdded] = useState(isHeart);
   const addToWishList = () => {
     fetch(`${BASE_URL}/users/wishlist/${id}`, {
@@ -48,7 +49,6 @@ const Product = ({ product, direction, isHeart, setWishProducts }) => {
   const leaveImg = () => {
     setImageIdx(0);
   };
-
   return (
     <li className={`product ${direction}`}>
       <button className="heartBtn" onClick={addToWishList}>
@@ -67,5 +67,4 @@ const Product = ({ product, direction, isHeart, setWishProducts }) => {
     </li>
   );
 };
-
 export default Product;
