@@ -1,7 +1,6 @@
 @import '../../Styles/variables.scss';
 
 @mixin imgHover {
-  margin-bottom: 100px;
   overflow: hidden;
 
   img {
@@ -17,8 +16,8 @@
   margin-bottom: 80px;
   background-color: $color-white;
 
-  .firstContainer {
-    .firstTxt {
+  .mainContainer {
+    .mainTxt {
       @include flexColumn;
       align-items: center;
       margin-top: 100px;
@@ -32,76 +31,49 @@
       @include flexCenter;
       @include imgHover;
 
-      .pic {
+      .eventImg {
         width: 430px;
         height: 660px;
         margin: 80px 20px 50px 0;
-        overflow: hidden;
         &.last-child {
           margin: 0;
         }
       }
     }
-  }
-
-  .secondContainer {
-    .secondTxt {
-      @include flexColumn;
-      align-items: center;
-      margin-top: 100px;
-    }
-
     .secondEvent {
       margin: 80px 0 150px 0;
       overflow: hidden;
 
-      .mainImg {
+      .topImg {
         width: 1200px;
         height: 600px;
         margin: 0 auto;
         margin-bottom: 10px;
-        overflow: hidden;
-        img {
-          transition: all 0.8s ease-in-out;
-        }
-
-        img:hover {
-          transform: scale(1.03);
-        }
+        @include imgHover;
       }
 
-      .bottom {
+      .bottomImg {
         @include flexCenter;
         width: 1200px;
         height: 363px;
         margin: 0 auto;
-        overflow: hidden;
         gap: 10px;
 
-        .bottomLeft,
-        .bottomRight {
-          overflow: hidden;
-
-          img {
-            transition: all 0.8s ease-in-out;
-          }
-
-          img:hover {
-            transform: scale(1.03);
-          }
+        .bottom {
+          @include imgHover;
         }
       }
     }
   }
 
   .mainEvent {
-    width: 1500px;
+    height: 450px;
     margin: 0 auto;
     @include imgHover;
   }
 
   .subEvent {
-    width: 1500px;
+    height: 450px;
     margin: 0 auto;
     @include imgHover;
   }

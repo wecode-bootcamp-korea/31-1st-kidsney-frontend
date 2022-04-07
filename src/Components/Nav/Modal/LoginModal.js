@@ -44,9 +44,6 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
     setInputValue({ ...inputValue, [name]: value });
   }
 
-  console.log(email);
-  console.log(password);
-
   function goToMain() {
     // checkValidity() &&
     fetch(`${BASE_URL}/users/signin`, {
