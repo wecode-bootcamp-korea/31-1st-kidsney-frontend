@@ -25,15 +25,15 @@
       position: absolute;
       display: flex;
       justify-content: space-between;
-      width: 400px;
+      width: 370px;
       height: 60px;
+      margin-right: 20px;
       top: 50%;
       right: 10px;
       transform: translateY(-50%);
 
       .navBtn {
         @include flexCenter;
-        width: 130px;
         height: 30px;
         margin-top: 15px;
         background-color: #fff;
@@ -48,10 +48,6 @@
 
       .navBtn:hover {
         color: $color-blue;
-      }
-
-      .navBtn:nth-child(3) {
-        padding-right: 30px;
       }
     }
   }

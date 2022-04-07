@@ -50,18 +50,18 @@ const Nav = () => {
             <i className="fas fa-user" />
             {userName ? `${userName}님, 반가워요!` : 'Sign in | Sign Up'}
           </button>
-
-          <Link to="/wish-list" className="navLinkBtn">
+          <Link to="/wish-list">
             <button className="navBtn">
               <i className="fas fa-heart" />
               {userName ? `My Wish List(${wishListCount})` : 'My Wish List'}
             </button>
           </Link>
-
-          <button className="navBtn">
-            <i className="fas fa-shopping-bag" />
-            {userName ? `My Bag(${myBagCount})` : 'My Bag'}
-          </button>
+          <Link to="/my-bag">
+            <button className="navBtn">
+              <i className="fas fa-shopping-bag" />
+              {userName ? `My Bag(${myBagCount})` : 'My Bag'}
+            </button>
+          </Link>
         </ul>
       </div>
       <div className="navBar">
