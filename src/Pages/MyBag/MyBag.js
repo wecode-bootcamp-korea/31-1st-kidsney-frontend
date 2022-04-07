@@ -6,7 +6,7 @@ import OrderProduct from '../../Components/OrderProduct/OrderProduct';
 import OrderSummary from './OrderSummary/OrderSummary';
 import Button from '../../Components/Button/Button';
 import EditModal from './EditModal/EditModal';
-import { BASE_URL, Token } from '../../config';
+import { BASE_URL } from '../../config';
 
 import './MyBag.scss';
 

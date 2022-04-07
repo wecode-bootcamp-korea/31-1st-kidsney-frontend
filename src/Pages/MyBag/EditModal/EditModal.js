@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Button from '../../../Components/Button/Button';
-import { BASE_URL, Token } from '../../../config';
+import { BASE_URL } from '../../../config';
 
 import './EditModal.scss';
 
