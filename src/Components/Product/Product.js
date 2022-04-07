@@ -5,10 +5,10 @@ import './Product.scss';
 
 const Product = ({ product, direction, isHeart }) => {
   const { id, name, price, images } = product;
+
   const navigate = useNavigate();
   let [imageIdx, setImageIdx] = useState('0');
   const [isAdded, setIsAdded] = useState(isHeart);
-
   const addToWishList = () => {
     fetch(`${BASE_URL}/users/wishlist/${id}`, {
       method: 'POST',

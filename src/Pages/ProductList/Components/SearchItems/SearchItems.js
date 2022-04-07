@@ -30,7 +30,6 @@ const SearchItems = ({ products }) => {
             <Product
               key={product.id}
               product={product}
-              wishListIdx={wishListIdx}
               isHeart={wishListIdx.includes(product.id)}
             />
           ))}
