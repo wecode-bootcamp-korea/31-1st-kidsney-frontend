@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { API, Token } from '../../../../../config';
+import { API } from '../../../../../config';
 import './ReviewModal.scss';
 
 const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {

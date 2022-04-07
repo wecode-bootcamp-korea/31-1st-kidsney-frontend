@@ -19,6 +19,7 @@ const ProductSpec = () => {
   const { isHeart } = useLocation().state;
 
   const [isAddedWishList, setIsAddedWishList] = useState(isHeart);
+
   const [product, setProduct] = useState({});
   const [orderProducts, setOrderProducts] = useState([]);
   const [clickedImg, setClickedImg] = useState('0');
@@ -39,6 +40,8 @@ const ProductSpec = () => {
     };
     getData();
   }, [id]);
+
+  console.log(product);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });

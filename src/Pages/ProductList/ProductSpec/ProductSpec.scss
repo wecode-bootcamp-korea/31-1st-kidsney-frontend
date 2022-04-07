@@ -3,6 +3,7 @@
 .productSpec {
   font-family: 'Didact Gothic', sans-serif;
   padding: 50px 100px;
+  margin: 0 40px;
 
   .row {
     display: flex;
@@ -167,6 +168,7 @@
 
       .btns {
         @include flexColumn;
+        width: 85%;
       }
     }
   }

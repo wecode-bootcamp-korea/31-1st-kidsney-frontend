@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 import Button from '../../../Components/Button/Button';
-import { API, BASE_URL } from '../../../config';
+import { BASE_URL } from '../../../config';
 import './SubEvent.scss';
 
 const SubEvent = ({ slideCount }) => {
@@ -19,7 +19,7 @@ const SubEvent = ({ slideCount }) => {
   useEffect(() => getData(), []);
 
   const goToProductSpec = e => {
-    navigate(`/products/${e.target.id}`);
+    navigate(`/products/${e.target.id}`, { state: { isHeart: false } });
   };
 
   return (
