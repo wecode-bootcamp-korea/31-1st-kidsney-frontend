@@ -18,8 +18,15 @@ const Checkout = ({ subtotal, total }) => {
   });
 
   const orderInfoHandler = e => {
-    setOrderInfo({ ...orderInfo, [e.target.className]: e.target.value });
+    const { className, value } = e.target;
+    setOrderInfo({ ...orderInfo, [className]: value });
   };
+
+  const orderNecessaryInfo =
+    orderInfo.zipCode &&
+    orderInfo.addressDetail &&
+    orderInfo.wayOfShipping &&
+    orderInfo.wayOfPayment;
 
   const patchAddress = () => {
     fetch(`${BASE_URL}/users/`, {
@@ -37,7 +44,6 @@ const Checkout = ({ subtotal, total }) => {
       .then(response => {
         if (response.ok) {
           alert('주소변경이 완료되었습니다.');
-          window.location.reload();
         } else {
           throw new Error('Unexpected Error');
         }
@@ -77,15 +83,9 @@ const Checkout = ({ subtotal, total }) => {
   };
 
   const submitOrder = () => {
-    if (
-      orderInfo.zipCode &&
-      orderInfo.addressDetail &&
-      orderInfo.wayOfShipping &&
-      orderInfo.wayOfPayment
-    ) {
-      if (orderInfo.updateAddress === true) {
+    if (orderNecessaryInfo) {
+      if (orderInfo.updateAddress) {
         postBalance();
-        // patchAddress();
       } else {
         postBalance();
       }
@@ -93,7 +93,7 @@ const Checkout = ({ subtotal, total }) => {
   };
 
   return (
-    <div>
+    <div className="Checkout">
       <h1>Complete your Order</h1>
       <div className="wholeWrapper">
         <div className="ProcessWrapper">

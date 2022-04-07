@@ -4,7 +4,7 @@ import './Order.scss';
 
 const Order = ({ subTotal, total, submitOrder }) => {
   return (
-    <div className="orderSummary">
+    <div className="Order">
       <h2>Check your order</h2>
       <ul className="subTotalList">
         <li className="subTotal">

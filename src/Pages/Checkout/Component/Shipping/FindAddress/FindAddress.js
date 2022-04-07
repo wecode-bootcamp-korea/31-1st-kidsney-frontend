@@ -20,10 +20,15 @@ const FindAddress = () => {
   };
 
   return (
-    <form className="modal hidden" name="form" id="form" method="post">
+    <form
+      className="FindAddress modal hidden"
+      name="form"
+      id="form"
+      method="post"
+    >
       <div className="zipWrapper">
         <span>우편번호</span>
-        <input type="text" id="zipNo" name="zipNo" readOnly />
+        <input type="text" name="zipNo" readOnly />
       </div>
       <div>
         <span>주소</span>

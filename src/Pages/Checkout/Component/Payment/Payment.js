@@ -3,7 +3,7 @@ import './Payment.scss';
 
 const Payment = ({ orderInfoHandler }) => {
   return (
-    <>
+    <div className="Payment">
       <div className="titleWrapper">
         <div className="num">2</div>
         <h2>Payment</h2>
@@ -33,7 +33,7 @@ const Payment = ({ orderInfoHandler }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

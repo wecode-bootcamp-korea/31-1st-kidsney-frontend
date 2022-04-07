@@ -1,41 +1,35 @@
 @import '../../../../Styles/variables.scss';
 
-.titleWrapper {
-  display: flex;
-  align-items: center;
+.Payment {
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+    border: $border-bottom;
 
-  .num {
-    @include flexCenter;
-    padding: 10px;
-    font-size: $font-medium;
-    color: white;
-    background-color: $color-dark-blue;
-  }
+    .num {
+      @include flexCenter;
+      padding: 20px;
+      font-size: $font-medium;
+      color: white;
+      background-color: $color-dark-blue;
+    }
 
-  h2::before {
-    content: '';
-    margin-right: 20px;
-  }
-}
-
-.mainContainer {
-  .wrapper {
-    margin: 10px 0;
-
-    .paymentOption {
-      display: flex;
-      align-items: center;
-
-      input {
-        margin: 10px;
-        border: none;
-        font-size: $font-regular;
-      }
+    h2::before {
+      content: '';
+      margin-right: 20px;
     }
   }
-  .submitBtn {
-    padding: 20px 0;
-    color: white;
-    background-color: $color-blue;
+
+  .mainContainer {
+    .wrapper {
+      border: $border-bottom;
+      .paymentOption {
+        input {
+          margin: 10px;
+          border: none;
+          font-size: $font-regular;
+        }
+      }
+    }
   }
 }

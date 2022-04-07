@@ -10,11 +10,12 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
     setIsFindAddressOpen(!isFindAddressOpen);
   };
 
-  const handleFindModal = () => {
-    setIsFindAddressOpen(!isFindAddressOpen);
-  };
+  //기능구현중(행안부API)
+  // const handleFindModal = () => {
+  //   setIsFindAddressOpen(!isFindAddressOpen);
+  // };
   return (
-    <>
+    <div className="Shipping">
       <FindAddress />
       <div className="titleWrapper">
         <div className="num">1</div>
@@ -109,7 +110,7 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
