@@ -39,6 +39,7 @@ const ProductList = () => {
         setProducts(product.result);
         setSubtotal(product.count);
       });
+    console.log(url + sorter + pageNum);
   }, [url, sorter, pageNum]);
 
   const sorterHandler = e => {
@@ -79,9 +80,9 @@ const ProductList = () => {
           default:
         }
       });
-      queryString = `${BASE_URL}${location.pathname}${addParamFilters.join(
-        ''
-      )}`;
+      queryString = `${BASE_URL}${
+        location.pathname
+      }?main=${param}${addParamFilters.join('')}`;
     } else {
       queryString = `${BASE_URL}${location.pathname}${location.search}`;
     }
