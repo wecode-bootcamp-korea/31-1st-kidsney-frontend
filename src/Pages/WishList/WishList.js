@@ -39,7 +39,6 @@ const WishList = () => {
     setIsClicked(false);
   };
 
-  const token = localStorage.getItem('token');
   useEffect(() => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
