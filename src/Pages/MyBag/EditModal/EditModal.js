@@ -27,7 +27,7 @@ const EditModal = ({ editedProduct, setIsClosed }) => {
       fetch(`${BASE_URL}/carts/${id}`, {
         method: 'PATCH',
         headers: {
-          Authorization: Token,
+          Authorization: localStorage.getItem('token'),
         },
         body: JSON.stringify({
           size: editedSize.sizeName,

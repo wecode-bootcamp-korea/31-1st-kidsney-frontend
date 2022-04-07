@@ -1,5 +1,5 @@
 import React from 'react';
-import { BASE_URL, Token } from '../../config';
+import { BASE_URL } from '../../config';
 
 import './OrderProduct.scss';
 
@@ -25,7 +25,7 @@ const OrderProduct = ({
     fetch(`${BASE_URL}/carts/${id}`, {
       method: 'DELETE',
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
     }).then(res => {
       if (res.ok) {

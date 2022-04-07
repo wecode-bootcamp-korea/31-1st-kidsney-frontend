@@ -29,7 +29,7 @@ const MyBag = () => {
   const getData = async () => {
     const res = await fetch(`${BASE_URL}/carts`, {
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
     });
     const data = await res.json();
