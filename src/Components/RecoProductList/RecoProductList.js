@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Product from '../../Components/Product/Product';
 import './RecoProductList.scss';
 
