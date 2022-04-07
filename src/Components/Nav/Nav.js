@@ -19,7 +19,7 @@ const Nav = () => {
     })
       .then(res => res.json())
       .then(data => setWishListCount(data.wish_list.length));
-  }, []);
+  }, [wishListCount]);
 
   useEffect(() => {
     fetch(`${BASE_URL}/carts`, {
@@ -27,7 +27,7 @@ const Nav = () => {
     })
       .then(res => res.json())
       .then(data => setMyBagCount(data.carts.length));
-  }, []);
+  }, [myBagCount]);
 
   const openModal = () => {
     setIsClicked(true);

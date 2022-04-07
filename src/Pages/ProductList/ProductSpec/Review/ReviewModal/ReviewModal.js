@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 
-import { API, Token } from '../../../../../config';
+import { API } from '../../../../../config';
 import './ReviewModal.scss';
 
 const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
   const textareaInput = useRef();
-  const { name, image_url, id } = product;
+  const { name, images, id } = product;
   const [content, setContent] = useState('');
 
   const submitReview = () => {
@@ -14,7 +14,7 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
     fetch(`${API.products}/${id}`, {
       method: 'post',
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         content: content,
@@ -44,8 +44,8 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
           <i className="fas fa-times" />
         </button>
         <div className="imgContainer">
-          <img src={image_url} alt="thumbnail" />
-          <p>{name}</p>
+          <img src={images[0]} alt="thumbnail" />
+          <h3>{name}</h3>
         </div>
         <main>
           <h2>My Review for {name}</h2>

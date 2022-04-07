@@ -2,13 +2,13 @@ import React from 'react';
 import Button from '../../../../Components/Button/Button';
 import './Order.scss';
 
-const Order = ({ subTotal, total, submitOrder }) => {
+const Order = ({ subtotal, total, submitOrder }) => {
   return (
     <div className="Order">
       <h2>Check your order</h2>
       <ul className="subTotalList">
         <li className="subTotal">
-          Sub total <span>${subTotal}</span>
+          Sub total <span>${subtotal}</span>
         </li>
         <li className="subTotal">
           Est.Shipping and Handling <span>$40.95</span>

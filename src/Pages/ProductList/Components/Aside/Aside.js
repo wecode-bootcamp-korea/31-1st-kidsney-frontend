@@ -3,6 +3,8 @@ import AsideFilter from './AsideFilter/AsideFilter';
 import FILTER_CATEGORY from '../../../../filterCategory';
 import '../Aside/Aside.scss';
 
+import './Aside.scss';
+
 const Aside = ({ handleFilter, filters }) => {
   return (
     <aside className="aside">

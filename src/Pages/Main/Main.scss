@@ -1,7 +1,6 @@
 @import '../../Styles/variables.scss';
 
 @mixin imgHover {
-  margin-bottom: 55px;
   overflow: hidden;
 
   img {
@@ -14,15 +13,65 @@
 }
 
 .main {
-  background-color: $color-light-blue;
-  height: 100%;
-  padding-bottom: 30px;
+  margin-bottom: 80px;
+  background-color: $color-white;
 
-  .mainEvent {
-    @include imgHover;
+  .mainContainer {
+    .mainTxt {
+      @include flexColumn;
+      align-items: center;
+      margin-top: 100px;
+
+      .logoLink {
+        font-size: 15px;
+        text-decoration: underline;
+      }
+    }
+    .firstEvent {
+      @include flexCenter;
+      @include imgHover;
+
+      .eventImg {
+        width: 430px;
+        height: 660px;
+        margin: 80px 20px 50px 0;
+        overflow: hidden;
+        &.last-child {
+          margin: 0;
+        }
+      }
+    }
+    .secondEvent {
+      margin: 80px 0 150px 0;
+      overflow: hidden;
+
+      .topImg {
+        width: 1200px;
+        height: 600px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        @include imgHover;
+      }
+
+      .bottomImg {
+        @include flexCenter;
+        width: 1200px;
+        height: 363px;
+        margin: 0 auto;
+        gap: 10px;
+
+        .bottom {
+          @include imgHover;
+        }
+      }
+    }
   }
 
+  .mainEvent,
   .subEvent {
+    height: 500px;
+    margin: 0 auto;
+    margin-bottom: 30px;
     @include imgHover;
   }
 }

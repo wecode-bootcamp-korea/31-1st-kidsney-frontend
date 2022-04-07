@@ -1,7 +1,9 @@
 @import '../../Styles/variables.scss';
 
 .productList {
+  font-family: 'Didact Gothic', sans-serif;
   .row {
     display: flex;
+    height: 900px;
   }
 }

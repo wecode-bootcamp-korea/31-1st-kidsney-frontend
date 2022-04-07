@@ -16,13 +16,14 @@ const MyBag = () => {
   const [editedProduct, setEditedProduct] = useState();
   const [slideCount, setSlideCount] = useState(0);
   const [isClosed, setIsClosed] = useState(false);
-
   const shippingCost = 40.95;
   const subTotal =
     orderProducts && orderProducts.length > 0
-      ? orderProducts
-          .map(product => product.product.price)
-          .reduce((a, b) => parseInt(a) + parseInt(b))
+      ? parseInt(
+          orderProducts
+            .map(product => product.product.price)
+            .reduce((a, b) => parseInt(a) + parseInt(b))
+        )
       : 0;
   const total = (subTotal + shippingCost).toFixed(2);
 
@@ -106,6 +107,7 @@ const MyBag = () => {
                   orderProducts={orderProducts}
                   setEditedProduct={setEditedProduct}
                   setIsClosed={setIsClosed}
+                  setOrderProducts={setOrderProducts}
                 />
               ))}
             </div>
@@ -117,8 +119,9 @@ const MyBag = () => {
           <i class="fas fa-shopping-bag" />
           <h2>Your Bag is Empty!</h2>
           <p>Not seeing items you've added?</p>
-          <p className="signIn">Sign in</p>
-          <Button text="Continue Shopping" functionType={goToMain} />
+          <div className="btn">
+            <Button text="Continue Shopping" functionType={goToMain} />
+          </div>
         </main>
       )}
     </div>

@@ -1,6 +1,6 @@
 [
   {
-    "cart_id": 1,
+    "id": 1,
     "product": {
       "id": 1,
       "quantity": 10,
@@ -17,7 +17,7 @@
     "total_price": 140
   },
   {
-    "cart_id": 2,
+    "id": 2,
     "product": {
       "id": 1,
       "quantity": 10,

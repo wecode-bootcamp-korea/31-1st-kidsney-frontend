@@ -2,14 +2,17 @@
 
 .categoryName {
   margin: 10px 0 0 10px;
+  font-family: 'Didact Gothic', sans-serif;
   font-size: $font-medium;
 
   .categoryAttrContainer {
     @include flexColumn;
+    padding: 10px 0;
     border-top: 1px solid #dbdbdb;
 
     li {
       @include flexCenter;
+      height: 35px;
 
       input {
         zoom: 1.5;
@@ -20,7 +23,8 @@
       margin-left: 20px;
       width: 130px;
       height: 40px;
-      font-size: $font-medium;
+      line-height: 35px;
+      font-size: $font-regular;
       color: $color-gray;
       cursor: pointer;
       transition: all 0.3s ease;

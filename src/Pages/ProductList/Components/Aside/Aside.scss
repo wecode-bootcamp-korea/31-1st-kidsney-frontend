@@ -1,5 +1,33 @@
+@import '../../../../Styles/variables.scss';
+
 .aside {
+  width: 360px;
+  transition: all ease 0.4s;
+
   .accordionFilter {
-    padding: 0 0 30px 30px;
+    margin: 0 50px;
+    .filterName {
+      position: relative;
+      display: flex;
+      margin: 20px;
+      padding: 15px 0;
+      width: 100%;
+      font-size: $font-regular;
+      border-bottom: $border-bottom;
+      transition: all ease 0.4s;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-blue;
+      }
+
+      i {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+      }
+    }
   }
 }
