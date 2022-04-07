@@ -4,7 +4,7 @@ import RecoProductList from '../RecoProductList/RecoProductList';
 import EmptyList from './EmptyList/EmptyList';
 import SelectList from './SelectList/SelectList';
 import ThemeListImg from './ThemeListImg/ThemeListImg';
-import { BASE_URL, Token } from '../../config';
+import { BASE_URL } from '../../config';
 import './WishList.scss';
 
 const WishList = () => {

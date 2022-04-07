@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BASE_URL, Token } from '../../../config';
+import { BASE_URL } from '../../../config';
 import Product from '../../Product/Product';
 import './SelectList.scss';
 
@@ -8,7 +8,7 @@ const SelectList = ({ wishProducts }) => {
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
