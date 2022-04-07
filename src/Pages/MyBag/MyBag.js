@@ -16,13 +16,14 @@ const MyBag = () => {
   const [editedProduct, setEditedProduct] = useState();
   const [slideCount, setSlideCount] = useState(0);
   const [isClosed, setIsClosed] = useState(false);
-
   const shippingCost = 40.95;
   const subTotal =
     orderProducts && orderProducts.length > 0
-      ? orderProducts
-          .map(product => product.product.price)
-          .reduce((a, b) => parseInt(a) + parseInt(b))
+      ? parseInt(
+          orderProducts
+            .map(product => product.product.price)
+            .reduce((a, b) => parseInt(a) + parseInt(b))
+        )
       : 0;
   const total = (subTotal + shippingCost).toFixed(2);
 

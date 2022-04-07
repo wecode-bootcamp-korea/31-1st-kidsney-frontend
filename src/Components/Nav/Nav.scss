@@ -39,6 +39,16 @@
         background-color: #fff;
         font-size: 16px;
         cursor: pointer;
+        outline: none;
+
+        &:focus,
+        &:active {
+          outline: none;
+        }
+
+        .navLinkBtn {
+          outline: none;
+        }
 
         .fas {
           padding-right: 5px;

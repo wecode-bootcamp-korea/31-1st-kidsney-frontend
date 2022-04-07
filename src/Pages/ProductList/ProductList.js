@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+
 import { useLocation } from 'react-router-dom';
 import SorterBar from './Components/SorterBar/SorterBar';
 import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
 import Pagination from './Components/Pagination/Pagination';
 import { BASE_URL } from '../../config.js';
+
 import './ProductList.scss';
 
 const ProductList = () => {

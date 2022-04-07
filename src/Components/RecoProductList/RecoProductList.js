@@ -1,17 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import Product from '../../Components/Product/Product';
+import { API, BASE_URL } from '../../config';
+
 import './RecoProductList.scss';
 
-const RecoProductList = () => {
+const RecoProductList = ({ setWishProducts }) => {
   const [products, setProducts] = useState([]);
+  const [wishListIdx, setWishListIdx] = useState([]);
   const [direction, setDirection] = useState('left');
 
   const getData = async () => {
-    const data = await (await fetch('/data/productData.json')).json();
-    setProducts(data);
+    const res = await fetch(`${API.products}`);
+    const data = await res.json();
+    setProducts(data.result);
   };
 
-  useEffect(() => getData(), []);
+  const getWishList = () => {
+    fetch(`${BASE_URL}/users/wishlist`, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setWishListIdx(data.wish_list.map(list => list.product.id));
+        setWishProducts(
+          product => (product = data.wish_list.map(list => list.product))
+        );
+      })
+      .catch(error => console.error(error.message));
+  };
+
+  useEffect(() => {
+    getData();
+    getWishList();
+  }, []);
 
   const handleDirection = e => {
     const { className } = e.target;
@@ -31,13 +54,17 @@ const RecoProductList = () => {
         </button>
 
         <div className="products">
-          {products &&
+          {products.length > 0 &&
+            wishListIdx.length > 0 &&
             products.map(product => {
               return (
                 <Product
                   key={product.id}
                   product={product}
                   direction={direction}
+                  wishListIdx={wishListIdx}
+                  isHeart={wishListIdx.includes(product.id)}
+                  setWishProducts={setWishProducts}
                 />
               );
             })}

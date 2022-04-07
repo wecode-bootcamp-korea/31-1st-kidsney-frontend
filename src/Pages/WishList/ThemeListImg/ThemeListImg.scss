@@ -1,0 +1,15 @@
+@import '../../../Styles/variables.scss';
+
+.themeListImg {
+  img {
+    width: 95px;
+    height: 95px;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  img:hover {
+    padding: 3px;
+    border: 1px solid $color-blue;
+  }
+}

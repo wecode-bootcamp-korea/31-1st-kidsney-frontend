@@ -2,6 +2,8 @@ import React from 'react';
 import AsideFilter from './AsideFilter/AsideFilter';
 import FILTER_CATEGORY from '../../../../filterCategory';
 
+import './Aside.scss';
+
 const Aside = ({ handleFilter, filters }) => {
   return (
     <aside className="aside">

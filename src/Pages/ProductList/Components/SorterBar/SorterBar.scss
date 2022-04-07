@@ -2,7 +2,7 @@
 .sorterBar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin: 0px 80px;
 
   .productSubtotal {
     margin: 20px;
@@ -48,6 +48,7 @@
       color: $color-gray;
       margin: 0 5px;
     }
+
     div {
       @include flexColumn;
       border: 1px solid black;

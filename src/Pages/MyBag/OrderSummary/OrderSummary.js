@@ -1,8 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import Button from '../../../Components/Button/Button';
 import './OrderSummary.scss';
 
 const OrderSummary = ({ subTotal, total }) => {
+  const navigate = useNavigate();
+  const goToCheckout = () => {
+    navigate('/checkout', { state: { subtotal: subTotal, total: total } });
+  };
+
   return (
     <div className="orderSummary">
       <h2>Order Summary</h2>
@@ -19,7 +25,7 @@ const OrderSummary = ({ subTotal, total }) => {
       </h2>
       <p>* Tax estimated at checkout</p>
       <div className="btns">
-        <Button text=" Checkout" />
+        <Button text="Checkout" functionType={goToCheckout} />
       </div>
     </div>
   );
