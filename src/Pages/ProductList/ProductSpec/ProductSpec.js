@@ -29,15 +29,17 @@ const ProductSpec = () => {
   const [isShowedBagModal, setIsShowedBagModal] = useState(false);
   const [isShowedWishModal, setIsShowedWishModal] = useState(false);
 
-  const getData = async () => {
-    const data = await (
-      await fetch(`${API.products}/${id}
-    `)
-    ).json();
+  useEffect(() => {
+    const getData = async () => {
+      const res = await fetch(`${API.products}/${id}
+      `);
+      const data = await res.json();
 
-    setProduct(data.result);
-  };
-  useEffect(() => getData(), []);
+      setProduct(data.result);
+    };
+    getData();
+  }, [id]);
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [pathname]);
@@ -80,7 +82,7 @@ const ProductSpec = () => {
     fetch(`${BASE_URL}/carts/products/${id}`, {
       method: 'post',
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         quantity: quantity,

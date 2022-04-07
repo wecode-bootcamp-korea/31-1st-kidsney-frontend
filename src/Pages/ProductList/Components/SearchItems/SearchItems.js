@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../../../Components/Product/Product';
-import { BASE_URL, Token } from '../../../../config';
+import { BASE_URL } from '../../../../config';
 
 import './SearchItems.scss';
 
@@ -10,7 +10,7 @@ const SearchItems = ({ products }) => {
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())

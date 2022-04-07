@@ -14,7 +14,7 @@ const ReviewModal = ({ product, user, showReviewModal, setReviewList }) => {
     fetch(`${API.products}/${id}`, {
       method: 'post',
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         content: content,

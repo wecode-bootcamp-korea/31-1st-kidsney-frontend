@@ -19,7 +19,7 @@ const RecoProductList = () => {
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())

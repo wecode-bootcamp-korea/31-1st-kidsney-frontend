@@ -20,7 +20,7 @@ const OrderProduct = ({
     fetch(`${BASE_URL}/carts/${id}`, {
       method: 'DELETE',
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
     }).then(res => {
       if (res.ok) {
@@ -28,7 +28,7 @@ const OrderProduct = ({
         if (res.ok) {
           fetch(`${BASE_URL}/carts`, {
             headers: {
-              Authorization: Token,
+              Authorization: localStorage.getItem('token'),
             },
           })
             .then(res => res.json())

@@ -24,7 +24,7 @@ const Review = ({ product }) => {
     fetch(`${API.products}/${product.id}?review-id=${e.target.id}`, {
       method: 'DELETE',
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
     }).then(res => {
       if (res.ok) {
