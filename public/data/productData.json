@@ -3,15 +3,8 @@
     "id": 1,
     "name": "Mick Mouse Bodysuit",
     "price": "29.90",
-<<<<<<< HEAD
-    "image_url": "/images/Boys/happiness_classic_hat.png",
-    "image_urls": [
-      "https://i.ibb.co/CmH749R/happiness-tshirts-boy-1.png",
-      "https://i.ibb.co/9HNp5NC/happiness-tshirts-boy-2.png"
-    ],
-=======
     "images": ["/images/Boys/happiness_classic_hat.png"],
->>>>>>> master
+
     "character": "happiness",
     "detail": "Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No."
   },
@@ -19,15 +12,7 @@
     "id": 2,
     "name": "Mick Mouse Bodysuit",
     "price": "100.90",
-<<<<<<< HEAD
-    "image_url": "/images/Boys/surprised_ballcap.png",
-    "image_urls": [
-      "https://i.ibb.co/8dwGVKF/wannaplay-tshirts-boy-1.png",
-      "https://i.ibb.co/5Rpz1NK/wannaplay-tshirts-boy-2.png"
-    ],
-=======
     "images": ["/images/Boys/surprised_ballcap.png"],
->>>>>>> master
     "character": "surprised",
     "detail": "Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No."
   },
@@ -35,15 +20,7 @@
     "id": 3,
     "name": "Mick Mouse Bodysuit",
     "price": "40.90",
-<<<<<<< HEAD
-    "image_url": "/images/Boys/wannaplay_ballcab.png",
-    "image_urls": [
-      "https://i.ibb.co/BBzWYjZ/surprised-tshirts-boy-1.png",
-      "https://i.ibb.co/SsZH6fL/surprised-tshirts-boy-2.png"
-    ],
-=======
     "images": ["/images/Boys/wannaplay_ballcab.png"],
->>>>>>> master
     "character": "wannaplay",
     "detail": "Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No."
   },
@@ -51,15 +28,7 @@
     "id": 4,
     "name": "Mick Mouse Bodysuit",
     "price": "59.90",
-<<<<<<< HEAD
-    "image_url": "/images/Boys/wannaplay_ballcab.png",
-    "image_urls": [
-      "https://i.ibb.co/BBzWYjZ/surprised-tshirts-boy-1.png",
-      "https://i.ibb.co/SsZH6fL/surprised-tshirts-boy-2.png"
-    ],
-=======
     "images": ["/images/Boys/wannaplay_ballcab.png"],
->>>>>>> master
     "character": "wannaplay",
     "detail": "Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No."
   },
@@ -67,15 +36,7 @@
     "id": 5,
     "name": "Mick Mouse Bodysuit",
     "price": "22.90",
-<<<<<<< HEAD
-    "image_url": "/images/Boys/happiness_classic_hat.png",
-    "image_urls": [
-      "https://i.ibb.co/BBzWYjZ/surprised-tshirts-boy-1.png",
-      "https://i.ibb.co/SsZH6fL/surprised-tshirts-boy-2.png"
-    ],
-=======
     "images": ["/images/Boys/happiness_classic_hat.png"],
->>>>>>> master
     "character": "happiness",
     "detail": "Classic Mickey in his mostfamouse pose passes the Disney tradition to Baby with this two-piece casual set. Includes soft, all-cotton bodysuit and matching shorts.Magic in the detailsTwo-piece set includes bodysuit and shorts Jersey knit bodysuit Classic Mickey screen artShort sleeves Snap back placket Single row of leg snaps Ribbed trim Scoop necklineRed sweat shorts Embroidered classic Mickey appliqué  Elastic waistband Rolled cuffs Pockets Brushed back fleece fabrication interior The bare necessities100% cotton Imported Item No."
   },
