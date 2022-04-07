@@ -1,21 +1,28 @@
 import React from 'react';
 
-import { BASE_URL, Token } from '../../config';
+import { BASE_URL } from '../../config';
 import './OrderProduct.scss';
 
 const OrderProduct = ({
   type,
   orderProduct,
-  setEditedProductId,
+  orderProducts,
+  setEditedProduct,
+  setIsClosed,
   setOrderProducts,
 }) => {
   const { id, product, total_price } = orderProduct;
-
   const { images, name, quantity, size, price } = product;
 
-  const storeEditedId = () => {
-    setEditedProductId(id);
+  const openEditModal = () => {
+    setIsClosed(false);
   };
+
+  const findEditedProduct = () => {
+    openEditModal();
+    setEditedProduct(orderProducts.find(product => product.id === id));
+  };
+
   const removeItem = () => {
     fetch(`${BASE_URL}/carts/${id}`, {
       method: 'DELETE',
@@ -25,6 +32,7 @@ const OrderProduct = ({
     }).then(res => {
       if (res.ok) {
         alert('삭제되었습니다.');
+
         if (res.ok) {
           fetch(`${BASE_URL}/carts`, {
             headers: {
@@ -44,17 +52,16 @@ const OrderProduct = ({
     <div className={`orderProduct ${type}`}>
       <img src={images[0]} alt="thumbnail" />
       <div className="description">
-        <h3 className="price">
-          ${price}
-          <button
-            className="deleteBtn"
-            onClick={() => {
-              if (window.confirm('삭제하시겠습니까?')) removeItem();
-            }}
-          >
-            <i className="fas fa-times" />
-          </button>
-        </h3>
+        <h3 className="price">${price}</h3>
+        <button
+          className="deleteBtn"
+          onClick={() => {
+            if (window.confirm('삭제하시겠습니까?')) removeItem();
+          }}
+        >
+          <i className="fas fa-times" />
+        </button>
+
         <h3>{name}</h3>
         <p className="quantity">
           Quantity : {quantity} at ${total_price}
@@ -63,7 +70,7 @@ const OrderProduct = ({
         <p className="id">Id : {id}</p>
         <div className="btns">
           <div className="editBtn">
-            <button className="editBtn" onClick={storeEditedId}>
+            <button className="editBtn" onClick={findEditedProduct}>
               Edit
             </button>
             <button
