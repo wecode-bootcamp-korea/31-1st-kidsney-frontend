@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 import Button from '../../../Components/Button/Button';
-import { BASE_URL } from '../../../config';
+import { API, BASE_URL } from '../../../config';
 import './SubEvent.scss';
 
 const SubEvent = ({ slideCount }) => {
@@ -40,8 +40,8 @@ const SubEvent = ({ slideCount }) => {
               <div className="detailBtn">
                 <Button
                   text="See Detail"
-                  functionType={goToProductSpec}
                   id={id}
+                  functionType={goToProductSpec}
                 />
               </div>
             </div>

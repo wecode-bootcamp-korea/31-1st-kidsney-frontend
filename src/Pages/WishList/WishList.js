@@ -40,7 +40,6 @@ const WishList = () => {
   };
 
   const token = localStorage.getItem('token');
-
   useEffect(() => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
@@ -130,7 +129,12 @@ const WishList = () => {
           </ul>
         </div>
       </div>
-      {wishProducts[0] && <SelectList wishProducts={wishProducts} />}
+      {wishProducts[0] && (
+        <SelectList
+          wishProducts={wishProducts}
+          setWishProducts={setWishProducts}
+        />
+      )}
       {wishProducts.length === 0 && <EmptyList />}
       <RecoProductList />
     </div>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../config';
 import './Product.scss';
 
-const Product = ({ product, direction, isHeart }) => {
+const Product = ({ product, direction, isHeart, setWishProducts }) => {
   const { id, name, price, images } = product;
   const navigate = useNavigate();
   let [imageIdx, setImageIdx] = useState('0');
@@ -18,8 +18,23 @@ const Product = ({ product, direction, isHeart }) => {
     })
       .then(res => {
         setIsAdded(res.status === 201);
+        getWishList();
       })
       .catch(error => console.error(error.message));
+  };
+
+  const getWishList = () => {
+    fetch(`${BASE_URL}/users/wishlist`, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setWishProducts(
+          product => (product = data.wish_list.map(list => list.product))
+        );
+      });
   };
 
   const goToProductSpec = () => {
