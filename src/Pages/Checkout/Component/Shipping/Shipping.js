@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import FindAddress from './FindAddress/FindAddress';
 import './Shipping.scss';
 
 const Shipping = ({ orderInfoHandler, orderInfo }) => {
@@ -16,7 +15,6 @@ const Shipping = ({ orderInfoHandler, orderInfo }) => {
   // };
   return (
     <div className="Shipping">
-      <FindAddress />
       <div className="titleWrapper">
         <div className="num">1</div>
         <h2>Shipping</h2>
