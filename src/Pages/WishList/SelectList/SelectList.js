@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BASE_URL } from '../../../config';
-import Product from '../../Product/Product';
+import Product from '../../../Components/Product/Product';
 import './SelectList.scss';
 
 const SelectList = ({ wishProducts }) => {
@@ -28,7 +28,7 @@ const SelectList = ({ wishProducts }) => {
                 key={product.id}
                 product={product}
                 isHeart={wishListIdx.includes(product.id)}
-              ></Product>
+              />
             );
           })}
       </ul>

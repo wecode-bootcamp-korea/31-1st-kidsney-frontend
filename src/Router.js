@@ -7,7 +7,7 @@ import SignUpModal from './Components/Nav/Modal/SignUpModal';
 import ProductList from './Pages/ProductList/ProductList';
 import ProductSpec from './Pages/ProductList/ProductSpec/ProductSpec';
 import Footer from './Components/Footer/Footer';
-import WishList from './Components/WishList/WishList';
+import WishList from './Pages/WishList/WishList';
 
 const Router = () => {
   return (
