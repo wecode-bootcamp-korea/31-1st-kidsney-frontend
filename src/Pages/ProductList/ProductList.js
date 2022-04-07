@@ -14,8 +14,7 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
   const [sorter, setSorter] = useState('');
-  const [pageNum, setPageNum] = useState('');
-
+  const [pageNum, setPageNum] = useState('&offset=0&limit=6');
   const LIMIT = 6;
 
   const [url, setUrl] = useState(

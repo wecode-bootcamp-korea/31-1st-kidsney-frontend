@@ -5,7 +5,6 @@ import './Product.scss';
 
 const Product = ({ product, direction, isHeart }) => {
   const { id, name, price, images } = product;
-
   const navigate = useNavigate();
   let [imageIdx, setImageIdx] = useState('0');
   const [isAdded, setIsAdded] = useState(isHeart);
@@ -47,7 +46,6 @@ const Product = ({ product, direction, isHeart }) => {
         onClick={goToProductSpec}
       >
         <img alt="thumbnail" src={images[imageIdx]} />
-
         <h3>{name}</h3>
         <div className="price">${price}</div>
       </div>
