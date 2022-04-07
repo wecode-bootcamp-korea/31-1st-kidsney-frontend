@@ -19,7 +19,7 @@ const SubEvent = ({ slideCount }) => {
   useEffect(() => getData(), []);
 
   const goToProductSpec = e => {
-    navigate(`/products/${e.target.id}`);
+    navigate(`/products/${e.target.id}`, { state: { isHeart: false } });
   };
 
   return (
@@ -37,11 +37,13 @@ const SubEvent = ({ slideCount }) => {
                 ${price / 2} {name}
               </h2>
               <p>50% SALE (04.07~)</p>
-              <Button
-                text="See Detail"
-                functionType={goToProductSpec}
-                id={id}
-              />
+              <div className="detailBtn">
+                <Button
+                  text="See Detail"
+                  id={id}
+                  functionType={goToProductSpec}
+                />
+              </div>
             </div>
           </div>
         );

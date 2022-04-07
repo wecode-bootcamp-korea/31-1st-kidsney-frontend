@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router';
 import Shipping from './Component/Shipping/Shipping';
 import Payment from './Component/Payment/Payment';
 import { BASE_URL } from '../../config.js';
 import Order from './Component/Order/Order';
 import './Checkout.scss';
 
-//부모:마이박스에서 섭토탈, 토탈 받아오기
-const Checkout = ({ subtotal, total }) => {
+const Checkout = () => {
+  const location = useLocation();
+  const { subtotal, total } = location.state;
   const [orderInfo, setOrderInfo] = useState({
     zipCode: null,
     addressMain: null,

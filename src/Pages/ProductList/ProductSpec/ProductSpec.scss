@@ -1,1 +1,294 @@
 @import '../../../Styles/variables.scss';
+
+.productSpec {
+  font-family: 'Didact Gothic', sans-serif;
+  padding: 50px 100px;
+  margin: 0 40px;
+
+  .row {
+    display: flex;
+  }
+
+  .spec {
+    padding-bottom: 70px;
+    border-bottom: $border-bottom;
+
+    .imgContainer {
+      display: flex;
+      flex: 2;
+
+      .thumnails {
+        @include flexColumn;
+        margin-right: 20px;
+        width: 100px;
+        height: 100px;
+
+        cursor: pointer;
+
+        .thumnail {
+          margin-bottom: 30px;
+
+          &.clicked {
+            border: $border-bottom;
+            border-radius: $border-radius;
+          }
+        }
+      }
+
+      .mainImg {
+        text-align: center;
+        margin: auto;
+        animation: fadeIn ease 1s;
+
+        img {
+          width: 620px;
+          transition: all ease 0.4s;
+        }
+      }
+    }
+
+    .orderContainer {
+      flex: 1;
+      margin-left: 20px;
+
+      h2:nth-child(2) {
+        border-bottom: $border-bottom;
+        padding-bottom: 30px;
+      }
+
+      .detail {
+        position: relative;
+        display: inline-block;
+        margin: 30px 0;
+        padding-bottom: 25px;
+        height: 60px;
+        width: 400px;
+
+        p {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        span {
+          position: absolute;
+          top: 25px;
+          right: 10px;
+          text-decoration: underline;
+          font-size: $font-regular;
+          color: $color-blue;
+          cursor: pointer;
+        }
+      }
+
+      .sizeOptions {
+        position: relative;
+        padding: 30px 0 50px 0;
+        border-bottom: $border-bottom;
+        border-top: $border-bottom;
+
+        .size {
+          margin-right: 10px;
+          cursor: pointer;
+
+          input {
+            display: none;
+          }
+
+          span {
+            display: inline-block;
+            padding: 10px 30px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            border: 1px solid $color-black;
+            border-radius: $border-radius;
+          }
+
+          input.disabled + span,
+          input.disabled + span .size {
+            background-color: $color-gray;
+            color: rgba(0, 0, 0, 0.4);
+            border: $border-bottom;
+            cursor: not-allowed;
+          }
+
+          &:hover input.disabled + span,
+          &.clicked input.disabled + span {
+            background-color: $color-gray;
+            color: rgba(0, 0, 0, 0.4);
+          }
+
+          &:hover input + span,
+          &.clicked input + span {
+            background-color: $color-dark-blue;
+            color: $color-white;
+          }
+        }
+
+        .errorMsg {
+          display: none;
+          position: absolute;
+          bottom: 10px;
+          color: red;
+
+          &.show {
+            display: block;
+          }
+        }
+      }
+
+      .quantity {
+        display: flex;
+        justify-content: space-between;
+        padding: 25px 0;
+
+        .countBtns {
+          font-size: 20px;
+
+          button {
+            margin: 0 15px;
+            padding: 5px 10px;
+            border: $border-bottom;
+            border-radius: 50%;
+
+            i {
+              color: $color-gray;
+            }
+          }
+
+          button.active {
+            border: 1px solid $color-blue;
+
+            i {
+              color: $color-blue;
+            }
+          }
+        }
+      }
+
+      .btns {
+        @include flexColumn;
+        width: 85%;
+      }
+    }
+  }
+
+  .descriptions {
+    @include flexColumn;
+    position: relative;
+    padding: 30px;
+    margin-bottom: 200px;
+
+    li {
+      padding: 30px 20px;
+      transform: translateX(50px);
+      width: 100%;
+      height: 10px;
+      font-size: 20px;
+      font-weight: $weight-bold;
+      cursor: pointer;
+    }
+
+    .description {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      padding: 30px;
+      width: 70%;
+      font-size: $font-regular;
+
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 1350px) {
+  .productSpec {
+    .spec {
+      .imgContainer {
+        .mainImg {
+          margin: 20px;
+
+          img {
+            width: 500px;
+            height: 500px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .productSpec {
+    .spec {
+      .imgContainer {
+        .mainImg {
+          margin: 20px;
+
+          img {
+            width: 300px;
+            height: 300px;
+          }
+        }
+      }
+
+      .orderContainer {
+        width: 250px;
+        .orderList {
+          h2 {
+            padding-bottom: 5px;
+            font-size: $font-regular;
+          }
+
+          .detail {
+            width: 100%;
+
+            p {
+              font-size: $font-small;
+            }
+          }
+
+          .sizeOptions {
+            h3 {
+              font-size: $font-small;
+            }
+
+            .size {
+              span {
+                padding: 5px 20px;
+              }
+            }
+
+            .errorMsg {
+              font-size: $font-micro;
+            }
+          }
+        }
+      }
+    }
+
+    .descriptions {
+      margin-bottom: 200px;
+      li {
+        transform: translateX(-20px);
+        padding: 20px 0;
+        font-size: $font-regular;
+      }
+      .description {
+        transform: translateY(-10px);
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

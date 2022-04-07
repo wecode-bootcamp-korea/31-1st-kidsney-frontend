@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Hurricane&family=Ubuntu&display=swap');
-@import '../Styles/variables.scss';
+@import './variables.scss';
 
 * {
   box-sizing: border-box;
   outline: none;
 }
+
 /* Typography */
 h1 {
   font-size: $font-large;
@@ -12,33 +13,39 @@ h1 {
   color: $color-black;
   margin: 16px 0px;
 }
+
 h2 {
   font-size: $font-medium;
   font-weight: $weight-semi-bold;
   color: $color-black;
   margin: 8px 0;
 }
+
 h3 {
   font-size: $font-regular;
   font-weight: $weight-regular;
   color: $color-black;
   margin: 8px 0;
 }
+
 p {
   font-size: $font-regular;
   font-weight: $weight-regular;
   color: $color-black;
   margin: 4px 0;
 }
+
 body {
   font-family: 'Didact Gothic', sans-serif;
   box-sizing: border-box;
   height: 100vh;
   overflow-x: hidden;
 }
+
 .logo {
   font-family: 'Hurricane', cursive;
 }
+
 .navMenu {
   font-family: 'Ubuntu', sans-serif;
   font-weight: $weight-bold;

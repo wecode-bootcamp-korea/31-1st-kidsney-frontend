@@ -7,9 +7,27 @@
   transition: all 0.3s ease;
   cursor: pointer;
 
+  .heartBtn {
+    position: absolute;
+    right: 10px;
+    top: -30px;
+    color: $color-blue;
+    font-size: 23px;
+    opacity: 0;
+    transition: all ease 0.4s;
+  }
+
+  &:hover .heartBtn {
+    opacity: 1;
+  }
+
   img {
     width: 250px;
     height: 250px;
+  }
+
+  h3 {
+    transition: all ease 0.4s;
   }
 
   .price {
@@ -23,5 +41,9 @@
 
   &.left {
     transform: translateX(220%);
+  }
+
+  &:hover h3 {
+    color: $color-blue;
   }
 }

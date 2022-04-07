@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BASE_URL } from '../../../config';
 import Product from '../../../Components/Product/Product';
 import './SelectList.scss';
-
 const SelectList = ({ wishProducts }) => {
   const [wishListIdx, setWishListIdx] = useState([]);
   const getWishList = () => {
@@ -33,5 +32,4 @@ const SelectList = ({ wishProducts }) => {
     </div>
   );
 };
-
 export default SelectList;
