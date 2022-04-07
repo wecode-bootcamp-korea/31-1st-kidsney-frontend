@@ -6,6 +6,7 @@
 
   .categoryAttrContainer {
     @include flexColumn;
+    border-top: 1px solid #dbdbdb;
 
     li {
       @include flexCenter;
