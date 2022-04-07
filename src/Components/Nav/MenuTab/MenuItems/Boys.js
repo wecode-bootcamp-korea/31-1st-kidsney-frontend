@@ -19,7 +19,7 @@ const Boys = () => {
       </li>
       <li className="clothesType">
         <Link to="/products?main=boy&sub=boy-acc" className="link">
-          <i class="fas fa-hat-cowboy" />
+          <i className="fas fa-hat-cowboy" />
           Accessories
         </Link>
       </li>
