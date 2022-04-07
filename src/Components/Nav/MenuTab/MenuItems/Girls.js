@@ -2,23 +2,35 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Girls.scss';
 
-const Girls = () => {
+const Girls = counterHandler => {
   return (
     <div className="girls">
       <li className="clothesType">
-        <Link to="/products?main=boy&sub=girl-top" className="link">
+        <Link
+          to="/products?main=boy&sub=girl-top"
+          className="link"
+          onClick={counterHandler}
+        >
           <i className="fas fa-tshirt" />
           Top
         </Link>
       </li>
       <li className="clothesType">
-        <Link to="/products?main=boy&sub=girl-bottom" className="link">
+        <Link
+          to="/products?main=boy&sub=girl-bottom"
+          className="link"
+          onClick={counterHandler}
+        >
           <i className="fas fa-heart" />
           Bottom
         </Link>
       </li>
       <li className="clothesType">
-        <Link to="/products?main=boy&sub=girl-acc" className="link">
+        <Link
+          to="/products?main=boy&sub=girl-acc"
+          className="link"
+          onClick={counterHandler}
+        >
           <i className="fas fa-hat-cowboy" />
           Accessories
         </Link>
