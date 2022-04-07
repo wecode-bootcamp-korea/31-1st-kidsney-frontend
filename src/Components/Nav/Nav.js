@@ -51,12 +51,12 @@ const Nav = () => {
             {userName ? `${userName}님, 반가워요!` : 'Sign in | Sign Up'}
           </button>
 
-          <button className="navBtn">
-            <Link to="/wish-list" className="navLinkBtn">
+          <Link to="/wish-list" className="navLinkBtn">
+            <button className="navBtn">
               <i className="fas fa-heart" />
               {userName ? `My Wish List(${wishListCount})` : 'My Wish List'}
-            </Link>
-          </button>
+            </button>
+          </Link>
 
           <button className="navBtn">
             <i className="fas fa-shopping-bag" />

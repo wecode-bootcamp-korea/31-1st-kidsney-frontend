@@ -26,7 +26,6 @@
       position: absolute;
       display: flex;
       justify-content: space-between;
-      width: 400px;
       height: 60px;
       top: 50%;
       right: 10px;
@@ -34,7 +33,7 @@
 
       .navBtn {
         @include flexCenter;
-        width: 130px;
+        width: 150px;
         height: 30px;
         margin-top: 15px;
         background-color: #fff;
