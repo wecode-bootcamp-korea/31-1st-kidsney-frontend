@@ -1,0 +1,28 @@
+@import '../../../../Styles/variables.scss';
+
+.boys {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  color: #fff;
+
+  .clothesType {
+    font-size: 23px;
+
+    &:last-child {
+      margin: 0;
+    }
+    .link {
+      color: $color-logo;
+    }
+    .link:hover {
+      color: $color-blue;
+    }
+
+    .fas {
+      margin-right: 7px;
+      color: $color-dark-blue;
+    }
+  }
+}

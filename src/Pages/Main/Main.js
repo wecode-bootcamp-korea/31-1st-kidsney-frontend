@@ -5,6 +5,56 @@ import './Main.scss';
 const Main = () => {
   return (
     <main className="main">
+      <div className="firstContainer">
+        <div className="firstTxt">
+          <h1 className="logo">Spring Never Looked This Good</h1>
+          <p>Make it a stylish season with these swim essentials.</p>
+          <p className="logoLink">Shop All Swim</p>
+        </div>
+        <div className="firstEvent">
+          <div className="left pic">
+            <img
+              src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              alt="first event"
+            />
+          </div>
+          <div className="mid pic">
+            <img
+              src="https://images.unsplash.com/photo-1643492483985-74ff085738a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
+              alt="first event"
+            />
+          </div>
+          <div className="rigth pic">
+            <img
+              src="https://images.unsplash.com/photo-1608790672275-309c02d888ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              alt="first event"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="secondContainer">
+        <div className="secondTxt">
+          <h1 className="logo">Freshly Flourished</h1>
+          <p>
+            The latest springtime collections from the Parks featuring newly
+            sprouted finds.
+          </p>
+        </div>
+        <div className="secondEvent">
+          <div className="mainImg">
+            <img src="https://images.unsplash.com/photo-1540479859555-17af45c78602?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
+          </div>
+          <div className="bottom">
+            <div className="bottomLeft">
+              <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
+            </div>
+            <div className="bottomRight">
+              <img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80" />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="mainEvent">
         <img
           src="https://i.ibb.co/K6MSKvW/main-event-toys-png.png"
@@ -17,26 +67,7 @@ const Main = () => {
           alt="sub event"
         />
       </div>
-      <div className="thirdEvent">
-        <div className="left img">
-          <img
-            src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="third event"
-          />
-        </div>
-        <div className="mid img">
-          <img
-            src="https://images.unsplash.com/photo-1643492483985-74ff085738a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
-            alt="third event"
-          />
-        </div>
-        <div className="rigth img">
-          <img
-            src="https://images.unsplash.com/photo-1608790672275-309c02d888ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="third event"
-          />
-        </div>
-      </div>
+
       <div>
         <RecoProductList />
       </div>
