@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LoginModal from './Modal/LoginModal';
 import MenuTab from './MenuTab/MenuTab';
 import SignUpModal from './Modal/SignUpModal';
@@ -8,9 +8,6 @@ import './Nav.scss';
 const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [activeModal, setActiveModal] = useState('loginModal');
-  const location = useLocation();
-
-  console.log(location);
 
   const openModal = () => {
     setIsClicked(true);
