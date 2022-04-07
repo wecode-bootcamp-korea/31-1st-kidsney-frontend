@@ -22,7 +22,7 @@ const SearchItems = ({ products }) => {
   useEffect(getWishList, []);
 
   return (
-    <div className="searchItems">
+    <div className="SearchItems">
       <div className="divider" />
       <ul className="productGrid">
         {wishListIdx.length > 0 &&

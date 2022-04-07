@@ -1,0 +1,35 @@
+@import '../../../../Styles/variables.scss';
+
+.Payment {
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+    border: $border-bottom;
+
+    .num {
+      @include flexCenter;
+      padding: 20px;
+      font-size: $font-medium;
+      color: white;
+      background-color: $color-dark-blue;
+    }
+
+    h2::before {
+      content: '';
+      margin-right: 20px;
+    }
+  }
+
+  .mainContainer {
+    .wrapper {
+      border: $border-bottom;
+      .paymentOption {
+        input {
+          margin: 10px;
+          border: none;
+          font-size: $font-regular;
+        }
+      }
+    }
+  }
+}

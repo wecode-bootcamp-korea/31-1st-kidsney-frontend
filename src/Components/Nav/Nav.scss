@@ -7,7 +7,6 @@
 
 .nav {
   background-color: $color-white;
-  border-bottom: $border-bottom;
 
   .headerNav {
     position: relative;
@@ -26,20 +25,30 @@
       position: absolute;
       display: flex;
       justify-content: space-between;
-      width: 400px;
+      width: 370px;
       height: 60px;
+      margin-right: 20px;
       top: 50%;
       right: 10px;
       transform: translateY(-50%);
 
       .navBtn {
         @include flexCenter;
-        width: 130px;
         height: 30px;
         margin-top: 15px;
         background-color: #fff;
         font-size: 16px;
         cursor: pointer;
+        outline: none;
+
+        &:focus,
+        &:active {
+          outline: none;
+        }
+
+        .navLinkBtn {
+          outline: none;
+        }
 
         .fas {
           padding-right: 5px;
@@ -49,10 +58,6 @@
 
       .navBtn:hover {
         color: $color-blue;
-      }
-
-      .navBtn:nth-child(3) {
-        padding-right: 30px;
       }
     }
   }
