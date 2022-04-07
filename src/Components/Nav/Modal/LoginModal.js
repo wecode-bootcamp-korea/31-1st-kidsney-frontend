@@ -21,7 +21,6 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/
   );
   const isValidPassword = password.length >= 8;
-
   const getIsActive = isValidEmail && specialLetter === 0 && isValidPassword;
 
   const checkValidity = () => {
@@ -45,26 +44,28 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
   }
 
   function goToMain() {
-    // checkValidity() &&
-    fetch(`${BASE_URL}/users/signin`, {
-      method: 'POST',
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then(res => {
-        return res.json();
+    checkValidity() &&
+      fetch(`${BASE_URL}/users/signin`, {
+        method: 'POST',
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
       })
-      .then(res => {
-        if (res.token) {
-          alert('로그인 성공!');
-          localStorage.setItem('token', res.token);
-          localStorage.setItem('first_name', res.first_name);
-        } else {
-          alert('다시 시도해 주세요!');
-        }
-      });
+        .then(res => {
+          return res.json();
+        })
+        .then(res => res.json())
+        .then(res => {
+          if (res.token) {
+            alert('로그인 성공!');
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('first_name', res.first_name);
+            closeModal();
+          } else {
+            alert('다시 시도해 주세요!');
+          }
+        });
   }
 
   return (

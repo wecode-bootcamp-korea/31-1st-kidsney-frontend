@@ -66,15 +66,11 @@
     }
   }
 
-  .mainEvent {
-    height: 450px;
-    margin: 0 auto;
-    @include imgHover;
-  }
-
+  .mainEvent,
   .subEvent {
-    height: 450px;
+    height: 500px;
     margin: 0 auto;
+    margin-bottom: 30px;
     @include imgHover;
   }
 }

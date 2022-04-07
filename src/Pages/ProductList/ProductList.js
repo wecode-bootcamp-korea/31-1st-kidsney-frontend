@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import SorterBar from './Components/SorterBar/SorterBar';
 import Aside from './Components/Aside/Aside';
 import SearchItems from './Components/SearchItems/SearchItems';
+import Pagination from './Components/Pagination/Pagination';
 import { BASE_URL } from '../../config.js';
 import './ProductList.scss';
 
@@ -10,6 +11,10 @@ const ProductList = () => {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
+  const [sorter, setSorter] = useState('');
+  const [pageNum, setPageNum] = useState('&offset=0&limit=6');
+  const LIMIT = 6;
+
   const [url, setUrl] = useState(
     `${BASE_URL}` + location.pathname + location.search
   );
@@ -28,14 +33,20 @@ const ProductList = () => {
   );
 
   useEffect(() => {
-    fetch(url)
+    fetch(url + sorter + pageNum)
       .then(response => response.json())
       .then(product => {
         setProducts(product.result);
         setSubtotal(product.count);
       });
-  }, [url]);
+  }, [url, sorter, pageNum]);
 
+  const sorterHandler = e => {
+    setSorter(e.target.id && `&order-by=${e.target.id}`);
+  };
+  const pageHandler = e => {
+    setPageNum(`&offset=${(e.target.id - 1) * LIMIT}&limit=${LIMIT}`);
+  };
   const handleFilter = (name, attr) => {
     const filterArr = [...filters];
     filterArr.includes(`${name},${attr}`)
@@ -76,14 +87,22 @@ const ProductList = () => {
     }
     setUrl(queryString);
   };
-
   return (
     <div className="productList">
       <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
-      <SorterBar />
+      <SorterBar subtotal={subtotal} sorterHandler={sorterHandler} />
       <div className="row">
-        <Aside filters={filters} handleFilter={handleFilter} />
+        <Aside
+          filters={filters}
+          handleFilter={handleFilter}
+          products={products}
+        />
         <SearchItems products={products} />
+        <Pagination
+          subtotal={subtotal}
+          pageHandler={pageHandler}
+          LIMIT={LIMIT}
+        />
       </div>
     </div>
   );

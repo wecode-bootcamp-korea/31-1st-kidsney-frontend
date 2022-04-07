@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Product.scss';
 
-const Product = ({ product, direction }) => {
-  const { id, name, price, image_url } = product;
+const Product = ({ product, direction, children }) => {
+  const { id, name, price, images } = product;
   const navigate = useNavigate();
 
   const goToProductSpec = () => {
@@ -15,9 +15,10 @@ const Product = ({ product, direction }) => {
   return (
     <li key={id} className={`product ${direction}`}>
       <div className="productCard" onClick={goToProductSpec}>
-        <img alt="thumbnail" src={image_url} />
+        <img alt="thumbnail" src={images} />
         <h3>{name}</h3>
         <div className="price">${price}</div>
+        {children && <div className="size">{children}</div>}
       </div>
     </li>
   );

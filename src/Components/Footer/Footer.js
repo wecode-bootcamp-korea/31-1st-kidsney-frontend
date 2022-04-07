@@ -19,7 +19,7 @@ const Footer = () => {
           </h3>
           <div className="links">
             <span className="linksTxt">Restrictions apply.</span>
-            <button class="linksBtn">Learn More</button>
+            <button className="linksBtn">Learn More</button>
           </div>
         </div>
         <div className="footerImg">
@@ -43,10 +43,10 @@ const Footer = () => {
             </div>
           </div>
           <div className="socialIcons">
-            <i class="fab fa-facebook-f" />
-            <i class="fab fa-instagram" />
-            <i class="fab fa-twitter" />
-            <i class="fab fa-pinterest-p" />
+            <i className="fab fa-facebook-f" />
+            <i className="fab fa-instagram" />
+            <i className="fab fa-twitter" />
+            <i className="fab fa-pinterest-p" />
           </div>
         </div>
         <div className="items">
@@ -58,7 +58,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="asset">
-            <ul class="assetList">
+            <ul className="assetList">
               {FOOTER_CONTENT_ASSET.map(asset => (
                 <ContentAsset key={asset.id} content={asset.content} />
               ))}
