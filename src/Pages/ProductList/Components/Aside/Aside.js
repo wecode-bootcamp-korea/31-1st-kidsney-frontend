@@ -5,6 +5,8 @@ import '../Aside/Aside.scss';
 
 import './Aside.scss';
 
+import './Aside.scss';
+
 const Aside = ({ handleFilter, filters }) => {
   return (
     <aside className="aside">

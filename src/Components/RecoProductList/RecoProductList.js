@@ -23,7 +23,10 @@ const RecoProductList = ({ setWishProducts }) => {
       .then(res => res.json())
       .then(data => {
         setWishListIdx(data.wish_list.map(list => list.product.id));
-        setWishProducts(data.wish_list.map(list => list.product));
+
+        setWishProducts(
+          product => (product = data.wish_list.map(list => list.product))
+        );
       })
       .catch(error => console.error(error.message));
   };
