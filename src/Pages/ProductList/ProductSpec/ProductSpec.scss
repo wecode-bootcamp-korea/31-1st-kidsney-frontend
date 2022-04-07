@@ -63,7 +63,6 @@
         padding-bottom: 25px;
         height: 60px;
         width: 400px;
-        border-bottom: $border-bottom;
 
         p {
           overflow: hidden;
@@ -84,8 +83,9 @@
 
       .sizeOptions {
         position: relative;
-        padding-bottom: 50px;
+        padding: 30px 0 50px 0;
         border-bottom: $border-bottom;
+        border-top: $border-bottom;
 
         .size {
           margin-right: 10px;
