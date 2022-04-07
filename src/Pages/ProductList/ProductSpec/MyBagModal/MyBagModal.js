@@ -10,6 +10,7 @@ const MyBagModal = ({
   orderProducts,
   isShowedBagModal,
   setIsShowedBagModal,
+  setOrderProducts,
 }) => {
   const navigate = useNavigate();
 
@@ -35,6 +36,7 @@ const MyBagModal = ({
                 type="small"
                 key={orderProduct.cart_id}
                 orderProduct={orderProduct}
+                setOrderProducts={setOrderProducts}
               />
             ))}
         </div>

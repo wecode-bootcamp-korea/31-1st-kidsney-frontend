@@ -15,18 +15,12 @@ import './ProductSpec.scss';
 const ProductSpec = () => {
   const detailRef = useRef();
   const { id } = useParams();
-
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  }, [pathname]);
-
   const { isHeart } = useLocation().state;
-  const [isAddedWishList, setIsAddedWishList] = useState(isHeart);
 
+  const [isAddedWishList, setIsAddedWishList] = useState(isHeart);
   const [product, setProduct] = useState({});
   const [orderProducts, setOrderProducts] = useState([]);
-
   const [clickedImg, setClickedImg] = useState('0');
   const [size, setSize] = useState({ sizeId: '', sizeName: '' });
   const [quantity, setQuantity] = useState(1);
@@ -44,6 +38,10 @@ const ProductSpec = () => {
     setProduct(data.result);
   };
   useEffect(() => getData(), []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, [pathname]);
 
   const { name, price, images, detail, stock } = product;
 
@@ -70,7 +68,7 @@ const ProductSpec = () => {
     {
       id: 2,
       title: 'Reviews',
-      description: <Review />,
+      description: <Review product={product} />,
     },
   ];
 
@@ -80,41 +78,29 @@ const ProductSpec = () => {
   };
 
   const sendToBag = () => {
-    if (size.sizeId === '') {
-      return;
-    } else if (sizeList[size.sizeId].count < quantity) {
-      alert(
-        `죄송하지만 현재 선택하신 사이즈의 상품 재고수량은 ${
-          sizeList[size.sizeId].count
-        }개 입니다.`
-      );
-      return;
-    } else {
-      fetch(`${BASE_URL}/carts/products/${id}`, {
-        method: 'post',
-        headers: {
-          Authorization: Token,
-        },
-        body: JSON.stringify({
-          product_id: id,
-          quantity: quantity,
-          size: size.sizeName,
-        }),
-      }).then(res => {
-        if (res.ok) {
-          showMyBag();
-          fetch(`${BASE_URL}/carts`, {
-            headers: {
-              Authorization: Token,
-            },
-          })
-            .then(res => res.json())
-            .then(data => {
-              setOrderProducts(data.carts);
-            });
-        }
-      });
-    }
+    fetch(`${BASE_URL}/carts/products/${id}`, {
+      method: 'post',
+      headers: {
+        Authorization: Token,
+      },
+      body: JSON.stringify({
+        quantity: quantity,
+        size: size.sizeName,
+      }),
+    }).then(res => {
+      if (res.ok) {
+        showMyBag();
+        fetch(`${BASE_URL}/carts`, {
+          headers: {
+            Authorization: Token,
+          },
+        })
+          .then(res => res.json())
+          .then(data => {
+            setOrderProducts(data.carts);
+          });
+      }
+    });
   };
 
   //wishList modal part
@@ -200,6 +186,7 @@ const ProductSpec = () => {
         orderProducts={orderProducts}
         isShowedBagModal={isShowedBagModal}
         setIsShowedBagModal={setIsShowedBagModal}
+        setOrderProducts={setOrderProducts}
       />
       <div className="spec row">
         <div className="imgContainer">
@@ -245,13 +232,12 @@ const ProductSpec = () => {
                     }
                   >
                     <input
-                      key={id}
                       id={id}
                       type="checkbox"
                       name="sizeOption"
                       value={value}
                       onClick={handleSize}
-                      className={count === 0 ? 'disabled' : null}
+                      className={count === 0 && 'disabled'}
                       disabled={count === 0}
                     />
                     <span>{name}</span>
