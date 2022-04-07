@@ -1,0 +1,77 @@
+@import '../../../../Styles/variables.scss';
+
+.Shipping {
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+    border: $border-bottom;
+
+    .num {
+      @include flexCenter;
+      padding: 20px;
+      font-size: $font-medium;
+      color: white;
+      background-color: $color-dark-blue;
+    }
+
+    h2::before {
+      content: '';
+      margin-right: 20px;
+    }
+  }
+  .mainContainer {
+    @include flexColumn;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: $border-bottom;
+
+    .guidance {
+      margin: 10px 0;
+
+      .id {
+        font-size: $font-regular;
+      }
+
+      .id::after {
+        content: '';
+        margin-left: 5px;
+      }
+    }
+
+    .wrapper {
+      margin: 10px 0;
+      border-bottom: $border-bottom;
+
+      input {
+        border: none;
+        width: 70%;
+        margin-bottom: 10px;
+
+        font-size: $font-regular;
+      }
+
+      .search {
+        width: 20%;
+        border: $border-bottom;
+      }
+    }
+
+    .deliveryWrapper {
+      margin-top: 30px;
+
+      .deliveryOption {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: $border-bottom;
+
+        .wayOfShipping {
+          margin: 10px;
+        }
+        .bannerWrapper {
+          padding: 5px;
+        }
+      }
+    }
+  }
+}

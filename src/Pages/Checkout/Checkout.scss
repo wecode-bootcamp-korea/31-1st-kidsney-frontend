@@ -1,0 +1,18 @@
+@import '../../Styles/variables.scss';
+
+.Checkout {
+  h1 {
+    @include flexCenter;
+  }
+  .wholeWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .ProcessWrapper {
+      @include flexColumn;
+      margin: 20px;
+      width: 800px;
+    }
+  }
+}
