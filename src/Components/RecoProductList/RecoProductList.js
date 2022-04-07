@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Product from '../../Components/Product/Product';
-import { API, BASE_URL, Token } from '../../config';
+import { API, BASE_URL } from '../../config';
 
 import './RecoProductList.scss';
 
