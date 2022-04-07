@@ -22,13 +22,13 @@ const SelectList = ({ wishProducts }) => {
     <div className="selectList">
       <ul className="selectProduct">
         {wishListIdx.length > 0 &&
-          wishProducts.map(product => {
+          wishProducts.map(product => (
             <Product
               key={product.id}
               product={product}
               isHeart={wishListIdx.includes(product.id)}
-            />;
-          })}
+            />
+          ))}
       </ul>
     </div>
   );
