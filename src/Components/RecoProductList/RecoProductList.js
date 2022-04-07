@@ -4,7 +4,7 @@ import { API, BASE_URL } from '../../config';
 
 import './RecoProductList.scss';
 
-const RecoProductList = () => {
+const RecoProductList = ({ setWishProducts }) => {
   const [products, setProducts] = useState([]);
   const [wishListIdx, setWishListIdx] = useState([]);
   const [direction, setDirection] = useState('left');
@@ -24,6 +24,9 @@ const RecoProductList = () => {
       .then(res => res.json())
       .then(data => {
         setWishListIdx(data.wish_list.map(list => list.product.id));
+        setWishProducts(
+          product => (product = data.wish_list.map(list => list.product))
+        );
       })
       .catch(error => console.error(error.message));
   };
@@ -61,6 +64,7 @@ const RecoProductList = () => {
                   direction={direction}
                   wishListIdx={wishListIdx}
                   isHeart={wishListIdx.includes(product.id)}
+                  setWishProducts={setWishProducts}
                 />
               );
             })}

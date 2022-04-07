@@ -136,7 +136,7 @@ const WishList = () => {
         />
       )}
       {wishProducts.length === 0 && <EmptyList />}
-      <RecoProductList />
+      <RecoProductList setWishProducts={setWishProducts} />
     </div>
   );
 };
