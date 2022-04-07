@@ -52,15 +52,17 @@ const OrderProduct = ({
     <div className={`orderProduct ${type}`}>
       <img src={images[0]} alt="thumbnail" />
       <div className="description">
-        <h3 className="price">${price}</h3>
-        <button
-          className="deleteBtn"
-          onClick={() => {
-            if (window.confirm('삭제하시겠습니까?')) removeItem();
-          }}
-        >
-          <i className="fas fa-times" />
-        </button>
+        <h3 className="price">
+          ${price}
+          <button
+            className="deleteBtn"
+            onClick={() => {
+              if (window.confirm('삭제하시겠습니까?')) removeItem();
+            }}
+          >
+            <i className="fas fa-times" />
+          </button>
+        </h3>
 
         <h3>{name}</h3>
         <p className="quantity">
@@ -69,19 +71,17 @@ const OrderProduct = ({
         <p className="size">Size : {size}</p>
         <p className="id">Id : {id}</p>
         <div className="btns">
-          <div className="editBtn">
-            <button className="editBtn" onClick={findEditedProduct}>
-              Edit
-            </button>
-            <button
-              className="removeBtn"
-              onClick={() => {
-                if (window.confirm('삭제하시겠습니까?')) removeItem();
-              }}
-            >
-              Remove
-            </button>
-          </div>
+          <button className="editBtn" onClick={findEditedProduct}>
+            Edit
+          </button>
+          <button
+            className="removeBtn"
+            onClick={() => {
+              if (window.confirm('삭제하시겠습니까?')) removeItem();
+            }}
+          >
+            Remove
+          </button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ReviewModal from './ReviewModal/ReviewModal';
-import { API, Token } from '../../../../config';
+import { API } from '../../../../config';
 
 import './Review.scss';
 
@@ -40,9 +40,6 @@ const Review = ({ product }) => {
     });
   };
 
-  //가상의 userId
-  const userId = 'dfdfas123';
-
   const showReviewModal = () => {
     setIsClicked(!isClicked);
   };
@@ -52,7 +49,7 @@ const Review = ({ product }) => {
       {isClicked && (
         <ReviewModal
           product={product}
-          user={userId}
+          user={localStorage.getItem('first_name')}
           showReviewModal={showReviewModal}
           setReviewList={setReviewList}
         />

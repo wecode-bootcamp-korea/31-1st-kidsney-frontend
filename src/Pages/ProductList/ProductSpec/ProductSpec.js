@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { API } from '../../../config';
-import { BASE_URL, Token } from '../../../config';
+import { BASE_URL } from '../../../config';
 
 import Button from '../../../Components/Button/Button';
 import MyBagModal from './MyBagModal/MyBagModal';
@@ -93,7 +93,7 @@ const ProductSpec = () => {
         showMyBag();
         fetch(`${BASE_URL}/carts`, {
           headers: {
-            Authorization: Token,
+            Authorization: localStorage.getItem('token'),
           },
         })
           .then(res => res.json())
@@ -113,7 +113,7 @@ const ProductSpec = () => {
     fetch(`${BASE_URL}/users/wishlist/${id}`, {
       method: 'POST',
       headers: {
-        Authorization: Token,
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({ id: id }),
     })

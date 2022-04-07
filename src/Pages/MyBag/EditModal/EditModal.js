@@ -5,7 +5,7 @@ import { BASE_URL } from '../../../config';
 
 import './EditModal.scss';
 
-const EditModal = ({ editedProduct, setIsClosed }) => {
+const EditModal = ({ editedProduct, setIsClosed, setOrderProducts }) => {
   const { id, product } = editedProduct;
   const { images, name, price, quantity } = product;
 
@@ -38,7 +38,13 @@ const EditModal = ({ editedProduct, setIsClosed }) => {
           alert('상품 수정이 완료되었습니다.');
           closeModal();
 
-          window.location.reload();
+          fetch(`${BASE_URL}/carts`, {
+            headers: {
+              Authorization: localStorage.getItem('token'),
+            },
+          })
+            .then(res => res.json())
+            .then(data => setOrderProducts(data.carts));
         }
       });
     }

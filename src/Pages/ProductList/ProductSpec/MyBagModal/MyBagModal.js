@@ -42,11 +42,7 @@ const MyBagModal = ({
         </div>
       </div>
       <footer>
-        <Button
-          text="View Full Bag"
-          functionType={goToMyBag}
-          type="viewFullBag"
-        />
+        <Button text="View Full Bag" functionType={goToMyBag} />
       </footer>
     </div>
   );

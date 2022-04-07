@@ -35,15 +35,11 @@
     }
 
     .id {
-      position: absolute;
       bottom: 10px;
     }
 
     .deleteBtn {
       display: none;
-
-      bottom: -20px;
-      font-size: 15px;
     }
 
     .btns {
@@ -70,16 +66,17 @@
       width: 120px;
     }
 
-    .deleteBtn {
-      display: inline;
-      margin-left: 5px;
-      font-size: 18px;
-      color: $color-gray;
-    }
-
     .description {
       h3 {
         font-size: 18px;
+      }
+
+      .deleteBtn {
+        display: inline;
+
+        margin-left: 5px;
+        font-size: 18px;
+        color: $color-gray;
       }
     }
 

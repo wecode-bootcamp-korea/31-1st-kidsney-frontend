@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import RecoProductList from '../RecoProductList/RecoProductList';
+
+import LoginModal from '../../Components/Nav/Modal/LoginModal';
+import SignUpModal from '../../Components/Nav/Modal/SignUpModal';
+import RecoProductList from '../../Components/RecoProductList/RecoProductList';
 import EmptyList from './EmptyList/EmptyList';
 import SelectList from './SelectList/SelectList';
 import ThemeListImg from './ThemeListImg/ThemeListImg';
@@ -14,6 +16,8 @@ const WishList = () => {
   );
   const [isBtnClicked, setIsBtnClicked] = useState(false);
   const [isArrowClicked, setArrowClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [activeModal, setActiveModal] = useState('loginModal');
 
   const handleHeightButton = () => {
     setIsBtnClicked(!isBtnClicked);
@@ -27,6 +31,14 @@ const WishList = () => {
     setImgSource(e.target.src);
   };
 
+  const openLoginModal = () => {
+    setIsClicked(true);
+  };
+
+  const closeLoginModal = () => {
+    setIsClicked(false);
+  };
+
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -37,12 +49,26 @@ const WishList = () => {
     })
       .then(res => res.json())
       .then(data => {
-        setWishProducts(product => (product = data.wish_list));
+        setWishProducts(
+          product => (product = data.wish_list.map(list => list.product))
+        );
       });
   }, [token]);
 
   return (
     <div className="wishList">
+      {isClicked && activeModal === 'loginModal' && (
+        <LoginModal
+          closeModal={closeLoginModal}
+          setActiveModal={setActiveModal}
+        />
+      )}
+      {isClicked && activeModal === 'signUpModal' && (
+        <SignUpModal
+          closeModal={closeLoginModal}
+          setActiveModal={setActiveModal}
+        />
+      )}
       <div className="header">
         <img src={imgSource} alt="source" />
         <div className="titleContainer">
@@ -66,9 +92,9 @@ const WishList = () => {
             Your wish list will be temporarily saved for 7 days.
           </p>
           <p className="signInTxt">
-            <Link to="/login" className="linkToLogin">
+            <button className="linkToLogin" onClick={openLoginModal}>
               Sign In
-            </Link>
+            </button>
             &nbsp;to save or share this wish list.
           </p>
         </div>
