@@ -1,0 +1,109 @@
+@import '../../Styles/variables.scss';
+
+.wishList {
+  height: 100%;
+
+  .header {
+    @include flexCenter;
+    width: 100%;
+    height: 450px;
+
+    .titleContainer {
+      @include flexColumn;
+      position: absolute;
+      align-items: center;
+      width: 100%;
+      height: 250px;
+
+      .titleTxt {
+        @include flexCenter;
+        width: 100%;
+        margin-bottom: 20px;
+        color: $color-white;
+        font-size: 3rem;
+        line-height: 3rem;
+      }
+
+      .share {
+        margin-bottom: 20px;
+        color: $color-white;
+        font-size: 30px;
+        line-height: 1.3;
+      }
+
+      div {
+        .listBtn {
+          .icon {
+            display: flex;
+            flex-direction: row;
+            margin: 0 40px 20px 0;
+            color: $color-white;
+            font-size: 40px;
+          }
+
+          .fa-twitter-square {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .infoTxt {
+        color: $color-white;
+      }
+
+      .signInTxt {
+        color: $color-white;
+
+        .linkToLogin {
+          color: $color-white;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .listSelect {
+    .selectLayout {
+      @include flexCenter;
+      height: 40px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .selectTheme {
+        .themeTxt {
+          font-size: 25px;
+
+          .fa-arrow-alt-circle-up {
+            margin-left: 10px;
+            color: $color-blue;
+          }
+          .fa-arrow-alt-circle-down {
+            margin-left: 10px;
+            color: $color-blue;
+          }
+        }
+      }
+
+      .productNum {
+        position: absolute;
+        display: flex;
+        width: 400px;
+        right: 10px;
+      }
+    }
+
+    .theme {
+      height: 140px;
+      overflow: hidden;
+      transition: all 0.2s;
+
+      &.hide {
+        height: 0;
+      }
+
+      .themeList {
+        @include flexCenter;
+      }
+    }
+  }
+}

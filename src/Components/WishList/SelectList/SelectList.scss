@@ -1,0 +1,17 @@
+@import '../../../Styles/variables.scss';
+
+.selectList {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  margin: 0 150px 70px 150px;
+  padding: 50px 0 50px 0;
+  border-top: $border-bottom;
+  border-bottom: $border-bottom;
+
+  li {
+    margin-right: 30px;
+  }
+}

@@ -12,8 +12,7 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [subtotal, setSubtotal] = useState();
   const [sorter, setSorter] = useState('');
-  const [pageNum, setPageNum] = useState('');
-
+  const [pageNum, setPageNum] = useState('&offset=0&limit=6');
   const LIMIT = 6;
 
   const [url, setUrl] = useState(
@@ -88,7 +87,6 @@ const ProductList = () => {
     }
     setUrl(queryString);
   };
-
   return (
     <div className="productList">
       <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
