@@ -13,7 +13,6 @@ const RecoProductList = ({ setWishProducts }) => {
     const data = await res.json();
     setProducts(data.result);
   };
-
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
@@ -41,6 +40,7 @@ const RecoProductList = ({ setWishProducts }) => {
     const direction = className.split(' ')[0];
     setDirection(direction);
   };
+
   return (
     <div className="recoProductList">
       <h2>You May Also Like</h2>

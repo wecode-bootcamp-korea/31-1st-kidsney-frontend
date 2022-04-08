@@ -22,7 +22,6 @@ const Product = ({ product, direction, isHeart, setWishProducts }) => {
       })
       .catch(error => console.error(error.message));
   };
-
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {

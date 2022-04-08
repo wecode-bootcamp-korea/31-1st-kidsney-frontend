@@ -9,8 +9,8 @@ import './Nav.scss';
 const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [activeModal, setActiveModal] = useState('loginModal');
-  const [wishListCount, setWishListCount] = useState(0);
-  const [myBagCount, setMyBagCount] = useState(0);
+  const [wishList, setWishList] = useState(0);
+  const [myBagList, setMyBagList] = useState(0);
   const userName = localStorage.getItem('first_name');
 
   useEffect(() => {
@@ -18,16 +18,16 @@ const Nav = () => {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(data => setWishListCount(data.wish_list.length));
-  }, [wishListCount]);
+      .then(data => setWishList(data.wish_list));
+  }, [wishList]);
 
   useEffect(() => {
     fetch(`${BASE_URL}/carts`, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(data => setMyBagCount(data.carts.length));
-  }, [myBagCount]);
+      .then(data => setMyBagList(data.carts));
+  }, [myBagList]);
 
   const openModal = () => {
     setIsClicked(true);
@@ -57,13 +57,13 @@ const Nav = () => {
           <Link to="/wish-list">
             <button className="navBtn">
               <i className="fas fa-heart" />
-              {userName ? `My Wish List(${wishListCount})` : 'My Wish List'}
+              {userName ? `My Wish List(${wishList.length})` : 'My Wish List'}
             </button>
           </Link>
           <Link to="/my-bag">
             <button className="navBtn">
               <i className="fas fa-shopping-bag" />
-              {userName ? `My Bag(${myBagCount})` : 'My Bag'}
+              {userName ? `My Bag(${myBagList.length})` : 'My Bag'}
             </button>
           </Link>
         </ul>

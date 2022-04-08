@@ -20,7 +20,6 @@ const SearchItems = ({ products }) => {
       .catch(error => console.error(error.message));
   };
   useEffect(getWishList, []);
-
   return (
     <div className="SearchItems">
       <div className="divider" />

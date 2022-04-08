@@ -47,9 +47,7 @@ const WishList = () => {
     })
       .then(res => res.json())
       .then(data => {
-        setWishProducts(
-          product => (product = data.wish_list.map(list => list.product))
-        );
+        setWishProducts(data.wish_list.map(list => list.product));
       });
   }, []);
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BASE_URL } from '../../../config';
 import Product from '../../../Components/Product/Product';
 import './SelectList.scss';
-const SelectList = ({ wishProducts }) => {
+const SelectList = ({ wishProducts, setWishProducts }) => {
   const [wishListIdx, setWishListIdx] = useState([]);
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
@@ -25,7 +25,8 @@ const SelectList = ({ wishProducts }) => {
             <Product
               key={product.id}
               product={product}
-              isHeart={wishListIdx.includes(product.id)}
+              isHeart={true}
+              setWishProducts={setWishProducts}
             />
           ))}
       </ul>
