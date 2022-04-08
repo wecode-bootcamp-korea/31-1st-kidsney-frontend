@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Boys from './MenuItems/Boys';
 import Girls from './MenuItems/Girls';
@@ -19,6 +19,12 @@ const MenuTab = () => {
   const clickHandler = id => {
     setCurrentId(id);
   };
+  const [counter, setCounter] = useState(1);
+
+  const counterHandler = () => {
+    setCounter(counter++);
+  };
+  useEffect(() => {}, [counter]);
 
   return (
     <div className="menuTab">
@@ -31,6 +37,7 @@ const MenuTab = () => {
               onMouseOver={() => {
                 clickHandler(idx + 1);
               }}
+              onClick={counterHandler}
             >
               <li
                 key={category.menu + idx}

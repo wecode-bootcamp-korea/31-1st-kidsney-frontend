@@ -1,11 +1,19 @@
 import React from 'react';
 import './SorterBar.scss';
-const SorterBar = ({ subtotal, sorterHandler }) => {
+const SorterBar = ({ subtotal, sorterHandler, handleSearch }) => {
   return (
     <div className="sorterBar">
       <div className="productSubtotal">
         <span className="smallGray">{subtotal}</span>
         <span className="smallGray">product</span>
+      </div>
+      <div className="search">
+        <input
+          className="searchInput"
+          type="text"
+          placeholder="SERACH"
+          onChange={handleSearch}
+        />
       </div>
       <div className="priceSorter">
         <span className="smallGray">SortBy</span>
