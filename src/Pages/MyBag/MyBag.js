@@ -107,6 +107,7 @@ const MyBag = () => {
                   orderProducts={orderProducts}
                   setEditedProduct={setEditedProduct}
                   setIsClosed={setIsClosed}
+                  setOrderProducts={setOrderProducts}
                 />
               ))}
             </div>
@@ -118,8 +119,9 @@ const MyBag = () => {
           <i class="fas fa-shopping-bag" />
           <h2>Your Bag is Empty!</h2>
           <p>Not seeing items you've added?</p>
-          <p className="signIn">Sign in</p>
-          <Button text="Continue Shopping" functionType={goToMain} />
+          <div className="btn">
+            <Button text="Continue Shopping" functionType={goToMain} />
+          </div>
         </main>
       )}
     </div>

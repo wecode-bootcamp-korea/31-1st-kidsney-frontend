@@ -8,13 +8,11 @@ const RecoProductList = ({ setWishProducts }) => {
   const [products, setProducts] = useState([]);
   const [wishListIdx, setWishListIdx] = useState([]);
   const [direction, setDirection] = useState('left');
-
   const getData = async () => {
     const res = await fetch(`${API.products}`);
     const data = await res.json();
     setProducts(data.result);
   };
-
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
@@ -24,6 +22,7 @@ const RecoProductList = ({ setWishProducts }) => {
       .then(res => res.json())
       .then(data => {
         setWishListIdx(data.wish_list.map(list => list.product.id));
+
         setWishProducts(
           product => (product = data.wish_list.map(list => list.product))
         );
@@ -69,7 +68,6 @@ const RecoProductList = ({ setWishProducts }) => {
               );
             })}
         </div>
-
         <button
           className={direction === 'right' ? 'disabled' : 'active'}
           onClick={handleDirection}

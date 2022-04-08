@@ -16,15 +16,16 @@
 
   .search {
     @include flexCenter;
-
     width: 300px;
     height: 40px;
+    margin-top: 20px;
     border-radius: 15px;
     background-color: $color-light-blue;
 
     .searchInput {
       position: relative;
       width: 90%;
+
       height: 30px;
       padding-left: 15px;
       background-color: $color-light-blue;

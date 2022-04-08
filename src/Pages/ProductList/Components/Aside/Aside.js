@@ -1,6 +1,9 @@
 import React from 'react';
 import AsideFilter from './AsideFilter/AsideFilter';
 import FILTER_CATEGORY from '../../../../filterCategory';
+import '../Aside/Aside.scss';
+
+import './Aside.scss';
 
 import './Aside.scss';
 

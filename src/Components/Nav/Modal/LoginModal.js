@@ -55,7 +55,6 @@ const LoginModal = ({ closeModal, setActiveModal }) => {
         .then(res => {
           return res.json();
         })
-        .then(res => res.json())
         .then(res => {
           if (res.token) {
             alert('로그인 성공!');

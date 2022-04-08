@@ -8,9 +8,10 @@ import './Review.scss';
 const Review = ({ product }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [reviewList, setReviewList] = useState([]);
+  const { id } = product;
 
   const getData = async () => {
-    const res = await fetch(`${API.products}/${product.id}`);
+    const res = await fetch(`${API.products}/${id}`);
     const data = await res.json();
 
     setReviewList(data.result.reviews);

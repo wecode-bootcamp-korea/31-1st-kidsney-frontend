@@ -5,7 +5,7 @@ const SorterBar = ({ subtotal, sorterHandler, handleSearch }) => {
     <div className="sorterBar">
       <div className="productSubtotal">
         <span className="smallGray">{subtotal}</span>
-        <span className="smallGray">product</span>
+        <span className="smallGray"> product</span>
       </div>
       <div className="search">
         <input

@@ -6,8 +6,7 @@ import './Product.scss';
 const Product = ({ product, direction, isHeart, setWishProducts }) => {
   const { id, name, price, images } = product;
   const navigate = useNavigate();
-  let [imageIdx, setImageIdx] = useState('0');
-
+  const [imageIdx, setImageIdx] = useState('0');
   const [isAdded, setIsAdded] = useState(isHeart);
   const addToWishList = () => {
     fetch(`${BASE_URL}/users/wishlist/${id}`, {
@@ -23,7 +22,6 @@ const Product = ({ product, direction, isHeart, setWishProducts }) => {
       })
       .catch(error => console.error(error.message));
   };
-
   const getWishList = () => {
     fetch(`${BASE_URL}/users/wishlist`, {
       headers: {
