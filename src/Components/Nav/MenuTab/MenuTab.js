@@ -22,7 +22,7 @@ const MenuTab = () => {
   const [counter, setCounter] = useState(1);
 
   const counterHandler = () => {
-    setCounter(counter++);
+    setCounter(prevCount => prevCount + 1);
   };
   useEffect(() => {}, [counter]);
 
