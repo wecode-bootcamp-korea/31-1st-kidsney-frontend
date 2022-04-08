@@ -24,13 +24,14 @@ const SearchItems = ({ products }) => {
     <div className="SearchItems">
       <div className="divider" />
       <ul className="productGrid">
-        {products.map(product => (
-          <Product
-            key={product.id}
-            product={product}
-            isHeart={wishListIdx.includes(product.id)}
-          />
-        ))}
+        {wishListIdx &&
+          products.map(product => (
+            <Product
+              key={product.id}
+              product={product}
+              isHeart={wishListIdx.includes(product.id)}
+            />
+          ))}
       </ul>
     </div>
   );
