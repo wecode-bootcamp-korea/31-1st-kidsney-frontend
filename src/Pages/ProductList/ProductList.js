@@ -15,6 +15,7 @@ const ProductList = () => {
   const [subtotal, setSubtotal] = useState();
   const [sorter, setSorter] = useState('');
   const [pageNum, setPageNum] = useState('&offset=0&limit=6');
+  const [searchWord, setSearchWord] = useState('');
   const LIMIT = 6;
 
   const [url, setUrl] = useState(
@@ -33,6 +34,15 @@ const ProductList = () => {
         ]
       : []
   );
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/products/search?product-name=${searchWord}`)
+      .then(response => response.json())
+      .then(product => {
+        setProducts(product.result);
+        setSubtotal(product.count);
+      });
+  }, [searchWord]);
 
   useEffect(() => {
     fetch(url + sorter + pageNum)
@@ -56,6 +66,9 @@ const ProductList = () => {
       : filterArr.push(`${name},${attr}`);
     setFilters(filterArr);
     setQueryStrings(filterArr);
+  };
+  const handleSearch = e => {
+    setSearchWord(e.target.value);
   };
 
   const setQueryStrings = filterArr => {
@@ -81,9 +94,9 @@ const ProductList = () => {
           default:
         }
       });
-      queryString = `${BASE_URL}${location.pathname}${addParamFilters.join(
-        ''
-      )}`;
+      queryString = `${BASE_URL}${
+        location.pathname
+      }?main=${param}${addParamFilters.join('')}`;
     } else {
       queryString = `${BASE_URL}${location.pathname}${location.search}`;
     }
@@ -92,7 +105,11 @@ const ProductList = () => {
   return (
     <div className="productList">
       <img src="https://i.ibb.co/sQ7D7XJ/001-14.png" alt="메인프로모션 배너" />
-      <SorterBar subtotal={subtotal} sorterHandler={sorterHandler} />
+      <SorterBar
+        subtotal={subtotal}
+        sorterHandler={sorterHandler}
+        handleSearch={handleSearch}
+      />
       <div className="row">
         <Aside
           filters={filters}

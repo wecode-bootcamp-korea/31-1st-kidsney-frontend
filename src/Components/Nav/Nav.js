@@ -72,10 +72,6 @@ const Nav = () => {
         <ul className="navBarUl">
           <MenuTab />
         </ul>
-        <div className="search">
-          <input className="searchInput" type="text" placeholder="SERACH" />
-          <i className="fas fa-search" />
-        </div>
       </div>
     </nav>
   );
