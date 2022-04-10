@@ -20,6 +20,8 @@
 
 
 <h2>Technologies</h2>
+
+
 * ReactJS
-* Git
-* github
+* Git, github
+
