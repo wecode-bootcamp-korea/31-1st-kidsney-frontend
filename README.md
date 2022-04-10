@@ -18,6 +18,7 @@
 
 ![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/90507720/162644465-04a13653-648a-4dbd-8be2-74fb3822380d.gif)
 
+![](https://velog.velcdn.com/images/hoje15v/post/e5347a1b-9a8e-4e45-b90c-dfd4af836bfb/image.gif)
 
 <h2>Technologies</h2>
 
@@ -33,7 +34,6 @@
 - 로그인 / 회원가입 유효성 검사
 - localStorage 와 useState Hook을 사용한 로그인 전역관리
 
-![](https://velog.velcdn.com/images/hoje15v/post/e5347a1b-9a8e-4e45-b90c-dfd4af836bfb/image.gif)
 
 
 
