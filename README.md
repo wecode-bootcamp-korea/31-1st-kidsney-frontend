@@ -13,12 +13,15 @@
 <img width="1424" alt="image" src="https://user-images.githubusercontent.com/90507720/162644315-d2510c11-e306-4621-94a7-4dcfda959894.png">
 <img width="1283" alt="스크린샷 2022-04-11 오전 8 25 21" src="https://user-images.githubusercontent.com/90507720/162644398-2feb9df0-6c0c-4da7-b0ff-63a2d17ed4d7.png">
 
+![](https://velog.velcdn.com/images/hoje15v/post/e5347a1b-9a8e-4e45-b90c-dfd4af836bfb/image.gif)
+
+![제품필터링](https://velog.velcdn.com/images/gonkang_jeondosa/post/3eea78f7-fbc3-4543-88e8-38011b8e6ef3/image.gif)
 
 ![ezgif com-gif-maker (13)](https://user-images.githubusercontent.com/90507720/162644439-45e38047-e494-446b-b350-9edf35ef769f.gif)
 
 ![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/90507720/162644465-04a13653-648a-4dbd-8be2-74fb3822380d.gif)
 
-![](https://velog.velcdn.com/images/hoje15v/post/e5347a1b-9a8e-4e45-b90c-dfd4af836bfb/image.gif)
+![결제](https://velog.velcdn.com/images/gonkang_jeondosa/post/2ba03bd0-b2c6-4cbc-a62d-6d1098f6c4cd/image.gif)
 
 <h2>Technologies</h2>
 
@@ -40,10 +43,10 @@
 #### 2. 상품리스트 
 
 - 쿼리 파라미터를 활용한 다양한 기능구현
-    - 다중필터
-    - 가격순 / 최신순 정렬
-    - 페이지네이션
-
+    - 다중필터 : 의류타입, 브랜드 , 사이즈별 필터링
+    - 가격순 / 최신상품순 정렬
+    - 페이지네이션 : Limit & Offset 활용
+   
 #### 3. 제품 상세 페이지
 
 - 상품리스트에서 상품이미지를 클릭하면 해당 상품 이미지로 이동
@@ -67,11 +70,11 @@
 
 #### 7. 결제
 
-- 결제 기능 구현 : fetch(Get, Patch 메소드) 활용한 마일리지 차감 및 사용자정보 수정
+- 결제 기능 구현 : fetch(Get, Patch 메소드) 활용한 마일리지 차감 및 사용자 배송정보 업데이트
 
 #### 8. 상품 검색
 
-- 상품 검색 기능 구현: 쿼리 파라미터를 활용한 기능 구현
+- 상품 검색 기능 구현: 쿼리 파라미터를 활용한 Like검색 
 
 <h2>Reference</h2>
 
